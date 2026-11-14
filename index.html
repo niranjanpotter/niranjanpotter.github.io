@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>MuleSoft Blogs | Enterprise Architecture, Integration &amp; 2026 Developer Guides</title>
-  <meta name="description" content="Official technical blog and complete 159-page MuleSoft integration &amp; enterprise architect guide. API-led connectivity, Scatter-Gather, Batch Job, Anypoint MQ, DataWeave 2.0, CloudHub 2.0, 20 real incidents, and architect advisory." />
+  <title>MuleSoft Developer &amp; Enterprise Architect Hub | Official 2026 Reference &amp; Blogs</title>
+  <meta name="description" content="The definitive 159-page MuleSoft integration &amp; enterprise architect handbook. API-led connectivity, Scatter-Gather, Batch Job, Anypoint MQ, DataWeave 2.0, CloudHub 2.0, 28 production incident runbooks, and C-level architect advisory." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,25 +14,28 @@
   --mule-blue: #00a1e0;
   --mule-dark-blue: #0077b6;
   --sf-blue: #0176d3;
-  --bg-page: #080f1e;
-  --bg-card: #0f1c35;
-  --bg-card-hover: #142444;
-  --bg-card-subtle: #0b152a;
-  --border: #1d2e52;
+  --sf-blue-glow: rgba(1, 118, 211, 0.25);
+  --mule-glow: rgba(0, 161, 224, 0.3);
+  --bg-page: #060b14;
+  --bg-card: #0d1527;
+  --bg-card-hover: #131f3b;
+  --bg-card-subtle: #09101f;
+  --border: #1a2947;
   --border-focus: #00a1e0;
   --text-main: #f1f5f9;
   --text-muted: #94a3b8;
   --text-dim: #64748b;
   --emerald: #10b981;
+  --emerald-glow: rgba(16, 185, 129, 0.2);
   --rose: #ef4444;
   --amber: #f59e0b;
   --violet: #8b5cf6;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', Consolas, monospace;
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
-  --nav-height: 70px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --nav-height: 72px;
 }
 
 [data-theme="light"] {
@@ -62,9 +65,13 @@ body {
   line-height: 1.7;
   overflow-x: hidden;
   transition: background-color 0.25s, color 0.25s;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 161, 224, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 100% 20%, rgba(1, 118, 211, 0.08) 0%, transparent 40%);
+  background-attachment: fixed;
 }
 
-/* Top Progress */
+/* Scroll progress */
 #top-progress {
   position: fixed;
   top: 0;
@@ -75,19 +82,24 @@ body {
   z-index: 9999;
 }
 
-/* Header */
-.blog-header {
+/* Glassmorphic Header */
+.hub-header {
   position: sticky;
   top: 0;
   height: var(--nav-height);
-  background: var(--bg-card);
+  background: rgba(13, 21, 39, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 32px;
+  padding: 0 36px;
   z-index: 1000;
-  backdrop-filter: blur(12px);
+}
+
+[data-theme="light"] .hub-header {
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .brand-wrapper {
@@ -99,37 +111,32 @@ body {
 }
 
 .brand-icon {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   background: linear-gradient(135deg, #00a1e0, #0176d3);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  box-shadow: 0 4px 14px rgba(0, 161, 224, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 161, 224, 0.4);
 }
 
-.brand-text {
-  display: flex;
-  flex-direction: column;
-}
-
+.brand-text { display: flex; flex-direction: column; }
 .brand-title {
-  font-size: 1.15rem;
+  font-size: 1.18rem;
   font-weight: 800;
   letter-spacing: -0.01em;
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
 .brand-subtitle {
   font-size: 0.74rem;
   color: var(--text-dim);
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 .header-center {
@@ -146,7 +153,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--bg-page);
+  background: var(--bg-card-subtle);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 9px 16px;
@@ -169,12 +176,13 @@ body {
   border-radius: 4px;
   font-family: var(--font-mono);
   font-size: 0.72rem;
+  color: var(--text-muted);
 }
 
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .btn {
@@ -186,7 +194,7 @@ body {
   font-weight: 700;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  background: var(--bg-card-subtle);
+  background: var(--bg-card);
   color: var(--text-main);
   cursor: pointer;
   transition: all 0.2s;
@@ -208,37 +216,57 @@ body {
 .btn-primary:hover {
   background: linear-gradient(135deg, #00b4fa, #0185ee);
   color: white;
-  box-shadow: 0 4px 14px rgba(0, 161, 224, 0.35);
+  box-shadow: 0 4px 16px rgba(0, 161, 224, 0.35);
 }
 
-.practice-pill {
+.view-mode-pill {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  cursor: pointer;
-  padding: 7px 12px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
   background: var(--bg-card-subtle);
-  user-select: none;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 2px;
 }
 
-/* Category Filter Bar */
-.blog-nav-bar {
-  background: var(--bg-card);
+.view-mode-btn {
+  padding: 5px 10px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.view-mode-btn.active {
+  background: var(--mule-blue);
+  color: white;
+}
+
+/* Category Sticky Filter Bar */
+.sticky-filter-bar {
+  position: sticky;
+  top: var(--nav-height);
+  background: rgba(9, 16, 31, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
-  padding: 12px 32px;
+  padding: 12px 36px;
   display: flex;
   align-items: center;
   gap: 8px;
   overflow-x: auto;
   scrollbar-width: none;
+  z-index: 990;
 }
 
-.blog-nav-bar::-webkit-scrollbar { display: none; }
+[data-theme="light"] .sticky-filter-bar {
+  background: rgba(248, 250, 252, 0.95);
+}
+
+.sticky-filter-bar::-webkit-scrollbar { display: none; }
 
 .cat-pill {
   white-space: nowrap;
@@ -246,7 +274,7 @@ body {
   border-radius: 20px;
   font-size: 0.82rem;
   font-weight: 700;
-  background: var(--bg-page);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   color: var(--text-muted);
   cursor: pointer;
@@ -258,58 +286,192 @@ body {
   background: var(--mule-blue);
   color: white;
   border-color: var(--mule-blue);
-  box-shadow: 0 2px 10px rgba(0, 161, 224, 0.3);
+  box-shadow: 0 2px 12px rgba(0, 161, 224, 0.35);
 }
 
-/* Blog Container */
-.blog-container {
-  max-width: 1140px;
+/* Hub Container */
+.hub-container {
+  max-width: 1180px;
   margin: 0 auto;
-  padding: 40px 24px 80px;
+  padding: 44px 24px 100px;
 }
 
-/* Hero Feature Post */
-.hero-feature-post {
-  background: linear-gradient(135deg, #0c1833, #112347);
+/* Hero Section */
+.hero-portal {
+  background: linear-gradient(135deg, rgba(13, 21, 39, 0.9), rgba(19, 31, 59, 0.9));
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 40px 48px;
+  padding: 48px;
   margin-bottom: 48px;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
-[data-theme="light"] .hero-feature-post {
-  background: linear-gradient(135deg, #f0f7ff, #ffffff);
-  border-color: #cbd5e1;
+[data-theme="light"] .hero-portal {
+  background: linear-gradient(135deg, #ffffff, #f0f7ff);
+  box-shadow: 0 20px 40px rgba(1, 118, 211, 0.08);
 }
 
-.hero-feature-post::before {
+.hero-portal::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(90deg, var(--mule-blue), var(--sf-blue), var(--emerald));
+  background: linear-gradient(90deg, #00a1e0, #0176d3, #8b5cf6, #10b981);
 }
 
-.hero-tag-row {
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: rgba(0, 161, 224, 0.12);
+  border: 1px solid rgba(0, 161, 224, 0.25);
+  color: var(--mule-blue);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 18px;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--emerald);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--emerald);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.3); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.hero-headline {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.hero-headline-gradient {
+  background: linear-gradient(135deg, #00a1e0, #60a5fa, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-description {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 880px;
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+/* Metric Cards Deck */
+.metric-deck {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 16px;
+  margin: 32px 0 28px;
+}
+
+.metric-pill {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  transition: transform 0.2s;
+}
+
+.metric-pill:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-focus);
+}
+
+.metric-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--mule-blue);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* Dual CTAs */
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+/* 3-Card Spotlight Carousel / Grid */
+.spotlight-section-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 16px;
-  flex-wrap: wrap;
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.spotlight-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.2s;
+  text-decoration: none;
+  color: inherit;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 161, 224, 0.4);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.spotlight-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: 20px;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -320,41 +482,54 @@ body {
 .badge-warning { background: rgba(245, 158, 11, 0.15); color: var(--amber); border: 1px solid rgba(245, 158, 11, 0.3); }
 .badge-violet  { background: rgba(139, 92, 246, 0.15); color: var(--violet); border: 1px solid rgba(139, 92, 246, 0.3); }
 
-.hero-title {
-  font-size: 2.2rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.3;
+.spotlight-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.spotlight-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
   margin-bottom: 16px;
 }
 
-.hero-summary {
-  font-size: 1.05rem;
-  color: var(--text-muted);
-  max-width: 860px;
-  line-height: 1.7;
-  margin-bottom: 24px;
-}
-
-.author-row {
+.spotlight-footer {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 0.85rem;
+  justify-content: space-between;
+  font-size: 0.78rem;
   color: var(--text-dim);
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
 }
 
-.author-avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--mule-blue), var(--sf-blue));
+/* Interactive Tools Panel */
+.tools-banner {
+  background: linear-gradient(135deg, rgba(0, 161, 224, 0.08), rgba(1, 118, 211, 0.08));
+  border: 1px solid rgba(0, 161, 224, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 32px 36px;
+  margin-bottom: 48px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: white;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.tools-banner-title {
+  font-size: 1.4rem;
   font-weight: 800;
-  font-size: 0.85rem;
+  margin-bottom: 6px;
+}
+
+.tools-banner-sub {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 600px;
 }
 
 /* Blog Article Card */
@@ -362,21 +537,21 @@ body {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 36px;
-  margin-bottom: 40px;
+  padding: 40px;
+  margin-bottom: 44px;
   transition: all 0.2s ease;
   scroll-margin-top: calc(var(--nav-height) + 60px);
 }
 
 .blog-article:hover {
-  border-color: rgba(0, 161, 224, 0.4);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  border-color: rgba(0, 161, 224, 0.35);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
 }
 
 .article-header {
   margin-bottom: 24px;
   border-bottom: 1px solid var(--border);
-  padding-bottom: 20px;
+  padding-bottom: 22px;
 }
 
 .article-meta {
@@ -390,7 +565,7 @@ body {
 }
 
 .article-title {
-  font-size: 1.75rem;
+  font-size: 1.85rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.35;
@@ -398,12 +573,12 @@ body {
 }
 
 .article-excerpt {
-  font-size: 0.98rem;
+  font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.65;
 }
 
-/* FAQ / Question Accordion inside Article */
+/* FAQ Card / Question Accordion */
 .faq-card {
   background: var(--bg-card-subtle);
   border: 1px solid var(--border);
@@ -488,10 +663,7 @@ body {
 }
 
 /* Practice mode */
-body.practice-mode-on .faq-body {
-  position: relative;
-}
-
+body.practice-mode-on .faq-body { position: relative; }
 body.practice-mode-on .faq-body.hidden-answer {
   filter: blur(8px);
   user-select: none;
@@ -512,9 +684,7 @@ body.practice-mode-on .faq-body.hidden-answer {
   cursor: pointer;
 }
 
-body.practice-mode-on .reveal-answer-btn {
-  display: inline-flex;
-}
+body.practice-mode-on .reveal-answer-btn { display: inline-flex; }
 
 /* Callout Boxes */
 .callout {
@@ -670,13 +840,62 @@ pre {
   color: var(--text-main);
 }
 
-.doc-table tr:hover td {
-  background: rgba(0, 161, 224, 0.04);
-}
-
+.doc-table tr:hover td { background: rgba(0, 161, 224, 0.04); }
 .doc-p { margin-bottom: 12px; }
 .doc-list { margin: 12px 0 16px 20px; }
 .doc-list li { margin-bottom: 6px; }
+
+/* Flow Inspector Drawer */
+.inspector-card {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-top: 16px;
+  display: none;
+}
+
+.inspector-card.active { display: block; }
+
+/* Interactive Sizing Widget */
+.calc-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  margin: 28px 0;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.calc-input-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-muted);
+}
+
+.calc-slider {
+  width: 100%;
+  accent-color: var(--mule-blue);
+  cursor: pointer;
+}
+
+.calc-result-box {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 /* Modals */
 .modal-overlay {
@@ -805,42 +1024,42 @@ pre {
 .result-snippet { font-size: 0.82rem; color: var(--text-muted); line-height: 1.4; }
 
 /* Footer */
-.blog-footer {
+.hub-footer {
   background: var(--bg-card);
   border-top: 1px solid var(--border);
-  padding: 48px 32px;
+  padding: 60px 32px 40px;
   text-align: center;
   color: var(--text-muted);
   font-size: 0.9rem;
 }
 
-.footer-links {
+.footer-nav {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 24px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
-.footer-links a {
+.footer-nav a {
   color: var(--mule-blue);
   text-decoration: none;
   font-weight: 600;
 }
 
 @media (max-width: 900px) {
-  .blog-header { padding: 0 16px; }
+  .hub-header { padding: 0 16px; }
   .header-center { display: none; }
-  .hero-feature-post { padding: 24px 20px; }
-  .hero-title { font-size: 1.6rem; }
+  .hero-portal { padding: 28px 20px; }
+  .hero-headline { font-size: 1.8rem; }
   .blog-article { padding: 24px 18px; }
   .dw-grid { grid-template-columns: 1fr; }
 }
 
 @media print {
-  .blog-header, .blog-nav-bar, .blog-footer, .modal-overlay, #top-progress { display: none !important; }
-  .blog-container { max-width: 100% !important; padding: 0 !important; }
+  .hub-header, .sticky-filter-bar, .hub-footer, .modal-overlay, #top-progress, .tools-banner { display: none !important; }
+  .hub-container { max-width: 100% !important; padding: 0 !important; }
   body { background: white !important; color: black !important; }
   .faq-card { break-inside: avoid; border: 1px solid #ccc !important; }
   .faq-body { display: block !important; filter: none !important; }
@@ -853,7 +1072,7 @@ pre {
   <div id="top-progress"></div>
 
   <!-- Header -->
-  <header class="blog-header">
+  <header class="hub-header">
     <a href="#mod-a" class="brand-wrapper">
       <div class="brand-icon">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -862,8 +1081,8 @@ pre {
         </svg>
       </div>
       <div class="brand-text">
-        <span class="brand-title">MuleSoft Blogs <span class="badge badge-primary" style="font-size:0.68rem; padding:1px 6px;">2026 Edition</span></span>
-        <span class="brand-subtitle">IntegrationMind · Enterprise Architect Hub</span>
+        <span class="brand-title">MuleSoft Developer Hub <span class="badge badge-primary" style="font-size:0.68rem; padding:1px 6px;">2026 Edition</span></span>
+        <span class="brand-subtitle">IntegrationMind · Enterprise Architecture</span>
       </div>
     </a>
 
@@ -871,15 +1090,15 @@ pre {
       <div class="search-box" onclick="openSearchModal()">
         <div style="display:flex; align-items:center; gap:8px;">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <span>Search 35 articles, DW scripts, incident scenarios...</span>
+          <span>Search 35 articles, DW scripts, incident runbooks...</span>
         </div>
         <span class="search-shortcut">Ctrl K</span>
       </div>
     </div>
 
     <div class="header-actions">
-      <label class="practice-pill" title="Toggle active recall practice mode">
-        <input type="checkbox" onchange="togglePracticeMode(this.checked)">
+      <label class="btn" style="cursor:pointer;" title="Toggle interview practice mode">
+        <input type="checkbox" onchange="togglePracticeMode(this.checked)" style="cursor:pointer;">
         <span>Practice Mode</span>
       </label>
 
@@ -897,32 +1116,131 @@ pre {
     </div>
   </header>
 
-  <!-- Category Nav Bar -->
-  <div class="blog-nav-bar"><button class="cat-pill active" onclick="filterBlogCategory('all', this)">All Articles (35)</button><button class="cat-pill" onclick="filterBlogCategory('Getting Started & Strategy', this)">🚀 Getting Started &amp; Strategy (3)</button><button class="cat-pill" onclick="filterBlogCategory('Salesforce & Enterprise Connectors', this)">🔌 Salesforce &amp; Enterprise Connectors (4)</button><button class="cat-pill" onclick="filterBlogCategory('AWS & Messaging', this)">🌩️ AWS &amp; Messaging (3)</button><button class="cat-pill" onclick="filterBlogCategory('Flow Scopes & Concurrency', this)">🔀 Flow Scopes &amp; Concurrency (5)</button><button class="cat-pill" onclick="filterBlogCategory('Error Handling & Resiliency', this)">⚠️ Error Handling &amp; Resiliency (1)</button><button class="cat-pill" onclick="filterBlogCategory('ObjectStore & API Governance', this)">💾 ObjectStore &amp; API Governance (3)</button><button class="cat-pill" onclick="filterBlogCategory('Testing & CI/CD', this)">🧪 Testing &amp; CI/CD (1)</button><button class="cat-pill" onclick="filterBlogCategory('DataWeave 2.0 Masterclass', this)">💻 DataWeave 2.0 Masterclass (2)</button><button class="cat-pill" onclick="filterBlogCategory('Deployment & CloudHub 2.0', this)">🌐 Deployment &amp; CloudHub 2.0 (1)</button><button class="cat-pill" onclick="filterBlogCategory('Production Scenarios & Incidents', this)">🎯 Production Scenarios &amp; Incidents (1)</button><button class="cat-pill" onclick="filterBlogCategory('Live Whiteboard & Architecture', this)">📐 Live Whiteboard &amp; Architecture (1)</button><button class="cat-pill" onclick="filterBlogCategory('Modern Architecture & AI', this)">🤖 Modern Architecture &amp; AI (2)</button><button class="cat-pill" onclick="filterBlogCategory('Interview Traps & Pitfalls', this)">⚡ Interview Traps &amp; Pitfalls (1)</button><button class="cat-pill" onclick="filterBlogCategory('Enterprise Architect Masterclass', this)">🎓 Enterprise Architect Masterclass (5)</button><button class="cat-pill" onclick="filterBlogCategory('Rapid Review & Cheat Sheets', this)">🏆 Rapid Review &amp; Cheat Sheets (2)</button></div>
+  <!-- Sticky Category Navigation Bar -->
+  <div class="sticky-filter-bar"><button class="cat-pill active" onclick="filterBlogCategory('all', this)">All Topics (35)</button><button class="cat-pill" onclick="filterBlogCategory('Getting Started & Strategy', this)">🚀 Getting Started &amp; Strategy (3)</button><button class="cat-pill" onclick="filterBlogCategory('Salesforce & Enterprise Connectors', this)">🔌 Salesforce &amp; Enterprise Connectors (4)</button><button class="cat-pill" onclick="filterBlogCategory('AWS & Messaging', this)">🌩️ AWS &amp; Messaging (3)</button><button class="cat-pill" onclick="filterBlogCategory('Flow Scopes & Concurrency', this)">🔀 Flow Scopes &amp; Concurrency (5)</button><button class="cat-pill" onclick="filterBlogCategory('Error Handling & Resiliency', this)">⚠️ Error Handling &amp; Resiliency (1)</button><button class="cat-pill" onclick="filterBlogCategory('ObjectStore & API Governance', this)">💾 ObjectStore &amp; API Governance (3)</button><button class="cat-pill" onclick="filterBlogCategory('Testing & CI/CD', this)">🧪 Testing &amp; CI/CD (1)</button><button class="cat-pill" onclick="filterBlogCategory('DataWeave 2.0 Masterclass', this)">💻 DataWeave 2.0 Masterclass (2)</button><button class="cat-pill" onclick="filterBlogCategory('Deployment & CloudHub 2.0', this)">🌐 Deployment &amp; CloudHub 2.0 (1)</button><button class="cat-pill" onclick="filterBlogCategory('Production Scenarios & Incidents', this)">🎯 Production Scenarios &amp; Incidents (1)</button><button class="cat-pill" onclick="filterBlogCategory('Live Whiteboard & Architecture', this)">📐 Live Whiteboard &amp; Architecture (1)</button><button class="cat-pill" onclick="filterBlogCategory('Modern Architecture & AI', this)">🤖 Modern Architecture &amp; AI (2)</button><button class="cat-pill" onclick="filterBlogCategory('Interview Traps & Pitfalls', this)">⚡ Interview Traps &amp; Pitfalls (1)</button><button class="cat-pill" onclick="filterBlogCategory('Enterprise Architect Masterclass', this)">🎓 Enterprise Architect Masterclass (5)</button><button class="cat-pill" onclick="filterBlogCategory('Rapid Review & Cheat Sheets', this)">🏆 Rapid Review &amp; Cheat Sheets (2)</button></div>
 
-  <!-- Main Blog Content -->
-  <main class="blog-container">
-    <!-- Hero Spotlight Post -->
-    <div class="hero-feature-post">
-      <div class="hero-tag-row">
-        <span class="badge badge-primary">Featured Architectural Case Study</span>
-        <span class="badge badge-success">Production Proven</span>
-        <span class="badge badge-violet">Enterprise Utility Scale</span>
+  <!-- Main Hub Container -->
+  <main class="hub-container">
+    <!-- Hero Portal Spotlight -->
+    <section class="hero-portal">
+      <div class="hero-eyebrow">
+        <span class="pulse-dot"></span>
+        <span>2026 Edition · Enterprise Integration Masterclass</span>
       </div>
-      <h1 class="hero-title">Architecting Enterprise API-Led Connectivity: How Scatter-Gather &amp; Mule 4 Cut Billing Latency by 55% Across 5M Customers</h1>
-      <p class="hero-summary">
-        An executive and technical deep dive into NextEra Energy (Florida Power &amp; Light)'s integration platform. How our team connected Salesforce Employee Desktop and Conversational AI with SAP S/4HANA OData, AWS DynamoDB, and Anypoint MQ, dropping response times from 2.5s down to 1.1s while maintaining 99.9% availability.
+      <h1 class="hero-headline">
+        MuleSoft Developer &amp; <span class="hero-headline-gradient">Enterprise Architect Hub</span>
+      </h1>
+      <p class="hero-description">
+        The complete, authoritative 159-page technical handbook, real-world case studies, architectural battlecards, and DataWeave 2.0 masterclass. Built for senior engineers, technical leads, and enterprise integration architects.
       </p>
-      <div class="author-row">
-        <div class="author-avatar">M</div>
-        <div>
-          <div style="font-weight:700; color:var(--text-main);">MuleSoft Lead Architecture Team</div>
-          <div>Published Nov 2026 · 15 min read · Case Study #FPL-2026</div>
+
+      <!-- KPI Metrics Deck -->
+      <div class="metric-deck">
+        <div class="metric-pill">
+          <div class="metric-value">55%</div>
+          <div class="metric-label">Latency Reduction (Scatter-Gather)</div>
         </div>
+        <div class="metric-pill">
+          <div class="metric-value">5M+</div>
+          <div class="metric-label">Utility Customers (NextEra / FPL)</div>
+        </div>
+        <div class="metric-pill">
+          <div class="metric-value">44</div>
+          <div class="metric-label">Production APIs in Estate</div>
+        </div>
+        <div class="metric-pill">
+          <div class="metric-value">252</div>
+          <div class="metric-label">Technical Topics &amp; Battlecards</div>
+        </div>
+        <div class="metric-pill">
+          <div class="metric-value">28</div>
+          <div class="metric-label">Incident Runbooks (S1–S28)</div>
+        </div>
+        <div class="metric-pill">
+          <div class="metric-value">20</div>
+          <div class="metric-label">Interview Traps (T1–T20)</div>
+        </div>
+      </div>
+
+      <!-- Quick Action CTAs -->
+      <div class="hero-cta-row">
+        <a href="#mod-a" class="btn btn-primary" style="padding:10px 22px; font-size:0.92rem;">
+          <span>📖 Read Featured Case Study</span>
+        </a>
+        <button class="btn" onclick="openDataWeaveModal()" style="padding:10px 20px; font-size:0.92rem;">
+          <span>🧪 Live DW 2.0 Simulator</span>
+        </button>
+        <a href="#vcore-calculator" class="btn" style="padding:10px 20px; font-size:0.92rem;">
+          <span>🧮 CloudHub Sizing Calculator</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Trending & Editor's Spotlight Grid -->
+    <div class="spotlight-section-title">
+      <span>🔥</span>
+      <span>Trending Architectural Deep Dives</span>
+    </div>
+    <div class="spotlight-grid">
+      <a href="#mod-a" class="spotlight-card">
+        <div>
+          <div class="spotlight-header">
+            <span class="badge badge-primary">FPL Case Study</span>
+            <span style="font-size:0.75rem; color:var(--text-dim);">12 min read</span>
+          </div>
+          <h3 class="spotlight-title">Connecting Salesforce, SAP S/4HANA &amp; DynamoDB with Scatter-Gather</h3>
+          <p class="spotlight-desc">How NextEra Energy reduced billing response time from 2.5s to 1.1s across 5M utility customer interactions.</p>
+        </div>
+        <div class="spotlight-footer">
+          <span>By MuleSoft Lead Architect</span>
+          <span style="color:var(--mule-blue); font-weight:700;">Explore Post →</span>
+        </div>
+      </a>
+
+      <a href="#mod-bb" class="spotlight-card">
+        <div>
+          <div class="spotlight-header">
+            <span class="badge badge-violet">2026 AI Frontier</span>
+            <span style="font-size:0.75rem; color:var(--text-dim);">10 min read</span>
+          </div>
+          <h3 class="spotlight-title">Salesforce Agentforce AI &amp; Model Context Protocol (MCP) in MuleSoft</h3>
+          <p class="spotlight-desc">Architecting autonomous AI agent tools, zero-trust governance guardrails, and Snowflake batch loaders.</p>
+        </div>
+        <div class="spotlight-footer">
+          <span>By MuleSoft AI Architecture</span>
+          <span style="color:var(--mule-blue); font-weight:700;">Explore Post →</span>
+        </div>
+      </a>
+
+      <a href="#mod-z" class="spotlight-card">
+        <div>
+          <div class="spotlight-header">
+            <span class="badge badge-warning">Incident Battlecards</span>
+            <span style="font-size:0.75rem; color:var(--text-dim);">20 min read</span>
+          </div>
+          <h3 class="spotlight-title">Surviving Downstream SAP 500s, MQ Duplicates &amp; 10x Traffic Spikes</h3>
+          <p class="spotlight-desc">20 real-world production incident battlecards (S1–S20) with root-cause analysis and exact resolution runbooks.</p>
+        </div>
+        <div class="spotlight-footer">
+          <span>By Production Engineering</span>
+          <span style="color:var(--mule-blue); font-weight:700;">Explore Post →</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Interactive Tools Banner -->
+    <div class="tools-banner">
+      <div>
+        <h3 class="tools-banner-title">Interactive MuleSoft Engineering Tools Built-in</h3>
+        <p class="tools-banner-sub">Test live DataWeave 2.0 transformations in real-time, inspect API-Led 3-tier architectures, and calculate CloudHub 2.0 worker sizing.</p>
+      </div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="openDataWeaveModal()">Launch DW Playground</button>
+        <button class="btn" onclick="openSearchModal()">Search All Topics</button>
       </div>
     </div>
 
-    <!-- Blog Articles Grid / Stream -->
+    <!-- Complete 35 Technical Articles Stream -->
     <div id="articles-stream">
       
 <article id="mod-a" class="blog-article" data-category="Getting Started &amp; Strategy" data-role="Developer / Senior">
@@ -932,42 +1250,51 @@ pre {
       <span class="badge badge-primary">Getting Started &amp; Strategy</span>
       <span>⏱️ 6 min read</span>
       <span>📄 Guide Pages 1–4</span>
-      <span>🎯 4 Technical Topics</span>
+      <span>🎯 4 Interview Topics</span>
     </div>
     <h2 class="article-title">🚀 Interview Coaching, Strategy &amp; Project Overview</h2>
     <p class="article-excerpt">Perfect 2-minute pitch, FPL utility project architecture, business outcomes, and key performance metrics.</p>
   </div>
 
 
-<div style="background:var(--bg-card-subtle); border:1px solid var(--border); border-radius:var(--radius-md); padding:24px; margin:24px 0; text-align:center;">
-  <div style="font-size:0.85rem; font-weight:700; color:var(--mule-blue); text-transform:uppercase; margin-bottom:12px; letter-spacing:0.05em;">
-    ⚡ 3-Tier API-Led Architecture Diagram: NextEra Energy (FPL) Utility Platform
+<div style="background:var(--bg-card-subtle); border:1px solid var(--border); border-radius:var(--radius-md); padding:28px; margin:24px 0; text-align:center;">
+  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+    <div style="font-size:0.85rem; font-weight:700; color:var(--mule-blue); text-transform:uppercase; letter-spacing:0.05em;">
+      ⚡ Interactive 3-Tier Flow Inspector (Click any layer to view technical specs)
+    </div>
+    <span style="font-size:0.75rem; color:var(--text-dim);">NextEra Energy / FPL Architecture Model</span>
   </div>
-  <svg viewBox="0 0 850 440" style="width: 100%; max-width: 820px; height: auto;" xmlns="http://www.w3.org/2000/svg">
+  
+  <svg viewBox="0 0 850 440" style="width: 100%; max-width: 820px; height: auto; cursor:pointer;" xmlns="http://www.w3.org/2000/svg">
     <!-- Channel Layer -->
-    <rect x="30" y="20" width="790" height="60" rx="8" fill="#132347" stroke="#243d73" stroke-width="1.5" />
-    <text x="425" y="45" fill="#f1f5f9" font-size="14" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans">CONSUMER CHANNELS</text>
-    <text x="425" y="65" fill="#94a3b8" font-size="12" text-anchor="middle" font-family="Plus Jakarta Sans">Salesforce Employee Desktop · Mobile App · Conversational AI Bot</text>
+    <g onclick="inspectTier('channels')">
+      <rect x="30" y="20" width="790" height="60" rx="8" fill="#132347" stroke="#243d73" stroke-width="1.5" />
+      <text x="425" y="45" fill="#f1f5f9" font-size="14" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans">CONSUMER CHANNELS (Click to inspect)</text>
+      <text x="425" y="65" fill="#94a3b8" font-size="12" text-anchor="middle" font-family="Plus Jakarta Sans">Salesforce Employee Desktop · Mobile Customer App · Conversational AI Bot</text>
+    </g>
     
     <line x1="425" y1="80" x2="425" y2="110" stroke="#00a1e0" stroke-width="2" stroke-dasharray="4" />
     <polygon points="425,115 420,105 430,105" fill="#00a1e0" />
 
     <!-- Experience API Layer -->
-    <rect x="80" y="120" width="690" height="70" rx="8" fill="#0d2442" stroke="#00a1e0" stroke-width="1.5" />
-    <text x="425" y="145" fill="#00a1e0" font-size="14" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans">EXPERIENCE LAYER (XAPI)</text>
-    <text x="425" y="165" fill="#f1f5f9" font-size="12" text-anchor="middle" font-family="Plus Jakarta Sans">Customer Experience API · Employee Desktop API · Channel Security &amp; OAuth 2.0 JWT</text>
-    <text x="425" y="180" fill="#94a3b8" font-size="10" text-anchor="middle" font-family="Plus Jakarta Sans">SLA: &lt;150ms · Client ID Enforcement · Rate Limiting · AutoDiscovery</text>
+    <g onclick="inspectTier('xapi')">
+      <rect x="80" y="120" width="690" height="70" rx="8" fill="#0d2442" stroke="#00a1e0" stroke-width="2" />
+      <text x="425" y="145" fill="#00a1e0" font-size="14" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans">EXPERIENCE LAYER (XAPI)</text>
+      <text x="425" y="165" fill="#f1f5f9" font-size="12" text-anchor="middle" font-family="Plus Jakarta Sans">Customer Experience API · Employee Desktop API · Channel Security &amp; OAuth 2.0 JWT</text>
+      <text x="425" y="180" fill="#94a3b8" font-size="10" text-anchor="middle" font-family="Plus Jakarta Sans">SLA: &lt;150ms · Client ID Enforcement · Rate Limiting · AutoDiscovery</text>
+    </g>
 
     <line x1="425" y1="190" x2="425" y2="220" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="4" />
     <polygon points="425,225 420,215 430,215" fill="#8b5cf6" />
 
     <!-- Process API Layer -->
-    <rect x="50" y="230" width="750" height="80" rx="8" fill="#1b1d42" stroke="#8b5cf6" stroke-width="1.5" />
-    <text x="425" y="255" fill="#8b5cf6" font-size="14" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans">PROCESS LAYER (PAPI) — Business Orchestration &amp; Concurrency</text>
-    <text x="425" y="275" fill="#f1f5f9" font-size="12" text-anchor="middle" font-family="Plus Jakarta Sans">Billing PAPI (Scatter-Gather: SAP + DynamoDB) · Order Fulfillment PAPI · Notification PAPI</text>
-    <text x="425" y="295" fill="#10b981" font-size="11" font-weight="600" text-anchor="middle" font-family="Plus Jakarta Sans">🚀 55% Latency Reduction: 2.5s → 1.1s via Scatter-Gather Concurrency</text>
+    <g onclick="inspectTier('papi')">
+      <rect x="50" y="230" width="750" height="80" rx="8" fill="#1b1d42" stroke="#8b5cf6" stroke-width="2" />
+      <text x="425" y="255" fill="#8b5cf6" font-size="14" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans">PROCESS LAYER (PAPI) — Business Orchestration &amp; Concurrency</text>
+      <text x="425" y="275" fill="#f1f5f9" font-size="12" text-anchor="middle" font-family="Plus Jakarta Sans">Billing PAPI (Scatter-Gather: SAP + DynamoDB) · Order Fulfillment PAPI · Notification PAPI</text>
+      <text x="425" y="295" fill="#10b981" font-size="11" font-weight="600" text-anchor="middle" font-family="Plus Jakarta Sans">🚀 55% Latency Drop: 2.5s → 1.1s via Scatter-Gather Concurrency</text>
+    </g>
 
-    <!-- Arrows Down Split -->
     <line x1="200" y1="310" x2="200" y2="345" stroke="#10b981" stroke-width="2" />
     <polygon points="200,350 195,340 205,340" fill="#10b981" />
     <line x1="425" y1="310" x2="425" y2="345" stroke="#10b981" stroke-width="2" />
@@ -976,21 +1303,36 @@ pre {
     <polygon points="650,350 645,340 655,340" fill="#10b981" />
 
     <!-- System API Layer -->
-    <rect x="50" y="355" width="220" height="70" rx="8" fill="#102b28" stroke="#10b981" stroke-width="1.5" />
-    <text x="160" y="380" fill="#10b981" font-size="13" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans">SAP SAPI</text>
-    <text x="160" y="400" fill="#f1f5f9" font-size="11" text-anchor="middle" font-family="Plus Jakarta Sans">SAP S/4HANA OData</text>
-    <text x="160" y="415" fill="#94a3b8" font-size="10" text-anchor="middle" font-family="Plus Jakarta Sans">Billing, Deposits, Accounts</text>
+    <g onclick="inspectTier('sap')">
+      <rect x="50" y="355" width="220" height="70" rx="8" fill="#102b28" stroke="#10b981" stroke-width="1.5" />
+      <text x="160" y="380" fill="#10b981" font-size="13" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans">SAP SAPI</text>
+      <text x="160" y="400" fill="#f1f5f9" font-size="11" text-anchor="middle" font-family="Plus Jakarta Sans">SAP S/4HANA OData</text>
+      <text x="160" y="415" fill="#94a3b8" font-size="10" text-anchor="middle" font-family="Plus Jakarta Sans">Billing, Deposits, Accounts</text>
+    </g>
 
-    <rect x="290" y="355" width="270" height="70" rx="8" fill="#102b28" stroke="#10b981" stroke-width="1.5" />
-    <text x="425" y="380" fill="#10b981" font-size="13" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans">AWS CLOUD SAPI</text>
-    <text x="425" y="400" fill="#f1f5f9" font-size="11" text-anchor="middle" font-family="Plus Jakarta Sans">DynamoDB (UCDP) · SQS · S3</text>
-    <text x="425" y="415" fill="#94a3b8" font-size="10" text-anchor="middle" font-family="Plus Jakarta Sans">User Preferences &amp; DWL Scripts</text>
+    <g onclick="inspectTier('aws')">
+      <rect x="290" y="355" width="270" height="70" rx="8" fill="#102b28" stroke="#10b981" stroke-width="1.5" />
+      <text x="425" y="380" fill="#10b981" font-size="13" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans">AWS CLOUD SAPI</text>
+      <text x="425" y="400" fill="#f1f5f9" font-size="11" text-anchor="middle" font-family="Plus Jakarta Sans">DynamoDB (UCDP) · SQS · S3</text>
+      <text x="425" y="415" fill="#94a3b8" font-size="10" text-anchor="middle" font-family="Plus Jakarta Sans">User Preferences &amp; DWL Scripts</text>
+    </g>
 
-    <rect x="580" y="355" width="220" height="70" rx="8" fill="#102b28" stroke="#10b981" stroke-width="1.5" />
-    <text x="690" y="380" fill="#10b981" font-size="13" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans">MESSAGING SAPI</text>
-    <text x="690" y="400" fill="#f1f5f9" font-size="11" text-anchor="middle" font-family="Plus Jakarta Sans">Anypoint MQ · Event Replay</text>
-    <text x="690" y="415" fill="#94a3b8" font-size="10" text-anchor="middle" font-family="Plus Jakarta Sans">7-Day Retention · MANUAL Ack</text>
+    <g onclick="inspectTier('mq')">
+      <rect x="580" y="355" width="220" height="70" rx="8" fill="#102b28" stroke="#10b981" stroke-width="1.5" />
+      <text x="690" y="380" fill="#10b981" font-size="13" font-weight="700" text-anchor="middle" font-family="Plus Jakarta Sans">MESSAGING SAPI</text>
+      <text x="690" y="400" fill="#f1f5f9" font-size="11" text-anchor="middle" font-family="Plus Jakarta Sans">Anypoint MQ · Event Replay</text>
+      <text x="690" y="415" fill="#94a3b8" font-size="10" text-anchor="middle" font-family="Plus Jakarta Sans">7-Day Retention · MANUAL Ack</text>
+    </g>
   </svg>
+
+  <!-- Live Tier Inspection Drawer -->
+  <div id="inspector-drawer" class="inspector-card">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+      <h4 id="insp-title" style="color:var(--mule-blue); font-weight:800; font-size:1.1rem;">Layer Specifications</h4>
+      <button class="btn" style="padding:2px 8px; font-size:0.75rem;" onclick="closeInspector()">✕</button>
+    </div>
+    <div id="insp-content" style="font-size:0.88rem; color:var(--text-muted); text-align:left;"></div>
+  </div>
 </div>
 
 <div class="article-body-intro" style="margin-bottom:28px;"><p class="doc-p">🚀  MuleSoft Developer — Complete Interview Guide 2026</p>
@@ -1197,7 +1539,7 @@ pre {
       <span class="badge badge-primary">Salesforce &amp; Enterprise Connectors</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 4–6</span>
-      <span>🎯 6 Technical Topics</span>
+      <span>🎯 6 Interview Topics</span>
     </div>
     <h2 class="article-title">☁️ Salesforce Connector &amp; Bulk API 2.0</h2>
     <p class="article-excerpt">SOQL operations, Upsert with External IDs, Bulk API v2, and Salesforce governor limits handling.</p>
@@ -1390,7 +1732,7 @@ BillingCity: rec.city
       <span class="badge badge-primary">Salesforce &amp; Enterprise Connectors</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 7–8</span>
-      <span>🎯 4 Technical Topics</span>
+      <span>🎯 4 Interview Topics</span>
     </div>
     <h2 class="article-title">⚡ Platform Events &amp; Change Data Capture (CDC)</h2>
     <p class="article-excerpt">Event replay channels, 72-hour retention, duplicate event deduplication, and CDC vs Platform Events.</p>
@@ -1527,7 +1869,7 @@ BillingCity: rec.city
       <span class="badge badge-primary">Security &amp; Connectivity</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 9–10</span>
-      <span>🎯 6 Technical Topics</span>
+      <span>🎯 6 Interview Topics</span>
     </div>
     <h2 class="article-title">🔑 OAuth 2.0 &amp; JWT Bearer Token Flow</h2>
     <p class="article-excerpt">Connected App setup, X.509 certificate generation, zero-downtime key rotation, and multi-environment setup.</p>
@@ -1709,7 +2051,7 @@ BillingCity: rec.city
       <span class="badge badge-primary">AWS &amp; Messaging</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 10–12</span>
-      <span>🎯 8 Technical Topics</span>
+      <span>🎯 8 Interview Topics</span>
     </div>
     <h2 class="article-title">📦 AWS Integration Patterns (S3, SQS, DynamoDB)</h2>
     <p class="article-excerpt">AWS SigV4, S3 createObject, DynamoDB queries, SQS vs Anypoint MQ, and visibility timeout tuning.</p>
@@ -1950,7 +2292,7 @@ BillingCity: rec.city
       <span class="badge badge-primary">Salesforce &amp; Enterprise Connectors</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 12–13</span>
-      <span>🎯 4 Technical Topics</span>
+      <span>🎯 4 Interview Topics</span>
     </div>
     <h2 class="article-title">🔄 SAP + Salesforce End-to-End Integration</h2>
     <p class="article-excerpt">Bidirectional sync, infinite loop prevention, SAP downtime resiliency, and dead-letter queues.</p>
@@ -2084,7 +2426,7 @@ BillingCity: rec.city
       <span class="badge badge-primary">Flow Scopes &amp; Concurrency</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 13–16</span>
-      <span>🎯 5 Technical Topics</span>
+      <span>🎯 5 Interview Topics</span>
     </div>
     <h2 class="article-title">🔀 Scatter-Gather Router Deep Dive</h2>
     <p class="article-excerpt">Multithreaded parallel calls, composite routing, output payload structure, and partial route failure handling.</p>
@@ -2261,7 +2603,7 @@ paperless:     dynamoData.paperless default false
       <span class="badge badge-primary">Flow Scopes &amp; Concurrency</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 17–19</span>
-      <span>🎯 4 Technical Topics</span>
+      <span>🎯 4 Interview Topics</span>
     </div>
     <h2 class="article-title">🔁 ForEach &amp; Parallel ForEach Scopes</h2>
     <p class="article-excerpt">Sequential vs parallel record processing, exception isolation, payload mutability, and memory impact.</p>
@@ -2398,7 +2740,7 @@ paperless:     dynamoData.paperless default false
       <span class="badge badge-primary">Flow Scopes &amp; Concurrency</span>
       <span>⏱️ 5 min read</span>
       <span>📄 Guide Pages 19–23</span>
-      <span>🎯 7 Technical Topics</span>
+      <span>🎯 7 Interview Topics</span>
     </div>
     <h2 class="article-title">📊 Batch Processing Deep Dive</h2>
     <p class="article-excerpt">Input, Process, and On Complete phases, Batch Aggregator sizing, maxFailedRecords, and commit rollbacks.</p>
@@ -2625,7 +2967,7 @@ paperless:     dynamoData.paperless default false
       <span class="badge badge-primary">Flow Scopes &amp; Concurrency</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 23–24</span>
-      <span>🎯 3 Technical Topics</span>
+      <span>🎯 3 Interview Topics</span>
     </div>
     <h2 class="article-title">⏳ Until Successful Scope &amp; Resiliency</h2>
     <p class="article-excerpt">Retry frequency, exponential backoff, exhausted retry handling, and reconnection strategies.</p>
@@ -2743,7 +3085,7 @@ paperless:     dynamoData.paperless default false
       <span class="badge badge-primary">Flow Scopes &amp; Concurrency</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 25–26</span>
-      <span>🎯 3 Technical Topics</span>
+      <span>🎯 3 Interview Topics</span>
     </div>
     <h2 class="article-title">🔀 Choice Router, First Successful &amp; Async Scopes</h2>
     <p class="article-excerpt">Conditional routing, fallback execution, async fire-and-forget, and thread pool handover.</p>
@@ -2849,7 +3191,7 @@ paperless:     dynamoData.paperless default false
       <span class="badge badge-primary">Error Handling &amp; Resiliency</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 27–29</span>
-      <span>🎯 5 Technical Topics</span>
+      <span>🎯 5 Interview Topics</span>
     </div>
     <h2 class="article-title">⚠️ Error Handling Deep Dive (Continue vs Propagate)</h2>
     <p class="article-excerpt">On Error Continue vs Propagate, Try scope, standard error types, SAPI→PAPI→XAPI error bubbling, and standardized JSON error payloads.</p>
@@ -3027,7 +3369,7 @@ status: vars.httpStatus,</code></pre>
       <span class="badge badge-primary">AWS &amp; Messaging</span>
       <span>⏱️ 4 min read</span>
       <span>📄 Guide Pages 30–33</span>
-      <span>🎯 5 Technical Topics</span>
+      <span>🎯 5 Interview Topics</span>
     </div>
     <h2 class="article-title">📨 Anypoint MQ Deep Dive (Queues, Exchanges, DLQ)</h2>
     <p class="article-excerpt">Queue vs Exchange fan-out, MANUAL ack mode, idempotency with ObjectStore, cross-region disaster recovery, and VM comparison.</p>
@@ -3216,7 +3558,7 @@ status: vars.httpStatus,</code></pre>
       <span class="badge badge-primary">ObjectStore &amp; API Governance</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 34–35</span>
-      <span>🎯 3 Technical Topics</span>
+      <span>🎯 3 Interview Topics</span>
     </div>
     <h2 class="article-title">🗄️ ObjectStore Deep Dive (OSv2, TTL, Watermarking)</h2>
     <p class="article-excerpt">Object Store v2 in CloudHub, TTL expiration, watermarking for incremental syncs, and Cache scope comparison.</p>
@@ -3332,7 +3674,7 @@ status: vars.httpStatus,</code></pre>
       <span class="badge badge-primary">ObjectStore &amp; API Governance</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 36–37</span>
-      <span>🎯 4 Technical Topics</span>
+      <span>🎯 4 Interview Topics</span>
     </div>
     <h2 class="article-title">🏗️ API-led Connectivity Deep Dive (RAML, Policies)</h2>
     <p class="article-excerpt">RAML 1.0 vs OAS 3.0, API Autodiscovery, API Manager policies (Client ID, Rate Limiting, JWT Validation), and Exchange assets.</p>
@@ -3481,7 +3823,7 @@ status: vars.httpStatus,</code></pre>
       <span class="badge badge-primary">Testing &amp; CI/CD</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 38–41</span>
-      <span>🎯 5 Technical Topics</span>
+      <span>🎯 5 Interview Topics</span>
     </div>
     <h2 class="article-title">🧪 MUnit Testing Framework &amp; Mocking</h2>
     <p class="article-excerpt">Unit testing flows, mocking external HTTP/SAP/DB calls, testing 500 error scenarios, scheduler sub-flows, and SonarQube CI/CD gates.</p>
@@ -3616,7 +3958,7 @@ status: vars.httpStatus,</code></pre>
       <span class="badge badge-primary">ObjectStore &amp; API Governance</span>
       <span>⏱️ 5 min read</span>
       <span>📄 Guide Pages 42–46</span>
-      <span>🎯 4 Technical Topics</span>
+      <span>🎯 4 Interview Topics</span>
     </div>
     <h2 class="article-title">📋 Production Best Practices &amp; Naming Standards</h2>
     <p class="article-excerpt">Parent POM / BOM inheritance, secure property encryption, environmental config, and flow naming conventions.</p>
@@ -3829,7 +4171,7 @@ S 🏢  Project Deep Dive — NextEra Energy (FPL)</code></pre>
       <span class="badge badge-primary">DataWeave 2.0 Masterclass</span>
       <span>⏱️ 6 min read</span>
       <span>📄 Guide Pages 47–53</span>
-      <span>🎯 10 Technical Topics</span>
+      <span>🎯 10 Interview Topics</span>
     </div>
     <h2 class="article-title">💻 DataWeave 2.0 Reference &amp; Core Operators</h2>
     <p class="article-excerpt">Core functions, map, filter, reduce, groupBy, pluck, flatten, null safe navigation, default values, and PII masking.</p>
@@ -4236,7 +4578,7 @@ put:</code></pre>
       <span class="badge badge-primary">Getting Started &amp; Strategy</span>
       <span>⏱️ 3 min read</span>
       <span>📄 Guide Pages 54–55</span>
-      <span>🎯 4 Technical Topics</span>
+      <span>🎯 4 Interview Topics</span>
     </div>
     <h2 class="article-title">⚡ NextEra Energy (FPL) Project Deep Dive</h2>
     <p class="article-excerpt">Full utility case study: 5M customers, 44 APIs, SAP S/4HANA billing, DynamoDB preferences, 55% latency drop.</p>
@@ -4368,7 +4710,7 @@ put:</code></pre>
       <span class="badge badge-primary">Rapid Review &amp; Cheat Sheets</span>
       <span>⏱️ 5 min read</span>
       <span>📄 Guide Pages 55–57</span>
-      <span>🎯 9 Technical Topics</span>
+      <span>🎯 9 Interview Topics</span>
     </div>
     <h2 class="article-title">📝 Quick Reference Interview Cheat Sheet</h2>
     <p class="article-excerpt">High-yield rapid review: 30 critical one-liner definitions and standard interview answers.</p>
@@ -4626,7 +4968,7 @@ put:</code></pre>
       <span class="badge badge-primary">Rapid Review &amp; Cheat Sheets</span>
       <span>⏱️ 7 min read</span>
       <span>📄 Guide Pages 57–66</span>
-      <span>🎯 13 Technical Topics</span>
+      <span>🎯 13 Interview Topics</span>
     </div>
     <h2 class="article-title">🏢 Real Interview Q&amp;A Collection (Global Companies)</h2>
     <p class="article-excerpt">Real interview questions asked by Fortune 500 enterprises, banks, and major SI consultancies.</p>
@@ -5126,7 +5468,7 @@ if ((n mod 2) =- 0) { result: &quot;Even&quot; } else { result: &quot;Odd&quot; 
       <span class="badge badge-primary">DataWeave 2.0 Masterclass</span>
       <span>⏱️ 4 min read</span>
       <span>📄 Guide Pages 67–70</span>
-      <span>🎯 5 Technical Topics</span>
+      <span>🎯 5 Interview Topics</span>
     </div>
     <h2 class="article-title">⚙️ Advanced DataWeave Transformations &amp; Scripts</h2>
     <p class="article-excerpt">Complex XML with namespaces, dynamic DWL loaded from S3, base64 encoding/decoding, and heavy JSON aggregation.</p>
@@ -5330,11 +5672,47 @@ if ((n mod 2) =- 0) { result: &quot;Even&quot; } else { result: &quot;Odd&quot; 
       <span class="badge badge-primary">Deployment &amp; CloudHub 2.0</span>
       <span>⏱️ 7 min read</span>
       <span>📄 Guide Pages 71–77</span>
-      <span>🎯 13 Technical Topics</span>
+      <span>🎯 13 Interview Topics</span>
     </div>
     <h2 class="article-title">☁️ CloudHub 1.0 vs 2.0 &amp; Technical Lead Topics</h2>
     <p class="article-excerpt">Shared spaces vs Private spaces, Ingress controllers, SLB vs DLB, vCore sizing formula, and zero-downtime rolling updates.</p>
   </div>
+
+
+<div class="calc-card" id="vcore-calculator">
+  <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+    <span style="font-size:1.4rem;">🧮</span>
+    <div>
+      <h3 style="font-size:1.3rem; font-weight:800;">CloudHub 2.0 &amp; Worker Sizing Calculator</h3>
+      <p style="font-size:0.85rem; color:var(--text-muted);">Calculate enterprise vCores, memory footprint, and worker redundancy based on peak TPS and backend latency.</p>
+    </div>
+  </div>
+
+  <div class="calc-grid">
+    <div class="calc-input-group">
+      <label id="lbl-tps">Peak Transactions / Second (TPS): <strong>150 TPS</strong></label>
+      <input type="range" min="10" max="1000" value="150" step="10" class="calc-slider" id="slider-tps" oninput="updateCalculator()">
+      
+      <label id="lbl-latency" style="margin-top:16px;">Average Backend Latency: <strong>400 ms</strong></label>
+      <input type="range" min="50" max="2500" value="400" step="50" class="calc-slider" id="slider-latency" oninput="updateCalculator()">
+
+      <label id="lbl-payload" style="margin-top:16px;">Average Payload Size: <strong>25 KB</strong></label>
+      <input type="range" min="2" max="250" value="25" step="5" class="calc-slider" id="slider-payload" oninput="updateCalculator()">
+    </div>
+
+    <div class="calc-result-box">
+      <div style="font-size:0.75rem; text-transform:uppercase; font-weight:700; color:var(--text-dim); margin-bottom:8px;">Estimated Sizing Recommendation</div>
+      <div style="font-size:1.7rem; font-weight:800; font-family:var(--font-mono); color:var(--mule-blue); margin-bottom:6px;" id="calc-vcore-rec">1.0 vCore × 2 Workers</div>
+      <div style="font-size:0.88rem; color:var(--text-main); margin-bottom:12px;">Total vCores: <strong id="calc-total-vc">2.0 vCores</strong> (High Availability)</div>
+      
+      <div style="font-size:0.82rem; color:var(--text-muted); line-height:1.6; border-top:1px solid var(--border); padding-top:10px;">
+        <div>• Concurrent In-Flight Requests: <strong id="calc-concur">60 reqs</strong></div>
+        <div>• Memory Footprint Estimate: <strong id="calc-mem">14.6 MB</strong></div>
+        <div>• Thread Pool Model: <strong>Mule 4 Reactive non-blocking</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="article-body-intro" style="margin-bottom:28px;"><div class="answer-badge-tag"><span class="badge badge-success">✅  GUARANTEED DELIVERY = PERSISTENT MQ + MANUAL ACK + NACK + DLQ + IDEMPOTENCY</span></div></div>
 
@@ -5767,7 +6145,7 @@ if ((n mod 2) =- 0) { result: &quot;Even&quot; } else { result: &quot;Odd&quot; 
       <span class="badge badge-primary">AWS &amp; Messaging</span>
       <span>⏱️ 7 min read</span>
       <span>📄 Guide Pages 80–85</span>
-      <span>🎯 9 Technical Topics</span>
+      <span>🎯 9 Interview Topics</span>
     </div>
     <h2 class="article-title">🔌 Core Connectors &amp; Protocols (HTTP, DB, JMS, Kafka, VM)</h2>
     <p class="article-excerpt">Mule Event structure, repeatable streaming, Database connection pooling, JMS vs Anypoint MQ vs Kafka, and VM Queues.</p>
@@ -6160,7 +6538,7 @@ if ((n mod 2) =- 0) { result: &quot;Even&quot; } else { result: &quot;Odd&quot; 
       <span class="badge badge-primary">Getting Started &amp; Strategy</span>
       <span>⏱️ 5 min read</span>
       <span>📄 Guide Pages 78–80</span>
-      <span>🎯 1 Technical Topics</span>
+      <span>🎯 1 Interview Topics</span>
     </div>
     <h2 class="article-title">🎯 Interview Day Strategy &amp; STAR Method</h2>
     <p class="article-excerpt">STAR framework execution, 30-minute pre-interview checklist, handling unknown questions, and salary negotiation tactics.</p>
@@ -6233,7 +6611,7 @@ if ((n mod 2) =- 0) { result: &quot;Even&quot; } else { result: &quot;Odd&quot; 
       <span class="badge badge-primary">Modern Architecture &amp; AI</span>
       <span>⏱️ 5 min read</span>
       <span>📄 Guide Pages 86–89</span>
-      <span>🎯 6 Technical Topics</span>
+      <span>🎯 6 Interview Topics</span>
     </div>
     <h2 class="article-title">☕ Advanced MuleSoft Topics (Java 17, Agentforce AI)</h2>
     <p class="article-excerpt">Java 17 upgrade traps, Anypoint Code Builder vs Studio, Parent POM governance, and MuleSoft AI + Agentforce integration.</p>
@@ -6481,7 +6859,7 @@ if ((n mod 2) =- 0) { result: &quot;Even&quot; } else { result: &quot;Odd&quot; 
       <span class="badge badge-primary">Production Scenarios &amp; Incidents</span>
       <span>⏱️ 24 min read</span>
       <span>📄 Guide Pages 90–104</span>
-      <span>🎯 20 Technical Topics</span>
+      <span>🎯 20 Interview Topics</span>
     </div>
     <h2 class="article-title">🚨 20 Production Scenario Questions &amp; Cross-Questions (S1-S20)</h2>
     <p class="article-excerpt">20 deep real-world production incident battlecards: SAP 500s, MQ duplicates, 10x traffic spikes, dual-write consistency, and 800ms DW bottlenecks.</p>
@@ -7261,7 +7639,7 @@ zipCode: install.ns0#PremiseDetails?-ns0#PostalCode default &quot;&quot;
       <span class="badge badge-primary">Live Whiteboard &amp; Architecture</span>
       <span>⏱️ 7 min read</span>
       <span>📄 Guide Pages 110–115</span>
-      <span>🎯 1 Technical Topics</span>
+      <span>🎯 1 Interview Topics</span>
     </div>
     <h2 class="article-title">📐 Live Whiteboard Architecture Guide &amp; Scripts</h2>
     <p class="article-excerpt">Step-by-step whiteboard drawing formula, exact verbal walkthrough scripts, and phrases that demonstrate enterprise seniority.</p>
@@ -7320,7 +7698,7 @@ zipCode: install.ns0#PremiseDetails?-ns0#PostalCode default &quot;&quot;
       <span class="badge badge-primary">Modern Architecture &amp; AI</span>
       <span>⏱️ 7 min read</span>
       <span>📄 Guide Pages 116–119</span>
-      <span>🎯 8 Technical Topics</span>
+      <span>🎯 8 Interview Topics</span>
     </div>
     <h2 class="article-title">❄️ 2026 Modern Tech: Agentforce AI, MCP &amp; Snowflake</h2>
     <p class="article-excerpt">MuleSoft AI capabilities, Model Context Protocol (MCP) tool hosting, Terraform for API Manager policies, and Snowflake Batch loaders.</p>
@@ -7625,7 +8003,7 @@ zipCode: install.ns0#PremiseDetails?-ns0#PostalCode default &quot;&quot;
       <span class="badge badge-primary">Interview Traps &amp; Pitfalls</span>
       <span>⏱️ 11 min read</span>
       <span>📄 Guide Pages 120–125</span>
-      <span>🎯 24 Technical Topics</span>
+      <span>🎯 24 Interview Topics</span>
     </div>
     <h2 class="article-title">🪤 Top 20 Interview Traps &amp; Senior Corrections (T1-T20)</h2>
     <p class="article-excerpt">20 classic trap questions where junior candidates fail and how senior engineers answer with precision.</p>
@@ -8384,7 +8762,7 @@ zipCode: install.ns0#PremiseDetails?-ns0#PostalCode default &quot;&quot;
       <span class="badge badge-primary">Enterprise Architect Masterclass</span>
       <span>⏱️ 13 min read</span>
       <span>📄 Guide Pages 125–132</span>
-      <span>🎯 9 Technical Topics</span>
+      <span>🎯 9 Interview Topics</span>
     </div>
     <h2 class="article-title">🧭 Architect: Requirement Gathering &amp; Discovery Framework</h2>
     <p class="article-excerpt">8-part client discovery framework, discovery questionnaire, workshop agenda, delivery delighters, and sign-off checklist.</p>
@@ -8765,7 +9143,7 @@ zipCode: install.ns0#PremiseDetails?-ns0#PostalCode default &quot;&quot;
       <span class="badge badge-primary">Enterprise Architect Masterclass</span>
       <span>⏱️ 13 min read</span>
       <span>📄 Guide Pages 133–140</span>
-      <span>🎯 9 Technical Topics</span>
+      <span>🎯 9 Interview Topics</span>
     </div>
     <h2 class="article-title">🥊 Architect: MuleSoft vs Competitors &amp; Objection Handling</h2>
     <p class="article-excerpt">Comparing MuleSoft vs Boomi, Informatica IDMC, Apigee, Azure &amp; Kafka; handling &#x27;Too Expensive&#x27; objection, TCO &amp; value model, and POC framework.</p>
@@ -9148,7 +9526,7 @@ zipCode: install.ns0#PremiseDetails?-ns0#PostalCode default &quot;&quot;
       <span class="badge badge-primary">Enterprise Architect Masterclass</span>
       <span>⏱️ 5 min read</span>
       <span>📄 Guide Pages 141–144</span>
-      <span>🎯 5 Technical Topics</span>
+      <span>🎯 5 Interview Topics</span>
     </div>
     <h2 class="article-title">🗣️ Architect: Client Communication &amp; Stakeholder Alignment</h2>
     <p class="article-excerpt">Translating technical concepts into plain English, 5 steps to deliver bad news, executive presentation scripts, and Jargon Buster.</p>
@@ -9341,7 +9719,7 @@ zipCode: install.ns0#PremiseDetails?-ns0#PostalCode default &quot;&quot;
       <span class="badge badge-primary">Enterprise Architect Masterclass</span>
       <span>⏱️ 16 min read</span>
       <span>📄 Guide Pages 145–155</span>
-      <span>🎯 21 Technical Topics</span>
+      <span>🎯 21 Interview Topics</span>
     </div>
     <h2 class="article-title">🏛️ Architect: Masterclass Interview Q&amp;A (A1 to A19)</h2>
     <p class="article-excerpt">19 enterprise architect questions: Sync vs Async, Sizing &amp; Scaling, CCoE &amp; Governance, Disaster Recovery, Deprecation, and Security.</p>
@@ -10068,7 +10446,7 @@ zipCode: install.ns0#PremiseDetails?-ns0#PostalCode default &quot;&quot;
       <span class="badge badge-primary">Enterprise Architect Masterclass</span>
       <span>⏱️ 7 min read</span>
       <span>📄 Guide Pages 156–159</span>
-      <span>🎯 5 Technical Topics</span>
+      <span>🎯 5 Interview Topics</span>
     </div>
     <h2 class="article-title">😊 Architect: How to Explain So Clients &amp; Interviewers Are Happy</h2>
     <p class="article-excerpt">What interviewers vs clients listen for, 5-step explanation framework, weak vs best side-by-side answers, and confidence phrase bank.</p>
@@ -10257,19 +10635,21 @@ zipCode: install.ns0#PremiseDetails?-ns0#PostalCode default &quot;&quot;
   </main>
 
   <!-- Footer -->
-  <footer class="blog-footer">
-    <div class="footer-links">
-      <a href="#mod-a">Architecture Overview</a>
-      <a href="#mod-b">Salesforce &amp; Bulk API</a>
-      <a href="#mod-g">Scatter-Gather Deep Dive</a>
+  <footer class="hub-footer">
+    <div class="footer-nav">
+      <a href="#mod-a">Architecture &amp; FPL Case Study</a>
+      <a href="#mod-b">Salesforce Bulk API 2.0</a>
+      <a href="#mod-g">Scatter-Gather Multithreading</a>
       <a href="#mod-l">Error Handling Masterclass</a>
-      <a href="#mod-r">DataWeave 2.0 Reference</a>
-      <a href="#mod-w">CloudHub 1.0 vs 2.0</a>
-      <a href="#mod-z">Production Scenarios</a>
+      <a href="#mod-r">DataWeave 2.0 Cookbook</a>
+      <a href="#mod-w">CloudHub 2.0 &amp; RTF</a>
+      <a href="#mod-z">Production Scenarios S1–S20</a>
+      <a href="#mod-cc">Interview Traps T1–T20</a>
       <a href="#mod-dd">Architect Discovery</a>
+      <a href="#mod-gg">Architect Q&amp;A A1–A19</a>
     </div>
-    <p>© 2026 MuleSoft Engineering &amp; Integration Hub · Complete Interview &amp; Architecture Reference</p>
-    <p style="font-size:0.8rem; color:var(--text-dim); margin-top:6px;">Authored with 100% full content fidelity from the 159-page Complete Interview Guide 2026.</p>
+    <p>© 2026 MuleSoft Developer &amp; Enterprise Architect Hub · Authored with 100% full content fidelity from the 159-page Complete Interview Guide 2026.</p>
+    <p style="font-size:0.8rem; color:var(--text-dim); margin-top:8px;">Designed and optimized for Senior Developers, Technical Leads, and Enterprise Architects.</p>
   </footer>
 
   <!-- Modals -->
@@ -10280,15 +10660,15 @@ zipCode: install.ns0#PremiseDetails?-ns0#PostalCode default &quot;&quot;
       <div style="display:flex; align-items:center; gap:10px;">
         <span style="font-size:1.4rem;">🧪</span>
         <div>
-          <div style="font-weight:800; font-size:1.1rem;">DataWeave 2.0 Live Simulator</div>
-          <div style="font-size:0.75rem; color:var(--text-dim);">Run interactive DataWeave transformations in real-time</div>
+          <div style="font-weight:800; font-size:1.15rem;">DataWeave 2.0 Live Interactive Simulator</div>
+          <div style="font-size:0.75rem; color:var(--text-dim);">Run and experiment with classic MuleSoft interview transformations</div>
         </div>
       </div>
       <button class="btn" onclick="closeDataWeaveModal()">✕</button>
     </div>
     <div class="modal-body">
-      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
-        <label style="font-size:0.85rem; font-weight:700;">Select Interview Challenge:</label>
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+        <label style="font-size:0.85rem; font-weight:700;">Select Interview Challenge Preset:</label>
         <select id="dw-challenge-select" class="btn" onchange="loadChallenge(this.value)">
           <option value="0">1. Group By & Pluck (Order Aggregation)</option><option value="1">2. Masking Sensitive PII (SSN & Credit Card)</option><option value="2">3. Null-Safe Navigation & Defaults</option><option value="3">4. XML with Namespaces to Canonical JSON</option>
         </select>
@@ -10303,7 +10683,7 @@ zipCode: install.ns0#PremiseDetails?-ns0#PostalCode default &quot;&quot;
           <textarea id="dw-input" class="dw-textarea"></textarea>
         </div>
         <div class="dw-editor-pane">
-          <div class="dw-pane-title">Output Result:</div>
+          <div class="dw-pane-title">Computed Output Result:</div>
           <textarea id="dw-output" class="dw-textarea" readonly style="background:#050912;"></textarea>
         </div>
       </div>
@@ -10337,11 +10717,56 @@ zipCode: install.ns0#PremiseDetails?-ns0#PostalCode default &quot;&quot;
 const SEARCH_INDEX = [{"id": "mod-a-q1", "tag": "Q1", "title": "Tell me about your project end to end.", "modTitle": "Interview Coaching, Strategy & Project Overview", "role": "Developer / Senior", "snippet": "✅  Answer  \n Company: NextEra Energy / FPL — largest US electric utility. \n Platform: Customer Integration Platform connecting Salesforce Employee Desktop and"}, {"id": "mod-a-q2", "tag": "Q2", "title": "What is API-led connectivity and why did you use it?", "modTitle": "Interview Coaching, Strategy & Project Overview", "role": "Developer / Senior", "snippet": "✅  Answer  \n API-led organizes integrations into 3 reusable layers eliminating point-to-point coupling: \n LAYER PURPOSE EXAMPLE AT FPL \n XAPI — \n Experience"}, {"id": "mod-a-q3", "tag": "Q3", "title": "What technology did you work with? (Full tech stack)", "modTitle": "Interview Coaching, Strategy & Project Overview", "role": "Developer / Senior", "snippet": "✅  Answer  \n \n   \n       CATEGORY  TECHNOLOGY  DETAILS   \n       Runtime  Mule  4.x 4.4.0, 4.6.9, 4.9 on CloudHub 2.0    API  Design  RAML 1.0 API-first; APIK"}, {"id": "mod-a-q1", "tag": "Q1", "title": "What Salesforce Connector operations have you used?", "modTitle": "Interview Coaching, Strategy & Project Overview", "role": "Developer / Senior", "snippet": "✅  Answer  \n Operations · Upsert · SOQL · Bulk API 2.0 · Governor Limits · JWT Bearer"}, {"id": "mod-b-q3", "tag": "Q3", "title": "What technology did you work with? (Full tech stack)", "modTitle": "Salesforce Connector & Bulk API 2.0", "role": "Developer", "snippet": "✅  Answer  \n \n   \n       CATEGORY  TECHNOLOGY  DETAILS   \n       Runtime  Mule  4.x 4.4.0, 4.6.9, 4.9 on CloudHub 2.0    API  Design  RAML 1.0 API-first; APIK"}, {"id": "mod-b-q1", "tag": "Q1", "title": "What Salesforce Connector operations have you used?", "modTitle": "Salesforce Connector & Bulk API 2.0", "role": "Developer", "snippet": "✅  Answer  \n Operations · Upsert · SOQL · Bulk API 2.0 · Governor Limits · JWT Bearer \n \n   \n       OPERATION  WHEN TO USE  OUR USAGE AT FPL   \n       Query"}, {"id": "mod-b-q2", "tag": "Q2", "title": "What is Salesforce Bulk API? When do you use it?", "modTitle": "Salesforce Connector & Bulk API 2.0", "role": "Developer", "snippet": "✅  Answer  \n Bulk API loads/extracts millions of records asynchronously. Does NOT count against the 150 API \n calls/hour governor limit. \n Bulk API 1.0: XML-b"}, {"id": "mod-b-q3", "tag": "Q3", "title": "How do you handle Salesforce governor limits?", "modTitle": "Salesforce Connector & Bulk API 2.0", "role": "Developer", "snippet": "✅  Answer  \n 150 API calls/user/hour (sandbox: unlimited). Mitigations: \n Bulk API — does NOT count toward the 150/hour limit \n ObjectStore caching — cache fr"}, {"id": "mod-b-q4", "tag": "Q4", "title": "JWT Bearer vs Username-Password auth for Salesforce — which do you use?", "modTitle": "Salesforce Connector & Bulk API 2.0", "role": "Developer", "snippet": "✅  Answer  \n Username-Password: requires actual user credentials. Password changes break integration, account \n can lock, appears as user in audit logs — neve"}, {"id": "mod-b-q5", "tag": "Q5", "title": "What is an External ID in Salesforce? How is it used in Upsert?", "modTitle": "Salesforce Connector & Bulk API 2.0", "role": "Developer", "snippet": ""}, {"id": "mod-c-q1", "tag": "Q1", "title": "What are Platform Events? How do you subscribe in MuleSoft?", "modTitle": "Platform Events & Change Data Capture (CDC)", "role": "Developer / Senior", "snippet": "✅  Answer  \n Platform Events: Custom events you define in Salesforce and publish explicitly. Business events: \n Order Closed, Payment Processed. \n CDC (Change"}, {"id": "mod-c-q2", "tag": "Q2", "title": "What is event retention? What if Mule app is down >72 hours?", "modTitle": "Platform Events & Change Data Capture (CDC)", "role": "Developer / Senior", "snippet": "✅  Answer  \n Salesforce Platform Events and CDC are retained for 72 hours. If MuleSoft subscriber restarts with \n replayId=&quot;-2&quot; , it receives all ev"}, {"id": "mod-c-q3", "tag": "Q3", "title": "How do you handle duplicate Platform Events (at-least-once delivery)?", "modTitle": "Platform Events & Change Data Capture (CDC)", "role": "Developer / Senior", "snippet": "✅  Answer  \n Salesforce uses at-least-once delivery — duplicates are possible. Implement idempotency with \n ObjectStore: \n Idempotency Pattern \n /- 1. Extract"}, {"id": "mod-c-q4", "tag": "Q4", "title": "Difference between Platform Events and CDC?", "modTitle": "Platform Events & Change Data Capture (CDC)", "role": "Developer / Senior", "snippet": "✅  Answer  \n ASPECT PLATFORM EVENTS CDC \n Who \n publishes \n You publish explicitly via Apex, Flow, or \n MuleSoft \n Salesforce fires automatically on any recor"}, {"id": "mod-d-q1", "tag": "Q1", "title": "Explain the Salesforce JWT Bearer authentication flow step by step.", "modTitle": "OAuth 2.0 & JWT Bearer Token Flow", "role": "Senior / Lead", "snippet": "✅  Answer  \n  1.  Create a Connected App in Salesforce Setup  \n  2.  Generate RSA key pair: openssl genrsa -out private.pem 2048  → create cert from public ke"}, {"id": "mod-d-q2", "tag": "Q2", "title": "How do you rotate the JWT signing key without downtime?", "modTitle": "OAuth 2.0 & JWT Bearer Token Flow", "role": "Senior / Lead", "snippet": "✅  Answer  \n Salesforce supports multiple active certificates on a Connected App. Rotation process: \n  1.  Generate new RSA key pair  \n Connected App · RSA ke"}, {"id": "mod-d-q3", "tag": "Q3", "title": "Can the same Connected App be used across multiple environments?", "modTitle": "OAuth 2.0 & JWT Bearer Token Flow", "role": "Senior / Lead", "snippet": "✅  Answer  \n Technically yes — but best practice is separate Connected Apps per environment (sandbox, \n production). Reasons: different Salesforce orgs have d"}, {"id": "mod-d-q1", "tag": "Q1", "title": "How do you integrate MuleSoft with AWS (S3, SQS, DynamoDB)?", "modTitle": "OAuth 2.0 & JWT Bearer Token Flow", "role": "Senior / Lead", "snippet": "✅  Answer  \n AWS SERVICE MULESOFT APPROACH OUR USAGE AT FPL"}, {"id": "mod-d-s3", "tag": "S3", "title": "Amazon S3 Connector — createObject,", "modTitle": "OAuth 2.0 & JWT Bearer Token Flow", "role": "Senior Developer", "snippet": "getObject, listObjects \n Dynamic DWL file load at runtime; config \n YAML storage \n DynamoDB HTTP Request + SigV4 auth (or dedicated \n connector) \n UCDP Custome"}, {"id": "mod-d-s3", "tag": "S3", "title": "· SQS · DynamoDB · Lambda · SigV4 · Secrets Manager", "modTitle": "OAuth 2.0 & JWT Bearer Token Flow", "role": "Senior Developer", "snippet": ""}, {"id": "mod-e-q3", "tag": "Q3", "title": "Can the same Connected App be used across multiple environments?", "modTitle": "AWS Integration Patterns (S3, SQS, DynamoDB)", "role": "Developer", "snippet": "✅  Answer  \n Technically yes — but best practice is separate Connected Apps per environment (sandbox, \n production). Reasons: different Salesforce orgs have d"}, {"id": "mod-e-q1", "tag": "Q1", "title": "How do you integrate MuleSoft with AWS (S3, SQS, DynamoDB)?", "modTitle": "AWS Integration Patterns (S3, SQS, DynamoDB)", "role": "Developer", "snippet": "✅  Answer  \n AWS SERVICE MULESOFT APPROACH OUR USAGE AT FPL"}, {"id": "mod-e-s3", "tag": "S3", "title": "Amazon S3 Connector — createObject,", "modTitle": "AWS Integration Patterns (S3, SQS, DynamoDB)", "role": "Senior Developer", "snippet": "getObject, listObjects \n Dynamic DWL file load at runtime; config \n YAML storage \n DynamoDB HTTP Request + SigV4 auth (or dedicated \n connector) \n UCDP Custome"}, {"id": "mod-e-s3", "tag": "S3", "title": "· SQS · DynamoDB · Lambda · SigV4 · Secrets Manager", "modTitle": "AWS Integration Patterns (S3, SQS, DynamoDB)", "role": "Senior Developer", "snippet": "Auth for all: AWS Access Key ID + Secret Access Key stored as Secure Properties (AES-CBC encrypted). \n Connectors handle SigV4 signing automatically."}, {"id": "mod-e-q2", "tag": "Q2", "title": "What is the difference between Amazon SQS and Anypoint MQ?", "modTitle": "AWS Integration Patterns (S3, SQS, DynamoDB)", "role": "Developer", "snippet": "✅  Answer  \n Amazon SQS \n AWS-native messaging \n Best when entire stack is AWS \n Tight IAM role integration \n Can trigger AWS Lambda directly \n Standard: at-l"}, {"id": "mod-e-q3", "tag": "Q3", "title": "How do you handle SQS visibility timeout in MuleSoft processing?", "modTitle": "AWS Integration Patterns (S3, SQS, DynamoDB)", "role": "Developer", "snippet": "✅  Answer  \n Visibility timeout is the period a message is hidden from other consumers after being received. If \n MuleSoft processing time exceeds this timeou"}, {"id": "mod-e-q1", "tag": "Q1", "title": "Describe a full Salesforce + SAP integration end to end.", "modTitle": "AWS Integration Patterns (S3, SQS, DynamoDB)", "role": "Developer", "snippet": "✅  Answer  \n Scenario: Salesforce Opportunity Closed-Won → SAP Sales Order created → SAP Order ID written \n back to Salesforce. \n 📋  STEP-BY-STEP FLOW \n  1."}, {"id": "mod-e-q2", "tag": "Q2", "title": "How do you prevent infinite loops in bidirectional Salesforce↔SAP sync?", "modTitle": "AWS Integration Patterns (S3, SQS, DynamoDB)", "role": "Developer", "snippet": "✅  Answer  \n Challenge: updating SAP triggers a Salesforce CDC event which triggers SAP update again — infinite \n loop. \n Scenario · Data flow · Error handlin"}, {"id": "mod-f-q1", "tag": "Q1", "title": "Describe a full Salesforce + SAP integration end to end.", "modTitle": "SAP + Salesforce End-to-End Integration", "role": "Senior / Architect", "snippet": "✅  Answer  \n Scenario: Salesforce Opportunity Closed-Won → SAP Sales Order created → SAP Order ID written \n back to Salesforce. \n 📋  STEP-BY-STEP FLOW \n  1."}, {"id": "mod-f-q2", "tag": "Q2", "title": "How do you prevent infinite loops in bidirectional Salesforce↔SAP sync?", "modTitle": "SAP + Salesforce End-to-End Integration", "role": "Senior / Architect", "snippet": "✅  Answer  \n Challenge: updating SAP triggers a Salesforce CDC event which triggers SAP update again — infinite \n loop. \n Scenario · Data flow · Error handlin"}, {"id": "mod-f-q3", "tag": "Q3", "title": "How do you handle SAP being down when a Platform Event arrives?", "modTitle": "SAP + Salesforce End-to-End Integration", "role": "Senior / Architect", "snippet": "✅  Answer  \n Synchronous flows: Until Successful with 3 retries + 30s delay. After exhaustion → On Error Continue \n → update Salesforce with SAP_Error_Status_"}, {"id": "mod-f-q1", "tag": "Q1", "title": "What is Scatter-Gather? How does it work?", "modTitle": "SAP + Salesforce End-to-End Integration", "role": "Senior / Architect", "snippet": "✅  Answer  \n Scatter-Gather executes multiple routes simultaneously in parallel and waits for all to complete. The \n payload going into each route is the same"}, {"id": "mod-g-q3", "tag": "Q3", "title": "How do you handle SAP being down when a Platform Event arrives?", "modTitle": "Scatter-Gather Router Deep Dive", "role": "Developer", "snippet": "✅  Answer  \n Synchronous flows: Until Successful with 3 retries + 30s delay. After exhaustion → On Error Continue \n → update Salesforce with SAP_Error_Status_"}, {"id": "mod-g-q1", "tag": "Q1", "title": "What is Scatter-Gather? How does it work?", "modTitle": "Scatter-Gather Router Deep Dive", "role": "Developer", "snippet": "✅  Answer  \n Scatter-Gather executes multiple routes simultaneously in parallel and waits for all to complete. The \n payload going into each route is the same"}, {"id": "mod-g-q2", "tag": "Q2", "title": "What is the output type of Scatter-Gather? How do you merge results?", "modTitle": "Scatter-Gather Router Deep Dive", "role": "Developer", "snippet": "✅  Answer  \n Output is an array (list) of route results. Each element has a payload  key with that route&#x27;s payload, \n and an attributes  key with HTTP at"}, {"id": "mod-g-q3", "tag": "Q3", "title": "If one route in Scatter-Gather fails, what happens to the others?", "modTitle": "Scatter-Gather Router Deep Dive", "role": "Developer", "snippet": "✅  Answer  \n By default: if any route fails, Scatter-Gather throws a MULE:COMPOSITE_ROUTING  error and the results \n of all routes (including successful ones)"}, {"id": "mod-g-q4", "tag": "Q4", "title": "Scatter-Gather vs Parallel ForEach — when to use which?", "modTitle": "Scatter-Gather Router Deep Dive", "role": "Developer", "snippet": ""}, {"id": "mod-h-q1", "tag": "Q1", "title": "What is ForEach? How does it work and what is its output?", "modTitle": "ForEach & Parallel ForEach Scopes", "role": "Developer", "snippet": "✅  Answer  \n ForEach iterates over a collection sequentially — one item at a time. For each iteration: payload  = \n current item, vars.counter  = current inde"}, {"id": "mod-h-q2", "tag": "Q2", "title": "If a record fails inside ForEach, what happens? How do you handle it?", "modTitle": "ForEach & Parallel ForEach Scopes", "role": "Developer", "snippet": "✅  Answer  \n By default: ForEach stops processing and propagates the error to the flow&#x27;s error handler. All \n subsequent records are abandoned. \n Fix: Wr"}, {"id": "mod-h-q3", "tag": "Q3", "title": "What is Parallel ForEach? How is it different from ForEach?", "modTitle": "ForEach & Parallel ForEach Scopes", "role": "Developer", "snippet": "✅  Answer  \n Parallel ForEach processes all collection items simultaneously using thread pool. Dramatically faster \n for large collections when items are inde"}, {"id": "mod-h-q1", "tag": "Q1", "title": "What is a Batch Job? What are its phases?", "modTitle": "ForEach & Parallel ForEach Scopes", "role": "Developer", "snippet": "✅  Answer  \n Batch Job · Phases · Block size · Error handling · On Complete"}, {"id": "mod-i-q3", "tag": "Q3", "title": "What is Parallel ForEach? How is it different from ForEach?", "modTitle": "Batch Processing Deep Dive", "role": "Developer / Senior", "snippet": "✅  Answer  \n Parallel ForEach processes all collection items simultaneously using thread pool. Dramatically faster \n for large collections when items are inde"}, {"id": "mod-i-q1", "tag": "Q1", "title": "What is a Batch Job? What are its phases?", "modTitle": "Batch Processing Deep Dive", "role": "Developer / Senior", "snippet": "✅  Answer  \n Batch Job · Phases · Block size · Error handling · On Complete \n Batch Job processes large datasets by splitting them into records and processing"}, {"id": "mod-i-q2", "tag": "Q2", "title": "What is Batch Aggregator and when do you use it?", "modTitle": "Batch Processing Deep Dive", "role": "Developer / Senior", "snippet": "✅  Answer  \n Batch Aggregator groups individual records back into a collection of a specified size before \n processing. Used in the last Batch Step to do bulk"}, {"id": "mod-i-q3", "tag": "Q3", "title": "What is maxFailedRecords in Batch Job? What is the default?", "modTitle": "Batch Processing Deep Dive", "role": "Developer / Senior", "snippet": "✅  Answer  \n maxFailedRecords  controls when Batch Job stops processing due to too many failures. Default is 0 \n — any single record failure stops the entire"}, {"id": "mod-i-q4", "tag": "Q4", "title": "What happens in the On Complete phase? What data is available?", "modTitle": "Batch Processing Deep Dive", "role": "Developer / Senior", "snippet": "✅  Answer  \n On Complete runs after all records have been processed (success or failure). The payload  in On \n Complete is a BatchJobResult  object with: \n pa"}, {"id": "mod-i-q5", "tag": "Q5", "title": "How do you roll back records in batch processing?", "modTitle": "Batch Processing Deep Dive", "role": "Developer / Senior", "snippet": "✅  Answer  \n Batch processing does NOT have automatic XA-style rollback. For rollback patterns: \n Database transactions: Use a Try scope within a Batch Step w"}, {"id": "mod-i-q1", "tag": "Q1", "title": "What is Until Successful? When do you use it?", "modTitle": "Batch Processing Deep Dive", "role": "Developer / Senior", "snippet": "✅  Answer  \n Until Successful retries the processors inside it until they succeed or until the max retries count is \n reached. Use for transient failures — ne"}, {"id": "mod-j-q1", "tag": "Q1", "title": "What is Until Successful? When do you use it?", "modTitle": "Until Successful Scope & Resiliency", "role": "Developer", "snippet": "✅  Answer  \n Until Successful retries the processors inside it until they succeed or until the max retries count is \n reached. Use for transient failures — ne"}, {"id": "mod-j-q2", "tag": "Q2", "title": "What happens when Until Successful exhausts all retries?", "modTitle": "Until Successful Scope & Resiliency", "role": "Developer", "snippet": "✅  Answer  \n When all retries are exhausted, Until Successful throws MULE:RETRY_EXHAUSTED . This error bubbles up \n to the flow&#x27;s error handler (or the e"}, {"id": "mod-j-q3", "tag": "Q3", "title": "Until Successful vs reconnection strategy — what is the difference?", "modTitle": "Until Successful Scope & Resiliency", "role": "Developer", "snippet": "✅  Answer  \n ASPECT UNTIL SUCCESSFUL RECONNECTION STRATEGY \n What it \n retries \n Any processor inside it (HTTP requests, DB calls, \n transforms) \n Only connec"}, {"id": "mod-k-q1", "tag": "Q1", "title": "What is Choice Router? How does it work?", "modTitle": "Choice Router, First Successful & Async Scopes", "role": "Developer", "snippet": "✅  Answer  \n Choice Router evaluates conditions sequentially and routes the message to the FIRST matching route. \n Only one route executes. A default route ha"}, {"id": "mod-k-q2", "tag": "Q2", "title": "What is the difference between Choice Router and First Successful?", "modTitle": "Choice Router, First Successful & Async Scopes", "role": "Developer", "snippet": "✅  Answer  \n ASPECT CHOICE ROUTER FIRST SUCCESSFUL \n Routing \n criteria \n Expression evaluation (condition) First route that doesn&#x27;t throw an error \n Use"}, {"id": "mod-k-q3", "tag": "Q3", "title": "What is Async Scope? When do you use it?", "modTitle": "Choice Router, First Successful & Async Scopes", "role": "Developer", "snippet": "✅  Answer  \n Async Scope executes its processors in a separate thread without blocking the main flow. The main \n flow continues and returns a response immedia"}, {"id": "mod-l-q1", "tag": "Q1", "title": "What is the difference between On Error Continue and On Error Propagate?", "modTitle": "Error Handling Deep Dive (Continue vs Propagate)", "role": "Developer / Senior", "snippet": "✅  Answer  \n ASPECT ON ERROR CONTINUE ON ERROR PROPAGATE \n After handler \n executes \n Flow continues normally, returns success \n response \n Error propagates t"}, {"id": "mod-l-q2", "tag": "Q2", "title": "What is a Try Scope? When do you use it?", "modTitle": "Error Handling Deep Dive (Continue vs Propagate)", "role": "Developer / Senior", "snippet": "✅  Answer  \n Try Scope provides localized error handling for a specific group of processors within a flow. Errors in \n the Try scope are caught there — they d"}, {"id": "mod-l-q3", "tag": "Q3", "title": "What are the standard MuleSoft error types?", "modTitle": "Error Handling Deep Dive (Continue vs Propagate)", "role": "Developer / Senior", "snippet": "✅  Answer  \n ERROR TYPE CAUSE TYPICAL RESPONSE \n HTTP:NOT_FOUND HTTP 404 from downstream Return empty response or 404 \n HTTP:UNAUTHORIZED HTTP 401 — auth fail"}, {"id": "mod-l-q4", "tag": "Q4", "title": "How do you propagate an error from SAPI to XAPI through PAPI?", "modTitle": "Error Handling Deep Dive (Continue vs Propagate)", "role": "Developer / Senior", "snippet": "✅  Answer  \n Use on-error-propagate  at each layer. The error message (and payload) propagates up the call chain \n automatically. \n Pattern at FPL: SAPI catch"}, {"id": "mod-l-q5", "tag": "Q5", "title": "What is the standard error response format you use across all FPL APIs?", "modTitle": "Error Handling Deep Dive (Continue vs Propagate)", "role": "Developer / Senior", "snippet": "✅  Answer  \n DataWeave — Standard Error Response \n \n   \n     DWL \n     \n            \n       Copy \n     \n   \n    %dw 2.0\noutput application/json\n---\n{\ncorrelat"}, {"id": "mod-m-q1", "tag": "Q1", "title": "What is Anypoint MQ? Difference between Queue and Exchange?", "modTitle": "Anypoint MQ Deep Dive (Queues, Exchanges, DLQ)", "role": "Developer / Senior", "snippet": "✅  Answer  \n Anypoint MQ is MuleSoft&#x27;s cloud-based messaging service for async integration. It provides point-to- \n point (Queue) and publish-subscribe ("}, {"id": "mod-m-q2", "tag": "Q2", "title": "What is MANUAL acknowledgement mode? Why do you use it?", "modTitle": "Anypoint MQ Deep Dive (Queues, Exchanges, DLQ)", "role": "Developer / Senior", "snippet": "✅  Answer  \n In AUTO mode: message is ACKed immediately on receipt — if processing fails, message is \n permanently lost. In MANUAL mode: you explicitly call a"}, {"id": "mod-m-q3", "tag": "Q3", "title": "How do you implement idempotency with Anypoint MQ?", "modTitle": "Anypoint MQ Deep Dive (Queues, Exchanges, DLQ)", "role": "Developer / Senior", "snippet": "✅  Answer  \n At-least-once delivery means duplicates are possible. ObjectStore idempotency pattern: \n  1.  Extract business key (transactionId) from MQ messag"}, {"id": "mod-m-q4", "tag": "Q4", "title": "How did you implement cross-region DR with Anypoint MQ at FPL?", "modTitle": "Anypoint MQ Deep Dive (Queues, Exchanges, DLQ)", "role": "Developer / Senior", "snippet": "✅  Answer  \n We used a fan-out pattern: two Anypoint MQ configs in global.xml — one for US-East-1 (primary) \n and one for US-East-2 (secondary). The MQ publis"}, {"id": "mod-m-q5", "tag": "Q5", "title": "Is VM connector reliable? How does it compare to Anypoint MQ?", "modTitle": "Anypoint MQ Deep Dive (Queues, Exchanges, DLQ)", "role": "Developer / Senior", "snippet": "✅  Answer  \n ASPECT VM CONNECTOR ANYPOINT MQ \n Durability In-memory only — messages lost on app \n crash/restart \n Cloud-persistent — messages survive restarts"}, {"id": "mod-n-q1", "tag": "Q1", "title": "What is ObjectStore? What are the types?", "modTitle": "ObjectStore Deep Dive (OSv2, TTL, Watermarking)", "role": "Developer", "snippet": "✅  Answer  \n ObjectStore is a key-value store built into Mule for persisting state between executions. Used for \n watermarking, idempotency, caching, and sess"}, {"id": "mod-n-q2", "tag": "Q2", "title": "What is watermarking? How does ObjectStore store watermark values?", "modTitle": "ObjectStore Deep Dive (OSv2, TTL, Watermarking)", "role": "Developer", "snippet": "✅  Answer  \n Watermarking tracks the last-processed position (timestamp, ID, sequence number) so a scheduled \n job only processes new/changed records since th"}, {"id": "mod-n-q3", "tag": "Q3", "title": "What is cache scope? How is it different from ObjectStore?", "modTitle": "ObjectStore Deep Dive (OSv2, TTL, Watermarking)", "role": "Developer", "snippet": "✅  Answer  \n ASPECT CACHE SCOPE OBJECTSTORE \n Purpose Avoid repeated external calls for same input Persist arbitrary state between executions"}, {"id": "mod-o-q1", "tag": "Q1", "title": "What is RAML? Why do you design API specs before coding?", "modTitle": "API-led Connectivity Deep Dive (RAML, Policies)", "role": "Senior / Lead", "snippet": "✅  Answer  \n RAML (RESTful API Modeling Language) is a YAML-based specification language for describing REST \n APIs. Design-first approach: write RAML in Anyp"}, {"id": "mod-o-q2", "tag": "Q2", "title": "What is API AutoDiscovery? Why is it important?", "modTitle": "API-led Connectivity Deep Dive (RAML, Policies)", "role": "Senior / Lead", "snippet": "✅  Answer  \n API AutoDiscovery links a deployed Mule application to an API definition in API Manager. Without \n AutoDiscovery, Mule app cannot enforce API Man"}, {"id": "mod-o-q3", "tag": "Q3", "title": "What policies have you used in API Manager?", "modTitle": "API-led Connectivity Deep Dive (RAML, Policies)", "role": "Senior / Lead", "snippet": "✅  Answer  \n POLICY PURPOSE USAGE AT FPL \n Client ID \n Enforcement \n Require valid client_id/secret in each \n request \n All XAPIs — each Salesforce channel ha"}, {"id": "mod-o-q4", "tag": "Q4", "title": "What is Anypoint Exchange? How do you use it?", "modTitle": "API-led Connectivity Deep Dive (RAML, Policies)", "role": "Senior / Lead", "snippet": "✅  Answer  \n Anypoint Exchange is MuleSoft&#x27;s asset marketplace where teams publish and discover reusable \n assets: API specs (RAML), connectors, template"}, {"id": "mod-p-q1", "tag": "Q1", "title": "How do you write MUnit tests? How do you mock external calls?", "modTitle": "MUnit Testing Framework & Mocking", "role": "Developer / Senior", "snippet": "✅  Answer  \n MUnit is MuleSoft&#x27;s unit testing framework. Tests mock all external systems — no actual \n SAP/Salesforce/DB calls in unit tests. \n MUnit Tes"}, {"id": "mod-p-q2", "tag": "Q2", "title": "How do you test failure scenarios in MUnit?", "modTitle": "MUnit Testing Framework & Mocking", "role": "Developer / Senior", "snippet": "✅  Answer  \n Mock the processor to throw an error instead of returning success: \n MUnit — Mock HTTP 500 error from SAP"}, {"id": "mod-p-q3", "tag": "Q3", "title": "How do you write an MUnit test if a Scheduler triggers the flow?", "modTitle": "MUnit Testing Framework & Mocking", "role": "Developer / Senior", "snippet": "✅  Answer  \n Schedulers cannot be triggered directly in MUnit. Solution: extract the Scheduler flow logic into a \n sub-flow, test the sub-flow directly. \n Pat"}, {"id": "mod-p-q4", "tag": "Q4", "title": "How do you enforce MUnit coverage and what tools do you use?", "modTitle": "MUnit Testing Framework & Mocking", "role": "Developer / Senior", "snippet": "✅  Answer  \n At FPL: SonarQube quality gate blocks any build with coverage below 85%. GitHub Actions CI/CD \n runs MUnit tests on every PR — build fails if tes"}, {"id": "mod-p-q1", "tag": "Q1", "title": "What security standards do you follow in every API?", "modTitle": "MUnit Testing Framework & Mocking", "role": "Developer / Senior", "snippet": "Security · Naming conventions · Structured logging · Performance"}, {"id": "mod-q-q2", "tag": "Q2", "title": "What naming conventions do you follow?", "modTitle": "Production Best Practices & Naming Standards", "role": "Senior / Lead", "snippet": "✅  Answer  \n ELEMENT CONVENTION EXAMPLE \n Flow names kebab-case + HTTP method get-billing-inquiry-flow \n Sub-flows descriptive + suffix validate-request-sub-f"}, {"id": "mod-q-q1", "tag": "Q1", "title": "Describe your Billing Inquiry flow end to end.", "modTitle": "Production Best Practices & Naming Standards", "role": "Senior / Lead", "snippet": "✅  Answer  \n 📋  BILLING INQUIRY FLOW — GET /BILLING/INQUIRY \n  1.  Salesforce Employee Desktop calls customer-billing-xapi with OAuth token  \n  2.  XAPI valid"}, {"id": "mod-q-q2", "tag": "Q2", "title": "What was the most challenging technical problem you solved?", "modTitle": "Production Best Practices & Naming Standards", "role": "Senior / Lead", "snippet": "✅  Answer  \n Problem: SAP Billing Inquiry returned XML where the ToInstallations  node could be empty for \n accounts with status &quot;Pending Final + Disconn"}, {"id": "mod-q-q3", "tag": "Q3", "title": "How did you manage the async preference update flow?", "modTitle": "Production Best Practices & Naming Standards", "role": "Senior / Lead", "snippet": "✅  Answer  \n 📋  PREFERENCE UPDATE — ASYNC PATTERN \n  1.  Mobile app calls preference-update-xapi → XAPI validates + publishes to Anypoint MQ → returns 202"}, {"id": "mod-r-q1", "tag": "Q1", "title": "What is the difference between sub-flow and private flow?", "modTitle": "DataWeave 2.0 Reference & Core Operators", "role": "Developer", "snippet": "Questions from Capgemini · LTI · TCS · Sapient · Quinnox · Apisero · Persistent · ConnectIndia · Vitrusa · \n Enquiro \n  ✅  Answer  \n ASPECT SUB-FLOW PRIVATE FL"}, {"id": "mod-r-q2", "tag": "Q2", "title": "What is the difference between VM connector and flow reference?", "modTitle": "DataWeave 2.0 Reference & Core Operators", "role": "Developer", "snippet": "✅  Answer  \n Flow Reference: Synchronous direct call to another flow in the SAME application. Same thread, same \n transaction context. No messaging overhead."}, {"id": "mod-r-q3", "tag": "Q3", "title": "What is fan-in and fan-out? How do you implement them?", "modTitle": "DataWeave 2.0 Reference & Core Operators", "role": "Developer", "snippet": "✅  Answer  \n Fan-Out: Send same message to multiple destinations. Implementation: Scatter-Gather (parallel \n routes), Anypoint MQ Exchange (one publish → all"}, {"id": "mod-r-q4", "tag": "Q4", "title": "What are streaming strategies in MuleSoft? Which is the default?", "modTitle": "DataWeave 2.0 Reference & Core Operators", "role": "Developer", "snippet": "✅  Answer  \n STRATEGY BEHAVIOR USE WHEN \n Non-Repeatable \n Streaming \n Stream read once, not buffered — most \n memory-efficient \n Large files you process only"}, {"id": "mod-r-q5", "tag": "Q5", "title": "How do you set up HTTPS connection in MuleSoft? One-way vs two-way SSL?", "modTitle": "DataWeave 2.0 Reference & Core Operators", "role": "Developer", "snippet": "✅  Answer  \n One-way SSL (server authentication only): Client verifies server&#x27;s certificate. Server does NOT verify \n client. Standard HTTPS. In MuleSoft"}, {"id": "mod-r-q6", "tag": "Q6", "title": "What is VPC and VPN in CloudHub? What is SLB vs DLB?", "modTitle": "DataWeave 2.0 Reference & Core Operators", "role": "Developer", "snippet": "✅  Answer  \n VPC (Virtual Private Cloud): Private isolated network segment in CloudHub where your Mule apps \n run. Isolates your apps from other CloudHub cust"}, {"id": "mod-r-q7", "tag": "Q7", "title": "How do you call a Java file in DataWeave? How do you invoke a flow in DataWeave?", "modTitle": "DataWeave 2.0 Reference & Core Operators", "role": "Developer", "snippet": "✅  Answer  \n Call Java in DataWeave: \n DataWeave — Call Java static method \n \n   \n     DWL \n     \n            \n       Copy \n     \n   \n    %dw 2.0\nimport java!"}, {"id": "mod-r-q8", "tag": "Q8", "title": "Write DataWeave to mask a credit card number — show only last 4 digits.", "modTitle": "DataWeave 2.0 Reference & Core Operators", "role": "Developer", "snippet": "✅  Answer  \n DataWeave — Credit card masking \n \n   \n     DWL \n     \n            \n       Copy \n     \n   \n    %dw 2.0\noutput application/json\n---\n/- Input: &quo"}, {"id": "mod-r-q9", "tag": "Q9", "title": "Write DataWeave to find even numbers from [1,2,3,4,5,6] and swap two values.", "modTitle": "DataWeave 2.0 Reference & Core Operators", "role": "Developer", "snippet": "✅  Answer  \n DataWeave — Even numbers + swap \n \n   \n     DWL \n     \n            \n       Copy \n     \n   \n    %dw 2.0\noutput application/json\n---\n/- Even number"}, {"id": "mod-r-q10", "tag": "Q10", "title": "Write a cron expression to trigger a flow daily at 10AM. Write RAML for books and songs", "modTitle": "DataWeave 2.0 Reference & Core Operators", "role": "Developer", "snippet": "resources. \n  ✅  Answer  \n Cron — Daily at 10AM EST \n 0 0 10 * * ? \n /- Second Minute Hour DayOfMonth Month DayOfWeek \n /- 0=second, 0=minute, 10=10AM, *=any d"}, {"id": "mod-s-q11", "tag": "Q11", "title": "What is horizontal vs vertical scaling? When do you use each in MuleSoft?", "modTitle": "NextEra Energy (FPL) Project Deep Dive", "role": "Developer / Senior", "snippet": "✅  Answer  \n Vertical Scaling: Increase vCores per worker (0.1 → 0.2 → 0.5 → 1 → 2 → 4 vCores). More CPU and \n memory per instance. Best for CPU-bound or memo"}, {"id": "mod-s-q12", "tag": "Q12", "title": "How do you encrypt properties in MuleSoft? How do you bypass applied API policies in Studio?", "modTitle": "NextEra Energy (FPL) Project Deep Dive", "role": "Developer / Senior", "snippet": "✅  Answer  \n Encrypting properties: Use Anypoint Studio&#x27;s Secure Properties Tool: right-click → Mule → Create a \n Secure Properties File. Enter key and e"}, {"id": "mod-s-q13", "tag": "Q13", "title": "If 5 people are invoking the same URL, how does MuleSoft ensure the correct response goes to", "modTitle": "NextEra Energy (FPL) Project Deep Dive", "role": "Developer / Senior", "snippet": "each caller? \n  ✅  Answer  \n HTTP is stateless and request-response. Each HTTP request opens a unique connection/thread. The \n HTTP listener binds the response"}, {"id": "mod-s-q14", "tag": "Q14", "title": "What are traits, resource types, and fragments in RAML?", "modTitle": "NextEra Energy (FPL) Project Deep Dive", "role": "Developer / Senior", "snippet": "✅  Answer  \n Traits: Reusable request/response patterns applied to multiple methods. Example: a pageable  trait \n adds queryParameters (limit, offset) — appli"}, {"id": "mod-t-q12", "tag": "Q12", "title": "How do you encrypt properties in MuleSoft? How do you bypass applied API policies in Studio?", "modTitle": "Quick Reference Interview Cheat Sheet", "role": "Developer", "snippet": "✅  Answer  \n Encrypting properties: Use Anypoint Studio&#x27;s Secure Properties Tool: right-click → Mule → Create a \n Secure Properties File. Enter key and e"}, {"id": "mod-t-q13", "tag": "Q13", "title": "If 5 people are invoking the same URL, how does MuleSoft ensure the correct response goes to", "modTitle": "Quick Reference Interview Cheat Sheet", "role": "Developer", "snippet": "each caller? \n  ✅  Answer  \n HTTP is stateless and request-response. Each HTTP request opens a unique connection/thread. The \n HTTP listener binds the response"}, {"id": "mod-t-q14", "tag": "Q14", "title": "What are traits, resource types, and fragments in RAML?", "modTitle": "Quick Reference Interview Cheat Sheet", "role": "Developer", "snippet": "✅  Answer  \n Traits: Reusable request/response patterns applied to multiple methods. Example: a pageable  trait \n adds queryParameters (limit, offset) — appli"}, {"id": "mod-t-q15", "tag": "Q15", "title": "What is the difference between Query and QueryAll in Salesforce?", "modTitle": "Quick Reference Interview Cheat Sheet", "role": "Developer", "snippet": "✅  Answer  \n Query: Returns only active/non-deleted records. Standard SOQL operation. Example: SELECT Id \n FROM Account WHERE Type=&#x27;Customer&#x27;  — ret"}, {"id": "mod-t-q16", "tag": "Q16", "title": "How do you handle SFTP strategies? How do you auto-delete files on SFTP?", "modTitle": "Quick Reference Interview Cheat Sheet", "role": "Developer", "snippet": "✅  Answer  \n SFTP Strategies: (1) Polling Strategy — trigger when file arrives (Mule SFTP listener with \n watermark). (2) Read Strategy — on-demand file read"}, {"id": "mod-t-q17", "tag": "Q17", "title": "In a Bulk Insert with 10 records, if record 7 is invalid, what happens?", "modTitle": "Quick Reference Interview Cheat Sheet", "role": "Developer", "snippet": "✅  Answer  \n This depends on the connector and database. \n Database Bulk Insert (non-XA transaction): All 10 records are sent in a single batch. If record 7 f"}, {"id": "mod-t-q18", "tag": "Q18", "title": "An exception arose at System layer and I want that error message to propagate to Experience", "modTitle": "Quick Reference Interview Cheat Sheet", "role": "Developer", "snippet": "layer. How? \n  ✅  Answer  \n Use on-error-propagate  at each layer. In the SAPI: catch the error → build standardized error \n payload → re-throw using . In the"}, {"id": "mod-t-q19", "tag": "Q19", "title": "System API is taking too long to respond (timeout). How do you fix it from XAPI's perspective?", "modTitle": "Quick Reference Interview Cheat Sheet", "role": "Developer", "snippet": "✅  Answer  \n Three approaches depending on requirements: \n  1.  Increase responseTimeout: On the HTTP Request config in PAPI that calls SAPI, increase  \n resp"}, {"id": "mod-t-q20", "tag": "Q20", "title": "How do you implement CI/CD for MuleSoft? What Maven commands do you use?", "modTitle": "Quick Reference Interview Cheat Sheet", "role": "Developer", "snippet": "✅  Answer"}, {"id": "mod-u-q18", "tag": "Q18", "title": "An exception arose at System layer and I want that error message to propagate to Experience", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "layer. How? \n  ✅  Answer  \n Use on-error-propagate  at each layer. In the SAPI: catch the error → build standardized error \n payload → re-throw using . In the"}, {"id": "mod-u-q19", "tag": "Q19", "title": "System API is taking too long to respond (timeout). How do you fix it from XAPI's perspective?", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "✅  Answer  \n Three approaches depending on requirements: \n  1.  Increase responseTimeout: On the HTTP Request config in PAPI that calls SAPI, increase  \n resp"}, {"id": "mod-u-q20", "tag": "Q20", "title": "How do you implement CI/CD for MuleSoft? What Maven commands do you use?", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "✅  Answer  \n At FPL: GitHub Actions triggers on push to any environment branch. Pipeline stages: \n  1.  mvn clean compile  — compile all source files  \n  2."}, {"id": "mod-u-q1", "tag": "Q1", "title": "What is the difference between DataWeave 1.0 and 2.0?", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "✅  Answer  \n FEATURE DATAWEAVE 1.0 (MULE 3) DATAWEAVE 2.0 (MULE 4) \n Header %dw 1.0 %dw 2.0 \n Conditional when-otherwise if-else \n Imports Not available impor"}, {"id": "mod-u-q2", "tag": "Q2", "title": "What is the p() function in DataWeave? What is lookup()?", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "✅  Answer  \n p() function: Reads a value from a properties file (application properties, config YAML, Secure \n Properties). Used to access configuration witho"}, {"id": "mod-u-q3", "tag": "Q3", "title": "What is the difference between flatten and flatMap?", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "✅  Answer  \n OPERATOR INPUT OUTPUT USE WHEN \n flatten Nested array One-level-flattened array You have [[1,2],[3,4]]  and want \n [1,2,3,4] \n flatMap Array +"}, {"id": "mod-u-q4", "tag": "Q4", "title": "How do you skip null values in DataWeave? How do you mask sensitive data?", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "✅  Answer  \n DataWeave — skipNullOn \n \n   \n     DWL \n     \n            \n       Copy \n     \n   \n    %dw 2.0\noutput application/json skipNullOn=&quot;everywhere"}, {"id": "mod-u-q5", "tag": "Q5", "title": "What is zip() function? How do you merge two arrays?", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "✅  Answer  \n zip()  combines two arrays element-by-element into an array of pairs (arrays of 2 elements each). \n DataWeave — zip() and flatten to merge"}, {"id": "mod-u-q6", "tag": "Q6", "title": "What is sizeOf(), typeOf(), and how do you remove a key from an object?", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "✅  Answer  \n DataWeave — sizeOf, typeOf, remove key \n \n   \n     DWL \n     \n            \n       Copy \n     \n   \n    %dw 2.0\noutput application/json\n---\n/- size"}, {"id": "mod-u-q7", "tag": "Q7", "title": "What is reduce() in DataWeave? Write examples for sum and string concat.", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "✅  Answer  \n DataWeave — reduce() for aggregation \n \n   \n     DWL \n     \n            \n       Copy \n     \n   \n    %dw 2.0\noutput application/json\nvar numbers ="}, {"id": "mod-u-q8", "tag": "Q8", "title": "What is match vs matches? What is read() vs readUrl()?", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "✅  Answer  \n DataWeave — match vs matches \n /- match: returns array of capture groups from regex match \n &quot;me@mulesoft.com&quot; match(/([a-z]*-@([a-z]*-."}, {"id": "mod-u-q9", "tag": "Q9", "title": "How do you access secure properties inside DataWeave? How to encode/decode base64?", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "✅  Answer  \n DataWeave — Secure properties + base64 \n \n   \n     DWL \n     \n            \n       Copy \n     \n   \n    %dw 2.0\noutput application/json\nimport toBa"}, {"id": "mod-u-q10", "tag": "Q10", "title": "Write DataWeave to check if a number is even or odd. How to convert string to Number?", "modTitle": "Real Interview Q&A Collection (Global Companies)", "role": "Developer / Senior", "snippet": "✅  Answer  \n DataWeave — Even/Odd + type conversion \n \n   \n     DWL \n     \n            \n       Copy \n     \n   \n    %dw 2.0\noutput application/json\nvar n = att"}, {"id": "mod-v-q1", "tag": "Q1", "title": "What is the difference between CloudHub 1.0 and CloudHub 2.0?", "modTitle": "Advanced DataWeave Transformations & Scripts", "role": "Senior", "snippet": "✅  Answer  \n FEATURE CLOUDHUB 1.0 CLOUDHUB 2.0 \n Infrastructure Shared multi-tenant Kubernetes-based dedicated containers \n Workers Static predefined sizes (0"}, {"id": "mod-v-q2", "tag": "Q2", "title": "Explain mTLS. How do you debug mTLS-related issues?", "modTitle": "Advanced DataWeave Transformations & Scripts", "role": "Senior", "snippet": "✅  Answer  \n mTLS (Mutual TLS): Both client and server authenticate each other using certificates. Unlike one-way \n SSL where only the server presents a cert,"}, {"id": "mod-v-q3", "tag": "Q3", "title": "What is the difference between Rate Limiting, Spike Control, and Throttling?", "modTitle": "Advanced DataWeave Transformations & Scripts", "role": "Senior", "snippet": "✅  Answer  \n POLICY BEHAVIOR WHEN LIMIT EXCEEDED USE CASE \n Rate \n Limiting \n Request is REJECTED immediately (HTTP \n 429) \n Prevent abuse — hard limit per cl"}, {"id": "mod-v-q4", "tag": "Q4", "title": "What is Transaction Management in MuleSoft? XA vs Local transactions?", "modTitle": "Advanced DataWeave Transformations & Scripts", "role": "Senior", "snippet": "✅  Answer  \n Transaction management ensures a group of operations execute as a single unit of work — either all \n succeed or all are rolled back. \n TYPE SCOPE"}, {"id": "mod-v-q5", "tag": "Q5", "title": "What is guaranteed delivery? How do you ensure it in MuleSoft?", "modTitle": "Advanced DataWeave Transformations & Scripts", "role": "Senior", "snippet": "✅  Answer  \n Guaranteed delivery ensures messages are reliably delivered even if the system crashes or restarts. \n MuleSoft achieves this through: \n 📋  GUARAN"}, {"id": "mod-w-q6", "tag": "Q6", "title": "After batch job processes 1,000 of 10,000 records and restarts, how do you avoid reprocessing?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n Multiple strategies work together: \n  1.  Batch Persistence (built-in): Mule Batch Job is persistent by default — if the runtime restarts, it"}, {"id": "mod-w-q1", "tag": "Q1", "title": "What is Correlation ID? How is it different from Transaction ID?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n ASPECT CORRELATION ID TRANSACTION ID \n Purpose Links related messages across a flow — tracks \n the journey of a request \n Associates events with"}, {"id": "mod-w-q2", "tag": "Q2", "title": "What is the APIKit Router? What does it do?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n The APIKit Router does the following when a request arrives: \n  1.  Validates the incoming request against the RAML spec (payload, headers, URI p"}, {"id": "mod-w-q3", "tag": "Q3", "title": "What is the difference between fixed frequency and cron in Scheduler?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n ASPECT FIXED FREQUENCY CRON EXPRESSION \n Definition Trigger every X milliseconds/seconds/minutes Trigger at specific date/time patterns \n Config"}, {"id": "mod-w-q4", "tag": "Q4", "title": "What is Reconnection Strategy? What are the three options?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n Reconnection Strategy is used to reconnect to external systems when a connection fails. Configured \n on each connector. \n OPTION BEHAVIOR USE WHE"}, {"id": "mod-w-q5", "tag": "Q5", "title": "What is the difference between REST and SOAP web services?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n ASPECT REST SOAP \n Protocol Architectural style (no official standard) Protocol with official W3C standard \n Data format JSON, XML, plain text, H"}, {"id": "mod-w-q6", "tag": "Q6", "title": "What are the configuration differences between File, FTP, and SFTP connectors?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n CONNECTOR REQUIRED CONFIGURATION AUTHENTICATION \n File Working directory path only None (OS filesystem) \n FTP Host, Port (21), Username, Password"}, {"id": "mod-w-q7", "tag": "Q7", "title": "What operations are available in FTP/SFTP/File connectors?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n OPERATION DESCRIPTION \n Read Read a specific file content \n List List files in a directory (can filter by pattern) \n On New or Updated File Sourc"}, {"id": "mod-w-q8", "tag": "Q8", "title": "Compare ForEach, Parallel ForEach, and Batch Processing — when to use which?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n ASPECT FOREACH PARALLEL FOREACH BATCH PROCESSING \n Processing Sequential Parallel Parallel \n Threading Single-threaded Multi-threaded Multi-threa"}, {"id": "mod-w-q9", "tag": "Q9", "title": "What are the HTTP status code categories? What is the difference between 201 and 202?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n CATEGORY RANGE COMMON CODES \n 1xx \n Informational \n 100– \n 199 \n 100 Continue, 101 Switching Protocols \n 2xx Success 200– \n 299 \n 200 OK, 201 Cre"}, {"id": "mod-w-q10", "tag": "Q10", "title": "What is an Idempotent Filter / Idempotent Message Validator?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n The Idempotent Message Validator (formerly &quot;Idempotent Filter&quot; in Mule 3) filters out duplicate \n messages based on a unique ID extract"}, {"id": "mod-w-q11", "tag": "Q11", "title": "How do you validate JSON and XML in MuleSoft without RAML?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n If using RAML with APIKit: the APIKit Router automatically validates incoming requests against the \n RAML schema before routing — no additional c"}, {"id": "mod-w-q12", "tag": "Q12", "title": "What is a custom connector? When would you create one?", "modTitle": "CloudHub 1.0 vs 2.0 & Technical Lead Topics", "role": "Lead / Architect", "snippet": "✅  Answer  \n A custom connector is a reusable MuleSoft component that wraps the connectivity to a system that \n doesn&#x27;t have an out-of-the-box MuleSoft c"}, {"id": "mod-x-q1", "tag": "Q1", "title": "What is inside a Mule Event? What is the difference between payload, attributes, and vars?", "modTitle": "Core Connectors & Protocols (HTTP, DB, JMS, Kafka, VM)", "role": "Developer", "snippet": "✅  Answer  \n You have 5.5 years of real production experience with SAP, Salesforce, AWS, Anypoint MQ, and 44+ APIs. That&#x27;s \n more than most candidates wi"}, {"id": "mod-x-q2", "tag": "Q2", "title": "What is the difference between repeatable and non-repeatable streaming?", "modTitle": "Core Connectors & Protocols (HTTP, DB, JMS, Kafka, VM)", "role": "Developer", "snippet": "✅  Answer  \n STRATEGY \n READ MULTIPLE \n TIMES? \n MEMORY USE WHEN \n Non-Repeatable ❌  Once only Most efficient Large files processed once — \n CSV/XML ETL \n Rep"}, {"id": "mod-x-q3", "tag": "Q3", "title": "What are the key best practices for the HTTP Connector?", "modTitle": "Core Connectors & Protocols (HTTP, DB, JMS, Kafka, VM)", "role": "Developer", "snippet": "✅  Answer  \n Never hardcode the port — use ${http.port}  property \n Always set responseTimeout and connectionIdleTimeout — no timeout = one slow API \n hangs y"}, {"id": "mod-x-q4", "tag": "Q4", "title": "What are the key best practices for the Database Connector?", "modTitle": "Core Connectors & Protocols (HTTP, DB, JMS, Kafka, VM)", "role": "Developer", "snippet": "✅  Answer  \n Always use :namedParam for input parameters — never concatenate strings into SQL (SQL \n injection risk) \n Connection pooling — configure pool siz"}, {"id": "mod-x-q5", "tag": "Q5", "title": "What is the JMS Connector? When do you use JMS vs Anypoint MQ?", "modTitle": "Core Connectors & Protocols (HTTP, DB, JMS, Kafka, VM)", "role": "Developer", "snippet": "✅  Answer  \n ASPECT JMS CONNECTOR ANYPOINT MQ \n When to use Existing IBM MQ, ActiveMQ, Solace, TIBCO EMS \n broker already in your enterprise \n New integration"}, {"id": "mod-x-q6", "tag": "Q6", "title": "What is the Kafka Connector? Kafka vs Anypoint MQ — when to use which?", "modTitle": "Core Connectors & Protocols (HTTP, DB, JMS, Kafka, VM)", "role": "Developer", "snippet": "✅  Answer  \n The Kafka Connector connects MuleSoft to Apache Kafka for high-throughput, real-time event \n streaming with replay capability. \n ASPECT APACHE KA"}, {"id": "mod-x-q7", "tag": "Q7", "title": "What is the VM Connector? How does it differ from flow-ref and Anypoint MQ?", "modTitle": "Core Connectors & Protocols (HTTP, DB, JMS, Kafka, VM)", "role": "Developer", "snippet": "✅  Answer  \n OPTION SCOPE ASYNC? DURABLE? USE FOR \n flow-ref Same app ❌ \n Synchronous \n N/A Code reuse — simple flow- \n to-flow call \n VM \n Connector \n Same a"}, {"id": "mod-x-q8", "tag": "Q8", "title": "How do you version APIs in MuleSoft? What is a breaking vs non-breaking change?", "modTitle": "Core Connectors & Protocols (HTTP, DB, JMS, Kafka, VM)", "role": "Developer", "snippet": "✅  Answer  \n CHANGE TYPE BREAKING? VERSION BUMP \n Removed/renamed field, type change, new required input ✅  YES — breaking MAJOR (v1 → v2) \n New optional fiel"}, {"id": "mod-x-q9", "tag": "Q9", "title": "How do you tune MuleSoft application performance?", "modTitle": "Core Connectors & Protocols (HTTP, DB, JMS, Kafka, VM)", "role": "Developer", "snippet": "✅  Answer  \n Rule #1: Measure first. Change one thing at a time. Baseline → change → retest. \n maxConcurrency on flows: caps parallel events. At limit → back-"}, {"id": "mod-tips-q1", "tag": "Q1", "title": "What is inside a Mule Event? What is the difference between payload, attributes, and vars?", "modTitle": "Interview Day Strategy & STAR Method", "role": "All", "snippet": "✅  Answer  \n You have 5.5 years of real production experience with SAP, Salesforce, AWS, Anypoint MQ, and 44+ APIs. That&#x27;s \n more than most candidates wi"}, {"id": "mod-y-q10", "tag": "Q10", "title": "What is Runtime Fabric (RTF)? How is it different from CloudHub?", "modTitle": "Advanced MuleSoft Topics (Java 17, Agentforce AI)", "role": "Senior / Lead", "snippet": "✅  Answer  \n ASPECT CLOUDHUB 2.0 RUNTIME FABRIC (RTF) \n Infrastructure MuleSoft-managed Kubernetes (Private \n Space) \n YOUR Kubernetes (EKS, AKS, GKE, OpenShi"}, {"id": "mod-y-q11", "tag": "Q11", "title": "What are the best practices for logging in MuleSoft?", "modTitle": "Advanced MuleSoft Topics (Java 17, Agentforce AI)", "role": "Senior / Lead", "snippet": "✅  Answer  \n Log at flow start and end with key business identifiers (accountId, correlationId) \n Log before and after external calls — makes it easy to see w"}, {"id": "mod-y-q12", "tag": "Q12", "title": "How do you upgrade Mule apps to Java 17? What breaks?", "modTitle": "Advanced MuleSoft Topics (Java 17, Agentforce AI)", "role": "Senior / Lead", "snippet": "✅  Answer  \n Mule 4.9 LTS and later Edge releases run on Java 17 ONLY. If your apps are on Java 8 or 11, \n the upgrade is coming. \n ⚠  WHAT BREAKS ON JAVA 17"}, {"id": "mod-y-q13", "tag": "Q13", "title": "What is MuleSoft AI and how does it integrate with Agentforce?", "modTitle": "Advanced MuleSoft Topics (Java 17, Agentforce AI)", "role": "Senior / Lead", "snippet": "✅  Answer  \n MuleSoft connects AI agents to enterprise data through 4 patterns: \n PATTERN DESCRIPTION USE WHEN \n AI Chain \n Connector \n Call an LLM (OpenAI, A"}, {"id": "mod-y-q14", "tag": "Q14", "title": "What is Anypoint Code Builder? How is it different from Anypoint Studio?", "modTitle": "Advanced MuleSoft Topics (Java 17, Agentforce AI)", "role": "Senior / Lead", "snippet": "✅  Answer  \n ASPECT ANYPOINT STUDIO ANYPOINT CODE BUILDER (ACB) \n Platform Eclipse-based desktop IDE VS Code-based — desktop app or browser \n AI features None"}, {"id": "mod-y-q15", "tag": "Q15", "title": "What is the Parent POM / BOM pattern in MuleSoft? Why do you use it?", "modTitle": "Advanced MuleSoft Topics (Java 17, Agentforce AI)", "role": "Senior / Lead", "snippet": "✅  Answer  \n A Parent POM is a Maven POM with pom  inherited via by all child Mule projects. It centralizes: \n connector versions, MUnit version, mule-maven-p"}, {"id": "mod-z-s1", "tag": "S1", "title": "Your MuleSoft PAPI calls SAP SAPI which calls SAP. SAP returns HTTP 500. Walk me", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "through what happens at each layer. \n  ✅  Complete Scenario Answer  \n Layer-by-layer propagation: \n 📋  ERROR FLOW TRACE \n  1.  SAP SAPI receives HTTP 500 from"}, {"id": "mod-z-s2", "tag": "S2", "title": "You have a Mule app deployed on CloudHub with 2 workers. An MQ message is", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "processed by Worker 1. Worker 1 crashes mid-processing. What happens? \n  ✅  Complete Scenario Answer  \n With MANUAL ack mode (correct setup): The message was n"}, {"id": "mod-z-s3", "tag": "S3", "title": "Your nightly batch job processes 50,000 records. After processing 30,000 records,", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "the app restarts. How do you ensure it continues from record 30,001? \n  ✅  Complete Scenario Answer  \n Solution: Watermark + persistent ObjectStore \n 📋  RECOVE"}, {"id": "mod-z-s4", "tag": "S4", "title": "Your billing API suddenly gets 10x traffic (billing cycle spike). Response times", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "increase from 1s to 8s. Walk me through your diagnosis and fix. \n  ✅  Complete Scenario Answer  \n Step 1 — Diagnose first: \n Check Anypoint Monitoring: is CPU/"}, {"id": "mod-z-s5", "tag": "S5", "title": "Your Scatter-Gather calls SAP (usually 800ms) and DynamoDB (usually 200ms).", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "Occasionally SAP takes 5 seconds. What happens to your API response time? \n  ✅  Complete Scenario Answer  \n Scatter-Gather waits for the SLOWEST route. On the"}, {"id": "mod-z-s6", "tag": "S6", "title": "Your flow inserts a record into DB, then publishes to Anypoint MQ. The DB insert", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "succeeds but MQ publish fails. What happens? How do you prevent this? \n  ✅  Complete Scenario Answer  \n What happens without protection: DB record exists, MQ m"}, {"id": "mod-z-s7", "tag": "S7", "title": "Salesforce sends the same Platform Event twice due to at-least-once delivery. Your", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "flow creates a record in SAP both times. How do you prevent duplicate SAP records? \n  ✅  Complete Scenario Answer  \n Three-layer defense: \n  1.  ObjectStore id"}, {"id": "mod-z-s8", "tag": "S8", "title": "An interviewer sees your API exposes customer account numbers and SSNs in the", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "response. How do you secure this data? \n  ✅  Complete Scenario Answer  \n Defense-in-depth approach: \n HTTPS everywhere: TLS 1.2+ on all HTTP connections — data"}, {"id": "mod-z-s9", "tag": "S9", "title": "A downstream Salesforce team wants you to add a new required field to an", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "existing API. You have 5 consumers. How do you handle this without breaking them? \n  ✅  Complete Scenario Answer  \n A new required field in a request is a brea"}, {"id": "mod-z-s10", "tag": "S10", "title": "You need to call the same SAP endpoint from 5 different MuleSoft APIs. What is", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "the most maintainable approach? \n  ✅  Complete Scenario Answer  \n This is exactly the problem the SAPI layer solves in API-led connectivity. \n Solution: Create"}, {"id": "mod-z-s11", "tag": "S11", "title": "SAP returns an XML response with nested namespaces. Some fields are missing", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "depending on account status. Your DataWeave transform fails on null. How do you fix it? \n  ✅  Complete Scenario Answer  \n This is the exact production bug I fi"}, {"id": "mod-z-s12", "tag": "S12", "title": "Your DataWeave transform takes 800ms on large payloads. How do you optimize", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "it? \n  ✅  Complete Scenario Answer  \n DataWeave optimization strategies: \n Select only needed fields early: Don&#x27;t map the entire SAP response — start with"}, {"id": "mod-z-s13", "tag": "S13", "title": "You deployed a new version of your billing API at 2AM. At 8AM (peak billing", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "time), you see a 30% error rate. How do you respond? \n  ✅  Complete Scenario Answer  \n Incident response process: \n  1.  Immediate rollback first: Don&#x27;t d"}, {"id": "mod-z-s14", "tag": "S14", "title": "Business says \"our customer preference updates are not being saved.\" How do", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "you debug this across the XAPI → Anypoint MQ → PAPI → DynamoDB chain? \n  ✅  Complete Scenario Answer  \n Step-by-step debugging with correlationId: \n  1.  Get t"}, {"id": "mod-z-s15", "tag": "S15", "title": "\"What if all 3 DB connectors in Scatter-Gather fail? What happens?\"", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "✅  Complete Scenario Answer  \n Scatter-Gather with 3 DB routes — all fail: \n Without Try scope: First failing route throws immediately → Scatter-Gather throws"}, {"id": "mod-z-s16", "tag": "S16", "title": "\"What is the difference between flowRef and subflow — when would", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "using the wrong one cause a bug?&quot; \n  ✅  Complete Scenario Answer  \n The bug scenario: You need a subflow to have its own independent error handling. You u"}, {"id": "mod-z-s17", "tag": "S17", "title": "\"You set maxRetries=3 in Until Successful. How many total attempts", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "happen?&quot; \n  ✅  Complete Scenario Answer  \n Answer: 4 total attempts — 1 initial attempt + 3 retries. \n Common interview trap: Many candidates say &quot;3"}, {"id": "mod-z-s18", "tag": "S18", "title": "\"You said ForEach doesn't change the payload. But I set a variable inside", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "ForEach — is that visible after the loop?&quot; \n  ✅  Complete Scenario Answer  \n Yes — variables set inside ForEach ARE visible after the loop. This is a crit"}, {"id": "mod-z-s19", "tag": "S19", "title": "\"What is the difference between SDO and SMO in MuleSoft?\"", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "✅  Complete Scenario Answer  \n SDO (Shared Domain Objects) and SMO (Service Message Objects) are MuleSoft architectural \n concepts: \n SDO: In API-led connecti"}, {"id": "mod-z-s20", "tag": "S20", "title": "FINAL CROSS-QUESTION: \"How would you design a MuleSoft integration for a system you've", "modTitle": "20 Production Scenario Questions & Cross-Questions (S1-S20)", "role": "Senior Developer", "snippet": "never worked with before?&quot; \n  ✅  Complete Scenario Answer — The &quot;Senior Developer&quot; Answer  \n This question tests your architecture thinking, not"}, {"id": "mod-aa-n1", "tag": "N1", "title": "What is the Einstein AI Connector? How is it different from the Inference Connector?", "modTitle": "Live Whiteboard Architecture Guide & Scripts", "role": "Lead / Architect", "snippet": "✅  Answer  \n Einstein AI Connector is Salesforce-native — it routes all LLM calls through the Einstein Trust \n Layer. Zero data retention: no prompt or respon"}, {"id": "mod-bb-n2", "tag": "N2", "title": "What is Anypoint Partner Manager (APM)? How does it differ from the X12 EDI Connector?", "modTitle": "2026 Modern Tech: Agentforce AI, MCP & Snowflake", "role": "Lead / Architect", "snippet": "✅  Answer  \n APM is a centralized B2B gateway platform for managing trading partners — onboarding, \n transaction tracking, message routing, and acknowledgemen"}, {"id": "mod-bb-n3", "tag": "N3", "title": "Your interviewer asks: \"How would you integrate MuleSoft with Snowflake for a nightly ETL", "modTitle": "2026 Modern Tech: Agentforce AI, MCP & Snowflake", "role": "Lead / Architect", "snippet": "load of 100,000 records?&quot; \n  ✅  Answer  \n Design: Scheduler → Batch Job → Snowflake Connector \n 📋  DESIGN WALK-THROUGH \n  1.  Scheduler triggers nightly a"}, {"id": "mod-bb-n4", "tag": "N4", "title": ". What is the MuleSoft MCP Connector and how does it connect MuleSoft to AI agents?", "modTitle": "2026 Modern Tech: Agentforce AI, MCP & Snowflake", "role": "Lead / Architect", "snippet": "MCP = Model Context Protocol — an open standard (originally by Anthropic) that lets AI agents call \n external tools and APIs in a structured, discoverable way."}, {"id": "mod-bb-n5", "tag": "N5", "title": ". What is the Anypoint Terraform Provider and why would you use it?", "modTitle": "2026 Modern Tech: Agentforce AI, MCP & Snowflake", "role": "Lead / Architect", "snippet": "Anypoint Terraform Provider is a HashiCorp Terraform plugin that lets you manage Anypoint \n Platform resources as Infrastructure-as-Code (IaC). Instead of clic"}, {"id": "mod-bb-n6", "tag": "N6", "title": ". When would you choose Anypoint Secrets Manager over AWS Secrets Manager (or vice versa)?", "modTitle": "2026 Modern Tech: Agentforce AI, MCP & Snowflake", "role": "Lead / Architect", "snippet": "Both are secrets vaults but optimized for different contexts. The choice depends on your cloud \n strategy and team structure. \n Criterion Anypoint Secrets Mana"}, {"id": "mod-bb-n7", "tag": "N7", "title": ". How do you use Anypoint Visualizer in an enterprise context?", "modTitle": "2026 Modern Tech: Agentforce AI, MCP & Snowflake", "role": "Lead / Architect", "snippet": "Anypoint Visualizer auto-generates a real-time dependency map of all deployed Mule applications, \n showing how APIs call each other (Experience → Process → Sys"}, {"id": "mod-bb-n8", "tag": "N8", "title": ". What is the MuleSoft certification path and what does each certification validate?", "modTitle": "2026 Modern Tech: Agentforce AI, MCP & Snowflake", "role": "Lead / Architect", "snippet": "MuleSoft certifications validate hands-on Mule development and architecture skills. They follow a \n structured progression. \n Certification Path: \n MCD-L1 (Mul"}, {"id": "mod-bb-n9", "tag": "N9", "title": ". Quick-fire round — answer these 10 MuleSoft questions in one sentence each", "modTitle": "2026 Modern Tech: Agentforce AI, MCP & Snowflake", "role": "Lead / Architect", "snippet": "# Question One-line answer \n 1 \n What is a Mule domain \n project? \n A shared project that lets multiple Mule apps on the same server \n share a single HTTP List"}, {"id": "mod-cc-n10", "tag": "N10", "title": ". What is the difference between HTTP 401 and 403, and how do you handle both in MuleSoft?", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "This is a classic interview trap — many developers confuse these two codes. Knowing the exact \n distinction shows API design maturity. \n Aspect 401 Unauthorize"}, {"id": "mod-cc-n11", "tag": "N11", "title": ". Design Scenario: A banking client needs an API handling 10,000 transactions/minute with PCI-", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "DSS compliance. How do you architect it? \n This scenario tests your ability to combine security, performance, and compliance in a real-world \n banking context."}, {"id": "mod-cc-t1", "tag": "T1", "title": "Mule 3 vs Mule 4", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "Mule 4 is just a newer \n version. \n Mule 4 replaced the ESB threading model with a non- \n blocking reactive model (Project Reactor), removed MEL in \n favor of"}, {"id": "mod-cc-t2", "tag": "T2", "title": "Error handling in", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "sub-flows \n Sub-flows handle \n their own errors. \n Sub-flows have NO independent error handler — they \n inherit the error handling scope of their caller flow."}, {"id": "mod-cc-t3", "tag": "T3", "title": "DataWeave vs MEL", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "I use #[payload.field] \n — that is MEL. \n In Mule 4, #[] always evaluates DataWeave 2.0. MEL was \n completely removed. Even simple field access like # \n [paylo"}, {"id": "mod-cc-t4", "tag": "T4", "title": "401 vs 403", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "Both mean the user \n cannot access the \n resource. \n 401 means authentication is missing or invalid (server \n does not know who you are). 403 means authenticat"}, {"id": "mod-cc-t5", "tag": "T5", "title": "Watermark purpose", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "Watermark is a Mule \n scheduling feature. \n A watermark is a stored value in ObjectStore (timestamp \n or ID) that marks the last successfully processed record"}, {"id": "mod-cc-t6", "tag": "T6", "title": "CloudHub 1.0 vs 2.0 CloudHub 2.0 is the", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "same but newer. \n CloudHub 2.0 is built on Runtime Fabric (Kubernetes- \n based), offering zero-downtime rolling deployments, \n improved resource isolation, per"}, {"id": "mod-cc-t7", "tag": "T7", "title": "Scatter-Gather error", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "behavior \n If one route fails in \n Scatter-Gather, Mule \n skips it and returns \n the rest. \n By default, if ANY route in Scatter-Gather fails, the ENTIRE \n Sca"}, {"id": "mod-cc-t8", "tag": "T8", "title": "Until Successful retry", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "Until Successful retries \n the whole flow. \n Until Successful retries only the operations inside its \n scope, not the entire flow. Each retry starts from the"}, {"id": "mod-cc-t9", "tag": "T9", "title": "Payload after Set", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "Variable \n Set Variable changes \n the payload. \n Set Variable stores a value in the Mule event variables map \n — it does NOT change the payload. Payload is onl"}, {"id": "mod-cc-t10", "tag": "T10", "title": "APIkit vs HTTP", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "Listener \n APIkit is just a router \n that replaces HTTP \n Listener. \n APIkit works on top of HTTP Listener — the Listener still \n receives the request. APIkit"}, {"id": "mod-cc-t11", "tag": "T11", "title": "on-error-propagate", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "vs on-error-continue \n Both stop the flow \n when an error occurs. \n on-error-propagate stops the flow AND re-throws the \n error to the caller. on-error-continu"}, {"id": "mod-cc-t12", "tag": "T12", "title": "DataWeave output", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "directive \n DataWeave always \n outputs JSON. \n DataWeave output is controlled by the output directive \n (e.g., output application/xml, output text/csv). Withou"}, {"id": "mod-cc-t13", "tag": "T13", "title": "For Each vs Batch", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "For Each and Batch do \n the same thing. \n For Each processes items sequentially in the same thread, \n keeping the full collection in memory. Batch Job processe"}, {"id": "mod-cc-t14", "tag": "T14", "title": "API Manager auto-", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "discovery \n API Manager policies \n apply automatically \n once you create an \n API instance. \n Policies only apply to a Mule app after AutoDiscovery is \n config"}, {"id": "mod-cc-t15", "tag": "T15", "title": "Mule event", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "immutability \n I can modify the Mule \n event object directly \n in a flow. \n The Mule event is immutable — every component that \n changes payload or variables c"}, {"id": "mod-cc-t16", "tag": "T16", "title": "HTTP Connector vs", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "REST Connector \n You need the REST \n Connector to call \n REST APIs. \n The HTTP Connector calls any REST API. The REST \n Connector (auto-generated from an OAS/R"}, {"id": "mod-cc-t17", "tag": "T17", "title": "Secure properties", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "encryption \n Wrapping a value in ! \n [...] encrypts it \n automatically. \n ![...] is just the syntax to REFERENCE an already-encrypted \n value in a secure prope"}, {"id": "mod-cc-t18", "tag": "T18", "title": "MUnit mock scope", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "MUnit mocks replace \n the entire flow under \n test. \n MUnit mocks replace specific event processors (by \n component name or type) within the flow under test. T"}, {"id": "mod-cc-t19", "tag": "T19", "title": "RAML vs OAS", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "RAML and OAS are \n interchangeable in \n MuleSoft. \n Both are supported but RAML is MuleSoft native — it \n supports reusable libraries, traits, resource types,"}, {"id": "mod-cc-t20", "tag": "T20", "title": "Explaining", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "salary/expectations \n Immediately stating a \n specific number when \n first asked. \n Ask for the budgeted range first: “I want to make sure we \n are aligned — w"}, {"id": "mod-cc-s5", "tag": "S5", "title": "— those three cover architecture, performance, and real-world scenario. If you can", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior Developer", "snippet": "answer those three confidently, the rest will follow. \n DD \n 🧭  Architect: Requirement Gathering from Clients \n ARCHITECT ⭐ \n 🔗  RELATED EXISTING QUESTIONS \n D"}, {"id": "mod-cc-r1", "tag": "R1", "title": "How do you run discovery for a new integration? What framework do you follow?", "modTitle": "Top 20 Interview Traps & Senior Corrections (T1-T20)", "role": "Senior / Lead", "snippet": "✅  Architect Answer  \n I use an 8-part discovery framework. I don&#x27;t start design until every part has an owner and either \n an answer or a written assump"}, {"id": "mod-dd-s5", "tag": "S5", "title": "— those three cover architecture, performance, and real-world scenario. If you can", "modTitle": "Architect: Requirement Gathering & Discovery Framework", "role": "Enterprise Architect", "snippet": "answer those three confidently, the rest will follow. \n DD \n 🧭  Architect: Requirement Gathering from Clients \n ARCHITECT ⭐ \n 🔗  RELATED EXISTING QUESTIONS \n D"}, {"id": "mod-dd-r1", "tag": "R1", "title": "How do you run discovery for a new integration? What framework do you follow?", "modTitle": "Architect: Requirement Gathering & Discovery Framework", "role": "Enterprise Architect", "snippet": "✅  Architect Answer  \n I use an 8-part discovery framework. I don&#x27;t start design until every part has an owner and either \n an answer or a written assump"}, {"id": "mod-dd-r2", "tag": "R2", "title": "What questions do you ask the client, by category?", "modTitle": "Architect: Requirement Gathering & Discovery Framework", "role": "Enterprise Architect", "snippet": "✅  Architect Answer — Question Bank  \n \n   \n       CATEGORY  QUESTIONS TO ASK   \n       Business  What problem costs you time or money today? Who feels it? Wh"}, {"id": "mod-dd-r3", "tag": "R3", "title": "What red flags do you watch for in discovery, and which assumptions do you confirm in", "modTitle": "Architect: Requirement Gathering & Discovery Framework", "role": "Enterprise Architect", "snippet": "writing? \n  ✅  Architect Answer  \n 🚩  Red flags \n &quot;Real-time&quot; with no latency number \n No named owner for a source or target system \n Target system h"}, {"id": "mod-dd-r4", "tag": "R4", "title": "Walk me through a discovery workshop agenda.", "modTitle": "Architect: Requirement Gathering & Discovery Framework", "role": "Enterprise Architect", "snippet": "✅  Sample Agenda (half day, about 3.5 hours)  \n TIME SESSION OUTPUT \n 0:00– \n 0:15 \n Introductions, goals, ground rules Agreed objective for the day \n 0:15–"}, {"id": "mod-dd-r5", "tag": "R5", "title": "What \"delighters\" do you add to make the client happy beyond the core integration?", "modTitle": "Architect: Requirement Gathering & Discovery Framework", "role": "Enterprise Architect", "snippet": "✅  Architect Answer  \n Delighters are cheap extras that lower the client&#x27;s risk and effort. I put them in the estimate from \n day one so they don&#x27;t"}, {"id": "mod-dd-r6", "tag": "R6", "title": "Give me your requirements checklist (copy-friendly).", "modTitle": "Architect: Requirement Gathering & Discovery Framework", "role": "Enterprise Architect", "snippet": "✅  Copy-Friendly Checklist  \n requirements-checklist.txt \n \n Business goal stated as a measurable outcome \n Sponsor, product owner and system owners named \n S"}, {"id": "mod-dd-r7", "tag": "R7", "title": "Mini case study: Salesforce → SAP → Database order sync. How would you gather", "modTitle": "Architect: Requirement Gathering & Discovery Framework", "role": "Enterprise Architect", "snippet": "requirements and shape the solution? \n  ✅  Illustrative Case Study (not a real client)  \n Ask: &quot;When a Salesforce Opportunity is Closed Won, create a sale"}, {"id": "mod-dd-c1", "tag": "C1", "title": "How does MuleSoft compare with other integration options? Give an honest comparison.", "modTitle": "Architect: Requirement Gathering & Discovery Framework", "role": "Enterprise Architect", "snippet": "✅  Architect Answer — Honest Comparison  \n Positioning is general and based on publicly documented capabilities. Always check current \n vendor docs and pricin"}, {"id": "mod-ee-c2", "tag": "C2", "title": "What are MuleSoft's real differentiators?", "modTitle": "Architect: MuleSoft vs Competitors & Objection Handling", "role": "Enterprise Architect", "snippet": "✅  Architect Answer  \n API-led connectivity: System, Process and Experience layers turn integrations into reusable \n assets instead of point-to-point code."}, {"id": "mod-ee-c3", "tag": "C3", "title": "When would you NOT recommend MuleSoft?", "modTitle": "Architect: MuleSoft vs Competitors & Objection Handling", "role": "Enterprise Architect", "snippet": "✅  Architect Answer — Shows Integrity  \n A handful of simple SaaS-to-SaaS syncs with no reuse plan: an iPaaS like Workato, or a \n vendor&#x27;s native connect"}, {"id": "mod-ee-c4", "tag": "C4", "title": "How do you handle client objections? Give scripts.", "modTitle": "Architect: MuleSoft vs Competitors & Objection Handling", "role": "Enterprise Architect", "snippet": "✅  Objection Scripts — Acknowledge → Reframe → Evidence → Proposal  \n OBJECTION SCRIPT \n &quot;MuleSoft is too \n expensive.&quot; \n Acknowledge: &quot;The lic"}, {"id": "mod-ee-c5", "tag": "C5", "title": "How do you build a TCO and value case for MuleSoft?", "modTitle": "Architect: MuleSoft vs Competitors & Objection Handling", "role": "Enterprise Architect", "snippet": "✅  Architect Answer — TCO &amp; Value Framework  \n I compare options over 3–5 years and only use the client&#x27;s own numbers. I never quote vendor \n prices"}, {"id": "mod-ee-c6", "tag": "C6", "title": "How would you run a POC or pilot to prove MuleSoft to a sceptical client?", "modTitle": "Architect: MuleSoft vs Competitors & Objection Handling", "role": "Enterprise Architect", "snippet": "✅  Architect Answer — POC Approach  \n  1.  Pick a real, painful use case, ideally one that touches 2–3 core systems. Don&#x27;t demo &quot;hello  \n world&quot"}, {"id": "mod-ee-e1", "tag": "E1", "title": "How do you tailor the same architecture message for different audiences?", "modTitle": "Architect: MuleSoft vs Competitors & Objection Handling", "role": "Enterprise Architect", "snippet": "✅  Architect Answer  \n \n   \n       AUDIENCE  WHAT THEY CARE ABOUT  HOW TO PITCH IT   \n       Executives  Outcomes,  cost, risk, time One slide. Business outco"}, {"id": "mod-ee-e2", "tag": "E2", "title": "Give me analogies to explain API-led connectivity, the 3 API layers, DataWeave and CloudHub", "modTitle": "Architect: MuleSoft vs Competitors & Objection Handling", "role": "Enterprise Architect", "snippet": "to a non-technical person. \n  ✅  Analogies That Work  \n CONCEPT ANALOGY \n API-led connectivity Restaurant: customers (apps) order from a menu (Experience API)."}, {"id": "mod-ee-e3", "tag": "E3", "title": "\"What is MuleSoft?\" — give 30-second, 2-minute and 5-minute versions.", "modTitle": "Architect: MuleSoft vs Competitors & Objection Handling", "role": "Enterprise Architect", "snippet": "✅  Spoken Scripts  \n ⏱  30 SECONDS \n &quot;MuleSoft is an integration platform from Salesforce. It connects applications, data and devices through \n reusable"}, {"id": "mod-ee-e4", "tag": "E4", "title": "\"What is API-led connectivity?\" — give 30-second, 2-minute and 5-minute versions.", "modTitle": "Architect: MuleSoft vs Competitors & Objection Handling", "role": "Enterprise Architect", "snippet": "✅  Spoken Scripts (architect-level variant of Section A, Q2)  \n ⏱  30 SECONDS \n &quot;It&#x27;s a way of organising integrations into three layers of reusable"}, {"id": "mod-ff-e5", "tag": "E5", "title": "How do you present an architecture to a client steering committee?", "modTitle": "Architect: Client Communication & Stakeholder Alignment", "role": "Enterprise Architect", "snippet": "✅  Presentation Tips  \n Start with the decision you need (&quot;Today we need approval for option B&quot;). \n Context diagram first, then zoom in. Never open"}, {"id": "mod-ff-e6", "tag": "E6", "title": "How do you report status with RAG, and how do you deliver bad news?", "modTitle": "Architect: Client Communication & Stakeholder Alignment", "role": "Enterprise Architect", "snippet": "✅  Architect Answer  \n \n   \n       STATUS  MEANING  WHAT YOU MUST INCLUDE   \n       🟢    Green On track for scope, time and budget Next milestone and date"}, {"id": "mod-ff-e7", "tag": "E7", "title": "How do you handle scope creep from the client?", "modTitle": "Architect: Client Communication & Stakeholder Alignment", "role": "Enterprise Architect", "snippet": "✅  Architect Answer  \n Welcome the idea, then size it: &quot;That&#x27;s a good addition. Let me assess the impact.&quot; \n Compare against the signed scope a"}, {"id": "mod-ff-e8", "tag": "E8", "title": "Give me a jargon-to-plain-English table for client conversations.", "modTitle": "Architect: Client Communication & Stakeholder Alignment", "role": "Enterprise Architect", "snippet": "✅  Jargon → Plain English  \n \n   \n       JARGON  PLAIN ENGLISH TRANSLATION   \n       API  A secure, documented doorway one system uses to ask another for data"}, {"id": "mod-ff-e9", "tag": "E9", "title": "Share email templates for kickoff, risk escalation and go-live.", "modTitle": "Architect: Client Communication & Stakeholder Alignment", "role": "Enterprise Architect", "snippet": "✅  Email Templates  \n kickoff.txt \n Subject: [Project] Integration kickoff – agenda and pre-read \n Hi all, \n Thanks for joining the kickoff on [date, time]. O"}, {"id": "mod-gg-a0", "tag": "A0", "title": "What framework should I use to answer architect-level questions?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Answer Framework  \n 📋  DESIGN QUESTIONS: CLARIFY → ASSUMPTIONS → OPTIONS → TRADE-OFFS → RECOMMENDATION \n → RISKS \n Clarify: ask 2–3 questions (volume, late"}, {"id": "mod-gg-a1", "tag": "A1", "title": "How do you decide whether an integration should be synchronous or asynchronous?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer  \n What they&#x27;re testing: whether you choose patterns from requirements, not habit. \n &quot;I start with one question: is a user or caller"}, {"id": "mod-gg-a2", "tag": "A2", "title": "When would you NOT use all three API-led layers?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer (architect variant of Section O)  \n What they&#x27;re testing: pragmatism over dogma. \n &quot;Layers should earn their place. If a Process API"}, {"id": "mod-gg-a3", "tag": "A3", "title": "How do you size a MuleSoft application and its deployment?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer  \n What they&#x27;re testing: whether you size from data instead of guessing. \n &quot;I get peak TPS, payload size and backend latency from di"}, {"id": "mod-gg-a4", "tag": "A4", "title": "How do you design an enterprise security model for APIs?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer  \n What they&#x27;re testing: defence in depth across layers. \n &quot;I secure each hop differently. Externally: OAuth 2.0 / JWT validation at"}, {"id": "mod-gg-a5", "tag": "A5", "title": "How do you set up API governance across many teams?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer  \n What they&#x27;re testing: scaling standards without becoming a bottleneck. \n &quot;I automate it as much as I can. Design standards live a"}, {"id": "mod-gg-a6", "tag": "A6", "title": "What is a C4E and how would you set one up?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer  \n What they&#x27;re testing: operating-model thinking, not just tech. \n &quot;A Center for Enablement is a small cross-functional team that e"}, {"id": "mod-gg-a7", "tag": "A7", "title": "How do you design for high availability and disaster recovery?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer  \n What they&#x27;re testing: whether you tie design to RPO/RTO. \n &quot;I start with the business RPO and RTO, because they decide cost. For"}, {"id": "mod-gg-a8", "tag": "A8", "title": "How do you design observability for a MuleSoft estate?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer  \n What they&#x27;re testing: operations maturity. \n &quot;Three things: logs, metrics and traces, linked by a correlation ID passed through e"}, {"id": "mod-gg-a9", "tag": "A9", "title": "How do you handle a breaking change to an API with many consumers?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer (architect variant of Section Y, Q8)  \n What they&#x27;re testing: consumer empathy and lifecycle management. \n &quot;First I try to avoid it"}, {"id": "mod-gg-a10", "tag": "A10", "title": "How do you design a canonical data model, and when do you avoid one?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer (architect variant of S19)  \n What they&#x27;re testing: domain thinking and pragmatism. \n &quot;I avoid one giant enterprise-wide model. They"}, {"id": "mod-gg-a11", "tag": "A11", "title": "How do you make an integration reliable when the target system is unreliable?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer  \n What they&#x27;re testing: resilience patterns, chosen deliberately. \n &quot;I separate receiving from delivering with a persistent queue,"}, {"id": "mod-gg-a12", "tag": "A12", "title": "How do you decide between CloudHub 2.0, Runtime Fabric and customer-hosted runtimes?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer (short form; full scenario in S23)  \n What they&#x27;re testing: deployment trade-offs. \n &quot;The default is CloudHub 2.0 because MuleSoft r"}, {"id": "mod-gg-a13", "tag": "A13", "title": "Tell me about a time you disagreed with a client or a senior stakeholder on architecture.", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "(Behavioural) \n  ✅  Model Answer (STAR — replace with your own real example)  \n What they&#x27;re testing: influence without authority, and respect. \n &quot;S:"}, {"id": "mod-gg-a14", "tag": "A14", "title": "How do you review a developer's Mule application as an architect?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer  \n What they&#x27;re testing: what you value in quality. \n &quot;I check the things that hurt in production: does it follow the spec, is error"}, {"id": "mod-gg-a15", "tag": "A15", "title": "How would you approach cost optimisation on an existing MuleSoft estate?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer  \n What they&#x27;re testing: commercial awareness. \n &quot;I start with data: per-app resource usage, traffic and replicas from Runtime Manag"}, {"id": "mod-gg-a16", "tag": "A16", "title": "How do you introduce AI agents (Agentforce / MCP) into an integration architecture safely?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Model Answer (architect variant of N4)  \n What they&#x27;re testing: 2026 awareness plus governance. \n &quot;I treat agents as another consumer of APIs, wi"}, {"id": "mod-gg-a17", "tag": "A17", "title": "Give me a 60-second architect self-introduction template.", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Template (fill in with your own true facts)  \n \n    🎯  🎯  60-SECOND SCRIPT  \n    \"&quot;I&#x27;m [Name], an integration architect with [X] years in integra"}, {"id": "mod-gg-a18", "tag": "A18", "title": "What are the Do's and Don'ts in an architect interview?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Do / Don&#x27;t  \n  ✅  Do  \n Ask clarifying questions before designing \n State assumptions out loud \n Give options and trade-offs, then commit \n Talk about"}, {"id": "mod-gg-a19", "tag": "A19", "title": "What questions should I ask the interviewer for an architect role?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  Smart Questions to Ask  \n &quot;How is the integration estate organised today: central team, C4E or federated?&quot; \n &quot;What&#x27;s the biggest integr"}, {"id": "mod-gg-h1", "tag": "H1", "title": "What actually makes an interviewer happy with an answer?", "modTitle": "Architect: Masterclass Interview Q&A (A1 to A19)", "role": "Enterprise Architect", "snippet": "✅  What Interviewers Listen For  \n \n   \n       THEY&#x27;RE HAPPY WHEN YOU…  BECAUSE IT SIGNALS…   \n       Ask  1–2 clarifying questions before designing You"}, {"id": "mod-hh-h2", "tag": "H2", "title": "What makes a client happy when you explain things?", "modTitle": "Architect: How to Explain So Clients & Interviewers Are Happy", "role": "Enterprise Architect", "snippet": "✅  What Clients Listen For  \n 😊  Clients are happy when you… \n Start from their business problem, in their words \n Talk outcomes: time saved, risk reduced, fa"}, {"id": "mod-hh-h3", "tag": "H3", "title": "Is there one formula for explaining anything clearly to either audience?", "modTitle": "Architect: How to Explain So Clients & Interviewers Are Happy", "role": "Enterprise Architect", "snippet": "✅  The 5-Step Explanation Formula  \n 📋  HEADLINE → WHY IT MATTERS → HOW IT WORKS → PROOF → NEXT STEP \n  1.  Headline (1 sentence): the answer first. &quot;I&#"}, {"id": "mod-hh-h4", "tag": "H4", "title": "Show me weak vs best answers side by side for common questions.", "modTitle": "Architect: How to Explain So Clients & Interviewers Are Happy", "role": "Enterprise Architect", "snippet": "✅  Weak vs Best (Interviewer)  \n \n   \n       QUESTION  ❌ WEAK ANSWER  ⭐ BEST ANSWER   \n       &quot;Why  API-led?&quot;  &quot;It&#x27;s MuleSoft best    prac"}, {"id": "mod-hh-h5", "tag": "H5", "title": "Give me a phrase bank that makes interviewers and clients feel confident.", "modTitle": "Architect: How to Explain So Clients & Interviewers Are Happy", "role": "Enterprise Architect", "snippet": "✅  Phrase Bank  \n 🎯  With interviewers \n &quot;Before I design, can I check two things: peak volume and whether a user is waiting?&quot; \n &quot;I&#x27;ll ass"}, {"id": "mod-hh-h6", "tag": "H6", "title": "Any delivery tips (in person or on video) that make the explanation land?", "modTitle": "Architect: How to Explain So Clients & Interviewers Are Happy", "role": "Enterprise Architect", "snippet": "✅  Delivery Tips  \n Draw while you talk. A simple box diagram beats five minutes of words. On video, share a \n whiteboard or keep a ready diagram (see Section"}];
 const DW_CHALLENGES = [{"name": "1. Group By & Pluck (Order Aggregation)", "input": "[\n  {\"customerId\": \"C01\", \"orderId\": \"O101\", \"amount\": 250},\n  {\"customerId\": \"C02\", \"orderId\": \"O102\", \"amount\": 100},\n  {\"customerId\": \"C01\", \"orderId\": \"O103\", \"amount\": 350}\n]", "script": "%dw 2.0\noutput application/json\n---\npayload groupBy ((item) -> item.customerId) pluck ((orders, cid) -> {\n  customerId: cid,\n  totalSpend: sum(orders.amount),\n  orderCount: sizeOf(orders)\n})", "output": "[\n  {\n    \"customerId\": \"C01\",\n    \"totalSpend\": 600,\n    \"orderCount\": 2\n  },\n  {\n    \"customerId\": \"C02\",\n    \"totalSpend\": 100,\n    \"orderCount\": 1\n  }\n]"}, {"name": "2. Masking Sensitive PII (SSN & Credit Card)", "input": "{\n  \"name\": \"John Doe\",\n  \"ssn\": \"123-45-6789\",\n  \"cardNumber\": \"4111222233334444\"\n}", "script": "%dw 2.0\noutput application/json\nfun maskSsn(val) = val replace /\\d{3}-\\d{2}-(\\d{4})/ with (\"XXX-XX-\" ++ $[1])\nfun maskCard(val) = \"****-****-****-\" ++ val[-4 to -1]\n---\n{\n  name: payload.name,\n  maskedSsn: maskSsn(payload.ssn),\n  maskedCard: maskCard(payload.cardNumber)\n}", "output": "{\n  \"name\": \"John Doe\",\n  \"maskedSsn\": \"XXX-XX-6789\",\n  \"maskedCard\": \"****-****-****-4444\"\n}"}, {"name": "3. Null-Safe Navigation & Defaults", "input": "{\n  \"customer\": {\n    \"name\": \"Alice\"\n  }\n}", "script": "%dw 2.0\noutput application/json\n---\n{\n  customerName: payload.customer.name default \"UNKNOWN\",\n  street: payload.customer.billingAddress.street default \"NO_STREET_ON_FILE\",\n  tags: payload.customer.tags default []\n}", "output": "{\n  \"customerName\": \"Alice\",\n  \"street\": \"NO_STREET_ON_FILE\",\n  \"tags\": []\n}"}, {"name": "4. XML with Namespaces to Canonical JSON", "input": "<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:sap=\"http://sap.com/orders\">\n  <soap:Body>\n    <sap:OrderResponse>\n      <sap:OrderID>98871</sap:OrderID>\n      <sap:Status>CONFIRMED</sap:Status>\n    </sap:OrderResponse>\n  </soap:Body>\n</soap:Envelope>", "script": "%dw 2.0\noutput application/json\nns soap http://schemas.xmlsoap.org/soap/envelope/\nns sap http://sap.com/orders\n---\n{\n  orderId: payload.soap#Envelope.soap#Body.sap#OrderResponse.sap#OrderID,\n  status: payload.soap#Envelope.soap#Body.sap#OrderResponse.sap#Status,\n  processedAt: now()\n}", "output": "{\n  \"orderId\": \"98871\",\n  \"status\": \"CONFIRMED\",\n  \"processedAt\": \"2026-11-14T00:00:00Z\"\n}"}];
 
+const TIER_SPECS = {
+  channels: {
+    title: "Consumer Channel Tier (Salesforce Desktop & AI)",
+    html: `<strong>Callers:</strong> Salesforce Employee Desktop, Native iOS/Android App, Conversational AI Agent.<br>
+           <strong>Protocol:</strong> REST JSON over HTTPS with OAuth 2.0 JWT Bearer Token.<br>
+           <strong>Security:</strong> TLS 1.3, Client ID Enforcement, IP Rate Limiting.<br>
+           <strong>Traffic:</strong> 70,000 requests/day, peak 150 TPS during monthly billing cycles.`
+  },
+  xapi: {
+    title: "Experience API (Customer & Desktop XAPI)",
+    html: `<strong>Role:</strong> Channel-specific request shaping, auth validation, and rate limiting.<br>
+           <strong>Target SLA:</strong> &lt; 150 ms response time.<br>
+           <strong>Policies:</strong> Client ID enforcement, JWT validation, Spike Control (200 req/sec limit).<br>
+           <strong>AutoDiscovery:</strong> API Manager auto-registers flow ID; dynamic policy sync.`
+  },
+  papi: {
+    title: "Process API (Billing & Order PAPI with Scatter-Gather)",
+    html: `<strong>Role:</strong> Business orchestration, composite data aggregation, and concurrency.<br>
+           <strong>Key Design:</strong> Scatter-Gather executes SAP SAPI and DynamoDB SAPI in parallel.<br>
+           <strong>Performance Impact:</strong> Latency slashed from 2.5s down to 1.1s (55% reduction).<br>
+           <strong>Error Strategy:</strong> On-Error-Propagate bubbles SAP 500 errors; compensates partial writes.`
+  },
+  sap: {
+    title: "SAP System API (SAP S/4HANA OData)",
+    html: `<strong>Backend:</strong> SAP S/4HANA Cloud OData REST Services.<br>
+           <strong>Domains:</strong> Customer deposits, account balances, and contract accounts.<br>
+           <strong>Resilience:</strong> Connection pooling with max 20 connections; Until Successful (maxRetries=3, 2000ms delay).<br>
+           <strong>Security:</strong> Technical user credentials stored in AWS Secrets Manager.`
+  },
+  aws: {
+    title: "AWS Cloud System API (DynamoDB & S3)",
+    html: `<strong>Backend:</strong> AWS DynamoDB (Universal Customer Data Platform - UCDP) &amp; S3.<br>
+           <strong>Authentication:</strong> AWS Signature Version 4 (SigV4) with IAM Least Privilege.<br>
+           <strong>Usage:</strong> Sub-second reads of customer notification preferences and dynamic DWL scripts.<br>
+           <strong>Average Latency:</strong> 45 ms.`
+  },
+  mq: {
+    title: "Messaging SAPI (Anypoint MQ & Event Replay)",
+    html: `<strong>Broker:</strong> Anypoint MQ with Standard Queues and Message Exchanges.<br>
+           <strong>Acknowledgement Mode:</strong> MANUAL (ack sent only after downstream DB commit).<br>
+           <strong>Retention:</strong> 7 days retention for disaster recovery and event replay.<br>
+           <strong>Dead Letter Queue:</strong> Max delivery attempts = 5 before rerouting to DLQ with alert.`
+  }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   loadChallenge(0);
+  updateCalculator();
 
-  // Keyboard shortcut Ctrl+K
   document.addEventListener('keydown', (e) => {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
       e.preventDefault();
@@ -10419,6 +10844,45 @@ function revealAnswer(btn) {
   }
 }
 
+// Interactive Tier Inspection
+function inspectTier(tierKey) {
+  const data = TIER_SPECS[tierKey];
+  if (!data) return;
+  const drawer = document.getElementById('inspector-drawer');
+  document.getElementById('insp-title').innerText = data.title;
+  document.getElementById('insp-content').innerHTML = data.html;
+  drawer.classList.add('active');
+  drawer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function closeInspector() {
+  document.getElementById('inspector-drawer').classList.remove('active');
+}
+
+// vCore Sizing Calculator
+function updateCalculator() {
+  const tps = parseInt(document.getElementById('slider-tps').value);
+  const latency = parseInt(document.getElementById('slider-latency').value);
+  const payload = parseInt(document.getElementById('slider-payload').value);
+
+  document.getElementById('lbl-tps').innerHTML = `Peak Transactions / Second (TPS): <strong>${tps} TPS</strong>`;
+  document.getElementById('lbl-latency').innerHTML = `Average Backend Latency: <strong>${latency} ms</strong>`;
+  document.getElementById('lbl-payload').innerHTML = `Average Payload Size: <strong>${payload} KB</strong>`;
+
+  const concurrency = Math.round(tps * (latency / 1000.0));
+  const memoryMb = Math.round((concurrency * payload * 10) / 1024.0 * 10) / 10;
+  
+  const baseVcores = Math.max(0.1, concurrency / 60.0);
+  const sizes = [0.1, 0.2, 0.5, 1.0, 1.5, 2.0, 4.0, 8.0];
+  const recSize = sizes.find(s => s >= baseVcores) || 8.0;
+  const workers = (tps > 50 || latency > 500) ? 2 : 1;
+
+  document.getElementById('calc-vcore-rec').innerText = `${recSize} vCore × ${workers} Worker${workers > 1 ? 's' : ''}`;
+  document.getElementById('calc-total-vc').innerText = `${recSize * workers} vCores (${workers > 1 ? 'HA Multi-AZ' : 'Single'})`;
+  document.getElementById('calc-concur').innerText = `${concurrency} requests`;
+  document.getElementById('calc-mem').innerText = `${memoryMb} MB`;
+}
+
 // Search Modal
 function openSearchModal() {
   const modal = document.getElementById('search-modal');
@@ -10430,8 +10894,7 @@ function openSearchModal() {
 }
 
 function closeSearchModal(e) {
-  const modal = document.getElementById('search-modal');
-  modal.classList.remove('active');
+  document.getElementById('search-modal').classList.remove('active');
 }
 
 function onSearchInput(query) {
