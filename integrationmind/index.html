@@ -1889,6 +1889,1039 @@ body.practice-mode-on .faq-card {
   }
 }
 
+
+/* ==========================================================================
+   MODULE A: INTERVIEW COACHING & TELEPROMPTER STYLES
+   ========================================================================== */
+
+.coaching-portal {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 36px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Header Band */
+.coaching-header-band {
+  background: linear-gradient(135deg, rgba(62, 99, 221, 0.08) 0%, rgba(0, 242, 254, 0.04) 100%);
+  border: 1px solid rgba(62, 99, 221, 0.2);
+  border-radius: 16px;
+  padding: 24px 28px;
+  position: relative;
+  overflow: hidden;
+}
+[data-theme="light"] .coaching-header-band {
+  background: linear-gradient(135deg, #f0f7ff 0%, #f8fafc 100%);
+  border: 1px solid #cbd5e1;
+}
+
+.coaching-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  background: rgba(0, 242, 254, 0.08);
+  border: 1px solid rgba(0, 242, 254, 0.25);
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #00F2FE;
+  margin-bottom: 12px;
+}
+[data-theme="light"] .coaching-eyebrow {
+  background: #e0f2fe;
+  border-color: #7dd3fc;
+  color: #0284c7;
+}
+
+.coaching-headline {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  line-height: 1.25;
+}
+[data-theme="light"] .coaching-headline {
+  color: #0f172a;
+}
+
+.coaching-subtext {
+  font-size: 0.98rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 860px;
+}
+[data-theme="light"] .coaching-subtext {
+  color: #475569;
+}
+
+/* Candidate Profile Card */
+.coaching-profile-card {
+  background: rgba(15, 21, 35, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 28px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.4);
+}
+[data-theme="light"] .coaching-profile-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+.profile-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+[data-theme="light"] .profile-top-row {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.profile-identity {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.profile-avatar-wrap {
+  position: relative;
+}
+
+.profile-avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #00F2FE 0%, #4FACFE 50%, #845EC2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #090D16;
+  box-shadow: 0 6px 18px rgba(0, 242, 254, 0.35);
+}
+
+.profile-status-dot {
+  position: absolute;
+  bottom: -2px;
+  right: -2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #10B981;
+  border: 2.5px solid #090D16;
+  box-shadow: 0 0 8px #10B981;
+}
+[data-theme="light"] .profile-status-dot {
+  border-color: #ffffff;
+}
+
+.profile-name {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+}
+[data-theme="light"] .profile-name {
+  color: #0f172a;
+}
+
+.profile-title {
+  font-size: 0.92rem;
+  color: #00F2FE;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+[data-theme="light"] .profile-title {
+  color: #0284c7;
+}
+
+.profile-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.profile-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: #94a3b8;
+}
+[data-theme="light"] .profile-badge {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+
+.profile-badge.badge-exp {
+  background: rgba(0, 242, 254, 0.1);
+  border-color: rgba(0, 242, 254, 0.3);
+  color: #00F2FE;
+}
+[data-theme="light"] .profile-badge.badge-exp {
+  background: #e0f2fe;
+  border-color: #7dd3fc;
+  color: #0369a1;
+}
+
+.profile-badge.badge-prod {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #10B981;
+}
+[data-theme="light"] .profile-badge.badge-prod {
+  background: #dcfce7;
+  border-color: #86efac;
+  color: #15803d;
+}
+
+/* Skills Section */
+.profile-skills-section {
+  padding-top: 20px;
+}
+
+.profile-skills-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.skills-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+[data-theme="light"] .skills-title {
+  color: #64748b;
+}
+
+.skills-count {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #00F2FE;
+  background: rgba(0, 242, 254, 0.08);
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+[data-theme="light"] .skills-count {
+  color: #0284c7;
+  background: #e0f2fe;
+}
+
+.coaching-skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.coaching-skill-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  transition: all 0.2s ease;
+}
+.coaching-skill-pill:hover {
+  background: rgba(0, 242, 254, 0.08);
+  border-color: rgba(0, 242, 254, 0.3);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+[data-theme="light"] .coaching-skill-pill {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+}
+[data-theme="light"] .coaching-skill-pill:hover {
+  background: #f0f9ff;
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+/* ==========================================================================
+   COMPARATIVE BATTLEBOARD
+   ========================================================================== */
+.battleboard-section {
+  margin: 10px 0;
+}
+
+.battleboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 900px) {
+  .battleboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.battleboard-col {
+  border-radius: 18px;
+  padding: 24px;
+  backdrop-filter: blur(14px);
+  position: relative;
+  overflow: hidden;
+}
+
+.battleboard-col.positive-col {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.06) 0%, rgba(15, 21, 35, 0.9) 100%);
+  border: 1.5px solid rgba(16, 185, 129, 0.3);
+  box-shadow: 0 10px 30px -5px rgba(16, 185, 129, 0.15);
+}
+[data-theme="light"] .battleboard-col.positive-col {
+  background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+  border: 1.5px solid #86efac;
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.08);
+}
+
+.battleboard-col.negative-col {
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.06) 0%, rgba(15, 21, 35, 0.9) 100%);
+  border: 1.5px solid rgba(239, 68, 68, 0.3);
+  box-shadow: 0 10px 30px -5px rgba(239, 68, 68, 0.15);
+}
+[data-theme="light"] .battleboard-col.negative-col {
+  background: linear-gradient(180deg, #fef2f2 0%, #ffffff 100%);
+  border: 1.5px solid #fca5a5;
+  box-shadow: 0 10px 25px -5px rgba(239, 68, 68, 0.08);
+}
+
+.battleboard-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+[data-theme="light"] .battleboard-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.bb-header-icon {
+  font-size: 1.8rem;
+}
+
+.bb-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0 0 3px 0;
+  letter-spacing: 0.02em;
+}
+.positive-col .bb-title {
+  color: #10B981;
+}
+[data-theme="light"] .positive-col .bb-title {
+  color: #15803d;
+}
+.negative-col .bb-title {
+  color: #EF4444;
+}
+[data-theme="light"] .negative-col .bb-title {
+  color: #b91c1c;
+}
+
+.bb-subtitle {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #94a3b8;
+}
+[data-theme="light"] .bb-subtitle {
+  color: #64748b;
+}
+
+.battleboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bb-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  transition: all 0.2s ease;
+}
+.bb-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateX(4px);
+}
+[data-theme="light"] .bb-item {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+[data-theme="light"] .bb-item:hover {
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.bb-bullet {
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.bb-content strong {
+  display: block;
+  font-size: 0.92rem;
+  color: #ffffff;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+[data-theme="light"] .bb-content strong {
+  color: #0f172a;
+}
+
+.bb-content p {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.5;
+}
+[data-theme="light"] .bb-content p {
+  color: #475569;
+}
+
+.bb-content p.bb-warn {
+  color: #f87171;
+  font-style: italic;
+}
+[data-theme="light"] .bb-content p.bb-warn {
+  color: #dc2626;
+}
+
+/* ==========================================================================
+   INTERACTIVE TELEPROMPTER STUDIO
+   ========================================================================== */
+.teleprompter-card {
+  background: linear-gradient(180deg, rgba(17, 24, 39, 0.95) 0%, rgba(11, 15, 25, 0.95) 100%);
+  border: 1.5px solid rgba(0, 242, 254, 0.3);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 20px 45px -10px rgba(0, 242, 254, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+[data-theme="light"] .teleprompter-card {
+  background: #ffffff;
+  border: 1.5px solid #38bdf8;
+  box-shadow: 0 20px 40px -10px rgba(14, 165, 233, 0.12);
+}
+
+.teleprompter-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.teleprompter-heading-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.tp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #f87171;
+  width: fit-content;
+}
+[data-theme="light"] .tp-badge {
+  background: #fee2e2;
+  border-color: #fca5a5;
+  color: #dc2626;
+}
+
+.tp-rec-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  animation: pulse 1.5s infinite;
+}
+
+.tp-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+[data-theme="light"] .tp-title {
+  color: #0f172a;
+}
+
+.teleprompter-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tp-stat-chip {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+}
+[data-theme="light"] .tp-stat-chip {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+  color: #475569;
+}
+
+.tp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+.tp-copy-btn {
+  background: rgba(0, 242, 254, 0.12);
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  color: #00F2FE;
+}
+.tp-copy-btn:hover {
+  background: #00F2FE;
+  color: #090D16;
+  box-shadow: 0 4px 16px rgba(0, 242, 254, 0.4);
+}
+[data-theme="light"] .tp-copy-btn {
+  background: #f0f9ff;
+  border: 1px solid #0284c7;
+  color: #0284c7;
+}
+[data-theme="light"] .tp-copy-btn:hover {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.tp-play-btn {
+  background: linear-gradient(135deg, #3E63DD 0%, #845EC2 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(62, 99, 221, 0.35);
+}
+.tp-play-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(62, 99, 221, 0.5);
+}
+
+/* Teleprompter Progress Track */
+.teleprompter-progress-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+[data-theme="light"] .teleprompter-progress-track {
+  background: #e2e8f0;
+}
+
+.teleprompter-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00F2FE, #3E63DD, #845EC2);
+  transition: width 0.3s linear;
+}
+
+/* Speech Box */
+.teleprompter-speech-box {
+  background: rgba(9, 13, 22, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 32px 36px;
+  position: relative;
+  margin-bottom: 26px;
+}
+[data-theme="light"] .teleprompter-speech-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+
+.tp-watermark {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-family: Georgia, serif;
+  font-size: 6rem;
+  color: rgba(255, 255, 255, 0.03);
+  pointer-events: none;
+  line-height: 1;
+}
+[data-theme="light"] .tp-watermark {
+  color: rgba(0, 0, 0, 0.04);
+}
+
+.tp-sentence {
+  font-size: 1.12rem;
+  line-height: 1.75;
+  color: #e2e8f0;
+  margin: 0 0 16px 0;
+  transition: all 0.3s ease;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+.tp-sentence:last-child {
+  margin-bottom: 0;
+}
+[data-theme="light"] .tp-sentence {
+  color: #1e293b;
+}
+
+.tp-sentence.tp-active {
+  background: rgba(0, 242, 254, 0.12);
+  border-left: 4px solid #00F2FE;
+  color: #ffffff;
+  transform: translateX(6px);
+  box-shadow: 0 4px 20px rgba(0, 242, 254, 0.15);
+}
+[data-theme="light"] .tp-sentence.tp-active {
+  background: #e0f2fe;
+  border-left: 4px solid #0284c7;
+  color: #0f172a;
+}
+
+.hl-cyan { color: #00F2FE; }
+[data-theme="light"] .hl-cyan { color: #0284c7; font-weight: 700; }
+.hl-blue { color: #60a5fa; }
+[data-theme="light"] .hl-blue { color: #2563eb; font-weight: 700; }
+.hl-green { color: #34d399; }
+[data-theme="light"] .hl-green { color: #059669; font-weight: 700; }
+.hl-indigo { color: #a78bfa; }
+[data-theme="light"] .hl-indigo { color: #7c3aed; font-weight: 700; }
+
+.script-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: 0.95em;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+[data-theme="light"] .script-badge {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+/* Delivery Rules Grid */
+.delivery-rules-section {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 24px;
+}
+[data-theme="light"] .delivery-rules-section {
+  border-top: 1px solid #e2e8f0;
+}
+
+.delivery-rules-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.dr-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+[data-theme="light"] .dr-title {
+  color: #0f172a;
+}
+
+.dr-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #00F2FE;
+  background: rgba(0, 242, 254, 0.08);
+  padding: 3px 10px;
+  border-radius: 9999px;
+}
+[data-theme="light"] .dr-tag {
+  color: #0284c7;
+  background: #e0f2fe;
+}
+
+.delivery-rules-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+@media (max-width: 1024px) {
+  .delivery-rules-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .delivery-rules-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.delivery-rule-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 18px;
+  transition: all 0.2s ease;
+}
+.delivery-rule-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-3px);
+  border-color: rgba(0, 242, 254, 0.3);
+}
+[data-theme="light"] .delivery-rule-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+[data-theme="light"] .delivery-rule-card:hover {
+  background: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.dr-icon {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.dr-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+[data-theme="light"] .dr-card-title {
+  color: #0f172a;
+}
+
+.dr-card-desc {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  line-height: 1.55;
+  margin: 0;
+}
+[data-theme="light"] .dr-card-desc {
+  color: #475569;
+}
+
+/* ==========================================================================
+   FLORIDA POWER & LIGHT BENCHMARKS
+   ========================================================================== */
+.fpl-benchmarks-section {
+  background: rgba(15, 21, 35, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 26px 28px;
+  backdrop-filter: blur(14px);
+}
+[data-theme="light"] .fpl-benchmarks-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+.fpl-bench-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+[data-theme="light"] .fpl-bench-header {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.fpl-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #00F2FE;
+  letter-spacing: 0.06em;
+  display: block;
+  margin-bottom: 4px;
+}
+[data-theme="light"] .fpl-tag {
+  color: #0284c7;
+}
+
+.fpl-bench-heading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+[data-theme="light"] .fpl-bench-heading {
+  color: #0f172a;
+}
+
+.fpl-bench-sub {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+[data-theme="light"] .fpl-bench-sub {
+  color: #64748b;
+}
+
+.fpl-bench-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 14px;
+}
+@media (max-width: 1200px) {
+  .fpl-bench-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .fpl-bench-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.fpl-bench-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+.fpl-bench-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 242, 254, 0.3);
+  background: rgba(255, 255, 255, 0.04);
+}
+[data-theme="light"] .fpl-bench-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+[data-theme="light"] .fpl-bench-card:hover {
+  background: #ffffff;
+  border-color: #0284c7;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.fpl-bench-val {
+  font-family: var(--font-mono);
+  font-size: 1.7rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.fpl-bench-lbl {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+[data-theme="light"] .fpl-bench-lbl {
+  color: #0f172a;
+}
+
+.fpl-bench-subdetail {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+[data-theme="light"] .fpl-bench-subdetail {
+  color: #64748b;
+}
+
+/* ==========================================================================
+   TOPIC DIRECTORY QUICK-JUMP GRID
+   ========================================================================== */
+.topic-directory-section {
+  background: rgba(15, 21, 35, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 26px 28px;
+  backdrop-filter: blur(14px);
+}
+[data-theme="light"] .topic-directory-section {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+.topic-dir-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+[data-theme="light"] .topic-dir-header {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.topic-dir-tag {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #3E63DD;
+  letter-spacing: 0.06em;
+  display: block;
+  margin-bottom: 4px;
+}
+[data-theme="light"] .topic-dir-tag {
+  color: #2563eb;
+}
+
+.topic-dir-heading {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+[data-theme="light"] .topic-dir-heading {
+  color: #0f172a;
+}
+
+.topic-dir-count {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+[data-theme="light"] .topic-dir-count {
+  color: #475569;
+  background: #f1f5f9;
+}
+
+.topic-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: 10px;
+}
+
+.topic-nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+.topic-nav-pill:hover {
+  background: rgba(0, 242, 254, 0.08);
+  border-color: rgba(0, 242, 254, 0.35);
+  transform: translateY(-2px);
+}
+[data-theme="light"] .topic-nav-pill {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+[data-theme="light"] .topic-nav-pill:hover {
+  background: #f0f9ff;
+  border-color: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.1);
+}
+
+.topic-nav-code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #00F2FE;
+  background: rgba(0, 242, 254, 0.1);
+  padding: 3px 6px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+[data-theme="light"] .topic-nav-code {
+  color: #0284c7;
+  background: #e0f2fe;
+}
+
+.topic-nav-icon {
+  font-size: 1.05rem;
+  flex-shrink: 0;
+}
+
+.topic-nav-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+[data-theme="light"] .topic-nav-title {
+  color: #334155;
+}
+
   </style>
 </head>
 <body>
@@ -2258,6 +3291,517 @@ body.practice-mode-on .faq-card {
   </div>
 
 
+    <div class="coaching-portal">
+      <!-- Section Header -->
+      <div class="coaching-header-band">
+        <div class="coaching-eyebrow">
+          <span class="pulse-dot"></span>
+          <span>MODULE A • INTERVIEW COACHING &amp; STRATEGY</span>
+        </div>
+        <h2 class="coaching-headline">Master the 2-Minute Pitch &amp; Enterprise First Impressions</h2>
+        <p class="coaching-subtext">
+          The interview panel forms their definitive opinion in the first 120 seconds. 
+          Use this verified verbal script, memorize the strategic cadence, and establish immediate technical authority with real utility metrics.
+        </p>
+      </div>
+
+      <!-- Candidate Profile & Competencies Card -->
+      <div class="coaching-profile-card">
+        <div class="profile-top-row">
+          <div class="profile-identity">
+            <div class="profile-avatar-wrap">
+              <div class="profile-avatar">NP</div>
+              <span class="profile-status-dot" title="Production Ready"></span>
+            </div>
+            <div class="profile-meta">
+              <h3 class="profile-name">Niranjan Potter</h3>
+              <p class="profile-title">Senior MuleSoft Integration Engineer &amp; Enterprise Architect</p>
+              <div class="profile-badge-row">
+                <span class="profile-badge badge-exp">⚡ 5.5 Years Enterprise MuleSoft</span>
+                <span class="profile-badge badge-fpl">🏛️ Florida Power &amp; Light (NextEra Energy)</span>
+                <span class="profile-badge badge-date">📅 October 2026 Edition</span>
+                <span class="profile-badge badge-prod">✓ Production Ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-skills-section">
+          <div class="profile-skills-header">
+            <span class="skills-title">Core Platform Competencies &amp; Enterprise Connectors</span>
+            <span class="skills-count">20 Core Pillars</span>
+          </div>
+          <div class="coaching-skills-wrap">
+            <span class="coaching-skill-pill"><span class="pill-icon">⚡</span> Salesforce & Bulk API 2.0</span><span class="coaching-skill-pill"><span class="pill-icon">📡</span> Platform Events & CDC (Replay ID)</span><span class="coaching-skill-pill"><span class="pill-icon">🔐</span> OAuth 2.0 & JWT Bearer Token Flow</span><span class="coaching-skill-pill"><span class="pill-icon">☁️</span> AWS S3, SQS & DynamoDB</span><span class="coaching-skill-pill"><span class="pill-icon">🔀</span> Scatter-Gather Parallel Router</span><span class="coaching-skill-pill"><span class="pill-icon">⚡</span> Parallel ForEach Scope</span><span class="coaching-skill-pill"><span class="pill-icon">📦</span> Batch Processing Engine (3-Phase)</span><span class="coaching-skill-pill"><span class="pill-icon">🔄</span> Until Successful & Circuit Breakers</span><span class="coaching-skill-pill"><span class="pill-icon">🛡️</span> Error Handling (Continue vs Propagate)</span><span class="coaching-skill-pill"><span class="pill-icon">📬</span> Anypoint MQ (Manual ACK & Idempotency)</span><span class="coaching-skill-pill"><span class="pill-icon">💻</span> DataWeave 2.0 (Core & Custom Functions)</span><span class="coaching-skill-pill"><span class="pill-icon">🧪</span> MUnit 95% Test Coverage (Mocking & Gates)</span><span class="coaching-skill-pill"><span class="pill-icon">💾</span> Distributed ObjectStore v2 (TTL & Partitions)</span><span class="coaching-skill-pill"><span class="pill-icon">🌐</span> CloudHub 1.0 vs 2.0 (EKS Architecture)</span><span class="coaching-skill-pill"><span class="pill-icon">🏛️</span> 3-Tier API-Led Connectivity (XAPI/PAPI/SAPI)</span><span class="coaching-skill-pill"><span class="pill-icon">📜</span> RAML 1.0 Design-First Specification</span><span class="coaching-skill-pill"><span class="pill-icon">🔒</span> Mutual TLS (mTLS) & Zero-Trust Policies</span><span class="coaching-skill-pill"><span class="pill-icon">🤝</span> Distributed Sagas & Compensation Flows</span><span class="coaching-skill-pill"><span class="pill-icon">📊</span> Splunk & CorrelationId Tracing</span><span class="coaching-skill-pill"><span class="pill-icon">🚀</span> GitHub Actions CI/CD to CloudHub</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparative Battleboard: Killer Phrases vs Career Traps -->
+      <div class="battleboard-section">
+        <div class="battleboard-grid">
+          <!-- Positive Column -->
+          <div class="battleboard-col positive-col">
+            <div class="battleboard-header">
+              <div class="bb-header-icon">✅</div>
+              <div class="bb-header-text">
+                <h4 class="bb-title">KILLER PHRASES TO USE</h4>
+                <span class="bb-subtitle">Signals Senior &amp; Architect Maturity</span>
+              </div>
+            </div>
+            <ul class="battleboard-list">
+              <li class="bb-item">
+                <span class="bb-bullet">⚡</span>
+                <div class="bb-content">
+                  <strong>&quot;API-led connectivity with strict boundary separation&quot;</strong>
+                  <p>Shows you understand decoupled architecture across Experience, Process, and System APIs.</p>
+                </div>
+              </li>
+              <li class="bb-item">
+                <span class="bb-bullet">⚡</span>
+                <div class="bb-content">
+                  <strong>&quot;5M+ monthly API calls with 99.9% uptime SLA&quot;</strong>
+                  <p>Grounds your answers in high-volume enterprise reality, not academic theory.</p>
+                </div>
+              </li>
+              <li class="bb-item">
+                <span class="bb-bullet">⚡</span>
+                <div class="bb-content">
+                  <strong>&quot;95% MUnit branch coverage with all externals strictly mocked&quot;</strong>
+                  <p>Demonstrates engineering discipline, CI/CD quality gates, and automated test rigor.</p>
+                </div>
+              </li>
+              <li class="bb-item">
+                <span class="bb-bullet">⚡</span>
+                <div class="bb-content">
+                  <strong>&quot;SAP S/4HANA OData integration with idempotent queues &amp; DLQs&quot;</strong>
+                  <p>Highlights enterprise ERP integration depth, manual ACK patterns, and poison message handling.</p>
+                </div>
+              </li>
+              <li class="bb-item">
+                <span class="bb-bullet">⚡</span>
+                <div class="bb-content">
+                  <strong>&quot;Zero-downtime rolling deployments via CloudHub 2.0 Ingress&quot;</strong>
+                  <p>Shows modern containerized CloudHub 2.0 (EKS) deployment and traffic-shifting knowledge.</p>
+                </div>
+              </li>
+              <li class="bb-item">
+                <span class="bb-bullet">⚡</span>
+                <div class="bb-content">
+                  <strong>&quot;CorrelationId-based distributed end-to-end tracing via Splunk&quot;</strong>
+                  <p>Proves you design for observability and production root-cause diagnostics.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Negative Column -->
+          <div class="battleboard-col negative-col">
+            <div class="battleboard-header">
+              <div class="bb-header-icon">❌</div>
+              <div class="bb-header-text">
+                <h4 class="bb-title">CAREER TRAPS — NEVER SAY THESE</h4>
+                <span class="bb-subtitle">Instant Junior / Low-Impact Red Flags</span>
+              </div>
+            </div>
+            <ul class="battleboard-list">
+              <li class="bb-item">
+                <span class="bb-bullet">🚫</span>
+                <div class="bb-content">
+                  <strong>&quot;I just follow what the team or lead tells me to do&quot;</strong>
+                  <p class="bb-warn">Red flag: Shows zero technical ownership or architectural initiative.</p>
+                </div>
+              </li>
+              <li class="bb-item">
+                <span class="bb-bullet">🚫</span>
+                <div class="bb-content">
+                  <strong>&quot;I'm not really sure, but I think that's how it works...&quot;</strong>
+                  <p class="bb-warn">Red flag: Erodes confidence. If unsure, pivot to first-principles reasoning.</p>
+                </div>
+              </li>
+              <li class="bb-item">
+                <span class="bb-bullet">🚫</span>
+                <div class="bb-content">
+                  <strong>&quot;I haven't used that connector or feature yet&quot;</strong>
+                  <p class="bb-warn">Red flag: Better to say &quot;While my primary production focus was SAP and DynamoDB, the protocol patterns (OData, REST, SDK) are identical.&quot;</p>
+                </div>
+              </li>
+              <li class="bb-item">
+                <span class="bb-bullet">🚫</span>
+                <div class="bb-content">
+                  <strong>&quot;It was mostly just basic CRUD operations&quot;</strong>
+                  <p class="bb-warn">Red flag: Trivializes enterprise engineering and undercuts your perceived value.</p>
+                </div>
+              </li>
+              <li class="bb-item">
+                <span class="bb-bullet">🚫</span>
+                <div class="bb-content">
+                  <strong>&quot;I only worked on a small isolated piece of the project&quot;</strong>
+                  <p class="bb-warn">Red flag: Signals a siloed mindset instead of end-to-end platform awareness.</p>
+                </div>
+              </li>
+              <li class="bb-item">
+                <span class="bb-bullet">🚫</span>
+                <div class="bb-content">
+                  <strong>&quot;Error handling and security was configured by another team&quot;</strong>
+                  <p class="bb-warn">Red flag: Senior developers and architects own resilience and zero-trust security.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive 2-Minute Pitch Teleprompter Studio -->
+      <div class="teleprompter-card" id="teleprompter-studio">
+        <div class="teleprompter-top-bar">
+          <div class="teleprompter-heading-group">
+            <div class="tp-badge">
+              <span class="tp-rec-dot"></span>
+              <span>EXECUTIVE VERBAL SCRIPT</span>
+            </div>
+            <h3 class="tp-title">🎯 The Perfect 2-Minute Pitch (Say These Exact Words)</h3>
+          </div>
+          <div class="teleprompter-actions">
+            <span class="tp-stat-chip">⏱️ Target: 110s - 120s (~90 WPM)</span>
+            <span class="tp-stat-chip">📝 175 Words</span>
+            <button class="tp-btn tp-copy-btn" onclick="copyPitchScript(this)">
+              <span class="tp-btn-icon">📋</span>
+              <span class="tp-btn-text">Copy Script</span>
+            </button>
+            <button class="tp-btn tp-play-btn" id="tpPlayBtn" onclick="toggleTeleprompter()">
+              <span class="tp-btn-icon">▶️</span>
+              <span class="tp-btn-text">Practice Teleprompter</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Teleprompter Progress Bar -->
+        <div class="teleprompter-progress-track" id="tpProgressTrack" style="display:none;">
+          <div class="teleprompter-progress-bar" id="tpProgressBar"></div>
+        </div>
+
+        <!-- Teleprompter Speech Box -->
+        <div class="teleprompter-speech-box" id="tpSpeechBox">
+          <div class="tp-watermark">&ldquo;</div>
+          
+          <p class="tp-sentence" data-idx="0">
+            &quot;Good morning/afternoon. I'm <strong class="hl-cyan">Niranjan Potter</strong>, and I have <span class="script-badge hl-blue">5.5 years of experience</span> as a MuleSoft Integration Engineer. I've been working at <strong class="hl-cyan">NextEra Energy — Florida Power &amp; Light</strong>, which is one of the largest electric utility companies in the United States, serving over <span class="script-badge hl-green">5 million customers</span>.
+          </p>
+
+          <p class="tp-sentence" data-idx="1">
+            In my role, I've built and maintained an enterprise-grade <strong class="hl-indigo">API-led connectivity platform</strong> that connects <strong class="hl-cyan">Salesforce</strong> — our frontend channel — with <strong class="hl-cyan">SAP S/4HANA</strong>, <strong class="hl-cyan">AWS DynamoDB</strong>, and <strong class="hl-cyan">PostgreSQL</strong> backends. This platform handles <span class="script-badge hl-green">5 million+ monthly API calls</span> for domains like billing, account maintenance, payment options, and customer 360.
+          </p>
+
+          <p class="tp-sentence" data-idx="2">
+            I work across all three API layers — <strong class="hl-indigo">Experience, Process, and System APIs</strong> — following a <strong class="hl-cyan">design-first approach with RAML</strong>, maintaining <span class="script-badge hl-green">95% MUnit test coverage</span>, and deploying through <strong class="hl-cyan">GitHub Actions CI/CD pipelines to CloudHub</strong>.
+          </p>
+
+          <p class="tp-sentence" data-idx="3">
+            Some key technologies I've worked with extensively include <strong class="hl-indigo">DataWeave 2.0</strong>, <strong class="hl-indigo">Anypoint MQ with MANUAL ack and idempotency</strong>, <strong class="hl-cyan">AWS S3 and DynamoDB</strong>, and the <strong class="hl-cyan">SAP S/4HANA Cloud Connector for OData-based integrations</strong>.&quot;
+          </p>
+        </div>
+
+        <!-- 4 Golden Rules of Delivery -->
+        <div class="delivery-rules-section">
+          <div class="delivery-rules-header">
+            <span class="dr-title">💡 How to Deliver This — 4 Psychological Directives</span>
+            <span class="dr-tag">Executive Presence</span>
+          </div>
+          <div class="delivery-rules-grid">
+            <div class="delivery-rule-card">
+              <div class="dr-icon">⏱️</div>
+              <h5 class="dr-card-title">Pacing &amp; Cadence</h5>
+              <p class="dr-card-desc">Speak at a moderate pace (85–95 words per minute). Don't rush. Senior interviewers value clarity, gravitas, and executive composure over rapid-fire speed.</p>
+            </div>
+            <div class="delivery-rule-card">
+              <div class="dr-icon">⏸️</div>
+              <h5 class="dr-card-title">The 1-Second Pause</h5>
+              <p class="dr-card-desc">When you say <strong>&quot;5 million+ monthly API calls&quot;</strong> — pause for 1 full second. Let the magnitude of the enterprise scale sink into the room.</p>
+            </div>
+            <div class="delivery-rule-card">
+              <div class="dr-icon">👁️</div>
+              <h5 class="dr-card-title">Unwavering Eye Contact</h5>
+              <p class="dr-card-desc">Maintain steady, direct eye contact when saying <strong>&quot;95% MUnit test coverage&quot;</strong> — this communicates uncompromising standards in software reliability.</p>
+            </div>
+            <div class="delivery-rule-card">
+              <div class="dr-icon">🎯</div>
+              <h5 class="dr-card-title">The Power Handoff</h5>
+              <p class="dr-card-desc">End with: <em>&quot;I'd love to dive deeper into any of these areas — what would you like to explore first?&quot;</em> This immediately gives YOU psychological control of the interview agenda.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Florida Power & Light Enterprise Benchmarks -->
+      <div class="fpl-benchmarks-section">
+        <div class="fpl-bench-header">
+          <div class="fpl-bench-title-group">
+            <span class="fpl-tag">🏛️ PRODUCTION BENCHMARKS</span>
+            <h4 class="fpl-bench-heading">NextEra Energy / FPL Enterprise Platform Metrics</h4>
+          </div>
+          <span class="fpl-bench-sub">Derived from production runbooks &amp; live architecture telemetry</span>
+        </div>
+        <div class="fpl-bench-grid">
+          <div class="fpl-bench-card">
+            <span class="fpl-bench-val" style="color: #00f0ff;">44+</span>
+            <span class="fpl-bench-lbl">APIs Built in Production</span>
+            <span class="fpl-bench-subdetail">XAPIs, PAPIs, SAPIs across Billing, Accounts, and Customer 360</span>
+          </div>
+          <div class="fpl-bench-card">
+            <span class="fpl-bench-val" style="color: #3e63dd;">70,000+</span>
+            <span class="fpl-bench-lbl">Daily Transactions</span>
+            <span class="fpl-bench-subdetail">High-concurrency billing, outage tracking, and customer preferences</span>
+          </div>
+          <div class="fpl-bench-card">
+            <span class="fpl-bench-val" style="color: #10b981;">95%</span>
+            <span class="fpl-bench-lbl">MUnit Branch Coverage</span>
+            <span class="fpl-bench-subdetail">All external services mocked, SonarQube quality gates enforced</span>
+          </div>
+          <div class="fpl-bench-card">
+            <span class="fpl-bench-val" style="color: #845ec2;">7</span>
+            <span class="fpl-bench-lbl">Staged Environments</span>
+            <span class="fpl-bench-subdetail">sandbox → test → qa → sit → tlb → uat → production</span>
+          </div>
+          <div class="fpl-bench-card">
+            <span class="fpl-bench-val" style="color: #00c9a7;">99.9%</span>
+            <span class="fpl-bench-lbl">Platform Uptime SLA</span>
+            <span class="fpl-bench-subdetail">18 consecutive months with zero Severity-1 production incidents</span>
+          </div>
+          <div class="fpl-bench-card">
+            <span class="fpl-bench-val" style="color: #ff9671;">55%</span>
+            <span class="fpl-bench-lbl">Latency Drop (Scatter-Gather)</span>
+            <span class="fpl-bench-subdetail">Billing verification payload reduced from 2.5s down to 1.1s</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive 35-Module Quick Navigation Directory Grid -->
+      <div class="topic-directory-section">
+        <div class="topic-dir-header">
+          <div class="topic-dir-title-group">
+            <span class="topic-dir-tag">📚 COMPLETE 35-MODULE CURRICULUM</span>
+            <h4 class="topic-dir-heading">Interactive Topic Directory (Click Any Section to Jump)</h4>
+          </div>
+          <span class="topic-dir-count">35 Modules • 252 Technical Topics</span>
+        </div>
+        <div class="topic-directory-grid">
+          
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-a')" title="Interview Coaching, Strategy & Project Overview">
+          <span class="topic-nav-code">A</span>
+          <span class="topic-nav-icon">🚀</span>
+          <span class="topic-nav-title">Interview Coaching, Strategy & Project Overview</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-b')" title="Salesforce Connector & Bulk API 2.0">
+          <span class="topic-nav-code">B</span>
+          <span class="topic-nav-icon">☁️</span>
+          <span class="topic-nav-title">Salesforce Connector & Bulk API 2.0</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-c')" title="Platform Events & Change Data Capture (CDC)">
+          <span class="topic-nav-code">C</span>
+          <span class="topic-nav-icon">⚡</span>
+          <span class="topic-nav-title">Platform Events & Change Data Capture</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-d')" title="OAuth 2.0 & JWT Bearer Token Flow">
+          <span class="topic-nav-code">D</span>
+          <span class="topic-nav-icon">🔑</span>
+          <span class="topic-nav-title">OAuth 2.0 & JWT Bearer Token Flow</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-e')" title="AWS Integration Patterns (S3, SQS, DynamoDB)">
+          <span class="topic-nav-code">E</span>
+          <span class="topic-nav-icon">📦</span>
+          <span class="topic-nav-title">AWS Integration Patterns</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-f')" title="SAP + Salesforce End-to-End Integration">
+          <span class="topic-nav-code">F</span>
+          <span class="topic-nav-icon">🔄</span>
+          <span class="topic-nav-title">SAP + Salesforce End-to-End Integration</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-g')" title="Scatter-Gather Router Deep Dive">
+          <span class="topic-nav-code">G</span>
+          <span class="topic-nav-icon">🔀</span>
+          <span class="topic-nav-title">Scatter-Gather Router Deep Dive</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-h')" title="ForEach & Parallel ForEach Scopes">
+          <span class="topic-nav-code">H</span>
+          <span class="topic-nav-icon">🔁</span>
+          <span class="topic-nav-title">ForEach & Parallel ForEach Scopes</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-i')" title="Batch Processing Deep Dive">
+          <span class="topic-nav-code">I</span>
+          <span class="topic-nav-icon">📊</span>
+          <span class="topic-nav-title">Batch Processing Deep Dive</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-j')" title="Until Successful Scope & Resiliency">
+          <span class="topic-nav-code">J</span>
+          <span class="topic-nav-icon">⏳</span>
+          <span class="topic-nav-title">Until Successful Scope & Resiliency</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-k')" title="Choice Router, First Successful & Async Scopes">
+          <span class="topic-nav-code">K</span>
+          <span class="topic-nav-icon">🔀</span>
+          <span class="topic-nav-title">Choice Router, First Successful & Async Scopes</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-l')" title="Error Handling Deep Dive (Continue vs Propagate)">
+          <span class="topic-nav-code">L</span>
+          <span class="topic-nav-icon">⚠️</span>
+          <span class="topic-nav-title">Error Handling Deep Dive</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-m')" title="Anypoint MQ Deep Dive (Queues, Exchanges, DLQ)">
+          <span class="topic-nav-code">M</span>
+          <span class="topic-nav-icon">📨</span>
+          <span class="topic-nav-title">Anypoint MQ Deep Dive</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-n')" title="ObjectStore Deep Dive (OSv2, TTL, Watermarking)">
+          <span class="topic-nav-code">N</span>
+          <span class="topic-nav-icon">🗄️</span>
+          <span class="topic-nav-title">ObjectStore Deep Dive</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-o')" title="API-led Connectivity Deep Dive (RAML, Policies)">
+          <span class="topic-nav-code">O</span>
+          <span class="topic-nav-icon">🏗️</span>
+          <span class="topic-nav-title">API-led Connectivity Deep Dive</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-p')" title="MUnit Testing Framework & Mocking">
+          <span class="topic-nav-code">P</span>
+          <span class="topic-nav-icon">🧪</span>
+          <span class="topic-nav-title">MUnit Testing Framework & Mocking</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-q')" title="Production Best Practices & Naming Standards">
+          <span class="topic-nav-code">Q</span>
+          <span class="topic-nav-icon">📋</span>
+          <span class="topic-nav-title">Production Best Practices & Naming Standards</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-r')" title="DataWeave 2.0 Reference & Core Operators">
+          <span class="topic-nav-code">R</span>
+          <span class="topic-nav-icon">💻</span>
+          <span class="topic-nav-title">DataWeave 2.0 Reference & Core Operators</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-s')" title="NextEra Energy (FPL) Project Deep Dive">
+          <span class="topic-nav-code">S</span>
+          <span class="topic-nav-icon">⚡</span>
+          <span class="topic-nav-title">NextEra Energy</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-t')" title="Quick Reference Interview Cheat Sheet">
+          <span class="topic-nav-code">T</span>
+          <span class="topic-nav-icon">📝</span>
+          <span class="topic-nav-title">Quick Reference Interview Cheat Sheet</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-u')" title="Real Interview Q&A Collection (Global Companies)">
+          <span class="topic-nav-code">U</span>
+          <span class="topic-nav-icon">🏢</span>
+          <span class="topic-nav-title">Real Interview Q&A Collection</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-v')" title="Advanced DataWeave Transformations & Scripts">
+          <span class="topic-nav-code">V</span>
+          <span class="topic-nav-icon">⚙️</span>
+          <span class="topic-nav-title">Advanced DataWeave Transformations & Scripts</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-w')" title="CloudHub 1.0 vs 2.0 & Technical Lead Topics">
+          <span class="topic-nav-code">W</span>
+          <span class="topic-nav-icon">☁️</span>
+          <span class="topic-nav-title">CloudHub 1.0 vs 2.0 & Technical Lead Topics</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-x')" title="Core Connectors & Protocols (HTTP, DB, JMS, Kafka, VM)">
+          <span class="topic-nav-code">X</span>
+          <span class="topic-nav-icon">🔌</span>
+          <span class="topic-nav-title">Core Connectors & Protocols</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-tips')" title="Interview Day Strategy & STAR Method">
+          <span class="topic-nav-code">Tips</span>
+          <span class="topic-nav-icon">🎯</span>
+          <span class="topic-nav-title">Interview Day Strategy & STAR Method</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-y')" title="Advanced MuleSoft Topics (Java 17, Agentforce AI)">
+          <span class="topic-nav-code">Y</span>
+          <span class="topic-nav-icon">☕</span>
+          <span class="topic-nav-title">Advanced MuleSoft Topics</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-z')" title="20 Production Scenario Questions & Cross-Questions (S1-S20)">
+          <span class="topic-nav-code">Z</span>
+          <span class="topic-nav-icon">🚨</span>
+          <span class="topic-nav-title">20 Production Scenario Questions & Cross-Questions</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-aa')" title="Live Whiteboard Architecture Guide & Scripts">
+          <span class="topic-nav-code">AA</span>
+          <span class="topic-nav-icon">📐</span>
+          <span class="topic-nav-title">Live Whiteboard Architecture Guide & Scripts</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-bb')" title="2026 Modern Tech: Agentforce AI, MCP & Snowflake">
+          <span class="topic-nav-code">BB</span>
+          <span class="topic-nav-icon">❄️</span>
+          <span class="topic-nav-title">2026 Modern Tech: Agentforce AI, MCP & Snowflake</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-cc')" title="Top 20 Interview Traps & Senior Corrections (T1-T20)">
+          <span class="topic-nav-code">CC</span>
+          <span class="topic-nav-icon">🪤</span>
+          <span class="topic-nav-title">Top 20 Interview Traps & Senior Corrections</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-dd')" title="Architect: Requirement Gathering & Discovery Framework">
+          <span class="topic-nav-code">DD</span>
+          <span class="topic-nav-icon">🧭</span>
+          <span class="topic-nav-title">Architect: Requirement Gathering & Discovery Framework</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-ee')" title="Architect: MuleSoft vs Competitors & Objection Handling">
+          <span class="topic-nav-code">EE</span>
+          <span class="topic-nav-icon">🥊</span>
+          <span class="topic-nav-title">Architect: MuleSoft vs Competitors & Objection Handling</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-ff')" title="Architect: Client Communication & Stakeholder Alignment">
+          <span class="topic-nav-code">FF</span>
+          <span class="topic-nav-icon">🗣️</span>
+          <span class="topic-nav-title">Architect: Client Communication & Stakeholder Alignment</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-gg')" title="Architect: Masterclass Interview Q&A (A1 to A19)">
+          <span class="topic-nav-code">GG</span>
+          <span class="topic-nav-icon">🏛️</span>
+          <span class="topic-nav-title">Architect: Masterclass Interview Q&A</span>
+        </button>
+        
+        <button class="topic-nav-pill" onclick="scrollToModule('mod-hh')" title="Architect: How to Explain So Clients & Interviewers Are Happy">
+          <span class="topic-nav-code">HH</span>
+          <span class="topic-nav-icon">😊</span>
+          <span class="topic-nav-title">Architect: How to Explain So Clients & Interviewers Are Happy</span>
+        </button>
+        
+        </div>
+      </div>
+    </div>
+    
+
 <div class="diagram-container" id="diagram-api-led">
   <div class="diagram-header">
     <div class="diagram-badge">🏛️ Core Architecture</div>
@@ -2410,124 +3954,6 @@ body.practice-mode-on .faq-card {
   </div>
 </div>
 
-
-<div class="spotlight-card fpl-showcase-box">
-  <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
-    <div style="display:flex; align-items:center; gap:10px;">
-      <span style="font-size:1.6rem;">⚡</span>
-      <div>
-        <div style="font-weight:800; font-size:1.15rem; color:#00f0ff; letter-spacing:-0.01em;">Florida Power &amp; Light (NextEra Energy) · Production Architecture</div>
-        <div style="font-size:0.78rem; color:var(--text-dim);">Enterprise Smart Grid &amp; Customer Outage Architecture · Star Project Reference</div>
-      </div>
-    </div>
-    <span class="badge badge-success" style="font-size:0.75rem;">Verified Production Scale</span>
-  </div>
-  
-  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:14px; margin:20px 0;">
-    <div class="fpl-metric-box">
-      <div style="font-size:1.8rem; font-weight:800; font-family:var(--font-mono); color:#00f0ff;">44+</div>
-      <div style="font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; font-weight:700; margin-top:4px;">Production APIs</div>
-      <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">18 Exp · 14 Proc · 12 Sys</div>
-    </div>
-    <div class="fpl-metric-box">
-      <div style="font-size:1.8rem; font-weight:800; font-family:var(--font-mono); color:#3e63dd;">5M+</div>
-      <div style="font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; font-weight:700; margin-top:4px;">Monthly Invocations</div>
-      <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Peak: 1,800 TPS during storms</div>
-    </div>
-    <div class="fpl-metric-box">
-      <div style="font-size:1.8rem; font-weight:800; font-family:var(--font-mono); color:#10b981;">99.9%</div>
-      <div style="font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; font-weight:700; margin-top:4px;">Production Uptime</div>
-      <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Multi-AZ CloudHub 2.0 SLA</div>
-    </div>
-    <div class="fpl-metric-box">
-      <div style="font-size:1.8rem; font-weight:800; font-family:var(--font-mono); color:#d65db1;">55%</div>
-      <div style="font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; font-weight:700; margin-top:4px;">Latency Drop</div>
-      <div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Sub-120ms P99 with caching</div>
-    </div>
-  </div>
-
-  <div class="fpl-star-box">
-    <strong style="color:#00f0ff;">⭐ STAR Method Model Verbal Pitch:</strong> "At NextEra Energy (Florida Power &amp; Light), I architected the Smart Grid &amp; Outage event orchestration platform across 44+ APIs. By decoupling the SAP IS-U CIS with MuleSoft 3-tier API-Led connectivity and deploying to CloudHub 2.0 with horizontal auto-scaling, we handled hurricane outage surges of 1,800 TPS with zero dropped packets and reduced overall customer query latency by 55%."
-  </div>
-</div>
-
-<div class="article-body-intro" style="margin-bottom:28px;"><p class="doc-p">🚀  MuleSoft Developer — Complete Interview Guide 2026</p>
-<p class="doc-p">Salesforce</p>
-<p class="doc-p">Platform Events</p>
-<p class="doc-p">Bulk API</p>
-<p class="doc-p">OAuth 2.0 JWT</p>
-<p class="doc-p">AWS S3/SQS/DynamoDB</p>
-<p class="doc-p">Scatter-Gather</p>
-<p class="doc-p">Parallel ForEach</p>
-<p class="doc-p">Batch Job</p>
-<p class="doc-p">Until Successful</p>
-<p class="doc-p">Error Handling</p>
-<p class="doc-p">Anypoint MQ</p>
-<p class="doc-p">DataWeave 2.0</p>
-<p class="doc-p">MUnit Testing</p>
-<p class="doc-p">ObjectStore</p>
-<p class="doc-p">CloudHub 1.0 vs 2.0</p>
-<p class="doc-p">API-led</p>
-<p class="doc-p">RAML</p>
-<p class="doc-p">mTLS</p>
-<p class="doc-p">Transaction Management</p>
-<p class="doc-p">🎯  INTERVIEW COACHING GUIDE — Each answer includes the exact words to say, what NOT to say, and real FPL</p>
-<p class="doc-p">project examples that will impress any interviewer. ✅  Verbal Scripts Included  ⭐  Star Answer Markers  💡  Killer</p>
-<p class="doc-p">Phrases Highlighted</p>
-<p class="doc-p">A 🚀  Interview Coaching — Introduction &amp; Project Overview</p>
-<p class="doc-p">The interviewer forms their opinion in the first 2 minutes. Your introduction sets the tone for the entire</p>
-<p class="doc-p">interview. Use these exact phrases to sound confident, experienced, and enterprise-ready.</p>
-<div class="answer-badge-tag"><span class="badge badge-success">✅  KILLER PHRASES TO USE ❌  NEVER SAY THESE</span></div>
-<p class="doc-p">Genuine Answers · Core Concepts · Real Interview Scenarios · DataWeave Deep Dive · Error Handling ·</p>
-<p class="doc-p">Batch · MQ · CloudHub · RAML · Real Q&amp;A from 15+ Companies</p>
-<p class="doc-p">Niranjan Potter  |  5.5 Years MuleSoft Integration Experience  |  October 2026</p>
-<p class="doc-p">2-minute script · Verbal scripts · How to impress · Killer phrases · Project summary</p>
-<p class="doc-p">🎯  INTERVIEW STRATEGY — READ THIS FIRST</p>
-<ul class="doc-list">
-<li>&quot;API-led connectivity&quot;</li>
-<li>&quot;5M+ monthly API calls&quot;</li>
-<li>&quot;95% MUnit coverage&quot;</li>
-<li>&quot;SAP S/4HANA integration&quot;</li>
-<li>&quot;I just follow what team says&quot;</li>
-<li>&quot;I&#x27;m not sure but I think...&quot;</li>
-<li>&quot;I haven&#x27;t used that&quot;</li>
-<li>&quot;It was basic CRUD&quot;</li>
-<li>&quot;I only worked on small part&quot;</li>
-</ul>
-<p class="doc-p">📚  Q U I C K  N AV I G AT I O N  —  C L I C K  A N Y  S E C T I O N</p>
-<p class="doc-p">A. Introduction B. Salesforce &amp; Bulk API C. Platform Events &amp; CDC D. OAuth 2.0 &amp; JWT E. AWS Integration</p>
-<p class="doc-p">F. SAP+Salesforce E2E G. Scatter-Gather ⭐ H. ForEach &amp; Parallel ForEach ⭐ I. Batch Processing ⭐</p>
-<p class="doc-p">J. Until Successful ⭐ K. Choice Router ⭐ L. Error Handling Deep Dive ⭐ M. Anypoint MQ ⭐ N. ObjectStore ⭐</p>
-<p class="doc-p">O. API-led Connectivity ⭐ P. MUnit Testing ⭐ Q. Best Practices R. DataWeave Reference S. Project Deep Dive (FPL)</p>
-<p class="doc-p">T. Quick Reference Table U. Real Interview Q&amp;A Collection ⭐ V. DataWeave Deep Dive ⭐ W. CloudHub 1.0 vs 2.0 ⭐</p>
-<p class="doc-p">X. Basics &amp; Connectors ⭐ Z. Scenarios (+ Architect S21–S28) ⭐ DD. Requirement Gathering 🧭 EE. MuleSoft vs Others ⚖</p>
-<p class="doc-p">FF. Explaining to Clients 🗣 GG. Architect Interview Answers 🎓 HH. Explain So They&#x27;re Happy 😊</p>
-<p class="doc-p">🎯  PERFECT 2-MINUTE INTRODUCTION — SAY THESE EXACT WORDS</p>
-<p class="doc-p">&quot;Good morning/afternoon. I&#x27;m [Your Name], and I have 5.5 years of experience as a MuleSoft</p>
-<p class="doc-p">Integration Engineer. I&#x27;ve been working at NextEra Energy — Florida Power &amp; Light, which is one of</p>
-<p class="doc-p">the largest electric utility companies in the United States, serving over 5 million customers.</p>
-<p class="doc-p">In my role, I&#x27;ve built and maintained an enterprise-grade API-led connectivity platform that connects</p>
-<p class="doc-p">Salesforce — our frontend channel — with SAP S/4HANA, AWS DynamoDB, and PostgreSQL backends.</p>
-<p class="doc-p">This platform handles 5 million+ monthly API calls for domains like billing, account maintenance,</p>
-<p class="doc-p">payment options, and customer 360.</p>
-<p class="doc-p">I work across all three API layers — Experience, Process, and System APIs — following a design-first</p>
-<p class="doc-p">approach with RAML, maintaining 95% MUnit test coverage, and deploying through GitHub Actions</p>
-<p class="doc-p">CI/CD pipelines to CloudHub.</p>
-<p class="doc-p">Some key technologies I&#x27;ve worked with extensively include DataWeave 2.0, Anypoint MQ with</p>
-<p class="doc-p">MANUAL ack and idempotency, AWS S3 and DynamoDB, and the SAP S/4HANA Cloud Connector</p>
-<p class="doc-p">for OData-based integrations.&quot;</p>
-<p class="doc-p">💡  HOW TO DELIVER THIS</p>
-<p class="doc-p">Speak at a moderate pace — don&#x27;t rush. Interviewers appreciate clarity over speed.</p>
-<p class="doc-p">When you say &quot;5 million+ monthly API calls&quot; — pause 1 second. Let the number land.</p>
-<p class="doc-p">Maintain eye contact when saying &quot;95% MUnit coverage&quot; — this shows confidence in quality.</p>
-<p class="doc-p">End with: &quot;I&#x27;d love to dive deeper into any of these areas — what would you like to explore first?&quot; — this shows confidence</p>
-<p class="doc-p">and gives YOU control of the interview direction.</p>
-<div class="table-responsive">
-  <table class="doc-table">
-    <thead><tr><th>METRIC</th><th>VALUE</th><th>DETAIL</th></tr></thead>
-    <tbody><tr><td>APIs</td><td>Built</td><td>44+ XAPIs, PAPIs, SAPIs across all domains</td></tr><tr><td>Daily</td><td>Transactions</td><td>70,000+ Billing, Account, Payment, Preferences</td></tr><tr><td>MUnit</td><td>Coverage</td><td>95% All externals mocked, SonarQube quality gates</td></tr><tr><td>Environments</td><td>7</td><td>sandbox→test→qa→sit→tlb→uat→production</td></tr><tr><td>Uptime</td><td>SLA</td><td>99.9% 18 consecutive months P1-free in production</td></tr><tr><td>•</td><td>&quot;Zero-downtime</td><td>deployment&quot;</td></tr><tr><td>•</td><td>&quot;Correl</td><td>ationId-based tracing&quot;</td></tr><tr><td>METRIC</td><td>VALUE</td><td>DETAIL</td></tr><tr><td>Performance</td><td>Gain</td><td>55% Scatter-Gather reduced billing from 2.5s → 1.1s</td></tr></tbody>
-  </table>
-</div></div>
 
   <div class="faq-card" id="mod-a-q1" data-role="developer / senior">
     <div class="faq-header">
@@ -16086,6 +17512,117 @@ function inspectTier(tierKey) {
       <p style="color:#cbd5e1; font-size:0.88rem; line-height:1.6; margin:0;">${data.desc}</p>
     </div>
   `;
+}
+
+
+// ==========================================
+// MODULE A: TELEPROMPTER & COACHING STUDIO
+// ==========================================
+function copyPitchScript(btn) {
+  const sentences = document.querySelectorAll('#tpSpeechBox .tp-sentence');
+  let fullText = Array.from(sentences).map(s => s.innerText.trim()).join('\\n\\n');
+  navigator.clipboard.writeText(fullText).then(() => {
+    const originalHtml = btn.innerHTML;
+    btn.innerHTML = '<span class="tp-btn-icon">✓</span><span class="tp-btn-text">Copied!</span>';
+    btn.classList.add('bounce-check');
+    setTimeout(() => {
+      btn.innerHTML = originalHtml;
+      btn.classList.remove('bounce-check');
+    }, 2000);
+  });
+}
+
+let tpInterval = null;
+let tpRunning = false;
+let currentSentenceIdx = 0;
+const sentenceDurations = [28, 30, 26, 26]; // Total ~110 seconds
+
+function toggleTeleprompter() {
+  const btn = document.getElementById('tpPlayBtn');
+  const track = document.getElementById('tpProgressTrack');
+  const bar = document.getElementById('tpProgressBar');
+  const sentences = document.querySelectorAll('#tpSpeechBox .tp-sentence');
+  
+  if (!btn || !track || !bar || !sentences.length) return;
+  
+  if (tpRunning) {
+    // Pause
+    clearInterval(tpInterval);
+    tpRunning = false;
+    btn.innerHTML = '<span class="tp-btn-icon">▶️</span><span class="tp-btn-text">Resume Practice</span>';
+    return;
+  }
+  
+  tpRunning = true;
+  track.style.display = 'block';
+  btn.innerHTML = '<span class="tp-btn-icon">⏸️</span><span class="tp-btn-text">Pause Practice</span>';
+  
+  if (currentSentenceIdx >= sentences.length) {
+    currentSentenceIdx = 0;
+  }
+  
+  const totalDuration = 110; // seconds
+  let elapsed = currentSentenceIdx > 0 ? sentenceDurations.slice(0, currentSentenceIdx).reduce((a, b) => a + b, 0) : 0;
+  
+  function updateHighlight() {
+    sentences.forEach((s, idx) => {
+      if (idx === currentSentenceIdx) {
+        s.classList.add('tp-active');
+        s.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } else {
+        s.classList.remove('tp-active');
+      }
+    });
+  }
+  
+  updateHighlight();
+  
+  tpInterval = setInterval(() => {
+    elapsed += 0.5;
+    const pct = Math.min((elapsed / totalDuration) * 100, 100);
+    bar.style.width = pct + '%';
+    
+    // Check sentence transition
+    let accumulated = 0;
+    for (let i = 0; i < sentenceDurations.length; i++) {
+      accumulated += sentenceDurations[i];
+      if (elapsed < accumulated) {
+        if (currentSentenceIdx !== i) {
+          currentSentenceIdx = i;
+          updateHighlight();
+        }
+        break;
+      }
+    }
+    
+    if (elapsed >= totalDuration) {
+      clearInterval(tpInterval);
+      tpRunning = false;
+      currentSentenceIdx = 0;
+      btn.innerHTML = '<span class="tp-btn-icon">🔄</span><span class="tp-btn-text">Replay Practice</span>';
+      setTimeout(() => {
+        sentences.forEach(s => s.classList.remove('tp-active'));
+        bar.style.width = '0%';
+        track.style.display = 'none';
+      }, 3500);
+    }
+  }, 500);
+}
+
+function scrollToModule(id) {
+  const el = document.getElementById(id);
+  if (el) {
+    const yOffset = -90;
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    el.style.transition = 'box-shadow 0.4s ease, border-color 0.4s ease';
+    el.style.borderColor = '#00F2FE';
+    el.style.boxShadow = '0 0 25px rgba(0, 242, 254, 0.4)';
+    setTimeout(() => {
+      el.style.borderColor = '';
+      el.style.boxShadow = '';
+    }, 1800);
+  }
 }
 
 
