@@ -2,7 +2,7 @@
 
 A high-performance, mobile-optimized static knowledge hub containing **308 real-world scenario-based MuleSoft interview questions**, architectural diagrams, DataWeave 2.0 playground, and technical deep-dives.
 
-**Live Website**: [https://mulesoft.niranjanpotter.dpdns.org/](https://mulesoft.niranjanpotter.dpdns.org/)  
+**Live Website**: [https://niranjanpotter.github.io/](https://niranjanpotter.github.io/)  
 **Author**: Niranjan Potter
 
 ---
@@ -72,7 +72,7 @@ This generates `hub.<hash>.css` and `hub.<hash>.js` in `assets/`, enabling long-
 2. **Update Metadata in `<head>`**:
    - `<title>`: Topic title with `(2026 Guide)`.
    - `<meta name="description">`: 150-160 character summary.
-   - `<link rel="canonical" href="https://mulesoft.niranjanpotter.dpdns.org/mulesoft-your-topic.html">`.
+   - `<link rel="canonical" href="https://niranjanpotter.github.io/mulesoft-your-topic.html">`.
    - Update `BreadcrumbList` and `Article` JSON-LD schemas.
 
 3. **Style Links**:

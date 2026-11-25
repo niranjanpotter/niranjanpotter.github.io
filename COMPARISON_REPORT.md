@@ -1,5 +1,5 @@
 # 📊 Comprehensive Audit & Gap Analysis Report: Master PDFs vs. Live Website
-**Project:** [MuleSoft Hub (2026 Edition)](https://mulesoft.niranjanpotter.dpdns.org/)  
+**Project:** [MuleSoft Hub (2026 Edition)](https://niranjanpotter.github.io/)  
 **Audit Target:** `D:\niranjanpotter.github.io`  
 **Master Knowledge Source:** `D:\niranjanpotter.github.io\pdfs` (MuleVibes Master 2026 Guide & 159-Page Enterprise Runbook)  
 **Auditor:** Senior MuleSoft Architect + Content Auditor + SEO Specialist  

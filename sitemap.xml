@@ -1,127 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/</loc>
+    <loc>https://niranjanpotter.github.io/</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-batch-processing-interview-questions.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-batch-processing-interview-questions.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/cloudhub-1-to-2-migration-guide.html</loc>
+    <loc>https://niranjanpotter.github.io/cloudhub-1-to-2-migration-guide.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-agentforce-topic-center-actions.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-agentforce-topic-center-actions.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-mcp-connector-ai-agents.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-mcp-connector-ai-agents.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-scenario-based-interview-questions.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-scenario-based-interview-questions.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-salesforce-bulk-api-2-interview.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-salesforce-bulk-api-2-interview.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-scatter-gather-interview-questions.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-scatter-gather-interview-questions.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-anypoint-mq-dlq-fifo-interview.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-anypoint-mq-dlq-fifo-interview.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/dataweave-performance-tuning-patterns.html</loc>
+    <loc>https://niranjanpotter.github.io/dataweave-performance-tuning-patterns.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-oauth-jwt-bearer-token-interview.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-oauth-jwt-bearer-token-interview.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-partner-manager-b2b-edi-interview.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-partner-manager-b2b-edi-interview.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-terraform-provider-guide.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-terraform-provider-guide.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-opentelemetry-tracing-observability.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-opentelemetry-tracing-observability.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-model-proxy-semantic-cache.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-model-proxy-semantic-cache.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-snowflake-connector-patterns.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-snowflake-connector-patterns.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-cicd-maven-pipeline-guide.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-cicd-maven-pipeline-guide.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-sap-s4hana-odata-interview.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-sap-s4hana-odata-interview.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-reusable-error-handler-plugin.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-reusable-error-handler-plugin.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-secure-properties-encryption-guide.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-secure-properties-encryption-guide.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://mulesoft.niranjanpotter.dpdns.org/mulesoft-java-interview-mastery.html</loc>
+    <loc>https://niranjanpotter.github.io/mulesoft-java-interview-mastery.html</loc>
     <lastmod>2026-11-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>

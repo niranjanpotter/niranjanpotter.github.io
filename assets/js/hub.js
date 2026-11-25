@@ -2016,7 +2016,7 @@ function copyVCoreRecommendation() {
   const reps = document.getElementById('vcalc-res-workers')?.textContent || '2 Workers';
   const total = document.getElementById('vcalc-res-total-vcores')?.textContent || '0.4 vCores';
   const cost = document.getElementById('vcalc-res-cost')?.textContent || '$100/mo';
-  const text = `MuleSoft CloudHub Capacity Recommendation:\n- Worker Size: ${size}\n- Deployment: ${reps}\n- Total vCores: ${total}\n- Est. Monthly Cost: ${cost}\nCalculated via MuleSoft Hub (https://mulesoft.niranjanpotter.dpdns.org)`;
+  const text = `MuleSoft CloudHub Capacity Recommendation:\n- Worker Size: ${size}\n- Deployment: ${reps}\n- Total vCores: ${total}\n- Est. Monthly Cost: ${cost}\nCalculated via MuleSoft Hub (https://niranjanpotter.github.io)`;
   navigator.clipboard.writeText(text).then(() => {
     alert('Recommendation copied to clipboard!');
   }).catch(() => {
@@ -2997,7 +2997,7 @@ if (typeof window !== 'undefined') {
     mockState.lastSummary =
       'MuleSoft Hub 2026 Timed Mock Interview Scorecard: ' + pct + '% Readiness (' + verdict + ') | ' +
       gotCount + ' Got It, ' + partialCount + ' Partial, ' + missedCount + ' Missed | ' +
-      totalQs + ' Qs in ' + formatTime(elapsed) + ' — https://mulesoft.niranjanpotter.dpdns.org/';
+      totalQs + ' Qs in ' + formatTime(elapsed) + ' — https://niranjanpotter.github.io/';
 
     showScreen('mock-screen-results');
   }
@@ -3125,7 +3125,7 @@ if (typeof window !== 'undefined') {
   };
 
   window.copyMockScorecard = function() {
-    var txt = mockState.lastSummary || 'MuleSoft Hub 2026 Timed Mock Interview — https://mulesoft.niranjanpotter.dpdns.org/';
+    var txt = mockState.lastSummary || 'MuleSoft Hub 2026 Timed Mock Interview — https://niranjanpotter.github.io/';
     var btn = document.getElementById('mock-copy-score-btn');
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(txt).then(function() {
@@ -4654,7 +4654,7 @@ if (typeof window !== 'undefined') {
 })();
 
 window.copyLinkedInShareText = function(btn) {
-  var shareText = 'Preparing for a MuleSoft interview? Check out this 100% free, no-login MuleSoft Hub (308 real scenarios across 45 modules + live DataWeave 2.0 playground + Error Simulator + vCore calculator + timed mock interviews): https://mulesoft.niranjanpotter.dpdns.org/ — Drop your feedback or favorite topic in the comments! #MuleSoft #Anypoint #DataWeave #Integration';
+  var shareText = 'Preparing for a MuleSoft interview? Check out this 100% free, no-login MuleSoft Hub (308 real scenarios across 45 modules + live DataWeave 2.0 playground + Error Simulator + vCore calculator + timed mock interviews): https://niranjanpotter.github.io/ — Drop your feedback or favorite topic in the comments! #MuleSoft #Anypoint #DataWeave #Integration';
   var applyCopied = function() {
     if (!btn) return;
     if (!btn.dataset.origLabel) btn.dataset.origLabel = btn.textContent;

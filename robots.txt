@@ -3,5 +3,5 @@ Allow: /
 Disallow: /backup-index-1.5MB.html
 Disallow: /backup-index-phase1.html
 
-Sitemap: https://mulesoft.niranjanpotter.dpdns.org/sitemap.xml
-Sitemap: https://mulesoft.niranjanpotter.dpdns.org/sitemap-hub.xml
+Sitemap: https://niranjanpotter.github.io/sitemap.xml
+Sitemap: https://niranjanpotter.github.io/sitemap-hub.xml
