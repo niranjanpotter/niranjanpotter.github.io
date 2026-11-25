@@ -4,4 +4,3 @@ Disallow: /backup-index-1.5MB.html
 Disallow: /backup-index-phase1.html
 
 Sitemap: https://niranjanpotter.github.io/sitemap.xml
-Sitemap: https://niranjanpotter.github.io/sitemap-hub.xml
