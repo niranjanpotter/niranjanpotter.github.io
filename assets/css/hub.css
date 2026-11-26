@@ -198,7 +198,7 @@ body {
 
 .search-shortcut {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 2px 7px;
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.08);
@@ -224,7 +224,7 @@ body {
   align-items: center;
   padding: 3px 9px;
   border-radius: var(--radius-full);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -1015,7 +1015,7 @@ body.practice-mode-on .faq-card {
   background: rgba(0, 242, 254, 0.08);
   border: 1px solid rgba(0, 242, 254, 0.25);
   color: #00F2FE;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 8px;
   border-radius: var(--radius-sm);
 }
@@ -1171,7 +1171,7 @@ body.practice-mode-on .faq-card {
 
 .code-lang {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: var(--electric-cyan);
   letter-spacing: 0.05em;
@@ -1741,7 +1741,7 @@ body.practice-mode-on .faq-card {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #cbd5e1;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 3px 8px;
   border-radius: 4px;
   cursor: pointer;
@@ -1760,7 +1760,7 @@ body.practice-mode-on .faq-card {
 
 .btn-preset-chip {
   padding: 3px 8px;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   border-radius: 4px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1955,7 +1955,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 
 .dw-snippet-pill {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   padding: 2px 8px;
   border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.05);
@@ -2417,7 +2417,7 @@ pre {
     font-size: 1.6rem !important;
   }
   .metric-label {
-    font-size: 0.72rem !important;
+    font-size: 0.75rem !important;
   }
   .global-toolbar {
     flex-direction: column;
@@ -2461,7 +2461,7 @@ pre {
   border: 1px solid rgba(0, 242, 254, 0.25);
   border-radius: 9999px;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: #00F2FE;
@@ -2898,7 +2898,7 @@ pre {
   background: rgba(239, 68, 68, 0.12);
   border: 1px solid rgba(239, 68, 68, 0.3);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: #f87171;
   width: fit-content;
@@ -3120,7 +3120,7 @@ pre {
 }
 
 .dr-tag {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
   color: #00F2FE;
@@ -3563,7 +3563,7 @@ pre code {
   }
   .responsive-table td::before {
     content: attr(data-label) !important;
-    font-size: 11px !important;
+    font-size: 12px !important;
     text-transform: uppercase !important;
     color: var(--text-muted) !important;
     font-weight: 700 !important;
@@ -3909,7 +3909,7 @@ pre:hover {
   background: rgba(15, 23, 42, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: #94A3B8;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   padding: 4px 10px;
   border-radius: 6px;
@@ -4765,7 +4765,7 @@ pre:hover {
 
 /* 4. Unified Navigation: Top Sections Bar + Synced Left Sidebar */
 .filter-bar-label {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--electric-cyan, #00F2FE);
@@ -4782,7 +4782,7 @@ pre:hover {
   background: rgba(0, 242, 254, 0.12);
   border: 1px solid rgba(0, 242, 254, 0.35);
   color: #00F2FE;
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 700;
   padding: 2px 7px;
   border-radius: 999px;
@@ -4805,7 +4805,7 @@ pre:hover {
 }
 
 .sidebar-tools-title {
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: var(--text-dim);
@@ -4903,7 +4903,7 @@ pre:hover {
   background: rgba(99, 91, 255, 0.25);
   color: #a78bfa;
   border: 1px solid rgba(99, 91, 255, 0.4);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   padding: 2px 8px;
   border-radius: 4px;
 }
@@ -5410,7 +5410,7 @@ pre:hover {
 }
 
 .mock-badge-pill {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 800;
   padding: 3px 9px;
   border-radius: 999px;
@@ -5560,7 +5560,7 @@ pre:hover {
 }
 
 .mock-score-caption {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--text-dim);
@@ -6002,7 +6002,7 @@ pre, pre code {
 }
 
 .header-author-text {
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: #cbd5e1;
   white-space: nowrap;
@@ -6078,10 +6078,10 @@ pre, pre code {
     gap: 6px;
   }
   .brand-subtitle {
-    font-size: 0.62rem !important;
+    font-size: 0.75rem !important;
   }
   .header-edition-badge {
-    font-size: 0.58rem !important;
+    font-size: 0.75rem !important;
     padding: 2px 6px;
   }
   .header-center {
@@ -6098,7 +6098,7 @@ pre, pre code {
     gap: 6px;
   }
   .header-author-text {
-    font-size: 0.7rem;
+    font-size: 0.75rem;
   }
   #practice-btn,
   .btn-dw-header {
@@ -6120,7 +6120,7 @@ pre, pre code {
     max-width: 122px;
     white-space: normal;
     line-height: 1.15;
-    font-size: 0.66rem;
+    font-size: 0.75rem;
   }
 }
 
@@ -6135,7 +6135,7 @@ pre, pre code {
     margin-left: auto;
   }
   .header-author-text {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     white-space: nowrap;
   }
 }
@@ -6202,7 +6202,7 @@ pre, pre code {
     border-top: 1px solid #e2e8f0;
   }
   .header-author-text {
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -6292,7 +6292,7 @@ pre, pre code {
   background: rgba(0, 242, 254, 0.14);
   color: #00F2FE;
   border: 1px solid rgba(0, 242, 254, 0.35);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 800;
   padding: 5px 11px;
   border-radius: 6px;
@@ -6472,7 +6472,7 @@ pre, pre code {
 }
 
 .eh-node-sub {
-  font-size: 0.67rem;
+  font-size: 0.75rem;
   font-family: var(--font-mono);
   color: var(--text-dim);
   white-space: nowrap;
@@ -6483,7 +6483,7 @@ pre, pre code {
 }
 
 .eh-node-badge {
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 800;
   padding: 2px 8px;
   border-radius: 999px;
@@ -6623,7 +6623,7 @@ pre, pre code {
 }
 
 .eh-res-label {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -7011,12 +7011,12 @@ body.feature-fs-body-lock {
     min-height: 44px;
     min-width: 44px;
     padding: 0 9px;
-    font-size: 0.74rem;
+    font-size: 0.75rem;
   }
   .utility-progress-pill {
     height: 34px;
     padding: 0 9px;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     gap: 5px;
   }
 }
@@ -7063,7 +7063,7 @@ body.feature-fs-body-lock {
     padding: 4px 2px 0 !important;
   }
   .header-author-text {
-    font-size: 0.68rem !important;
+    font-size: 0.75rem !important;
   }
   .header-author-links {
     gap: 5px !important;
@@ -7468,7 +7468,7 @@ body.feature-fs-body-lock {
 
 .fs-esc-hint {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 700;
   padding: 4px 9px;
   border-radius: 6px;
@@ -7508,7 +7508,7 @@ body.feature-fs-body-lock {
     max-width: 140px;
   }
   .fs-esc-hint {
-    font-size: 0.65rem;
+    font-size: 0.75rem;
     padding: 3px 6px;
   }
   .fs-portal-exit-btn {
@@ -7718,3 +7718,13 @@ button.hero-step-card {
   }
 }
 
+
+/* Safe-area insets for notched viewports */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .mobile-menu-btn, .back-to-top { margin-bottom: env(safe-area-inset-bottom); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

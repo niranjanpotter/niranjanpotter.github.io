@@ -140,7 +140,7 @@ body.light-theme .navbar {
   background: linear-gradient(135deg, rgba(0, 242, 254, 0.18), rgba(99, 91, 255, 0.22));
   color: var(--accent-cyan);
   border: 1px solid rgba(0, 242, 254, 0.3);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 800;
   padding: 2px 7px;
   border-radius: 4px;
@@ -344,7 +344,7 @@ body.light-theme .navbar {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.05em;
   padding: 3px 9px;
