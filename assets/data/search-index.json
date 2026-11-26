@@ -2770,5 +2770,113 @@
     "category": "Interview Traps & Pitfalls",
     "role": "Senior Developer / Technical Lead",
     "snippet": "✓ ANSWER A shared Global Error Handler maps Mule error types (APIKIT:BAD_REQUEST 400, HTTP:UNAUTHORIZED 401, APIKIT:NOT_FOUND 404, HTTP:TIMEOUT 504) to vars.httpStatus and returns a sanitized canonical JSON payload with correlati"
+  },
+  {
+    "id": "mod-ss-q1",
+    "tag": "Q1",
+    "title": "Why is wrapping an HTTP Request inside Until Successful without an error filter a production trap, and how do you handle retriable vs non-retriable errors?",
+    "modTitle": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)",
+    "category": "Interview Traps & Pitfalls",
+    "role": "Senior Developer",
+    "snippet": "✓ ANSWER Until Successful retries ANY exception thrown inside its scope by default—including client errors like HTTP:BAD_REQUEST (400) or HTTP:UNAUTHORIZED (401). Retrying deterministic 4xx failures wastes vCore threads and delay"
+  },
+  {
+    "id": "mod-ss-q2",
+    "tag": "Q2",
+    "title": "Explain the causal chain behind STREAM_MAXIMUM_SIZE_EXCEEDED on an HTTP Request or Transform, and how do you resolve it cleanly?",
+    "modTitle": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)",
+    "category": "Interview Traps & Pitfalls",
+    "role": "Senior Developer",
+    "snippet": "✓ ANSWER Mule 4 uses repeatable streams with an in-memory buffer (512 KB by default) backed by disk overflow. STREAM_MAXIMUM_SIZE_EXCEEDED occurs when an HTTP connector or DataWeave script consumes a stream configured with non-re"
+  },
+  {
+    "id": "mod-ss-q3",
+    "tag": "Q3",
+    "title": "How do you generate signed JWTs natively in Mule 4.13 / DataWeave 2.13 without external Java or Exchange libraries?",
+    "modTitle": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)",
+    "category": "Interview Traps & Pitfalls",
+    "role": "Developer / Architect",
+    "snippet": "✓ ANSWER DataWeave 2.13.0 (bundled with Mule 4.13.0 Edge, Oct 2026) added native dw::util::jwt::HMAC (HS256/384/512) and dw::util::jwt::RSA (RS256/384/512 using unencrypted PKCS#1 or PKCS#8 PEM private keys). You call JWT(header,"
+  },
+  {
+    "id": "mod-ss-q4",
+    "tag": "Q4",
+    "title": "Why did custom Java calls in DataWeave throw IllegalAccessException after upgrading to Mule 4.13 (Java 17), and how do you fix it?",
+    "modTitle": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)",
+    "category": "Interview Traps & Pitfalls",
+    "role": "Senior Developer",
+    "snippet": "✓ ANSWER Mule 4.13.0 / DataWeave 2.13.0 enforces JDK 17+ Java Platform Module System (JPMS) package filtering by default. Unexported internal JDK packages (such as sun.* or private java.base internals) are blocked during DataWeav"
+  },
+  {
+    "id": "mod-ss-q5",
+    "tag": "Q5",
+    "title": "After October 31, 2026, a CloudHub API suddenly started returning 502 Bad Gateway errors. What is the most likely root cause?",
+    "modTitle": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)",
+    "category": "Interview Traps & Pitfalls",
+    "role": "Architect",
+    "snippet": "✓ ANSWER On October 31, 2026, MuleSoft permanently terminated inbound TLS 1.0 and TLS 1.1 connections on all existing CloudHub 1.0 Dedicated Load Balancers (DLBs). If a DLB or CloudHub 2.0 Ingress forwards to an upstream Mule wor"
+  },
+  {
+    "id": "mod-ss-q6",
+    "tag": "Q6",
+    "title": "Why did Mule Maven CI/CD pipelines on GitHub Actions and Azure DevOps suddenly fail in late 2026 during process-sources?",
+    "modTitle": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)",
+    "category": "Interview Traps & Pitfalls",
+    "role": "Developer / DevOps",
+    "snippet": "✓ ANSWER Hosted CI runners automatically rolled out Apache Maven 3.10.0 in October 2026, while older mule-maven-plugin versions (<= 4.10.3) only scoped support up to Maven 3.9.x. Upgrading to mule-maven-plugin 4.10.4 (released No"
+  },
+  {
+    "id": "mod-ss-q7",
+    "tag": "Q7",
+    "title": "An Anypoint Runtime Fabric (RTF) app is stuck in NOT READY with 'tls: certificate required' or 'connection reset by peer' to us1.ingest.mulesoft.com. How do you diagnose it?",
+    "modTitle": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)",
+    "category": "Interview Traps & Pitfalls",
+    "role": "Architect / Ops",
+    "snippet": "✓ ANSWER First inspect pod events via kubectl describe pod and rtfctl status. 'tls: certificate required' or ingest resets usually mean either a corporate egress proxy is performing SSL MITM inspection on *.ingest.mulesoft.com (b"
+  },
+  {
+    "id": "mod-ss-q8",
+    "tag": "Q8",
+    "title": "CloudHub workers are silently restarting with no application error log. What causes this and what changed in DataWeave 2.13.1?",
+    "modTitle": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)",
+    "category": "Interview Traps & Pitfalls",
+    "role": "Senior Developer",
+    "snippet": "✓ ANSWER Silent worker restarts point to JVM OutOfMemoryError (OOM) killing the container before Mule's logger flushes—typically from loading huge payloads into memory, unbounded variables, or unstreamed transformations. DataWeav"
+  },
+  {
+    "id": "mod-ss-q9",
+    "tag": "Q9",
+    "title": "Why do Anypoint Studio breakpoints miss when a local Process API calls a local System API?",
+    "modTitle": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)",
+    "category": "Interview Traps & Pitfalls",
+    "role": "Beginner / Developer",
+    "snippet": "✓ ANSWER When both APIs run locally on the same machine, binding an HTTP Listener strictly to 127.0.0.1 vs 0.0.0.0, port collisions, or sending requests to an external CloudHub URL instead of localhost:<port> causes traffic to by"
+  },
+  {
+    "id": "mod-ss-q10",
+    "tag": "Q10",
+    "title": "What new capabilities did MuleSoft Omni Gateway (Flex Gateway) 1.14.4 through 1.15.0 introduce in Oct–Nov 2026?",
+    "modTitle": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)",
+    "category": "Interview Traps & Pitfalls",
+    "role": "Architect",
+    "snippet": "✓ ANSWER Version 1.14.4 (Oct 23) exposed api.consumerUri to Custom Rust PDK policies and blocked compromised eMudhra intermediate CAs. Version 1.14.5 (Nov 18) added sharedStorage.redis timeoutMilliseconds (2000ms) and maxRetries "
+  },
+  {
+    "id": "mod-ss-q11",
+    "tag": "Q11",
+    "title": "How does MuleSoft Agent Fabric govern non-native AI agents like Microsoft Copilot Studio alongside Salesforce Agentforce?",
+    "modTitle": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)",
+    "category": "Interview Traps & Pitfalls",
+    "role": "Architect",
+    "snippet": "✓ ANSWER Agent Fabric's Oct–Nov 2026 update introduced A2A (Agent-to-Agent) bridges for non-native agents, wrapping Copilot Studio or custom agents with A2A-compliant Agent Cards (/.well-known/agent.json) registered in Anypoint E"
+  },
+  {
+    "id": "mod-ss-q12",
+    "tag": "Q12",
+    "title": "With AI tools like MuleSoft Vibes generating Mule XML and DataWeave boilerplate, how do teams enforce code quality, security, and MUnit rigor in 2026?",
+    "modTitle": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)",
+    "category": "Interview Traps & Pitfalls",
+    "role": "Senior Developer / Lead",
+    "snippet": "✓ ANSWER Automated static quality gates (such as MuleGuard in VS Code + Maven) plus MUnit 3.7.5 (80%+ coverage gates) catch AI-generated anti-patterns before PR merge: hardcoded credentials, TLS 1.0/1.1, missing non-retriable fil"
   }
 ]

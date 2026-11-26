@@ -4386,7 +4386,7 @@ if (typeof window !== 'undefined') {
 
   function getTotalQas() {
     var cards = document.querySelectorAll('.faq-card').length;
-    return Math.max(cards, 308);
+    return Math.max(cards, 320);
   }
 
   function loadDoneSet() {

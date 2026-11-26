@@ -1,8 +1,8 @@
-# MuleSoft 308 Interview Q&As & Mock Labs (niranjanpotter.github.io)
-> Interactive MuleSoft 4.x / Agentforce / CloudHub 2.0 interview preparation workbench by Niranjan Potter featuring 45 structured curriculum modules (308 scenario-based Q&As), a live browser DataWeave 2.0 Playground, Error Handling Simulator, CloudHub vCore Cost Calculator, Timed Mock Interview mode, and 20 focused technical interview deep-dive guides.
+# MuleSoft 320 Interview Q&As & Mock Labs (niranjanpotter.github.io)
+> Interactive MuleSoft 4.x / Agentforce / CloudHub 2.0 interview preparation workbench by Niranjan Potter featuring 46 structured curriculum modules (320 scenario-based Q&As), a live browser DataWeave 2.0 Playground, Error Handling Simulator, CloudHub vCore Cost Calculator, Timed Mock Interview mode, and 20 focused technical interview deep-dive guides.
 
 ## Core Interactive Interview Workbench
-- [MuleSoft 308 Interview Q&A Hub (45 Modules, Mock Interview, DW Playground)](https://niranjanpotter.github.io/): Searchable 308-question technical bank covering DataWeave 2.0, Mule 4.9 LTS / Java 17 internals, Batch Processing, Scatter-Gather, Anypoint MQ, CloudHub 2.0, OAuth 2.0 JWT, Salesforce Bulk API 2.0, SAP S/4HANA, Snowflake, EDI/Partner Manager, MCP Connector, Model Proxy, and Agentforce Topic Center.
+- [MuleSoft 320 Interview Q&A Hub (45 Modules, Mock Interview, DW Playground)](https://niranjanpotter.github.io/): Searchable 320-question technical bank covering DataWeave 2.0, Mule 4.9 LTS / Java 17 internals, Batch Processing, Scatter-Gather, Anypoint MQ, CloudHub 2.0, OAuth 2.0 JWT, Salesforce Bulk API 2.0, SAP S/4HANA, Snowflake, EDI/Partner Manager, MCP Connector, Model Proxy, and Agentforce Topic Center.
 
 ## 20 Technical Interview & Architecture Guides
 - [MuleSoft Batch Processing Interview Questions & Architecture (2026 Guide)](https://niranjanpotter.github.io/mulesoft-batch-processing-interview-questions.html): Comprehensive MuleSoft Batch Processing interview questions, LMAX Disruptor queue ring buffers, worker crash recovery, and memory sizing for Salesforce Bulk API.

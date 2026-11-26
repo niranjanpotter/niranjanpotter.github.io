@@ -2154,5 +2154,89 @@
     "title": "How do you construct a standardized global error response payload with custom HTTP status codes (400, 401, 404, 500)?",
     "tag": "Q8",
     "answer": "🎯Verbal Pitch — Say It Like This (30 Sec)\n\"To guarantee uniform REST error contracts across every API, we package a reusable Global Error Handler in a shared Mule plugin/library and reference it as the application's defaultErrorHandler. Specific <on-error-propagate> blocks map Mule errors (APIKIT:BAD_REQUEST ➔ 400, HTTP:UNAUTHORIZED ➔ 401, APIKIT:NOT_FOUND ➔ 404, HTTP:TIMEOUT ➔ 504, ANY ➔ 500) to vars.httpStatus and return a canonical JSON body c"
+  },
+  {
+    "id": 308,
+    "elementId": "mod-ss-q1",
+    "title": "Why is wrapping an HTTP Request inside Until Successful without an error filter a production trap, and how do you handle retriable vs non-retriable errors?",
+    "tag": "Q1",
+    "answer": "Until Successful retries ANY exception thrown inside its scope by default—including client errors like HTTP:BAD_REQUEST (400) or HTTP:UNAUTHORIZED (401). Retrying deterministic 4xx failures wastes vCore threads and delays failure responses. Wrap the HTTP Request inside a Try scope with On Error Continue for non-retriable 4xx errors (setting vars.nonRetriableError = true) so Until Successful exits cleanly, then raise the error downstream if vars.nonRetriableError is true.\nQ: What HTTP status codes SHOULD be retried? A: Transient faults—HTTP:TIMEOUT, HTTP:CONNECTIVITY, HTTP:TOO_MANY_REQUESTS (429), and HTTP:SERVICE_UNAVAILABLE (503) / 502 / 504."
+  },
+  {
+    "id": 309,
+    "elementId": "mod-ss-q2",
+    "title": "Explain the causal chain behind STREAM_MAXIMUM_SIZE_EXCEEDED on an HTTP Request or Transform, and how do you resolve it cleanly?",
+    "tag": "Q2",
+    "answer": "Mule 4 uses repeatable streams with an in-memory buffer (512 KB by default) backed by disk overflow. STREAM_MAXIMUM_SIZE_EXCEEDED occurs when an HTTP connector or DataWeave script consumes a stream configured with non-repeatable-stream or exceeds a bounded maxInMemorySize without disk buffering enabled—or when an upstream API returns a multi-hundred-MB payload into an unstreamed buffer.\nQ: Does DataWeave @StreamCapable prevent this? A: Yes, streaming writers/readers process elements sequentially instead of materializing the full DOM tree in heap."
+  },
+  {
+    "id": 310,
+    "elementId": "mod-ss-q3",
+    "title": "How do you generate signed JWTs natively in Mule 4.13 / DataWeave 2.13 without external Java or Exchange libraries?",
+    "tag": "Q3",
+    "answer": "DataWeave 2.13.0 (bundled with Mule 4.13.0 Edge, Oct 2026) added native dw::util::jwt::HMAC (HS256/384/512) and dw::util::jwt::RSA (RS256/384/512 using unencrypted PKCS#1 or PKCS#8 PEM private keys). You call JWT(header, payload, key, algorithm) directly inside Transform Message with zero custom Java dependencies.\nQ: Can dw::util::jwt::RSA read encrypted PKCS#8 keys with a passphrase? A: No—DataWeave 2.13 RSA expects an unencrypted PKCS#1 or PKCS#8 PEM private key stored safely in Secret Manager / Secure Properties."
+  },
+  {
+    "id": 311,
+    "elementId": "mod-ss-q4",
+    "title": "Why did custom Java calls in DataWeave throw IllegalAccessException after upgrading to Mule 4.13 (Java 17), and how do you fix it?",
+    "tag": "Q4",
+    "answer": "Mule 4.13.0 / DataWeave 2.13.0 enforces JDK 17+ Java Platform Module System (JPMS) package filtering by default. Unexported internal JDK packages (such as sun.* or private java.base internals) are blocked during DataWeave Java resolution. Refactor callers to use standard exported Java 17 APIs or native DataWeave modules.\nQ: Is --add-opens a good permanent fix? A: No—treat --add-opens only as a short-term migration bridge while removing internal JDK dependencies."
+  },
+  {
+    "id": 312,
+    "elementId": "mod-ss-q5",
+    "title": "After October 31, 2026, a CloudHub API suddenly started returning 502 Bad Gateway errors. What is the most likely root cause?",
+    "tag": "Q5",
+    "answer": "On October 31, 2026, MuleSoft permanently terminated inbound TLS 1.0 and TLS 1.1 connections on all existing CloudHub 1.0 Dedicated Load Balancers (DLBs). If a DLB or CloudHub 2.0 Ingress forwards to an upstream Mule worker or partner endpoint pinning TLS 1.0/1.1 or incompatible ciphers, the handshake fails and returns 502 Bad Gateway.\nQ: Where else must TLS 1.2+ be verified? A: Both in Mule's HTTP Listener <tls:context> / tls-default.conf AND Runtime Manager's Upstream TLS setting."
+  },
+  {
+    "id": 313,
+    "elementId": "mod-ss-q6",
+    "title": "Why did Mule Maven CI/CD pipelines on GitHub Actions and Azure DevOps suddenly fail in late 2026 during process-sources?",
+    "tag": "Q6",
+    "answer": "Hosted CI runners automatically rolled out Apache Maven 3.10.0 in October 2026, while older mule-maven-plugin versions (<= 4.10.3) only scoped support up to Maven 3.9.x. Upgrading to mule-maven-plugin 4.10.4 (released November 4, 2026) adds official Apache Maven 3.10.0 compatibility.\nQ: What if local Studio builds fail with 'Could not resolve dependencies'? A: Verify ~/.m2/settings.xml holds valid Anypoint Enterprise Repository credentials for Studio's embedded Maven."
+  },
+  {
+    "id": 314,
+    "elementId": "mod-ss-q7",
+    "title": "An Anypoint Runtime Fabric (RTF) app is stuck in NOT READY with 'tls: certificate required' or 'connection reset by peer' to us1.ingest.mulesoft.com. How do you diagnose it?",
+    "tag": "Q7",
+    "answer": "First inspect pod events via kubectl describe pod and rtfctl status. 'tls: certificate required' or ingest resets usually mean either a corporate egress proxy is performing SSL MITM inspection on *.ingest.mulesoft.com (breaking mTLS), client certs expired, or duplicate imagePullSecrets exist in the namespace.\nQ: What changed in RTF 3.x rolling restarts? A: Use declarative spec.lifecycle.restartGeneration increments instead of manual pod deletions for zero-downtime restarts."
+  },
+  {
+    "id": 315,
+    "elementId": "mod-ss-q8",
+    "title": "CloudHub workers are silently restarting with no application error log. What causes this and what changed in DataWeave 2.13.1?",
+    "tag": "Q8",
+    "answer": "Silent worker restarts point to JVM OutOfMemoryError (OOM) killing the container before Mule's logger flushes—typically from loading huge payloads into memory, unbounded variables, or unstreamed transformations. DataWeave 2.13.1 (Nov 2026) also patched memory overhead on text/plain outputs and upgraded Jackson to 2.21.7.\nQ: Should you just bump vCores first? A: Fix streaming, deferred=true, and variable cleanup first—otherwise larger vCores only delay the same leak."
+  },
+  {
+    "id": 316,
+    "elementId": "mod-ss-q9",
+    "title": "Why do Anypoint Studio breakpoints miss when a local Process API calls a local System API?",
+    "tag": "Q9",
+    "answer": "When both APIs run locally on the same machine, binding an HTTP Listener strictly to 127.0.0.1 vs 0.0.0.0, port collisions, or sending requests to an external CloudHub URL instead of localhost:<port> causes traffic to bypass your local debug session or hit the wrong network interface.\nQ: How do you debug multiple Mule apps simultaneously in Studio or ACB? A: Use a Mule Application Launch Configuration referencing both projects and distinct HTTP ports (8081 / 8082)."
+  },
+  {
+    "id": 317,
+    "elementId": "mod-ss-q10",
+    "title": "What new capabilities did MuleSoft Omni Gateway (Flex Gateway) 1.14.4 through 1.15.0 introduce in Oct–Nov 2026?",
+    "tag": "Q10",
+    "answer": "Version 1.14.4 (Oct 23) exposed api.consumerUri to Custom Rust PDK policies and blocked compromised eMudhra intermediate CAs. Version 1.14.5 (Nov 18) added sharedStorage.redis timeoutMilliseconds (2000ms) and maxRetries (1). Version 1.15.0 added native OTLP HTTP/gRPC trace/log export to New Relic/Splunk, DataWeave expressions in Credential Injection API Key policies, Akamai API Security, and Envoy 1.37.8.\nQ: What Rust version does Omni Gateway PDK 1.11.0 require? A: Rust 1.97.0+."
+  },
+  {
+    "id": 318,
+    "elementId": "mod-ss-q11",
+    "title": "How does MuleSoft Agent Fabric govern non-native AI agents like Microsoft Copilot Studio alongside Salesforce Agentforce?",
+    "tag": "Q11",
+    "answer": "Agent Fabric's Oct–Nov 2026 update introduced A2A (Agent-to-Agent) bridges for non-native agents, wrapping Copilot Studio or custom agents with A2A-compliant Agent Cards (/.well-known/agent.json) registered in Anypoint Exchange so Broker policies, scanners, and Agent Visualizer govern cross-cloud calls uniformly.\nQ: How do you protect SAP latency when Agentforce calls MuleSoft? A: Cache read-heavy Customer 360 metadata at the Process/Gateway tier and expose flat, purpose-built Action schemas via Topic Center."
+  },
+  {
+    "id": 319,
+    "elementId": "mod-ss-q12",
+    "title": "With AI tools like MuleSoft Vibes generating Mule XML and DataWeave boilerplate, how do teams enforce code quality, security, and MUnit rigor in 2026?",
+    "tag": "Q12",
+    "answer": "Automated static quality gates (such as MuleGuard in VS Code + Maven) plus MUnit 3.7.5 (80%+ coverage gates) catch AI-generated anti-patterns before PR merge: hardcoded credentials, TLS 1.0/1.1, missing non-retriable filters in Until Successful, inline DataWeave bloat instead of external .dwl modules, and unsafe null selectors.\nQ: Why externalize DataWeave into src/main/resources/dwl/*.dwl? A: Reusable .dwl modules are unit-testable in isolation, readable in Git diffs, and cleaner in Anypoint Code Builder."
   }
 ]
