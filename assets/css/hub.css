@@ -1,28 +1,28 @@
 :root {
-  --bg-page: #090D16;
-  --bg-surface: rgba(255, 255, 255, 0.03);
-  --bg-surface-elevated: #0f1626;
-  --bg-surface-subtle: #0d1220;
-  --bg-card: rgba(255, 255, 255, 0.03);
+  --bg-page: #0B0F19;
+  --bg-surface: #111726;
+  --bg-surface-elevated: #161F33;
+  --bg-surface-subtle: #0E1422;
+  --bg-card: #111726;
   --border: rgba(255, 255, 255, 0.08);
   --border-focus: #00F2FE;
-  --border-hover: rgba(79, 172, 254, 0.45);
+  --border-hover: rgba(79, 172, 254, 0.35);
   
   --electric-cyan: #00F2FE;
-  --cyan-glow: rgba(0, 242, 254, 0.3);
+  --cyan-glow: rgba(0, 242, 254, 0.25);
   --vibrant-indigo: #4FACFE;
-  --indigo-glow: rgba(79, 172, 254, 0.3);
+  --indigo-glow: rgba(79, 172, 254, 0.25);
   --mule-blue: #00a1e0;
-  --mule-glow: rgba(0, 161, 224, 0.3);
+  --mule-glow: rgba(0, 161, 224, 0.25);
   --cyber-purple: #845EC2;
-  --purple-glow: rgba(132, 94, 194, 0.3);
+  --purple-glow: rgba(132, 94, 194, 0.25);
   
   --emerald: #10B981;
-  --emerald-glow: rgba(16, 185, 129, 0.3);
+  --emerald-glow: rgba(16, 185, 129, 0.25);
   --rose: #EF4444;
-  --rose-glow: rgba(239, 68, 68, 0.25);
+  --rose-glow: rgba(239, 68, 68, 0.2);
   --amber: #F59E0B;
-  --amber-glow: rgba(245, 158, 11, 0.25);
+  --amber-glow: rgba(245, 158, 11, 0.2);
   
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
@@ -32,8 +32,8 @@
   --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, Monaco, monospace;
   
   --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
   --radius-full: 9999px;
   
   --sidebar-width: 280px;
@@ -48,10 +48,10 @@
   --bg-card: #ffffff;
   --border: #e2e8f0;
   --border-focus: #00a1e0;
-  --border-hover: rgba(0, 161, 224, 0.4);
+  --border-hover: rgba(0, 161, 224, 0.3);
   --text-main: #0f172a;
   --text-muted: #475569;
-  --text-dim: #475569;
+  --text-dim: #64748b;
 }
 
 /* Reset & Global */
@@ -69,8 +69,17 @@ html {
   line-height: 1.6;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.026em;
+  font-weight: 700;
+}
+h1 {
+  letter-spacing: -0.034em;
+}
+
 body {
   min-height: 100vh;
+  letter-spacing: -0.011em;
   background-color: var(--bg-page);
   background-image: 
     radial-gradient(circle at 12% 12%, rgba(79, 172, 254, 0.08) 0%, transparent 40%),
@@ -803,7 +812,7 @@ body {
 
 /* Smart Q&A Cards & Accordions */
 .faq-card {
-  background: rgba(15, 22, 38, 0.92);
+  background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   margin-bottom: 22px;
@@ -814,7 +823,7 @@ body {
 .faq-card:hover {
   transform: translateY(-4px);
   border-color: rgba(79, 172, 254, 0.45);
-  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(79, 172, 254, 0.2);
+  box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), 0 0 20px rgba(79, 172, 254, 0.15);
 }
 
 [data-theme="light"] .faq-card {
@@ -830,7 +839,7 @@ body {
 
 .faq-header {
   padding: 22px 24px;
-  background: rgba(15, 22, 38, 0.55);
+  background: var(--bg-surface-elevated);
 }
 
 [data-theme="light"] .faq-header {

@@ -3,10 +3,10 @@
 /* MuleSoft Hub - Article & Guide Stylesheet (2026 Edition) */
 
 :root {
-  --bg-page: #090D16;
-  --bg-surface: #0f172a;
-  --bg-card: rgba(15, 23, 42, 0.85);
-  --bg-card-hover: rgba(30, 41, 59, 0.95);
+  --bg-page: #0B0F19;
+  --bg-surface: #111726;
+  --bg-card: #111726;
+  --bg-card-hover: #161F33;
   --border-color: rgba(255, 255, 255, 0.08);
   --border-hover: rgba(0, 242, 254, 0.35);
   
@@ -29,6 +29,14 @@
   --radius-lg: 14px;
   --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
   --shadow-glow: 0 0 25px rgba(0, 242, 254, 0.15);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.026em;
+  font-weight: 700;
+}
+h1 {
+  letter-spacing: -0.034em;
 }
 
 /* Light Theme Variables */
