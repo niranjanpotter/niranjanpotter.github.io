@@ -155,10 +155,10 @@
   </div>
 
   <div class="header-center">
-    <button type="button" class="search-trigger" onclick="openSearchModal()" aria-label="Search 308 topics, DW scripts, error codes (Ctrl+K)">
+    <button type="button" class="search-trigger" onclick="openSearchModal()" aria-label="Search 320 topics, DW scripts, error codes (Ctrl+K)">
       <div style="display:flex; align-items:center; gap:10px;">
         <svg fill="none" height="16" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="16"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
-        <span>Search 308 topics, DW scripts, error codes...</span>
+        <span>Search 320 topics, DW scripts, error codes...</span>
       </div>
       <span class="search-shortcut">Ctrl+K</span>
     </button>
@@ -196,7 +196,7 @@
 <div class="slim-utility-bar" id="utility-bar" role="toolbar" aria-label="Study Utilities">
   <div class="utility-bar-inner">
     <div class="utility-bar-left">
-      <button type="button" class="utility-btn" id="utility-search-btn" onclick="openSearchModal()" aria-label="Search 308 topics (Ctrl+K)" title="Search Topics (Ctrl+K)">
+      <button type="button" class="utility-btn" id="utility-search-btn" onclick="openSearchModal()" aria-label="Search 320 topics (Ctrl+K)" title="Search Topics (Ctrl+K)">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
         <span class="utility-btn-label">Search</span>
       </button>
@@ -207,7 +207,7 @@
     </div>
     <div class="utility-progress-pill" id="utility-progress-pill" title="Revealed Q&amp;A study progress (saved locally)">
       <span class="utility-progress-icon" aria-hidden="true">📈</span>
-      <span id="utility-progress-text">0/308 done</span>
+      <span id="utility-progress-text">0/320 done</span>
       <span class="utility-progress-track" aria-hidden="true"><span class="utility-progress-fill" id="utility-progress-fill" style="width:0%;"></span></span>
     </div>
   </div>
@@ -1544,7 +1544,7 @@
 <div class="search-input-wrapper">
 <svg fill="none" height="20" stroke="#00f0ff" stroke-width="2.5" viewbox="0 0 24 24" width="20"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
 <label class="sr-only" for="search-input-field">Search topics, DataWeave scripts, and error codes</label>
-<input class="search-input-field" id="search-input-field" aria-label="Search topics, DataWeave scripts, and error codes" oninput="handleSearchInput(event)" onkeydown="handleSearchKeydown(event)" placeholder="Search 308 topics, DW scripts, error codes..." type="text"/>
+<input class="search-input-field" id="search-input-field" aria-label="Search topics, DataWeave scripts, and error codes" oninput="handleSearchInput(event)" onkeydown="handleSearchKeydown(event)" placeholder="Search 320 topics, DW scripts, error codes..." type="text"/>
 <button class="btn btn-sm" id="btn-close-search" onclick="closeSearchModal()">Esc</button>
 </div>
 <div class="search-history-row" id="search-history-container" style="display:none; padding:8px 20px; border-bottom:1px solid var(--border); font-size:0.75rem; color:var(--text-dim); align-items:center; gap:8px;">
@@ -1591,7 +1591,7 @@
           <div class="mock-choice-grid" id="mock-role-choices">
             <button type="button" class="mock-choice-card active" data-role="all" onclick="selectMockRole('all', this)">
               <div class="mock-choice-title">🌐 All Levels (Mixed)</div>
-              <div class="mock-choice-desc">Balanced mix from all 46 modules &amp; 308 real scenarios</div>
+              <div class="mock-choice-desc">Balanced mix from all 46 modules &amp; 320 real scenarios</div>
             </button>
             <button type="button" class="mock-choice-card" data-role="developer" onclick="selectMockRole('developer', this)">
               <div class="mock-choice-title">💻 MuleSoft Developer</div>
