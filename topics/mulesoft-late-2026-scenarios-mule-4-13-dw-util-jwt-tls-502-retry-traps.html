@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS | MuleSoft Q&amp;A</title>
+  <meta name="description" content="Fresh Oct–Nov 2026 scenarios: Until Successful non-retriable 4xx traps, STREAM_MAXIMUM_SIZE_EXCEEDED, DataWeave 2.13 native JWT &amp; JDK 17 JPMS fixes, Oct 31 TL">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-late-2026-scenarios-mule-4-13-dw-util-jwt-tls-502-retry-traps.html">
+  <meta property="og:title" content="Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 &amp; Retry Traps) — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Fresh Oct–Nov 2026 scenarios: Until Successful non-retriable 4xx traps, STREAM_MAXIMUM_SIZE_EXCEEDED, DataWeave 2.13 native JWT &amp; JDK 17 JPMS fixes, Oct 31 TL">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-late-2026-scenarios-mule-4-13-dw-util-jwt-tls-502-retry-traps.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps)", "item": "https://niranjanpotter.github.io/topics/mulesoft-late-2026-scenarios-mule-4-13-dw-util-jwt-tls-502-retry-traps.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 & Retry Traps) — MuleSoft Interview Questions & Scenarios (2026)", "description": "Fresh Oct–Nov 2026 scenarios: Until Successful non-retriable 4xx traps, STREAM_MAXIMUM_SIZE_EXCEEDED, DataWeave 2.13 native JWT & JDK 17 JPMS fixes, Oct 31 TLS 502 errors, Maven 4.10.4, Omni Gateway 1.15 & Agent Fabric A2A bridges.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-late-2026-scenarios-mule-4-13-dw-util-jwt-tls-502-retry-traps.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Interview Traps &amp; Pitfalls</span> &gt;
+      <span style="color: var(--text-main);">Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 &amp; Retry Traps)</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Interview Traps &amp; Pitfalls · Senior Developer / Architect</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 &amp; Retry Traps) — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Fresh Oct–Nov 2026 scenarios: Until Successful non-retriable 4xx traps, STREAM_MAXIMUM_SIZE_EXCEEDED, DataWeave 2.13 native JWT &amp; JDK 17 JPMS fixes, Oct 31 TLS 502 errors, Maven 4.10.4, Omni Gateway 1.15 &amp; Agent Fabric A2A bridges.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-ss-title" class="blog-article" data-category="Interview Traps &amp; Pitfalls" data-role="Senior Developer / Architect" id="mod-ss">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-lead">Module SS</span>
+<span class="badge badge-lead">[SENIOR DEVELOPER / ARCHITECT]</span>
+<span class="badge badge-primary">Interview Traps &amp; Pitfalls</span>
+<span>⏱️ 12 min read</span>
+<span>🎯 12 Interview Topics</span>
+</div>
+<h2 class="article-title" id="mod-ss-title">🔥 Late-2026 Scenarios (Mule 4.13, dw::util::jwt, TLS 502 &amp; Retry Traps)</h2>
+<p class="article-excerpt">Fresh Oct–Nov 2026 scenarios: Until Successful non-retriable 4xx traps, STREAM_MAXIMUM_SIZE_EXCEEDED, DataWeave 2.13 native JWT &amp; JDK 17 JPMS fixes, Oct 31 TLS 502 errors, Maven 4.10.4, Omni Gateway 1.15 &amp; Agent Fabric A2A bridges.</p>
+</div>
+<div class="faq-card" data-role="senior developer" id="mod-ss-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-senior">[SENIOR DEVELOPER]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module SS</span>
+</div>
+<h3 class="q-title">Why is wrapping an HTTP Request inside Until Successful without an error filter a production trap, and how do you handle retriable vs non-retriable errors?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ SENIOR MODEL ANSWER</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>Verbal Pitch — Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+<p>"Until Successful retries ANY exception thrown inside its scope by default—including client errors like HTTP:BAD_REQUEST (400) or HTTP:UNAUTHORIZED (401). Retrying deterministic 4xx failures wastes vCore threads and delays failure responses. Wrap the HTTP Request inside a Try scope with On Error Continue for non-retriable 4xx errors (setting vars.nonRetriableError = true) so Until Successful exits cleanly, then raise the error downstream if vars.nonRetriableError is true."</p>
+</div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>Real-Time Project Example &amp; Implementation</strong></div>
+<div class="callout-body">
+<pre><code>&lt;until-successful maxRetries="3" millisBetweenRetries="2000"&gt;
+  &lt;try&gt;
+    &lt;http:request config-ref="Backend_HTTP" path="/orders" /&gt;
+    &lt;error-handler&gt;
+      &lt;on-error-continue type="HTTP:BAD_REQUEST, HTTP:UNAUTHORIZED, HTTP:FORBIDDEN"&gt;
+        &lt;set-variable variableName="fatal4xx" value="#[true]" /&gt;
+      &lt;/on-error-continue&gt;
+    &lt;/error-handler&gt;
+  &lt;/try&gt;
+&lt;/until-successful&gt;</code></pre>
+</div>
+</div>
+<div class="callout callout-danger">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>Interviewer Cross-Question &amp; Deep-Dive</strong></div>
+<div class="callout-body">
+<p>Q: What HTTP status codes SHOULD be retried? A: Transient faults—HTTP:TIMEOUT, HTTP:CONNECTIVITY, HTTP:TOO_MANY_REQUESTS (429), and HTTP:SERVICE_UNAVAILABLE (503) / 502 / 504.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior developer" id="mod-ss-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-senior">[SENIOR DEVELOPER]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module SS</span>
+</div>
+<h3 class="q-title">Explain the causal chain behind STREAM_MAXIMUM_SIZE_EXCEEDED on an HTTP Request or Transform, and how do you resolve it cleanly?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ SENIOR MODEL ANSWER</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>Verbal Pitch — Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+<p>"Mule 4 uses repeatable streams with an in-memory buffer (512 KB by default) backed by disk overflow. STREAM_MAXIMUM_SIZE_EXCEEDED occurs when an HTTP connector or DataWeave script consumes a stream configured with non-repeatable-stream or exceeds a bounded maxInMemorySize without disk buffering enabled—or when an upstream API returns a multi-hundred-MB payload into an unstreamed buffer."</p>
+</div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>Real-Time Project Example &amp; Implementation</strong></div>
+<div class="callout-body">
+<pre><code>&lt;http:request-config name="Large_API"&gt;
+  &lt;http:request-connection host="api.internal" port="443" protocol="HTTPS" /&gt;
+&lt;/http:request-config&gt;
+&lt;!-- Use repeatable-file-store-stream with maxInMemorySize="2048" unit="KB" --&gt;</code></pre>
+</div>
+</div>
+<div class="callout callout-danger">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>Interviewer Cross-Question &amp; Deep-Dive</strong></div>
+<div class="callout-body">
+<p>Q: Does DataWeave @StreamCapable prevent this? A: Yes, streaming writers/readers process elements sequentially instead of materializing the full DOM tree in heap.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / architect" id="mod-ss-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-senior">[DEVELOPER / ARCHITECT]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module SS</span>
+</div>
+<h3 class="q-title">How do you generate signed JWTs natively in Mule 4.13 / DataWeave 2.13 without external Java or Exchange libraries?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ SENIOR MODEL ANSWER</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>Verbal Pitch — Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+<p>"DataWeave 2.13.0 (bundled with Mule 4.13.0 Edge, Oct 2026) added native dw::util::jwt::HMAC (HS256/384/512) and dw::util::jwt::RSA (RS256/384/512 using unencrypted PKCS#1 or PKCS#8 PEM private keys). You call JWT(header, payload, key, algorithm) directly inside Transform Message with zero custom Java dependencies."</p>
+</div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>Real-Time Project Example &amp; Implementation</strong></div>
+<div class="callout-body">
+<pre><code>%dw 2.0
+output application/json
+import * from dw::util::jwt::RSA
+---
+{
+  token: JWT({alg: "RS256", typ: "JWT"}, {sub: "erp-client", exp: 1796000000}, Mule::p("secure::jwt.pem"), "Sha256withRSA")
+}</code></pre>
+</div>
+</div>
+<div class="callout callout-danger">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>Interviewer Cross-Question &amp; Deep-Dive</strong></div>
+<div class="callout-body">
+<p>Q: Can dw::util::jwt::RSA read encrypted PKCS#8 keys with a passphrase? A: No—DataWeave 2.13 RSA expects an unencrypted PKCS#1 or PKCS#8 PEM private key stored safely in Secret Manager / Secure Properties.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior developer" id="mod-ss-q4">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q4</span>
+<span class="badge badge-senior">[SENIOR DEVELOPER]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module SS</span>
+</div>
+<h3 class="q-title">Why did custom Java calls in DataWeave throw IllegalAccessException after upgrading to Mule 4.13 (Java 17), and how do you fix it?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ SENIOR MODEL ANSWER</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>Verbal Pitch — Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+<p>"Mule 4.13.0 / DataWeave 2.13.0 enforces JDK 17+ Java Platform Module System (JPMS) package filtering by default. Unexported internal JDK packages (such as sun.* or private java.base internals) are blocked during DataWeave Java resolution. Refactor callers to use standard exported Java 17 APIs or native DataWeave modules."</p>
+</div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>Real-Time Project Example &amp; Implementation</strong></div>
+<div class="callout-body">
+<pre><code>// Avoid: java!sun::misc::BASE64Encoder
+// Use native DataWeave instead:
+import * from dw::core::Binaries
+---
+toBase64(payload as Binary)</code></pre>
+</div>
+</div>
+<div class="callout callout-danger">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>Interviewer Cross-Question &amp; Deep-Dive</strong></div>
+<div class="callout-body">
+<p>Q: Is --add-opens a good permanent fix? A: No—treat --add-opens only as a short-term migration bridge while removing internal JDK dependencies.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="architect" id="mod-ss-q5">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q5</span>
+<span class="badge badge-senior">[ARCHITECT]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module SS</span>
+</div>
+<h3 class="q-title">After October 31, 2026, a CloudHub API suddenly started returning 502 Bad Gateway errors. What is the most likely root cause?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ SENIOR MODEL ANSWER</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>Verbal Pitch — Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+<p>"On October 31, 2026, MuleSoft permanently terminated inbound TLS 1.0 and TLS 1.1 connections on all existing CloudHub 1.0 Dedicated Load Balancers (DLBs). If a DLB or CloudHub 2.0 Ingress forwards to an upstream Mule worker or partner endpoint pinning TLS 1.0/1.1 or incompatible ciphers, the handshake fails and returns 502 Bad Gateway."</p>
+</div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>Real-Time Project Example &amp; Implementation</strong></div>
+<div class="callout-body">
+<pre><code>&lt;tls:context name="Strict_TLS12_Context" enabledProtocols="TLSv1.2,TLSv1.3"&gt;
+  &lt;tls:key-store type="pkcs12" path="certs/api.p12" password="${secure::tls.pass}" /&gt;
+&lt;/tls:context&gt;</code></pre>
+</div>
+</div>
+<div class="callout callout-danger">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>Interviewer Cross-Question &amp; Deep-Dive</strong></div>
+<div class="callout-body">
+<p>Q: Where else must TLS 1.2+ be verified? A: Both in Mule's HTTP Listener &lt;tls:context&gt; / tls-default.conf AND Runtime Manager's Upstream TLS setting.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / devops" id="mod-ss-q6">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q6</span>
+<span class="badge badge-senior">[DEVELOPER / DEVOPS]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module SS</span>
+</div>
+<h3 class="q-title">Why did Mule Maven CI/CD pipelines on GitHub Actions and Azure DevOps suddenly fail in late 2026 during process-sources?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ SENIOR MODEL ANSWER</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>Verbal Pitch — Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+<p>"Hosted CI runners automatically rolled out Apache Maven 3.10.0 in October 2026, while older mule-maven-plugin versions (&lt;= 4.10.3) only scoped support up to Maven 3.9.x. Upgrading to mule-maven-plugin 4.10.4 (released November 4, 2026) adds official Apache Maven 3.10.0 compatibility."</p>
+</div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>Real-Time Project Example &amp; Implementation</strong></div>
+<div class="callout-body">
+<pre><code>&lt;plugin&gt;
+  &lt;groupId&gt;org.mule.tools.maven&lt;/groupId&gt;
+  &lt;artifactId&gt;mule-maven-plugin&lt;/artifactId&gt;
+  &lt;version&gt;4.10.4&lt;/version&gt;
+  &lt;extensions&gt;true&lt;/extensions&gt;
+&lt;/plugin&gt;</code></pre>
+</div>
+</div>
+<div class="callout callout-danger">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>Interviewer Cross-Question &amp; Deep-Dive</strong></div>
+<div class="callout-body">
+<p>Q: What if local Studio builds fail with 'Could not resolve dependencies'? A: Verify ~/.m2/settings.xml holds valid Anypoint Enterprise Repository credentials for Studio's embedded Maven.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="architect / ops" id="mod-ss-q7">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q7</span>
+<span class="badge badge-senior">[ARCHITECT / OPS]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module SS</span>
+</div>
+<h3 class="q-title">An Anypoint Runtime Fabric (RTF) app is stuck in NOT READY with 'tls: certificate required' or 'connection reset by peer' to us1.ingest.mulesoft.com. How do you diagnose it?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ SENIOR MODEL ANSWER</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>Verbal Pitch — Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+<p>"First inspect pod events via kubectl describe pod and rtfctl status. 'tls: certificate required' or ingest resets usually mean either a corporate egress proxy is performing SSL MITM inspection on *.ingest.mulesoft.com (breaking mTLS), client certs expired, or duplicate imagePullSecrets exist in the namespace."</p>
+</div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>Real-Time Project Example &amp; Implementation</strong></div>
+<div class="callout-body">
+<pre><code>rtfctl status
+kubectl get pods -n &lt;env-namespace&gt;
+kubectl describe pod &lt;pod-name&gt; -n &lt;env-namespace&gt;</code></pre>
+</div>
+</div>
+<div class="callout callout-danger">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>Interviewer Cross-Question &amp; Deep-Dive</strong></div>
+<div class="callout-body">
+<p>Q: What changed in RTF 3.x rolling restarts? A: Use declarative spec.lifecycle.restartGeneration increments instead of manual pod deletions for zero-downtime restarts.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior developer" id="mod-ss-q8">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q8</span>
+<span class="badge badge-senior">[SENIOR DEVELOPER]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module SS</span>
+</div>
+<h3 class="q-title">CloudHub workers are silently restarting with no application error log. What causes this and what changed in DataWeave 2.13.1?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ SENIOR MODEL ANSWER</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>Verbal Pitch — Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+<p>"Silent worker restarts point to JVM OutOfMemoryError (OOM) killing the container before Mule's logger flushes—typically from loading huge payloads into memory, unbounded variables, or unstreamed transformations. DataWeave 2.13.1 (Nov 2026) also patched memory overhead on text/plain outputs and upgraded Jackson to 2.21.7."</p>
+</div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>Real-Time Project Example &amp; Implementation</strong></div>
+<div class="callout-body">
+<pre><code>// Stream large CSV/JSON instead of building giant in-memory arrays
+%dw 2.0
+output application/ndjson deferred=true
+---
+payload map ((row) -&gt; { id: row.id, total: row.qty * row.price })</code></pre>
+</div>
+</div>
+<div class="callout callout-danger">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>Interviewer Cross-Question &amp; Deep-Dive</strong></div>
+<div class="callout-body">
+<p>Q: Should you just bump vCores first? A: Fix streaming, deferred=true, and variable cleanup first—otherwise larger vCores only delay the same leak.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="beginner / developer" id="mod-ss-q9">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q9</span>
+<span class="badge badge-senior">[BEGINNER / DEVELOPER]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module SS</span>
+</div>
+<h3 class="q-title">Why do Anypoint Studio breakpoints miss when a local Process API calls a local System API?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ SENIOR MODEL ANSWER</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>Verbal Pitch — Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+<p>"When both APIs run locally on the same machine, binding an HTTP Listener strictly to 127.0.0.1 vs 0.0.0.0, port collisions, or sending requests to an external CloudHub URL instead of localhost:&lt;port&gt; causes traffic to bypass your local debug session or hit the wrong network interface."</p>
+</div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>Real-Time Project Example &amp; Implementation</strong></div>
+<div class="callout-body">
+<pre><code># Local dev properties (config-local.yaml)
+sapi:
+  host: "localhost"
+  port: "8082"</code></pre>
+</div>
+</div>
+<div class="callout callout-danger">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>Interviewer Cross-Question &amp; Deep-Dive</strong></div>
+<div class="callout-body">
+<p>Q: How do you debug multiple Mule apps simultaneously in Studio or ACB? A: Use a Mule Application Launch Configuration referencing both projects and distinct HTTP ports (8081 / 8082).</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="architect" id="mod-ss-q10">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q10</span>
+<span class="badge badge-senior">[ARCHITECT]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module SS</span>
+</div>
+<h3 class="q-title">What new capabilities did MuleSoft Omni Gateway (Flex Gateway) 1.14.4 through 1.15.0 introduce in Oct–Nov 2026?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ SENIOR MODEL ANSWER</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>Verbal Pitch — Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+<p>"Version 1.14.4 (Oct 23) exposed api.consumerUri to Custom Rust PDK policies and blocked compromised eMudhra intermediate CAs. Version 1.14.5 (Nov 18) added sharedStorage.redis timeoutMilliseconds (2000ms) and maxRetries (1). Version 1.15.0 added native OTLP HTTP/gRPC trace/log export to New Relic/Splunk, DataWeave expressions in Credential Injection API Key policies, Akamai API Security, and Envoy 1.37.8."</p>
+</div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>Real-Time Project Example &amp; Implementation</strong></div>
+<div class="callout-body">
+<pre><code>sharedStorage:
+  redis:
+    timeoutMilliseconds: 2000
+    maxRetries: 1</code></pre>
+</div>
+</div>
+<div class="callout callout-danger">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>Interviewer Cross-Question &amp; Deep-Dive</strong></div>
+<div class="callout-body">
+<p>Q: What Rust version does Omni Gateway PDK 1.11.0 require? A: Rust 1.97.0+.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="architect" id="mod-ss-q11">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q11</span>
+<span class="badge badge-senior">[ARCHITECT]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module SS</span>
+</div>
+<h3 class="q-title">How does MuleSoft Agent Fabric govern non-native AI agents like Microsoft Copilot Studio alongside Salesforce Agentforce?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ SENIOR MODEL ANSWER</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>Verbal Pitch — Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+<p>"Agent Fabric's Oct–Nov 2026 update introduced A2A (Agent-to-Agent) bridges for non-native agents, wrapping Copilot Studio or custom agents with A2A-compliant Agent Cards (/.well-known/agent.json) registered in Anypoint Exchange so Broker policies, scanners, and Agent Visualizer govern cross-cloud calls uniformly."</p>
+</div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>Real-Time Project Example &amp; Implementation</strong></div>
+<div class="callout-body">
+<pre><code>// A2A Bridge exposes non-native agent with standard Agent Card
+GET /.well-known/agent.json -&gt; capabilities, skills, oauth2 securitySchemes</code></pre>
+</div>
+</div>
+<div class="callout callout-danger">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>Interviewer Cross-Question &amp; Deep-Dive</strong></div>
+<div class="callout-body">
+<p>Q: How do you protect SAP latency when Agentforce calls MuleSoft? A: Cache read-heavy Customer 360 metadata at the Process/Gateway tier and expose flat, purpose-built Action schemas via Topic Center.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior developer / lead" id="mod-ss-q12">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q12</span>
+<span class="badge badge-senior">[SENIOR DEVELOPER / LEAD]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module SS</span>
+</div>
+<h3 class="q-title">With AI tools like MuleSoft Vibes generating Mule XML and DataWeave boilerplate, how do teams enforce code quality, security, and MUnit rigor in 2026?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ SENIOR MODEL ANSWER</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>Verbal Pitch — Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+<p>"Automated static quality gates (such as MuleGuard in VS Code + Maven) plus MUnit 3.7.5 (80%+ coverage gates) catch AI-generated anti-patterns before PR merge: hardcoded credentials, TLS 1.0/1.1, missing non-retriable filters in Until Successful, inline DataWeave bloat instead of external .dwl modules, and unsafe null selectors."</p>
+</div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>Real-Time Project Example &amp; Implementation</strong></div>
+<div class="callout-body">
+<pre><code># Enforce quality + MUnit 3.7.5 in CI
+mvn clean test -Dmunit.coverage.fail=true -Dmule.maven.plugin.version=4.10.4</code></pre>
+</div>
+</div>
+<div class="callout callout-danger">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>Interviewer Cross-Question &amp; Deep-Dive</strong></div>
+<div class="callout-body">
+<p>Q: Why externalize DataWeave into src/main/resources/dwl/*.dwl? A: Reusable .dwl modules are unit-testable in isolation, readable in Git diffs, and cleaner in Anypoint Code Builder.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-global-consulting-interview-questions-pwc-deloitte-hexaware.html">← Global Consulting Interview Questions (PWC</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-top-20-interview-traps-senior-corrections-t1-t20.html">Top 20 Interview Traps &amp; Senior Corrections (T1-T20)</a></li><li><a href="mulesoft-global-consulting-interview-questions-pwc-deloitte-hexaware.html">Global Consulting Interview Questions (PWC, Deloitte, Hexaware)</a></li><li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li><li><a href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC)</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>
