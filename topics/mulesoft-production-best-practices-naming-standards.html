@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Production Best Practices &amp; Naming Standards | MuleSoft Q&amp;A</title>
+  <meta name="description" content="Parent POM / BOM inheritance, secure property encryption, environmental config, and flow naming conventions.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-production-best-practices-naming-standards.html">
+  <meta property="og:title" content="Production Best Practices &amp; Naming Standards — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Parent POM / BOM inheritance, secure property encryption, environmental config, and flow naming conventions.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-production-best-practices-naming-standards.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Production Best Practices & Naming Standards", "item": "https://niranjanpotter.github.io/topics/mulesoft-production-best-practices-naming-standards.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Production Best Practices & Naming Standards — MuleSoft Interview Questions & Scenarios (2026)", "description": "Parent POM / BOM inheritance, secure property encryption, environmental config, and flow naming conventions.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-production-best-practices-naming-standards.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>ObjectStore &amp; API Governance</span> &gt;
+      <span style="color: var(--text-main);">Production Best Practices &amp; Naming Standards</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">ObjectStore &amp; API Governance · Senior / Lead</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Production Best Practices &amp; Naming Standards — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Parent POM / BOM inheritance, secure property encryption, environmental config, and flow naming conventions.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-q-title" class="blog-article" data-category="ObjectStore &amp; API Governance" data-role="Senior / Lead" id="mod-q">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-lead">Module Q</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="badge badge-primary">ObjectStore &amp; API Governance</span>
+<span>⏱️ 5 min read</span>
+<span>📄 Guide Pages 42–46</span>
+<span>🎯 4 Interview Topics</span>
+</div>
+<h2 class="article-title">📋 Production Best Practices &amp; Naming Standards</h2>
+<p class="article-excerpt">Parent POM / BOM inheritance, secure property encryption, environmental config, and flow naming conventions.</p>
+</div>
+<div class="faq-card" data-role="senior / lead" id="mod-q-q0">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">STD</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 3 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module Q</span>
+</div>
+<h3 class="q-title">What naming conventions do you follow across API layers and Mule projects?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ELEMENT</th><th>CONVENTION</th><th>EXAMPLE</th></tr></thead>
+<tbody>
+<tr><td data-label="ELEMENT">Flow names</td><td data-label="CONVENTION">kebab-case + HTTP method</td><td data-label="EXAMPLE"><code>get-billing-inquiry-flow</code></td></tr>
+<tr><td data-label="ELEMENT">Sub-flows</td><td data-label="CONVENTION">descriptive + suffix</td><td data-label="EXAMPLE"><code>validate-request-sub-flow</code></td></tr>
+<tr><td data-label="ELEMENT">Variables</td><td data-label="CONVENTION">camelCase</td><td data-label="EXAMPLE"><code>correlationId</code>, <code>sapResponse</code></td></tr>
+<tr><td data-label="ELEMENT">Config properties</td><td data-label="CONVENTION">dot-notation</td><td data-label="EXAMPLE"><code>sap.billing.host</code>, <code>mq.queue.preferences</code></td></tr>
+<tr><td data-label="ELEMENT">RAML types</td><td data-label="CONVENTION">PascalCase</td><td data-label="EXAMPLE"><code>BillingResponse</code>, <code>CustomerAccount</code></td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior / lead" id="mod-q-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module Q</span>
+</div>
+<h3 class="q-title">Describe your Billing Inquiry flow end to end.</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">📋  BILLING INQUIRY FLOW — GET /BILLING/INQUIRY</p>
+<div class="doc-step-item"><span class="step-num">1.</span><span>Salesforce Employee Desktop calls customer-billing-xapi with OAuth token</span></div>
+<div class="doc-step-item"><span class="step-num">2.</span><span>XAPI validates Client ID policy → calls billing-inquiry-papi</span></div>
+<div class="doc-step-item"><span class="step-num">3.</span><span>PAPI uses Scatter-Gather to call SAP Billing SAPI + DynamoDB Preferences SAPI in parallel</span></div>
+<div class="doc-step-item"><span class="step-num">4.</span><span>SAP SAPI: HTTP OData call → returns XML with billing details, charges, contract info</span></div>
+<div class="doc-step-item"><span class="step-num">5.</span><span>DynamoDB SAPI: HTTP + SigV4 → returns customer display preferences</span></div>
+<div class="doc-step-item"><span class="step-num">6.</span><span>DataWeave merges both: maps SAP XML → JSON + overlays DynamoDB preferences</span></div>
+<div class="doc-step-item"><span class="step-num">7.</span><span>Result: response time reduced from 2.5s → 1.1s = 55% improvement</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior / lead" id="mod-q-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module Q</span>
+</div>
+<h3 class="q-title">What was the most challenging technical problem you solved?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Problem: SAP Billing Inquiry returned XML where the ToInstallations  node could be empty for</p>
+<p class="doc-p">accounts with status "Pending Final + Disconnected" causing NullPointerException in production.</p>
+<p class="doc-p">Fix: Added null-safe DataWeave with default []  and default "UNKNOWN"  for all SAP array/string</p>
+<p class="doc-p">nodes. Added a MUnit test for this edge case — never regressed in 18 months. Lesson: always use</p>
+<p class="doc-p">default  for SAP XML nodes.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior / lead" id="mod-q-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module Q</span>
+</div>
+<h3 class="q-title">How did you manage the async preference update flow?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">📋  PREFERENCE UPDATE — ASYNC PATTERN</p>
+<div class="doc-step-item"><span class="step-num">1.</span><span>Mobile app calls preference-update-xapi → XAPI validates + publishes to Anypoint MQ → returns 202 Accepted</span></div>
+<div class="doc-step-item"><span class="step-num">2.</span><span>MQ consumer picks up → checks ObjectStore for transactionId (idempotency)</span></div>
+<div class="doc-step-item"><span class="step-num">3.</span><span>EXISTS: ACK + skip. NOT EXISTS: write to DynamoDB + Salesforce</span></div>
+<div class="doc-step-item"><span class="step-num">4.</span><span>On success: os:store(transactionId, TTL=24h) + anypoint-mq:ack</span></div>
+<div class="doc-step-item"><span class="step-num">5.</span><span>On failure: anypoint-mq:nack → returned to queue for retry</span></div>
+<div class="doc-step-item"><span class="step-num">6.</span><span>Prevented 47 duplicate DynamoDB writes in first month of production</span></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "I use Choice Router for content-based routing where deterministic DataWeave expressions evaluate which single execution path to take, always configuring a default route for unhandled exceptions. In contrast, First Successful is ideal for active-passive failover—attempting a primary API route first, and only trying the secondary backup if an error is thrown."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Aviation — Multi-Carrier Shipping Rate Dispatcher.</p><p class="example-line"><strong>Problem:</strong> Hardcoded if-else routing logic led to maintainability nightmares and complete order failure when the primary shipping partner API went down.</p><p class="example-line"><strong>What I Did:</strong> Implemented a Choice router for package size rules, combined with a First Successful scope attempting primary carrier API first, falling back to secondary carrier.</p><p class="example-line"><strong>Result:</strong> Reduced shipping dispatch errors by 100% and guaranteed zero order checkout interruptions during partner carrier outages.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-munit-testing-framework-mocking.html">← MUnit Testing Framework &amp; Mocking</a><a class="btn btn-outline" href="dataweave-2-0-reference-core-operators.html">DataWeave 2.0 Reference &amp; Core Operators →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-objectstore-deep-dive-osv2-ttl-watermarking.html">ObjectStore Deep Dive (OSv2, TTL, Watermarking)</a></li><li><a href="mulesoft-api-led-connectivity-deep-dive-raml-policies.html">API-led Connectivity Deep Dive (RAML, Policies)</a></li><li><a href="anypoint-platform-api-governance-masterclass.html">Anypoint Platform &amp; API Governance Masterclass</a></li><li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

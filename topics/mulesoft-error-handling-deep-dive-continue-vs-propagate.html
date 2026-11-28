@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Error Handling Deep Dive (Continue vs Propagate) | MuleSoft Q&amp;A</title>
+  <meta name="description" content="On Error Continue vs Propagate, Try scope, standard error types, SAPI→PAPI→XAPI error bubbling, and standardized JSON error payloads.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-error-handling-deep-dive-continue-vs-propagate.html">
+  <meta property="og:title" content="Error Handling Deep Dive (Continue vs Propagate) — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="On Error Continue vs Propagate, Try scope, standard error types, SAPI→PAPI→XAPI error bubbling, and standardized JSON error payloads.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-error-handling-deep-dive-continue-vs-propagate.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Error Handling Deep Dive (Continue vs Propagate)", "item": "https://niranjanpotter.github.io/topics/mulesoft-error-handling-deep-dive-continue-vs-propagate.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Error Handling Deep Dive (Continue vs Propagate) — MuleSoft Interview Questions & Scenarios (2026)", "description": "On Error Continue vs Propagate, Try scope, standard error types, SAPI→PAPI→XAPI error bubbling, and standardized JSON error payloads.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-error-handling-deep-dive-continue-vs-propagate.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Error Handling &amp; Resiliency</span> &gt;
+      <span style="color: var(--text-main);">Error Handling Deep Dive (Continue vs Propagate)</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Error Handling &amp; Resiliency · Developer / Senior</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Error Handling Deep Dive (Continue vs Propagate) — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">On Error Continue vs Propagate, Try scope, standard error types, SAPI→PAPI→XAPI error bubbling, and standardized JSON error payloads.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-l-title" class="blog-article" data-category="Error Handling &amp; Resiliency" data-role="Developer / Senior" id="mod-l">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-senior">Module L</span>
+<span class="badge badge-senior">[DEVELOPER / SENIOR]</span>
+<span class="badge badge-primary">Error Handling &amp; Resiliency</span>
+<span>⏱️ 3 min read</span>
+<span>📄 Guide Pages 27–29</span>
+<span>🎯 5 Interview Topics</span>
+</div>
+<figure aria-label="MuleSoft Reusable Error Handling &amp; Bubble-up Lifecycle" class="hub-diagram" id="mod-l-diagram">
+<svg class="responsive-svg" height="auto" viewbox="0 0 1200 480" width="100%" xmlns="http://www.w3.org/2000/svg">
+<title>Mule 4 Error Handling Flow Architecture</title>
+<desc>Diagram showing error propagation, On-Error-Continue and On-Error-Propagate branching, and parent flow response mapping.</desc>
+<defs>
+<lineargradient id="l-bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#0F172A"></stop><stop offset="100%" stop-color="#1E293B"></stop></lineargradient>
+<lineargradient id="l-cont" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#064E3B"></stop><stop offset="100%" stop-color="#047857"></stop></lineargradient>
+<lineargradient id="l-prop" x1="0" x2="1" y1="0" y2="1"><stop offset="0%" stop-color="#7F1D1D"></stop><stop offset="100%" stop-color="#B91C1C"></stop></lineargradient>
+</defs>
+<rect fill="url(#l-bg)" height="480" rx="14" stroke="#334155" stroke-width="1.5" width="1200"></rect>
+<g data-note="HTTP Listener receives client request, initializes flow vars and payload." data-step="1" data-title="Step 1: Inbound Request">
+<rect fill="#1E293B" height="70" rx="8" stroke="#00F2FE" stroke-width="1.5" width="160" x="40" y="80"></rect>
+<text fill="#00F2FE" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="120" y="115">HTTP Listener</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="120" y="135">POST /api/v1/orders</text>
+</g>
+<path d="M200 115 L260 115" stroke="#00F2FE" stroke-width="2"></path>
+<g data-note="Core business logic executes: validation, transformation, and outbound HTTP request." data-step="2" data-title="Step 2: Processing Flow">
+<rect fill="#1E293B" height="110" rx="8" stroke="#845EC2" stroke-width="1.5" width="220" x="260" y="60"></rect>
+<text fill="#D65DB1" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="370" y="90">Main Flow Scope</text>
+<text fill="#E2E8F0" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="370" y="115">Flow-Ref: process-order</text>
+<text fill="#F87171" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="370" y="135">💥 Error Thrown (404/500)</text>
+</g>
+<path d="M480 115 L560 115" stroke="#F87171" stroke-dasharray="4,4" stroke-width="2"></path>
+<g data-note="Runtime evaluates error type against typed on-error blocks (e.g. HTTP:NOT_FOUND vs ANY)." data-step="3" data-title="Step 3: Error Handler Router">
+<polygon fill="#1E293B" points="620,70 700,115 620,160 540,115" stroke="#F87171" stroke-width="2"></polygon>
+<text fill="#F87171" font-family="'Plus Jakarta Sans',sans-serif" font-size="11" font-weight="700" text-anchor="middle" x="620" y="118">Error Type?</text>
+</g>
+<path d="M620 70 L620 40 L760 40" stroke="#10B981" stroke-width="2"></path>
+<g data-note="Swallows error, completes flow execution, returns HTTP 200 OK with error payload." data-step="4" data-title="Scope A: On-Error-Continue">
+<rect fill="url(#l-cont)" height="90" rx="8" stroke="#10B981" stroke-width="1.5" width="220" x="760" y="20"></rect>
+<text fill="#A7F3D0" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="870" y="50">On-Error-Continue</text>
+<text fill="#FFFFFF" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="870" y="75">Payload = { status: 'handled' }</text>
+<text fill="#6EE7B7" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" text-anchor="middle" x="870" y="92">HTTP Status: 200 OK</text>
+</g>
+<path d="M620 160 L620 230 L760 230" stroke="#EF4444" stroke-width="2"></path>
+<g data-note="Re-throws error to caller, aborts remaining steps, returns HTTP 500/Custom Error code." data-step="5" data-title="Scope B: On-Error-Propagate">
+<rect fill="url(#l-prop)" height="90" rx="8" stroke="#EF4444" stroke-width="1.5" width="220" x="760" y="185"></rect>
+<text fill="#FECACA" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="870" y="215">On-Error-Propagate</text>
+<text fill="#FFFFFF" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="870" y="240">Re-throws error to parent</text>
+<text fill="#FCA5A5" font-family="'JetBrains Mono',monospace" font-size="10" font-weight="700" text-anchor="middle" x="870" y="258">HTTP Status: 500 / 4xx</text>
+</g>
+<g data-note="Encapsulates specific risky components (e.g. database commit) without failing the parent flow." data-step="6" data-title="Step 6: Try Scope Isolation">
+<rect fill="#1E293B" height="120" rx="10" stroke="#00F2FE" stroke-dasharray="6,4" stroke-width="1.5" width="720" x="260" y="320"></rect>
+<text fill="#00F2FE" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" x="280" y="350">Try Scope with Dedicated Error Handler</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="11" x="280" y="375">Allows localized transaction rollback or fallback cache retrieval without terminating the main thread.</text>
+<text fill="#38BDF8" font-family="'JetBrains Mono',monospace" font-size="11" x="280" y="400">✓ Error contained inside Try -&gt; Parent flow continues execution.</text>
+</g>
+</svg>
+<figcaption class="hub-diagram-caption">Figure L.1: Mule 4 Error Handling Scopes — On-Error-Continue (HTTP 200) vs On-Error-Propagate (HTTP 500) &amp; Try Scope Isolation.</figcaption>
+</figure>
+<h2 class="article-title">⚠️ Error Handling Deep Dive (Continue vs Propagate)</h2>
+<p class="article-excerpt">On Error Continue vs Propagate, Try scope, standard error types, SAPI→PAPI→XAPI error bubbling, and standardized JSON error payloads.</p>
+</div>
+<div class="table-responsive" style="margin:24px 0;">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead>
+<tr>
+<th>BEHAVIOR</th>
+<th>ON ERROR CONTINUE</th>
+<th>ON ERROR PROPAGATE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="BEHAVIOR"><strong>HTTP Status Code</strong></td>
+<td data-label="ON ERROR CONTINUE">Returns <code>200 OK</code> (success to caller) unless overridden</td>
+<td data-label="ON ERROR PROPAGATE">Returns <code>500 Internal Server Error</code> (or error mapping)</td>
+</tr>
+<tr>
+<td data-label="BEHAVIOR"><strong>Parent Flow Execution</strong></td>
+<td data-label="ON ERROR CONTINUE">Parent flow continues to the very next processor</td>
+<td data-label="ON ERROR PROPAGATE">Parent flow execution immediately terminates</td>
+</tr>
+<tr>
+<td data-label="BEHAVIOR"><strong>Transaction Behavior</strong></td>
+<td data-label="ON ERROR CONTINUE">Commits current database/JMS transaction</td>
+<td data-label="ON ERROR PROPAGATE">Rolls back transaction (compensates changes)</td>
+</tr>
+<tr>
+<td data-label="BEHAVIOR"><strong>Payload Returned</strong></td>
+<td data-label="ON ERROR CONTINUE">Output of the error handler scope becomes the new payload</td>
+<td data-label="ON ERROR PROPAGATE">Output of error handler is sent back as error body</td>
+</tr>
+<tr>
+<td data-label="BEHAVIOR"><strong>Best Fit Production Scenario</strong></td>
+<td data-label="ON ERROR CONTINUE">Optional fallback calls (e.g. cache lookup, default promo)</td>
+<td data-label="ON ERROR PROPAGATE">Critical financial transfers, order placements, ACID ops</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<!-- Interactive Error-Handling Flow Simulator -->
+<div aria-label="Interactive Error-Handling Flow Simulator" class="eh-sim-card" id="error-handling-simulator" role="region">
+<div class="eh-sim-header">
+<div style="display:flex; align-items:center; gap:14px;">
+<span class="eh-sim-icon">🔥</span>
+<div>
+<div class="eh-sim-title">Interactive Error-Handling Flow Simulator</div>
+<div class="eh-sim-subtitle">Solve MuleSoft's #1 interview trick question: trace <code>HTTP:CONNECTIVITY</code> across Try Scope, Private Flow &amp; Main Flow.</div>
+</div>
+</div>
+<div class="feature-header-controls">
+<span class="badge eh-runtime-badge">MULE 4 RUNTIME ENGINE</span>
+<button aria-pressed="false" class="btn btn-sm btn-outline feature-fs-btn" id="eh-fullscreen-btn" onclick="toggleFeatureFullscreen('error-handling-simulator', this)" title="Toggle Full Screen" type="button">⛶ Full Screen</button>
+</div>
+</div>
+<!-- 3 Preset Buttons + Reset Button -->
+<div class="eh-preset-row">
+<span class="eh-preset-label">Presets:</span>
+<button class="btn btn-sm eh-preset-btn" id="eh-preset-continue" onclick="applyEhPreset('all-continue')" type="button">Preset 1: All Continue</button>
+<button class="btn btn-sm eh-preset-btn" id="eh-preset-propagate" onclick="applyEhPreset('all-propagate')" type="button">Preset 2: All Propagate</button>
+<button class="btn btn-sm eh-preset-btn active" id="eh-preset-mixed" onclick="applyEhPreset('mixed')" type="button">Preset 3: Mixed - Real Interview Case</button>
+<button class="btn btn-sm btn-outline eh-reset-btn" id="eh-reset-btn" onclick="resetEhSimulator()" type="button">↺ Reset</button>
+</div>
+<!-- 3 Dropdown Controls (One Row on Desktop, Stacked Full-Width on Mobile) -->
+<div class="eh-controls-grid">
+<div class="eh-control-group">
+<label class="eh-control-label" for="eh-try-select">1. Try Scope Error Handler</label>
+<select class="eh-select" id="eh-try-select">
+<option value="none">None (No Handler)</option>
+<option selected="selected" value="continue">On Error Continue</option>
+<option value="propagate">On Error Propagate</option>
+</select>
+</div>
+<div class="eh-control-group">
+<label class="eh-control-label" for="eh-private-select">2. Private Flow Error Handler</label>
+<select class="eh-select" id="eh-private-select">
+<option selected="selected" value="none">None (No Handler)</option>
+<option value="continue">On Error Continue</option>
+<option value="propagate">On Error Propagate</option>
+</select>
+</div>
+<div class="eh-control-group">
+<label class="eh-control-label" for="eh-main-select">3. Main Flow Error Handler</label>
+<select class="eh-select" id="eh-main-select">
+<option value="none">None (No Handler)</option>
+<option value="continue">On Error Continue</option>
+<option selected="selected" value="propagate">On Error Propagate</option>
+</select>
+</div>
+</div>
+<!-- Primary Throw Error Button -->
+<div class="eh-run-wrap">
+<button class="btn btn-primary eh-sim-run-btn" id="eh-simulate-btn" onclick="simulateMuleErrorFlow()" type="button">
+      💥 Throw Error - Simulate HTTP:CONNECTIVITY
+    </button>
+</div>
+<!-- Animated Flow Visual (Horizontal L->R Desktop, Vertical Top->Bottom Mobile) -->
+<div class="eh-flow-canvas">
+<div class="eh-flow-track" id="eh-flow-track">
+<div class="eh-flow-node" id="eh-node-listener">
+<div class="eh-node-title">HTTP Listener</div>
+<div class="eh-node-sub">POST /api/orders</div>
+<div class="eh-node-badge" id="eh-badge-listener">Entry Point</div>
+</div>
+<div aria-hidden="true" class="eh-flow-arrow"></div>
+<div class="eh-flow-node" id="eh-node-main">
+<div class="eh-node-title">Main Flow</div>
+<div class="eh-node-sub">Calling Logic</div>
+<div class="eh-node-badge" id="eh-badge-main">Propagate</div>
+</div>
+<div aria-hidden="true" class="eh-flow-arrow"></div>
+<div class="eh-flow-node" id="eh-node-flowref">
+<div class="eh-node-title">Flow Ref</div>
+<div class="eh-node-sub">Calls Private Flow</div>
+<div class="eh-node-badge">Sync Handoff</div>
+</div>
+<div aria-hidden="true" class="eh-flow-arrow"></div>
+<div class="eh-flow-node" id="eh-node-private">
+<div class="eh-node-title">Private Flow</div>
+<div class="eh-node-sub">Child Sub-Process</div>
+<div class="eh-node-badge" id="eh-badge-private">None</div>
+</div>
+<div aria-hidden="true" class="eh-flow-arrow"></div>
+<div class="eh-flow-node" id="eh-node-try">
+<div class="eh-node-title">Try Scope</div>
+<div class="eh-node-sub">Error Boundary</div>
+<div class="eh-node-badge" id="eh-badge-try">Continue</div>
+</div>
+<div aria-hidden="true" class="eh-flow-arrow"></div>
+<div class="eh-flow-node eh-node-error-origin" id="eh-node-error">
+<div class="eh-node-title">Error Thrown Here</div>
+<div class="eh-node-sub">HTTP:CONNECTIVITY</div>
+<div class="eh-node-badge" id="eh-badge-error">Origin Point</div>
+</div>
+</div>
+<div class="eh-trace-log" id="eh-trace-log">Select error handlers above or pick a preset, then click <strong>"Throw Error - Simulate HTTP:CONNECTIVITY"</strong> to trace execution.</div>
+</div>
+<!-- Role Switcher + 4 Result Boxes Section (Full Screen Capable) -->
+<div class="eh-role-results-section" id="eh-role-results-section">
+<div class="eh-subsection-header">
+<div class="eh-subsection-title-wrap">
+<span class="eh-subsection-title">🎭 Role-Based Analysis &amp; Simulation Results</span>
+<span class="eh-subsection-sub">Switch roles to tailor the exact same simulation result for any stakeholder</span>
+</div>
+<button aria-pressed="false" class="btn btn-sm btn-outline feature-fs-btn" id="eh-roles-fullscreen-btn" onclick="toggleFeatureFullscreen('eh-role-results-section', this)" title="Toggle Full Screen" type="button">⛶ Full Screen</button>
+</div>
+<!-- 5 Role Buttons (Default: Developer) -->
+<div aria-label="Role Perspective Switcher" class="eh-role-grid" id="eh-role-switcher" role="group">
+<button class="btn eh-role-btn" data-role="fresher" onclick="setEhRole('fresher', this)" type="button">🎓 Fresher</button>
+<button class="btn eh-role-btn active" data-role="developer" onclick="setEhRole('developer', this)" type="button">💻 Developer</button>
+<button class="btn eh-role-btn" data-role="architect" onclick="setEhRole('architect', this)" type="button">🏛️ MuleSoft Architect</button>
+<button class="btn eh-role-btn" data-role="ba" onclick="setEhRole('ba', this)" type="button">📊 Business / BA</button>
+<button class="btn eh-role-btn" data-role="manager" onclick="setEhRole('manager', this)" type="button">🤝 Vendor / Manager</button>
+</div>
+<!-- Role Perspective Insight Banner -->
+<div class="eh-role-insight-card" id="eh-role-insight-card">
+<div class="eh-role-insight-head">
+<span class="badge eh-role-badge" id="eh-role-badge">💻 DEVELOPER VIEW</span>
+<span class="badge eh-role-meta-pill" id="eh-role-meta-pill">HTTP 200 OK · Technical Trace</span>
+</div>
+<div class="eh-role-insight-body" id="eh-role-insight-body">
+<strong>Mule 4 Runtime Execution:</strong> Try Scope's <code>On Error Continue</code> catches <code>HTTP:CONNECTIVITY</code>, logs it locally, and sets the Mule Event payload to recovery JSON. Execution resumes at the next processor and returns <strong>HTTP 200 OK</strong>.
+      </div>
+</div>
+<!-- 4 Result Boxes (2x2 Grid on Desktop, Stacked Full-Width on Mobile) -->
+<div class="eh-results-grid" id="eh-results-grid">
+<div class="eh-result-box eh-res-neutral" id="eh-res-status-box">
+<div class="eh-res-label">1. FINAL HTTP STATUS</div>
+<div class="eh-res-big" id="eh-res-status-code">200 OK</div>
+<div class="eh-res-desc" id="eh-res-status-why">Try Scope caught HTTP:CONNECTIVITY with On Error Continue and returned a success message to Private Flow and Main Flow.</div>
+</div>
+<div class="eh-result-box eh-res-neutral" id="eh-res-next-box">
+<div class="eh-res-label">2. NEXT PROCESSOR</div>
+<div class="eh-res-big" id="eh-res-next-val">YES — Runs</div>
+<div class="eh-res-desc" id="eh-res-next-why">Try Scope catches and swallows the error via On Error Continue, so subsequent processors run normally.</div>
+</div>
+<div class="eh-result-box" id="eh-res-payload-box">
+<div class="eh-res-label">3. FINAL PAYLOAD RETURNED TO CALLER</div>
+<pre class="eh-payload-pre"><code id="eh-res-payload-code">"Success — Main Flow completed using Try Scope On Error Continue recovery payload"</code><button aria-label="Copy code snippet to clipboard" class="code-copy-btn" type="button">📋 Copy</button></pre>
+</div>
+<div class="eh-result-box eh-res-rule-box" id="eh-res-rule-box">
+<div class="eh-res-label" id="eh-res-rule-label">4. 1-LINE INTERVIEW RULE</div>
+<div class="eh-res-rule-text" id="eh-res-rule">"On Error Continue inside a Try Scope swallows the error and returns a success event, so both Private Flow and Main Flow continue executing and the caller receives HTTP 200 OK."</div>
+</div>
+</div>
+</div>
+<!-- Business Impact Calculator Section (Full Screen Capable) -->
+<div class="eh-business-calc-section" id="eh-business-calc-section">
+<div class="eh-subsection-header">
+<div class="eh-subsection-title-wrap">
+<span class="eh-subsection-title">💰 Business Impact Calculator</span>
+<span class="eh-subsection-sub">Estimate 1-hour revenue impact if this error occurs in production</span>
+</div>
+<button aria-pressed="false" class="btn btn-sm btn-outline feature-fs-btn" id="eh-biz-fullscreen-btn" onclick="toggleFeatureFullscreen('eh-business-calc-section', this)" title="Toggle Full Screen" type="button">⛶ Full Screen</button>
+</div>
+<div class="eh-biz-inputs-grid">
+<div class="eh-control-group">
+<label class="eh-control-label" for="eh-biz-orders">Orders Per Hour</label>
+<input class="eh-biz-input" id="eh-biz-orders" min="0" oninput="updateBusinessImpactCalc()" step="1" type="number" value="100"/>
+</div>
+<div class="eh-control-group">
+<label class="eh-control-label" for="eh-biz-aov">Average Order Value (Rs)</label>
+<input class="eh-biz-input" id="eh-biz-aov" min="0" oninput="updateBusinessImpactCalc()" step="10" type="number" value="1000"/>
+</div>
+</div>
+<div aria-live="polite" class="eh-biz-loss-box eh-biz-safe" id="eh-biz-loss-box" role="status">
+<div class="eh-biz-loss-headline" id="eh-biz-loss-headline">If this error happens for 1 Hour, Business Loss = Rs 0</div>
+<div class="eh-biz-loss-sub" id="eh-biz-loss-sub">Orders continue completing via fallback handling (HTTP 200 OK) — zero immediate hourly checkout revenue loss.</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-l-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module L</span>
+</div>
+<h3 class="q-title">What is the difference between On Error Continue and On Error Propagate?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ASPECT</th><th>ON ERROR CONTINUE</th><th>ON ERROR PROPAGATE</th></tr></thead>
+<tbody>
+<tr><td data-label="ASPECT">After handler executes</td><td data-label="ON ERROR CONTINUE">Flow continues normally, returns success response</td><td data-label="ON ERROR PROPAGATE">Error propagates to parent scope/caller</td></tr>
+<tr><td data-label="ASPECT">HTTP response code</td><td data-label="ON ERROR CONTINUE">200 (success) unless you change vars.httpStatus</td><td data-label="ON ERROR PROPAGATE">Error code (4xx/5xx) propagated to caller</td></tr>
+<tr><td data-label="ASPECT">Use for</td><td data-label="ON ERROR CONTINUE">Expected business errors — transform to business response</td><td data-label="ON ERROR PROPAGATE">Unexpected errors — let caller know something went wrong</td></tr>
+<tr><td data-label="ASPECT">Example</td><td data-label="ON ERROR CONTINUE">SAP record not found → return empty response gracefully</td><td data-label="ON ERROR PROPAGATE">DB connection failed → return 503 to API consumer</td></tr>
+</tbody>
+</table></div>
+</div>
+<p class="doc-p">Enterprise Error Handler Pattern</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "My philosophy on enterprise error handling is structured around predictability and actionable observability. I design a centralized Global Error Handler using On Error Propagate for unexpected system exceptions to guarantee transaction rollbacks and standardized HTTP 5xx responses, while using On Error Continue inside Try scopes for anticipated business fallbacks—always ensuring correlation IDs and structured JSON schemas are propagated."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Insurance — Core Integration Gateway.</p><p class="example-line"><strong>Problem:</strong> Unhandled downstream 503 errors and connection timeouts were returning generic, unhelpful HTML error pages to frontend clients with zero traceability.</p><p class="example-line"><strong>What I Did:</strong> Created an enterprise global error handler mapping HTTP:CONNECTIVITY, HTTP:TIMEOUT, and MULE:EXPRESSION to RFC 7807 Problem Details JSON, preserving X-Correlation-ID across all layers.</p><p class="example-line"><strong>Result:</strong> Decreased mean time to resolution (MTTR) by 55% across support teams and ensured 100% consistent error responses across 20+ microservices.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-l-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module L</span>
+</div>
+<h3 class="q-title">What is a Try Scope? When do you use it?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Try Scope provides localized error handling for a specific group of processors within a flow. Errors in</p>
+<p class="doc-p">the Try scope are caught there — they don't propagate to the flow's error handler unless you use on-</p>
+<p class="doc-p">error-propagate inside the Try scope.</p>
+<p class="doc-p">When to use: When you need different error behavior for one specific part of a flow (e.g., retry a</p>
+<p class="doc-p">single DB call while letting the rest of the flow succeed). ForEach uses Try scope around each record</p>
+<p class="doc-p">to prevent one failure from stopping the loop.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "My philosophy on enterprise error handling is structured around predictability and actionable observability. I design a centralized Global Error Handler using On Error Propagate for unexpected system exceptions to guarantee transaction rollbacks and standardized HTTP 5xx responses, while using On Error Continue inside Try scopes for anticipated business fallbacks—always ensuring correlation IDs and structured JSON schemas are propagated."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Aviation — Core Integration Gateway.</p><p class="example-line"><strong>Problem:</strong> Unhandled downstream 503 errors and connection timeouts were returning generic, unhelpful HTML error pages to frontend clients with zero traceability.</p><p class="example-line"><strong>What I Did:</strong> Created an enterprise global error handler mapping HTTP:CONNECTIVITY, HTTP:TIMEOUT, and MULE:EXPRESSION to RFC 7807 Problem Details JSON, preserving X-Correlation-ID across all layers.</p><p class="example-line"><strong>Result:</strong> Decreased mean time to resolution (MTTR) by 55% across support teams and ensured 100% consistent error responses across 20+ microservices.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-l-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module L</span>
+</div>
+<h3 class="q-title">What are the standard MuleSoft error types?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ERROR TYPE</th><th>CAUSE</th><th>TYPICAL RESPONSE</th></tr></thead>
+<tbody>
+<tr><td data-label="ERROR TYPE">HTTP:NOT_FOUND</td><td data-label="CAUSE">HTTP 404 from downstream</td><td data-label="TYPICAL RESPONSE">Return empty response or 404</td></tr>
+<tr><td data-label="ERROR TYPE">HTTP:UNAUTHORIZED</td><td data-label="CAUSE">HTTP 401 — auth failed</td><td data-label="TYPICAL RESPONSE">Return 401 or refresh token and retry</td></tr>
+<tr><td data-label="ERROR TYPE">HTTP:CONNECTIVITY</td><td data-label="CAUSE">Cannot connect to host</td><td data-label="TYPICAL RESPONSE">Return 503 with Retry-After header</td></tr>
+<tr><td data-label="ERROR TYPE">HTTP:TIMEOUT</td><td data-label="CAUSE">Response timeout exceeded</td><td data-label="TYPICAL RESPONSE">Return 504 Gateway Timeout</td></tr>
+<tr><td data-label="ERROR TYPE">MULE:EXPRESSION</td><td data-label="CAUSE">DataWeave transform error or null pointer</td><td data-label="TYPICAL RESPONSE">Return 400 Bad Request</td></tr>
+<tr><td data-label="ERROR TYPE">MULE:RETRY_EXHAUSTED</td><td data-label="CAUSE">Until Successful max retries reached</td><td data-label="TYPICAL RESPONSE">Alert ops + DLQ + return 503</td></tr>
+<tr><td data-label="ERROR TYPE">APIKIT:NOT_FOUND</td><td data-label="CAUSE">No matching API route in RAML</td><td data-label="TYPICAL RESPONSE">Return 404 — endpoint not defined</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ERROR TYPE</th><th>CAUSE</th><th>TYPICAL RESPONSE</th></tr></thead>
+<tbody>
+<tr><td data-label="ERROR TYPE">ANY</td><td data-label="CAUSE">Catch-all</td><td data-label="TYPICAL RESPONSE">Log + return 500</td></tr>
+</tbody>
+</table></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "My philosophy on enterprise error handling is structured around predictability and actionable observability. I design a centralized Global Error Handler using On Error Propagate for unexpected system exceptions to guarantee transaction rollbacks and standardized HTTP 5xx responses, while using On Error Continue inside Try scopes for anticipated business fallbacks—always ensuring correlation IDs and structured JSON schemas are propagated."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Energy &amp; Utility — Core Integration Gateway.</p><p class="example-line"><strong>Problem:</strong> Unhandled downstream 503 errors and connection timeouts were returning generic, unhelpful HTML error pages to frontend clients with zero traceability.</p><p class="example-line"><strong>What I Did:</strong> Created an enterprise global error handler mapping HTTP:CONNECTIVITY, HTTP:TIMEOUT, and MULE:EXPRESSION to RFC 7807 Problem Details JSON, preserving X-Correlation-ID across all layers.</p><p class="example-line"><strong>Result:</strong> Decreased mean time to resolution (MTTR) by 55% across support teams and ensured 100% consistent error responses across 20+ microservices.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-l-q4">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q4</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module L</span>
+</div>
+<h3 class="q-title">How do you propagate an error from SAPI to XAPI through PAPI?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Use on-error-propagate  at each layer. The error message (and payload) propagates up the call chain</p>
+<p class="doc-p">automatically.</p>
+<p class="doc-p">Enterprise Pattern: SAPI catches SAP HTTP error → builds standardized error payload {correlationId,</p>
+<p class="doc-p">errorCode, message, layer:"SAPI"} → propagates. PAPI receives error → enriches with PAPI context →</p>
+<p class="doc-p">propagates. XAPI receives error → formats final API error response with correct HTTP status code →</p>
+<p class="doc-p">returns to caller.</p>
+<p class="doc-p">The key: use a consistent error response format at every layer so the XAPI always knows what shape</p>
+<p class="doc-p">the error payload will be regardless of which layer it originated from.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "My philosophy on enterprise error handling is structured around predictability and actionable observability. I design a centralized Global Error Handler using On Error Propagate for unexpected system exceptions to guarantee transaction rollbacks and standardized HTTP 5xx responses, while using On Error Continue inside Try scopes for anticipated business fallbacks—always ensuring correlation IDs and structured JSON schemas are propagated."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Retail &amp; E-Commerce — Core Integration Gateway.</p><p class="example-line"><strong>Problem:</strong> Unhandled downstream 503 errors and connection timeouts were returning generic, unhelpful HTML error pages to frontend clients with zero traceability.</p><p class="example-line"><strong>What I Did:</strong> Created an enterprise global error handler mapping HTTP:CONNECTIVITY, HTTP:TIMEOUT, and MULE:EXPRESSION to RFC 7807 Problem Details JSON, preserving X-Correlation-ID across all layers.</p><p class="example-line"><strong>Result:</strong> Decreased mean time to resolution (MTTR) by 55% across support teams and ensured 100% consistent error responses across 20+ microservices.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-l-q5">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q5</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module L</span>
+</div>
+<h3 class="q-title">What is the standard error response format you use across all Enterprise APIs?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">DataWeave — Standard Error Response</p>
+<div class="code-block">
+<div class="code-header">
+<span class="code-lang">DWL</span>
+<div style="display:flex; align-items:center; gap:8px;">
+<button class="copy-btn" onclick="openDwWithCode(this)" style="color:var(--mule-blue);" title="Test in Live DataWeave Playground"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M10 2v7.5M14 2v7.5M8.5 2h7M14 9.5a5 5 0 1 1-4 0v-7.5"></path></svg><span>Test in Playground</span></button>
+<button class="copy-btn" onclick="copyCode(this)" title="Copy Code">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<pre><code>%dw 2.0
+output application/json
+---
+{
+correlationId: vars.correlationId,
+timestamp: (now() &gt;&gt; "America/New_York") as String {format: "yyyy-MM-dd HH:mm:ss"},
+status: vars.httpStatus,
+errorCode: "SAP_TIMEOUT",
+message: "Upstream SAP system unavailable",
+details: error.description,
+apiName: "billing-inquiry-xapi",
+apiVersion: "v2.0.0"
+}</code><button aria-label="Copy code snippet to clipboard" class="code-copy-btn" type="button">📋 Copy</button></pre>
+</div>
+<p class="doc-p">This format is enforced by the <code>global-config.xml</code> default error handler. Frontend teams never see raw Java/SAP exceptions — always wrapped in this format. Operations filter Splunk by <code>errorCode</code>. <code>correlationId</code> links to full request trace.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "My philosophy on enterprise error handling is structured around predictability and actionable observability. I design a centralized Global Error Handler using On Error Propagate for unexpected system exceptions to guarantee transaction rollbacks and standardized HTTP 5xx responses, while using On Error Continue inside Try scopes for anticipated business fallbacks—always ensuring correlation IDs and structured JSON schemas are propagated."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Commercial Banking — Core Integration Gateway.</p><p class="example-line"><strong>Problem:</strong> Unhandled downstream 503 errors and connection timeouts were returning generic, unhelpful HTML error pages to frontend clients with zero traceability.</p><p class="example-line"><strong>What I Did:</strong> Created an enterprise global error handler mapping HTTP:CONNECTIVITY, HTTP:TIMEOUT, and MULE:EXPRESSION to RFC 7807 Problem Details JSON, preserving X-Correlation-ID across all layers.</p><p class="example-line"><strong>Result:</strong> Decreased mean time to resolution (MTTR) by 55% across support teams and ensured 100% consistent error responses across 20+ microservices.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-choice-router-first-successful-async-scopes.html">← Choice Router, First Successful &amp; Async Sc</a><a class="btn btn-outline" href="anypoint-mq-deep-dive-queues-exchanges-dlq.html">Anypoint MQ Deep Dive (Queues, Exchanges,  →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li><li><a href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC)</a></li><li><a href="mulesoft-oauth-2-0-jwt-bearer-token-flow.html">OAuth 2.0 &amp; JWT Bearer Token Flow</a></li><li><a href="mulesoft-aws-integration-patterns-s3-sqs-dynamodb.html">AWS Integration Patterns (S3, SQS, DynamoDB)</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

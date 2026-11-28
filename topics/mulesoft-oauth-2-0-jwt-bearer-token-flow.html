@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>OAuth 2.0 &amp; JWT Bearer Token Flow | MuleSoft Interview Q&amp;A (2026)</title>
+  <meta name="description" content="Connected App setup, X.509 certificate generation, zero-downtime key rotation, and multi-environment setup.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-oauth-2-0-jwt-bearer-token-flow.html">
+  <meta property="og:title" content="OAuth 2.0 &amp; JWT Bearer Token Flow — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Connected App setup, X.509 certificate generation, zero-downtime key rotation, and multi-environment setup.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-oauth-2-0-jwt-bearer-token-flow.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "OAuth 2.0 & JWT Bearer Token Flow", "item": "https://niranjanpotter.github.io/topics/mulesoft-oauth-2-0-jwt-bearer-token-flow.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "OAuth 2.0 & JWT Bearer Token Flow — MuleSoft Interview Questions & Scenarios (2026)", "description": "Connected App setup, X.509 certificate generation, zero-downtime key rotation, and multi-environment setup.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-oauth-2-0-jwt-bearer-token-flow.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Security &amp; Connectivity</span> &gt;
+      <span style="color: var(--text-main);">OAuth 2.0 &amp; JWT Bearer Token Flow</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Security &amp; Connectivity · Senior / Lead</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">OAuth 2.0 &amp; JWT Bearer Token Flow — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Connected App setup, X.509 certificate generation, zero-downtime key rotation, and multi-environment setup.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-d-title" class="blog-article" data-category="Security &amp; Connectivity" data-role="Senior / Lead" id="mod-d">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-lead">Module D</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="badge badge-primary">Security &amp; Connectivity</span>
+<span>⏱️ 3 min read</span>
+<span>📄 Guide Pages 9–10</span>
+<span>🎯 3 Interview Topics</span>
+</div>
+<h2 class="article-title">🔑 OAuth 2.0 &amp; JWT Bearer Token Flow</h2>
+<p class="article-excerpt">Connected App setup, X.509 certificate generation, zero-downtime key rotation, and multi-environment setup.</p>
+</div>
+<div class="diagram-container" id="diagram-jwt-bearer">
+<div class="diagram-header">
+<div class="diagram-badge" style="background:rgba(239,68,68,0.15); color:#F87171; border-color:rgba(239,68,68,0.3);">🔐 Security &amp; OAuth 2.0</div>
+<div class="diagram-title">JWT Bearer 8-Step Authentication Sequence (RFC 7523)</div>
+<div class="diagram-subtitle">Client Certificate Authentication · Zero Hardcoded Passwords · OSv2 High-Performance Token Caching</div>
+</div>
+<div class="diagram-svg-wrapper">
+<svg class="responsive-svg" viewbox="0 0 1000 660" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrowJwt" markerheight="8" markerwidth="8" orient="auto" refx="5" refy="3">
+<path d="M0,0 L0,6 L8,3 z" fill="#00A1E0"></path>
+</marker>
+<marker id="arrowReturn" markerheight="8" markerwidth="8" orient="auto" refx="5" refy="3">
+<path d="M0,0 L0,6 L8,3 z" fill="#10B981"></path>
+</marker>
+</defs>
+<!-- Background -->
+<rect fill="#0B0F19" height="660" rx="14" width="1000"></rect>
+<rect fill="none" height="658" rx="14" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" width="998" x="1" y="1"></rect>
+<!-- 4 Actors / Lifelines -->
+<!-- Actor 1: Mule Client API -->
+<g transform="translate(60, 30)">
+<rect fill="#111827" height="50" rx="8" stroke="#00A1E0" stroke-width="1.5" width="180"></rect>
+<text fill="#00F0FF" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="90" y="30">MuleSoft Client API</text>
+<line stroke="rgba(0,161,224,0.3)" stroke-dasharray="4,4" stroke-width="1.5" x1="90" x2="90" y1="50" y2="580"></line>
+</g>
+<!-- Actor 2: ObjectStore v2 -->
+<g transform="translate(300, 30)">
+<rect fill="#111827" height="50" rx="8" stroke="#F59E0B" stroke-width="1.5" width="180"></rect>
+<text fill="#F59E0B" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="90" y="30">ObjectStore v2 (OSv2)</text>
+<line stroke="rgba(245,158,11,0.3)" stroke-dasharray="4,4" stroke-width="1.5" x1="90" x2="90" y1="50" y2="580"></line>
+</g>
+<!-- Actor 3: IdP / Salesforce Auth Server -->
+<g transform="translate(540, 30)">
+<rect fill="#111827" height="50" rx="8" stroke="#845EC2" stroke-width="1.5" width="180"></rect>
+<text fill="#D65DB1" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="90" y="30">Salesforce / Okta IdP</text>
+<line stroke="rgba(132,94,194,0.3)" stroke-dasharray="4,4" stroke-width="1.5" x1="90" x2="90" y1="50" y2="580"></line>
+</g>
+<!-- Actor 4: System API / Resource -->
+<g transform="translate(780, 30)">
+<rect fill="#111827" height="50" rx="8" stroke="#10B981" stroke-width="1.5" width="180"></rect>
+<text fill="#10B981" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="90" y="30">Target System API</text>
+<line stroke="rgba(16,185,129,0.3)" stroke-dasharray="4,4" stroke-width="1.5" x1="90" x2="90" y1="50" y2="580"></line>
+</g>
+<!-- STEP 1: Check Token in Cache -->
+<g transform="translate(0, 110)">
+<line marker-end="url(#arrowJwt)" stroke="#00A1E0" stroke-width="1.8" x1="150" x2="390" y1="0" y2="0"></line>
+<rect fill="#111827" height="22" rx="4" stroke="rgba(0,161,224,0.4)" width="180" x="180" y="-18"></rect>
+<text fill="#00F0FF" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" x="270" y="-3">1. Retrieve Token (Key: sfdc_jwt)</text>
+</g>
+<!-- STEP 2: Cache Miss -->
+<g transform="translate(0, 160)">
+<line stroke="#EF4444" stroke-dasharray="4,4" stroke-width="1.5" x1="390" x2="150" y1="0" y2="0"></line>
+<rect fill="#111827" height="20" rx="4" stroke="rgba(239,68,68,0.4)" width="140" x="200" y="-16"></rect>
+<text fill="#F87171" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle" x="270" y="-2">2. Cache Miss / Expired</text>
+</g>
+<!-- STEP 3: Sign Assertion Locally -->
+<g transform="translate(0, 215)">
+<rect fill="rgba(62,99,221,0.2)" height="42" rx="6" stroke="#3E63DD" width="140" x="80" y="-20"></rect>
+<text fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="700" text-anchor="middle" x="150" y="-2">3. Sign JWT Assertion</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="8" text-anchor="middle" x="150" y="14">RS256 Private Key (.jks)</text>
+</g>
+<!-- STEP 4: Request Token from IdP -->
+<g transform="translate(0, 280)">
+<line marker-end="url(#arrowJwt)" stroke="#00A1E0" stroke-width="1.8" x1="150" x2="630" y1="0" y2="0"></line>
+<rect fill="#111827" height="22" rx="4" stroke="rgba(0,161,224,0.4)" width="280" x="250" y="-18"></rect>
+<text fill="#00F0FF" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" x="390" y="-3">4. POST /token (grant_type=jwt-bearer &amp; assertion)</text>
+</g>
+<!-- STEP 5: IdP Verifies Cert & Issues Bearer Token -->
+<g transform="translate(0, 340)">
+<line marker-end="url(#arrowReturn)" stroke="#10B981" stroke-width="1.8" x1="630" x2="150" y1="0" y2="0"></line>
+<rect fill="#111827" height="22" rx="4" stroke="rgba(16,185,129,0.4)" width="260" x="260" y="-18"></rect>
+<text fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" x="390" y="-3">5. Return access_token (TTL: 7200s, Scopes)</text>
+</g>
+<!-- STEP 6: Store Token in OSv2 with TTL -->
+<g transform="translate(0, 405)">
+<line marker-end="url(#arrowJwt)" stroke="#F59E0B" stroke-width="1.8" x1="150" x2="390" y1="0" y2="0"></line>
+<rect fill="#111827" height="22" rx="4" stroke="rgba(245,158,11,0.4)" width="160" x="190" y="-18"></rect>
+<text fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" x="270" y="-3">6. Store (TTL = 7000s)</text>
+</g>
+<!-- STEP 7: Call Target System API -->
+<g transform="translate(0, 470)">
+<line marker-end="url(#arrowJwt)" stroke="#00A1E0" stroke-width="1.8" x1="150" x2="870" y1="0" y2="0"></line>
+<rect fill="#111827" height="22" rx="4" stroke="rgba(0,161,224,0.4)" width="280" x="370" y="-18"></rect>
+<text fill="#00F0FF" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" x="510" y="-3">7. HTTP Request + Header [Authorization: Bearer ...] </text>
+</g>
+<!-- STEP 8: Protected Resource Returns 200 OK -->
+<g transform="translate(0, 535)">
+<line marker-end="url(#arrowReturn)" stroke="#10B981" stroke-width="1.8" x1="870" x2="150" y1="0" y2="0"></line>
+<rect fill="#111827" height="22" rx="4" stroke="rgba(16,185,129,0.4)" width="260" x="380" y="-18"></rect>
+<text fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" text-anchor="middle" x="510" y="-3">8. HTTP 200 OK [X-Correlation-ID: c849-11]</text>
+</g>
+</svg>
+<button aria-label="Expand diagram to fullscreen" class="diagram-expand-btn" type="button"><span>⤢</span> <span>Expand</span></button></div>
+<div class="diagram-footer">
+<span>💡 <strong>Architectural Value:</strong> Certificate-based authentication satisfies enterprise security compliance by eliminating credentials in properties files and automating zero-downtime token renewal.</span>
+</div>
+</div>
+<div class="faq-card" data-role="senior / lead" id="mod-d-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module D</span>
+</div>
+<h3 class="q-title">Explain the Salesforce JWT Bearer authentication flow step by step.</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="doc-step-item"><span class="step-num">1.</span><span>Create a Connected App in Salesforce Setup</span></div>
+<div class="doc-step-item"><span class="step-num">2.</span><span>Generate RSA key pair: openssl genrsa -out private.pem 2048  → create cert from public key</span></div>
+<div class="doc-step-item"><span class="step-num">3.</span><span>Upload the public certificate to Connected App</span></div>
+<div class="doc-step-item"><span class="step-num">4.</span><span>Configure MuleSoft Salesforce Connector with Consumer Key, keystore path, key alias, and</span></div>
+<p class="doc-p">username</p>
+<div class="doc-step-item"><span class="step-num">5.</span><span>MuleSoft builds JWT claim: issuer=ConsumerKey, sub=SF_username, aud=login.salesforce.com</span></div>
+<div class="doc-step-item"><span class="step-num">6.</span><span>MuleSoft signs JWT with private key → sends to Salesforce token endpoint</span></div>
+<div class="doc-step-item"><span class="step-num">7.</span><span>Salesforce validates signature using uploaded public cert → returns access token (1hr validity)</span></div>
+<div class="doc-step-item"><span class="step-num">8.</span><span>MuleSoft auto-renews token before expiry — no manual refresh needed</span></div>
+<div class="answer-badge-tag"><span class="badge badge-success">✅  WHY JWT OVER USERNAME-PASSWORD</span></div>
+<p class="doc-p">No passwords stored anywhere — survives Salesforce password policy changes</p>
+<p class="doc-p">Token auto-renews every 1 hour — no integration downtime</p>
+<p class="doc-p">Audit logs show Connected App name, not a user login — cleaner security audit</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "For secure system-to-system integrations with Salesforce or third-party gateways, I mandate OAuth 2.0 JWT Bearer flow. It completely eliminates storing username/passwords or interactive user approvals. We sign a JWT claim with an RSA private key stored securely in the keystore, and exchange it for a short-lived access token, managing key rotation seamlessly with dual certificates."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Insurance — Automated Headless Microservice Authentication.</p><p class="example-line"><strong>Problem:</strong> Legacy integrations used hardcoded service account passwords that broke every 90 days due to corporate password expiration policies.</p><p class="example-line"><strong>What I Did:</strong> Re-architected authentication to Salesforce Connected App using OAuth 2.0 JWT Bearer Token flow with a 2048-bit digital certificate stored in JKS keystore.</p><p class="example-line"><strong>Result:</strong> Achieved 100% automated headless authentication with zero password maintenance outages and passed corporate SOC2 security audits.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior / lead" id="mod-d-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module D</span>
+</div>
+<h3 class="q-title">How do you rotate the JWT signing key without downtime?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Salesforce supports multiple active certificates on a Connected App. Rotation process:</p>
+<div class="doc-step-item"><span class="step-num">1.</span><span>Generate new RSA key pair</span></div>
+<div class="doc-step-item"><span class="step-num">2.</span><span>Upload new public cert to Connected App — keep old cert active</span></div>
+<div class="doc-step-item"><span class="step-num">3.</span><span>Deploy updated MuleSoft config pointing to new keystore</span></div>
+<div class="doc-step-item"><span class="step-num">4.</span><span>Wait for all in-flight tokens using old cert to expire (max 1 hour)</span></div>
+<div class="doc-step-item"><span class="step-num">5.</span><span>Remove old cert from Connected App</span></div>
+<p class="doc-p">Zero downtime because Salesforce accepts tokens signed by ANY active certificate simultaneously.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "For secure system-to-system integrations with Salesforce or third-party gateways, I mandate OAuth 2.0 JWT Bearer flow. It completely eliminates storing username/passwords or interactive user approvals. We sign a JWT claim with an RSA private key stored securely in the keystore, and exchange it for a short-lived access token, managing key rotation seamlessly with dual certificates."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Aviation — Automated Headless Microservice Authentication.</p><p class="example-line"><strong>Problem:</strong> Legacy integrations used hardcoded service account passwords that broke every 90 days due to corporate password expiration policies.</p><p class="example-line"><strong>What I Did:</strong> Re-architected authentication to Salesforce Connected App using OAuth 2.0 JWT Bearer Token flow with a 2048-bit digital certificate stored in JKS keystore.</p><p class="example-line"><strong>Result:</strong> Achieved 100% automated headless authentication with zero password maintenance outages and passed corporate SOC2 security audits.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior / lead" id="mod-d-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module D</span>
+</div>
+<h3 class="q-title">Can the same Connected App be used across multiple environments?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Technically yes — but best practice is separate Connected Apps per environment (sandbox,</p>
+<p class="doc-p">production). Reasons: different Salesforce orgs have different URLs; separate apps allow independent</p>
+<p class="doc-p">key rotation and revocation; cleaner audit trails per environment.</p>
+<p class="doc-p">In MuleSoft: use ${aws-s3::config:sf.consumerKey}  in property files — different value per</p>
+<p class="doc-p">environment config YAML. Never hardcode the Consumer Key in flows.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-platform-events-change-data-capture-cdc.html">← Platform Events &amp; Change Data Capture (CDC</a><a class="btn btn-outline" href="mulesoft-aws-integration-patterns-s3-sqs-dynamodb.html">AWS Integration Patterns (S3, SQS, DynamoD →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li><li><a href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC)</a></li><li><a href="mulesoft-aws-integration-patterns-s3-sqs-dynamodb.html">AWS Integration Patterns (S3, SQS, DynamoDB)</a></li><li><a href="mulesoft-sap-salesforce-end-to-end-integration.html">SAP + Salesforce End-to-End Integration</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

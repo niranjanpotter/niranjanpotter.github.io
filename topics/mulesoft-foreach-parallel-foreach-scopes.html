@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>ForEach &amp; Parallel ForEach Scopes | MuleSoft Interview Q&amp;A (2026)</title>
+  <meta name="description" content="Sequential vs parallel record processing, exception isolation, payload mutability, and memory impact.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-foreach-parallel-foreach-scopes.html">
+  <meta property="og:title" content="ForEach &amp; Parallel ForEach Scopes — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Sequential vs parallel record processing, exception isolation, payload mutability, and memory impact.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-foreach-parallel-foreach-scopes.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "ForEach & Parallel ForEach Scopes", "item": "https://niranjanpotter.github.io/topics/mulesoft-foreach-parallel-foreach-scopes.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ForEach & Parallel ForEach Scopes — MuleSoft Interview Questions & Scenarios (2026)", "description": "Sequential vs parallel record processing, exception isolation, payload mutability, and memory impact.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-foreach-parallel-foreach-scopes.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Flow Scopes &amp; Concurrency</span> &gt;
+      <span style="color: var(--text-main);">ForEach &amp; Parallel ForEach Scopes</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Flow Scopes &amp; Concurrency · Developer</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">ForEach &amp; Parallel ForEach Scopes — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Sequential vs parallel record processing, exception isolation, payload mutability, and memory impact.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-h-title" class="blog-article" data-category="Flow Scopes &amp; Concurrency" data-role="Developer" id="mod-h">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-dev">Module H</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="badge badge-primary">Flow Scopes &amp; Concurrency</span>
+<span>⏱️ 3 min read</span>
+<span>📄 Guide Pages 17–19</span>
+<span>🎯 3 Interview Topics</span>
+</div>
+<h2 class="article-title">🔁 ForEach &amp; Parallel ForEach Scopes</h2>
+<p class="article-excerpt">Sequential vs parallel record processing, exception isolation, payload mutability, and memory impact.</p>
+</div>
+<div class="diagram-container" id="diagram-parallel-processing" style="margin-top:20px; margin-bottom:28px;">
+<div class="diagram-header">
+<div class="diagram-badge" style="background:rgba(0,242,254,0.15); color:#00F2FE; border-color:rgba(0,242,254,0.3);">⚡ Concurrency Architecture</div>
+<div class="diagram-title">Mule 4 Parallel Processing Architecture: Scatter-Gather &amp; Parallel ForEach</div>
+<div class="diagram-subtitle">Non-Blocking Project Reactor Threads · Concurrent Route Execution · maxConcurrency Throttling · Order Preservation</div>
+</div>
+<div class="diagram-svg-wrapper">
+<svg aria-labelledby="parallel-title parallel-desc" class="responsive-svg" height="640" role="img" viewbox="0 0 1200 640" width="1200" xmlns="http://www.w3.org/2000/svg">
+<title id="parallel-title">Mule 4 Parallel Processing Architecture | Scatter-Gather &amp; Parallel For Each</title>
+<desc id="parallel-desc">Comprehensive visual architecture diagram of Mule 4 parallel processing showing Scatter-Gather concurrent routes, Parallel For Each thread throttling, non-blocking reactive thread handoffs, and composite aggregation.</desc>
+<defs>
+<!-- Background Gradients -->
+<lineargradient id="par-bg" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#071321"></stop>
+<stop offset="55%" stop-color="#0B2033"></stop>
+<stop offset="100%" stop-color="#124052"></stop>
+</lineargradient>
+<radialgradient cx="20%" cy="30%" id="par-glow-left" r="50%">
+<stop offset="0%" stop-color="#845EC2" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#071321" stop-opacity="0"></stop>
+</radialgradient>
+<radialgradient cx="80%" cy="70%" id="par-glow-right" r="50%">
+<stop offset="0%" stop-color="#00F2FE" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#071321" stop-opacity="0"></stop>
+</radialgradient>
+<!-- Grid Pattern -->
+<pattern height="36" id="par-grid" patternunits="userSpaceOnUse" width="36">
+<path d="M36 0H0V36" fill="none" stroke="#53CADD" stroke-opacity="0.06"></path>
+</pattern>
+<!-- Shading Gradients -->
+<lineargradient id="card-grad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#112233" stop-opacity="0.95"></stop>
+<stop offset="100%" stop-color="#0B1622" stop-opacity="0.95"></stop>
+</lineargradient>
+<lineargradient id="sg-box-grad" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#845EC2" stop-opacity="0.12"></stop>
+<stop offset="100%" stop-color="#3E63DD" stop-opacity="0.06"></stop>
+</lineargradient>
+<lineargradient id="pfe-box-grad" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#00F2FE" stop-opacity="0.12"></stop>
+<stop offset="100%" stop-color="#10B981" stop-opacity="0.06"></stop>
+</lineargradient>
+<!-- Accent Lines -->
+<lineargradient id="cyan-accent" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#00F2FE" stop-opacity="0"></stop>
+<stop offset="50%" stop-color="#00F2FE" stop-opacity="1"></stop>
+<stop offset="100%" stop-color="#00F2FE" stop-opacity="0"></stop>
+</lineargradient>
+<lineargradient id="purple-accent" x1="0" x2="1" y1="0" y2="0">
+<stop offset="0%" stop-color="#D65DB1" stop-opacity="0"></stop>
+<stop offset="50%" stop-color="#D65DB1" stop-opacity="1"></stop>
+<stop offset="100%" stop-color="#D65DB1" stop-opacity="0"></stop>
+</lineargradient>
+<!-- Flow Particle Filters -->
+<filter height="140%" id="glow-cyan" width="140%" x="-20%" y="-20%">
+<fegaussianblur result="blur" stddeviation="3"></fegaussianblur>
+<femerge>
+<femergenode in="blur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<!-- Frame Background -->
+<rect fill="url(#par-bg)" height="640" rx="24" width="1200"></rect>
+<rect fill="url(#par-grid)" height="640" rx="24" width="1200"></rect>
+<ellipse class="pulse-glow" cx="240" cy="220" fill="url(#par-glow-left)" rx="280" ry="240"></ellipse>
+<ellipse class="pulse-glow" cx="960" cy="420" fill="url(#par-glow-right)" rx="300" ry="260"></ellipse>
+<rect fill="none" height="638" rx="23" stroke="#53CADD" stroke-opacity="0.25" width="1198" x="1" y="1"></rect>
+<!-- ==================== HEADER BAR ==================== -->
+<g class="par-sans" transform="translate(48, 38)">
+<rect fill="#124052" height="28" rx="14" stroke="#53CADD" stroke-opacity="0.35" width="250"></rect>
+<circle cx="16" cy="14" fill="#00F2FE" r="5"></circle>
+<text fill="#A6EAF4" font-size="11" font-weight="700" letter-spacing="1.5" x="30" y="18">PARALLEL PROCESSING ENGINE</text>
+<text class="par-title" fill="#F0F9FF" font-size="26" x="0" y="58">Mule 4 High-Concurrency Architecture</text>
+<text fill="#94A3B8" font-size="13" x="0" y="80">Non-Blocking Project Reactor Threads · Scatter-Gather Router · Parallel For Each Scope · Zero Thread Starvation</text>
+</g>
+<!-- ==================== SECTION 1: SCATTER-GATHER ROUTER ==================== -->
+<g transform="translate(48, 140)">
+<!-- Container Box -->
+<rect fill="url(#sg-box-grad)" height="455" rx="16" stroke="#845EC2" stroke-dasharray="6,4" stroke-width="1.2" width="530"></rect>
+<path d="M20 0H510" stroke="url(#purple-accent)" stroke-width="2"></path>
+<!-- Section Badge -->
+<rect fill="#845EC2" fill-opacity="0.2" height="24" rx="6" stroke="#845EC2" stroke-opacity="0.4" width="190" x="20" y="16"></rect>
+<text class="par-sans" fill="#E0A4E8" font-size="11" font-weight="700" letter-spacing="1" x="30" y="32">PATTERN 1: SCATTER-GATHER</text>
+<text class="par-mono" fill="#94A3B8" font-size="10" x="220" y="32">timeout="3000ms" | maxConcurrency="3"</text>
+<!-- Inbound Event Node -->
+<g transform="translate(24, 60)">
+<rect fill="url(#card-grad)" height="64" rx="8" stroke="#00A1E0" stroke-width="1.2" width="140"></rect>
+<text class="par-mono" fill="#00F2FE" font-size="10" font-weight="700" x="14" y="24">INBOUND EVENT</text>
+<text class="par-sans" fill="#FFFFFF" font-size="12" font-weight="700" x="14" y="42">OrderRequest</text>
+<text class="par-mono" fill="#94A3B8" font-size="9" x="14" y="55">vars.txId = "TX-992"</text>
+</g>
+<!-- Event Cloner Hub -->
+<g transform="translate(195, 76)">
+<circle cx="16" cy="16" fill="#845EC2" fill-opacity="0.3" r="16" stroke="#D65DB1" stroke-width="1.5"></circle>
+<path d="M11 16H21M16 11V21" stroke="#FFFFFF" stroke-linecap="round" stroke-width="2"></path>
+<text class="par-sans" fill="#D65DB1" font-size="9" font-weight="700" text-anchor="middle" x="16" y="44">EVENT CLONE</text>
+</g>
+<!-- Connecting Trunk -->
+<path d="M164 92H195" stroke="#00F2FE" stroke-width="1.5"></path>
+<!-- Parallel Branch Lines -->
+<path d="M227 92 H250 V82 H270" fill="none" stroke="#D65DB1" stroke-width="1.5"></path>
+<path d="M227 92 H270" fill="none" stroke="#D65DB1" stroke-width="1.5"></path>
+<path d="M227 92 H250 V202 H270" fill="none" stroke="#D65DB1" stroke-width="1.5"></path>
+<!-- Animated Packets on SG Branches -->
+<path class="pkt-flow" d="M227 92 H250 V82 H270" fill="none" filter="url(#glow-cyan)" pathlength="100" stroke="#00F2FE" stroke-width="2.5"></path>
+<path class="pkt-flow-2" d="M227 92 H270" fill="none" filter="url(#glow-cyan)" pathlength="100" stroke="#00F2FE" stroke-width="2.5"></path>
+<path class="pkt-flow-3" d="M227 92 H250 V202 H270" fill="none" filter="url(#glow-cyan)" pathlength="100" stroke="#00F2FE" stroke-width="2.5"></path>
+<!-- Route 0: SAP S/4HANA -->
+<g transform="translate(270, 52)">
+<rect fill="url(#card-grad)" height="56" rx="8" stroke="#00A1E0" stroke-width="1" width="235"></rect>
+<circle cx="14" cy="18" fill="#00A1E0" r="5"></circle>
+<text class="par-sans" fill="#FFFFFF" font-size="11" font-weight="700" x="26" y="22">Route [0]: SAP S/4HANA ERP</text>
+<text class="par-mono" fill="#94A3B8" font-size="9" x="26" y="38">BAPI_SALESORDER_CREATE</text>
+<rect fill="#00A1E0" fill-opacity="0.15" height="18" rx="4" width="50" x="175" y="10"></rect>
+<text class="par-mono" fill="#00F2FE" font-size="9" text-anchor="middle" x="200" y="22">⏱️ 240ms</text>
+</g>
+<!-- Route 1: Salesforce CRM -->
+<g transform="translate(270, 118)">
+<rect fill="url(#card-grad)" height="56" rx="8" stroke="#F59E0B" stroke-width="1" width="235"></rect>
+<circle cx="14" cy="18" fill="#F59E0B" r="5"></circle>
+<text class="par-sans" fill="#FFFFFF" font-size="11" font-weight="700" x="26" y="22">Route [1]: Salesforce CRM</text>
+<text class="par-mono" fill="#94A3B8" font-size="9" x="26" y="38">Upsert Account By ExternalID</text>
+<rect fill="#F59E0B" fill-opacity="0.15" height="18" rx="4" width="50" x="175" y="10"></rect>
+<text class="par-mono" fill="#FBBF24" font-size="9" text-anchor="middle" x="200" y="22">⏱️ 160ms</text>
+</g>
+<!-- Route 2: AWS DynamoDB -->
+<g transform="translate(270, 184)">
+<rect fill="url(#card-grad)" height="56" rx="8" stroke="#10B981" stroke-width="1" width="235"></rect>
+<circle cx="14" cy="18" fill="#10B981" r="5"></circle>
+<text class="par-sans" fill="#FFFFFF" font-size="11" font-weight="700" x="26" y="22">Route [2]: AWS DynamoDB</text>
+<text class="par-mono" fill="#94A3B8" font-size="9" x="26" y="38">PutItem (TTL Audit Record)</text>
+<rect fill="#10B981" fill-opacity="0.15" height="18" rx="4" width="50" x="175" y="10"></rect>
+<text class="par-mono" fill="#34D399" font-size="9" text-anchor="middle" x="200" y="22">⏱️ 45ms</text>
+</g>
+<!-- Aggregation Barrier Box -->
+<g transform="translate(24, 260)">
+<rect fill="#0E1B2A" height="88" rx="10" stroke="#10B981" stroke-width="1.2" width="481"></rect>
+<path d="M12 0H469" opacity="0.6" stroke="#10B981" stroke-width="1.5"></path>
+<text class="par-sans" fill="#10B981" font-size="11" font-weight="700" x="16" y="24">BARRIER AGGREGATION RESULT (COMPOSITE MAP)</text>
+<text class="par-mono" fill="#FFFFFF" font-size="10" x="16" y="44">payload["0"].payload  ➔  SAP Order Confirmation #{9921}</text>
+<text class="par-mono" fill="#FFFFFF" font-size="10" x="16" y="60">payload["1"].payload  ➔  Salesforce Account Updated (200)</text>
+<text class="par-mono" fill="#FFFFFF" font-size="10" x="16" y="76">payload["2"].payload  ➔  DynamoDB Audit Stored (HTTP 200)</text>
+</g>
+<!-- Execution Metric Box -->
+<g transform="translate(24, 362)">
+<rect fill="#0A141F" height="74" rx="8" stroke="rgba(255,255,255,0.08)" width="481"></rect>
+<text class="par-sans" fill="#A6EAF4" font-size="11" font-weight="700" x="16" y="24">EXECUTION TIME BENEFIT</text>
+<text class="par-sans" fill="#94A3B8" font-size="11" x="16" y="44">Sequential: 240ms + 160ms + 45ms = <tspan fill="#EF4444" font-weight="700">445ms</tspan></text>
+<text class="par-sans" fill="#F0F9FF" font-size="12" font-weight="700" x="16" y="62">Parallel Scatter-Gather: MAX(240, 160, 45) = <tspan fill="#10B981" font-weight="700">240ms (46% FASTER)</tspan></text>
+</g>
+</g>
+<!-- ==================== SECTION 2: PARALLEL FOR EACH ==================== -->
+<g transform="translate(622, 140)">
+<!-- Container Box -->
+<rect fill="url(#pfe-box-grad)" height="455" rx="16" stroke="#00F2FE" stroke-dasharray="6,4" stroke-width="1.2" width="530"></rect>
+<path d="M20 0H510" stroke="url(#cyan-accent)" stroke-width="2"></path>
+<!-- Section Badge -->
+<rect fill="#00F2FE" fill-opacity="0.15" height="24" rx="6" stroke="#00F2FE" stroke-opacity="0.4" width="210" x="20" y="16"></rect>
+<text class="par-sans" fill="#53CADD" font-size="11" font-weight="700" letter-spacing="1" x="30" y="32">PATTERN 2: PARALLEL FOR EACH</text>
+<text class="par-mono" fill="#94A3B8" font-size="10" x="30" y="50">collection="#[payload]" | maxConcurrency="4"</text>
+<!-- Inbound Array Node -->
+<g transform="translate(24, 60)">
+<rect fill="url(#card-grad)" height="64" rx="8" stroke="#00F2FE" stroke-width="1.2" width="140"></rect>
+<text class="par-mono" fill="#00F2FE" font-size="10" font-weight="700" x="14" y="24">INPUT ARRAY</text>
+<text class="par-sans" fill="#FFFFFF" font-size="12" font-weight="700" x="14" y="42">[Item_0, Item_1, ...]</text>
+<text class="par-mono" fill="#94A3B8" font-size="9" x="14" y="55">Total Size: 1,000 items</text>
+</g>
+<!-- Concurrency Throttle Pool Node -->
+<g transform="translate(195, 60)">
+<rect fill="#124052" height="64" rx="8" stroke="#53CADD" stroke-width="1" width="105"></rect>
+<text class="par-mono" fill="#A6EAF4" font-size="9" font-weight="700" text-anchor="middle" x="52" y="24">THREAD POOL</text>
+<text class="par-title" fill="#00F2FE" font-size="16" text-anchor="middle" x="52" y="42">max=4</text>
+<text class="par-mono" fill="#94A3B8" font-size="8" text-anchor="middle" x="52" y="56">NON-BLOCKING</text>
+</g>
+<!-- Connecting Trunk -->
+<path d="M164 92H195" stroke="#00F2FE" stroke-width="1.5"></path>
+<path d="M300 92H330" stroke="#00F2FE" stroke-width="1.5"></path>
+<!-- Concurrent Processing Lanes -->
+<g transform="translate(330, 48)">
+<!-- Lane 1 -->
+<g transform="translate(0, 0)">
+<rect fill="url(#card-grad)" height="34" rx="6" stroke="#53CADD" stroke-opacity="0.4" width="175"></rect>
+<text class="par-mono" fill="#FFFFFF" font-size="9" x="10" y="21">Thread-1 ➔ Item[0..249]</text>
+<circle cx="160" cy="17" fill="#10B981" r="4"></circle>
+</g>
+<!-- Lane 2 -->
+<g transform="translate(0, 42)">
+<rect fill="url(#card-grad)" height="34" rx="6" stroke="#53CADD" stroke-opacity="0.4" width="175"></rect>
+<text class="par-mono" fill="#FFFFFF" font-size="9" x="10" y="21">Thread-2 ➔ Item[250..499]</text>
+<circle cx="160" cy="17" fill="#10B981" r="4"></circle>
+</g>
+<!-- Lane 3 -->
+<g transform="translate(0, 84)">
+<rect fill="url(#card-grad)" height="34" rx="6" stroke="#53CADD" stroke-opacity="0.4" width="175"></rect>
+<text class="par-mono" fill="#FFFFFF" font-size="9" x="10" y="21">Thread-3 ➔ Item[500..749]</text>
+<circle cx="160" cy="17" fill="#10B981" r="4"></circle>
+</g>
+<!-- Lane 4 -->
+<g transform="translate(0, 126)">
+<rect fill="url(#card-grad)" height="34" rx="6" stroke="#53CADD" stroke-opacity="0.4" width="175"></rect>
+<text class="par-mono" fill="#FFFFFF" font-size="9" x="10" y="21">Thread-4 ➔ Item[750..999]</text>
+<circle cx="160" cy="17" fill="#10B981" r="4"></circle>
+</g>
+</g>
+<!-- Animated Packets on Lanes -->
+<path class="pkt-fast" d="M300 92 L330 65" fill="none" filter="url(#glow-cyan)" pathlength="100" stroke="#00F2FE" stroke-width="2"></path>
+<path class="pkt-fast" d="M300 92 L330 107" fill="none" filter="url(#glow-cyan)" pathlength="100" stroke="#00F2FE" stroke-width="2"></path>
+<path class="pkt-fast" d="M300 92 L330 149" fill="none" filter="url(#glow-cyan)" pathlength="100" stroke="#00F2FE" stroke-width="2"></path>
+<path class="pkt-fast" d="M300 92 L330 191" fill="none" filter="url(#glow-cyan)" pathlength="100" stroke="#00F2FE" stroke-width="2"></path>
+<!-- Order Preservation Guarantee -->
+<g transform="translate(24, 235)">
+<rect fill="#0E1B2A" height="85" rx="10" stroke="#00F2FE" stroke-width="1.2" width="481"></rect>
+<text class="par-sans" fill="#00F2FE" font-size="11" font-weight="700" x="16" y="24">DETERMINISTIC AGGREGATION &amp; ORDER PRESERVATION</text>
+<text class="par-sans" fill="#FFFFFF" font-size="11" x="16" y="44">Even if Item #5 finishes before Item #1, Mule maintains original index order:</text>
+<text class="par-mono" fill="#A6EAF4" font-size="10" x="16" y="64">outputPayload = [Result_0, Result_1, Result_2, ... Result_999]</text>
+<text class="par-sans" fill="#94A3B8" font-size="9" x="16" y="78">Target variable scoping: target="vars.parallelResults"</text>
+</g>
+<!-- Error Handling Matrix -->
+<g transform="translate(24, 335)">
+<rect fill="#0A141F" height="100" rx="8" stroke="rgba(255,255,255,0.08)" width="481"></rect>
+<text class="par-sans" fill="#EF4444" font-size="11" font-weight="700" x="16" y="24">ERROR BOUNDARY BEHAVIOR</text>
+<text class="par-sans" fill="#94A3B8" font-size="10" x="16" y="44">• If 1 item fails: All other running threads COMPLETE their execution.</text>
+<text class="par-sans" fill="#94A3B8" font-size="10" x="16" y="60">• After all threads finish, Mule throws: <tspan class="par-mono" fill="#EF4444">MULE:COMPOSITE_ROUTING</tspan></text>
+<text class="par-sans" fill="#94A3B8" font-size="10" x="16" y="76">• Access individual failure reasons via: <tspan class="par-mono" fill="#00F2FE">error.childErrors['index']</tspan></text>
+<text class="par-sans" fill="#94A3B8" font-size="10" x="16" y="92">• Variables created inside scope do NOT propagate outside the scope.</text>
+</g>
+</g>
+<!-- ==================== FOOTER CALLOUT ==================== -->
+<g transform="translate(48, 608)">
+<text class="par-sans" fill="#64748B" font-size="11" x="0" y="16">⚡ <tspan fill="#ADC6D6" font-weight="600">Enterprise Rule:</tspan> Always configure <tspan class="par-mono" fill="#00F2FE">timeout</tspan> on Scatter-Gather to prevent slow routes from stalling caller threads, and tune <tspan class="par-mono" fill="#00F2FE">maxConcurrency</tspan> to match downstream API rate limits.</text>
+<text class="par-mono" fill="#53CADD" font-size="10" text-anchor="end" x="1104" y="16">MULE 4.6+ ARCHITECTURE</text>
+</g>
+</svg>
+<button aria-label="Expand diagram to fullscreen" class="diagram-expand-btn" type="button"><span>⤢</span> <span>Expand</span></button></div>
+<div class="diagram-footer">
+<span>💡 <strong>Architectural Rule:</strong> Scatter-Gather executes fixed design-time routes concurrently; Parallel ForEach divides a runtime collection across throttled non-blocking worker threads while guaranteeing output index order.</span>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-h-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module H</span>
+</div>
+<h3 class="q-title">What is ForEach? How does it work and what is its output?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">ForEach iterates over a collection sequentially — one item at a time. For each iteration: payload  =</p>
+<p class="doc-p">current item, <code>vars.counter</code>  = current index (1-based).</p>
+<div class="callout callout-info"><div class="callout-header"><span class="callout-icon">ℹ️</span><strong>Important</strong></div><div class="callout-body">ForEach does NOT change the outer payload. After ForEach completes, the payload is still the original collection that was iterated. To collect results: use a variable (e.g., <code>vars.results</code>) and append each iteration's result to it.</div></div>
+<p class="doc-p">💬  CROSS-QUESTIONS INTERVIEWERS ASK ABOUT FOREACH</p>
+<p class="doc-p">"After ForEach — is the payload still the original array or the processed results?" → Original array —</p>
+<p class="doc-p">payload is UNCHANGED. Collect results in a variable: vars.results = vars.results ++ [payload]  inside</p>
+<p class="doc-p">the loop. After loop: payload = original, vars.results = collected results.</p>
+<p class="doc-p">"I set a variable inside ForEach — is it visible after the loop?" → YES. Variables (vars) set inside ForEach</p>
+<p class="doc-p">ARE visible after the loop exits. Inside Scatter-Gather, <code>vars</code> set in one route are NOT visible to sibling routes running in parallel, but once all routes complete, Mule 4 merges/propagates them back into the main flow (same-named vars with different values merge into an Array). By contrast, <code>vars</code> set inside an Async scope never propagate back to the main flow.</p>
+<p class="doc-p">"What is <code>vars.counter</code> inside ForEach?" → 1-based index of the current iteration. First item = counter 1,</p>
+<p class="doc-p">second = counter 2. Useful for batch numbering or logging position.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-h-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module H</span>
+</div>
+<h3 class="q-title">If a record fails inside ForEach, what happens? How do you handle it?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">By default: ForEach stops processing and propagates the error to the flow's error handler. All</p>
+<p class="doc-p">subsequent records are abandoned.</p>
+<p class="doc-p">Fix: Wrap the content of ForEach in a scope with on-error-continue . The failed record is handled</p>
+<p class="doc-p">locally, ForEach continues with the next record.</p>
+<p class="doc-p">ForEach with per-record error handling</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-h-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module H</span>
+</div>
+<h3 class="q-title">What is Parallel ForEach? How is it different from ForEach?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Parallel ForEach processes all collection items simultaneously using thread pool. Dramatically faster</p>
+<p class="doc-p">for large collections when items are independent.</p>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ASPECT</th><th>FOREACH</th><th>PARALLEL FOREACH</th></tr></thead>
+<tbody>
+<tr><td data-label="ASPECT">Processing</td><td data-label="FOREACH">Sequential — one at a time</td><td data-label="PARALLEL FOREACH">Parallel — all at once</td></tr>
+<tr><td data-label="ASPECT">Order</td><td data-label="FOREACH">Guaranteed order</td><td data-label="PARALLEL FOREACH">Order NOT guaranteed</td></tr>
+<tr><td data-label="ASPECT">Use when</td><td data-label="FOREACH">Items depend on each other, order matters</td><td data-label="PARALLEL FOREACH">Items are independent, performance critical</td></tr>
+<tr><td data-label="ASPECT">Thread safety</td><td data-label="FOREACH">Single thread — no conflicts</td><td data-label="PARALLEL FOREACH">Beware shared mutable state (variables)</td></tr>
+<tr><td data-label="ASPECT">In our Enterprise Architecture</td><td data-label="FOREACH">Sequential SAP calls with dependencies</td><td data-label="PARALLEL FOREACH">50 parallel account updates — 60% faster</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "When an API orchestration requires parallel data fetching from multiple disparate backends, I implement the Scatter-Gather router. It invokes all routes concurrently on separate threads and aggregates responses into an indexed Map. I always wrap individual routes in Try scopes or inspect MULE:COMPOSITE_ROUTING to ensure that a failure in one non-critical route does not fail the entire customer response."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Aviation — Customer 360 Aggregation API.</p><p class="example-line"><strong>Problem:</strong> Sequentially calling 3 backend systems (Amadeus GDS, Salesforce Loyalty Cloud, Snowflake Data Lake) took over 3.2 seconds, breaching client SLA thresholds during high-load periods.</p><p class="example-line"><strong>What I Did:</strong> Orchestrated the backend calls using a Scatter-Gather router with a 1500ms timeout, wrapping each branch in a local Try scope with On Error Continue fallback payloads.</p><p class="example-line"><strong>Result:</strong> Slashed end-to-end response latency from 3.2s to 680ms (a 78% speedup) while guaranteeing graceful degradation if one backend was slow.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-scatter-gather-router-deep-dive.html">← Scatter-Gather Router Deep Dive</a><a class="btn btn-outline" href="mulesoft-batch-processing-deep-dive.html">Batch Processing Deep Dive →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-scatter-gather-router-deep-dive.html">Scatter-Gather Router Deep Dive</a></li><li><a href="mulesoft-batch-processing-deep-dive.html">Batch Processing Deep Dive</a></li><li><a href="mulesoft-until-successful-scope-resiliency.html">Until Successful Scope &amp; Resiliency</a></li><li><a href="mulesoft-choice-router-first-successful-async-scopes.html">Choice Router, First Successful &amp; Async Scopes</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

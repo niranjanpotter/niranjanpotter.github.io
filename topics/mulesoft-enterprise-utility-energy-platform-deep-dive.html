@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Enterprise Utility &amp; Energy Platform Deep Dive | MuleSoft Q&amp;A</title>
+  <meta name="description" content="Full enterprise case study: 5M customers, 44 APIs, SAP S/4HANA billing, DynamoDB preferences, 55% latency drop.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-enterprise-utility-energy-platform-deep-dive.html">
+  <meta property="og:title" content="Enterprise Utility &amp; Energy Platform Deep Dive — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Full enterprise case study: 5M customers, 44 APIs, SAP S/4HANA billing, DynamoDB preferences, 55% latency drop.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-enterprise-utility-energy-platform-deep-dive.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Enterprise Utility & Energy Platform Deep Dive", "item": "https://niranjanpotter.github.io/topics/mulesoft-enterprise-utility-energy-platform-deep-dive.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Enterprise Utility & Energy Platform Deep Dive — MuleSoft Interview Questions & Scenarios (2026)", "description": "Full enterprise case study: 5M customers, 44 APIs, SAP S/4HANA billing, DynamoDB preferences, 55% latency drop.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-enterprise-utility-energy-platform-deep-dive.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Getting Started &amp; Strategy</span> &gt;
+      <span style="color: var(--text-main);">Enterprise Utility &amp; Energy Platform Deep Dive</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Getting Started &amp; Strategy · Developer / Senior</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Enterprise Utility &amp; Energy Platform Deep Dive — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Full enterprise case study: 5M customers, 44 APIs, SAP S/4HANA billing, DynamoDB preferences, 55% latency drop.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-s-title" class="blog-article" data-category="Getting Started &amp; Strategy" data-role="Developer / Senior" id="mod-s">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-senior">Module S</span>
+<span class="badge badge-senior">[DEVELOPER / SENIOR]</span>
+<span class="badge badge-primary">Getting Started &amp; Strategy</span>
+<span>⏱️ 3 min read</span>
+<span>📄 Guide Pages 54–55</span>
+<span>🎯 1 Interview Topic</span>
+</div>
+<figure aria-label="Energy &amp; Utility Integration Platform Architecture" class="hub-diagram" id="mod-s-diagram">
+<svg class="responsive-svg" height="auto" viewbox="0 0 1200 360" width="100%" xmlns="http://www.w3.org/2000/svg">
+<title>Smart Grid Utility Platform</title>
+<desc>Diagram showing Smart Meter to MDM and Billing integration.</desc>
+<rect fill="#0F172A" height="360" rx="14" stroke="#334155" stroke-width="1.5" width="1200"></rect>
+<g data-note="Millions of electric meters broadcast 15-minute interval telemetry over cellular/mesh radio." data-step="1" data-title="Smart Meter AMI Head-End">
+<rect fill="#1E293B" height="120" rx="8" stroke="#00F2FE" stroke-width="1.5" width="220" x="60" y="90"></rect>
+<text fill="#00F2FE" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="170" y="130">AMI Head-End System</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="170" y="155">Itron / Landis+Gyr</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="170" y="175">5M+ Daily Telemetry Readings</text>
+</g>
+<path d="M280 150 L360 150" stroke="#00F2FE" stroke-width="2"></path>
+<g data-note="Validates readings, deduplicates timestamps, and computes rolling kilowatt usage." data-step="2" data-title="MuleSoft Process API">
+<rect fill="#1E293B" height="120" rx="8" stroke="#845EC2" stroke-width="2" width="240" x="360" y="90"></rect>
+<text fill="#D65DB1" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="480" y="130">Meter Data Process API</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="480" y="155">VEE (Validate, Estimate, Edit)</text>
+<text fill="#10B981" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="480" y="175">CloudHub 2.0 Autoscaled Pods</text>
+</g>
+<path d="M600 150 L680 150" stroke="#845EC2" stroke-width="2"></path>
+<g data-note="MDM repository records historical consumption for energy settlement and regulatory audits." data-step="3" data-title="Meter Data Management (MDM)">
+<rect fill="#1E293B" height="120" rx="8" stroke="#10B981" stroke-width="1.5" width="220" x="680" y="90"></rect>
+<text fill="#10B981" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="790" y="130">MDM Repository</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="790" y="155">Siemens EnergyIP</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="790" y="175">Billing Quality Settlement</text>
+</g>
+<path d="M900 150 L980 150" stroke="#10B981" stroke-width="2"></path>
+<g data-note="System API updates customer billing ledger in SAP IS-U / Oracle CC&amp;B." data-step="4" data-title="Customer Billing (CIS)">
+<rect fill="#1E293B" height="120" rx="8" stroke="#F59E0B" stroke-width="1.5" width="160" x="980" y="90"></rect>
+<text fill="#F59E0B" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="1060" y="130">Customer CIS</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="1060" y="155">SAP IS-U</text>
+<text fill="#10B981" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="1060" y="175">Invoice Generated</text>
+</g>
+</svg>
+<figcaption class="hub-diagram-caption">Figure S.1: Smart Grid Integration — AMI Smart Meters, Head-End Systems, MDM repository, and Customer Billing APIs.</figcaption>
+</figure>
+<h2 class="article-title">⚡ Enterprise Utility &amp; Energy Platform Deep Dive</h2>
+<p class="article-excerpt">Full enterprise case study: 5M customers, 44 APIs, SAP S/4HANA billing, DynamoDB preferences, 55% latency drop.</p>
+</div>
+<div class="spotlight-card ent-showcase-box">
+<div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+<div style="display:flex; align-items:center; gap:10px;">
+<span style="font-size:1.6rem;">⚡</span>
+<div>
+<div style="font-weight:800; font-size:1.15rem; color:#00f0ff; letter-spacing:-0.01em;">Enterprise CloudHub 2.0 Reference Architecture · Scale Case Study</div>
+<div style="font-size:0.78rem; color:var(--text-dim);">High-Volume Smart Grid &amp; Billing Orchestration Pattern · Architectural Blueprint</div>
+</div>
+</div>
+<span class="badge badge-success" style="font-size:0.75rem;">Reference Architecture</span>
+</div>
+<div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:14px; margin:20px 0;">
+<div class="ent-metric-box">
+<div style="font-size:1.8rem; font-weight:800; font-family:var(--font-mono); color:#00f0ff;">44+</div>
+<div style="font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; font-weight:700; margin-top:4px;">Production APIs</div>
+<div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">18 Exp · 14 Proc · 12 Sys</div>
+</div>
+<div class="ent-metric-box">
+<div style="font-size:1.8rem; font-weight:800; font-family:var(--font-mono); color:#3e63dd;">5M+</div>
+<div style="font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; font-weight:700; margin-top:4px;">Monthly Invocations</div>
+<div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Peak: 1,800 TPS during storms</div>
+</div>
+<div class="ent-metric-box">
+<div style="font-size:1.8rem; font-weight:800; font-family:var(--font-mono); color:#10b981;">99.9%</div>
+<div style="font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; font-weight:700; margin-top:4px;">Production Uptime</div>
+<div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Multi-AZ CloudHub 2.0 SLA</div>
+</div>
+<div class="ent-metric-box">
+<div style="font-size:1.8rem; font-weight:800; font-family:var(--font-mono); color:#d65db1;">55%</div>
+<div style="font-size:0.75rem; color:var(--text-dim); text-transform:uppercase; font-weight:700; margin-top:4px;">Latency Drop</div>
+<div style="font-size:0.72rem; color:var(--text-muted); margin-top:2px;">Sub-120ms P99 with caching</div>
+</div>
+</div>
+<div class="ent-star-box">
+<strong style="color:#00f0ff;">⭐ STAR Method Reference Pitch Template (Adapt Metrics to Your Own Project):</strong> "In our high-volume customer integration platform across 40+ APIs, we decoupled the ERP billing core using MuleSoft 3-tier API-led connectivity on CloudHub 2.0 with horizontal replica scaling and Scatter-Gather concurrency—handling peak traffic surges at 1,800 TPS with zero message loss and reducing end-to-end latency by 55%."
+  </div>
+</div>
+<div class="article-section-divider" style="margin: 24px 0 20px 0; padding: 12px 18px; border-radius: 10px; background: rgba(0, 161, 224, 0.08); border-left: 4px solid var(--electric-cyan); display: flex; align-items: center; gap: 10px;">
+<span style="font-size: 1.2rem;">🔹</span>
+<span style="font-weight: 700; font-size: 1rem; color: var(--text-main); letter-spacing: 0.02em;">Production Scaling, High Availability &amp; CloudHub 2.0 Architecture</span>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-s-q11">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q11</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module S</span>
+</div>
+<h3 class="q-title">What is horizontal vs vertical scaling? When do you use each in MuleSoft?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Vertical Scaling: Increase vCores per worker (0.1 → 0.2 → 0.5 → 1 → 2 → 4 vCores). More CPU and</p>
+<p class="doc-p">memory per instance. Best for CPU-bound or memory-intensive tasks (large DataWeave transforms,</p>
+<p class="doc-p">complex aggregations).</p>
+<p class="doc-p">Horizontal Scaling: Add more workers (1 → 2 → 4 workers). More instances running the same app in</p>
+<p class="doc-p">parallel. Best for I/O-bound tasks (many concurrent HTTP requests, MQ consumers). CloudHub</p>
+<p class="doc-p">supports autoscaling — configure min/max workers and CPU threshold.</p>
+<p class="doc-p">In our Enterprise Architecture: During billing cycle peak load (8-10AM), autoscaling kicks in from 2 to 4 workers on the</p>
+<p class="doc-p">billing XAPI. Off-peak: scales back to 2 to reduce cost.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="dataweave-2-0-reference-core-operators.html">← DataWeave 2.0 Reference &amp; Core Operators</a><a class="btn btn-outline" href="mulesoft-quick-reference-interview-cheat-sheet.html">Quick Reference Interview Cheat Sheet →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-interview-day-strategy-star-method.html">Interview Day Strategy &amp; STAR Method</a></li><li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li><li><a href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC)</a></li><li><a href="mulesoft-oauth-2-0-jwt-bearer-token-flow.html">OAuth 2.0 &amp; JWT Bearer Token Flow</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

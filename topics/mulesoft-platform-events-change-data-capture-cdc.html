@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Platform Events &amp; Change Data Capture (CDC) | MuleSoft Q&amp;A</title>
+  <meta name="description" content="Event replay channels, 72-hour retention, duplicate event deduplication, and CDC vs Platform Events.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-platform-events-change-data-capture-cdc.html">
+  <meta property="og:title" content="Platform Events &amp; Change Data Capture (CDC) — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Event replay channels, 72-hour retention, duplicate event deduplication, and CDC vs Platform Events.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-platform-events-change-data-capture-cdc.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Platform Events & Change Data Capture (CDC)", "item": "https://niranjanpotter.github.io/topics/mulesoft-platform-events-change-data-capture-cdc.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Platform Events & Change Data Capture (CDC) — MuleSoft Interview Questions & Scenarios (2026)", "description": "Event replay channels, 72-hour retention, duplicate event deduplication, and CDC vs Platform Events.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-platform-events-change-data-capture-cdc.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Salesforce &amp; Enterprise Connectors</span> &gt;
+      <span style="color: var(--text-main);">Platform Events &amp; Change Data Capture (CDC)</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Salesforce &amp; Enterprise Connectors · Developer / Senior</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Platform Events &amp; Change Data Capture (CDC) — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Event replay channels, 72-hour retention, duplicate event deduplication, and CDC vs Platform Events.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-c-title" class="blog-article" data-category="Salesforce &amp; Enterprise Connectors" data-role="Developer / Senior" id="mod-c">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-senior">Module C</span>
+<span class="badge badge-senior">[DEVELOPER / SENIOR]</span>
+<span class="badge badge-primary">Salesforce &amp; Enterprise Connectors</span>
+<span>⏱️ 3 min read</span>
+<span>📄 Guide Pages 7–8</span>
+<span>🎯 4 Interview Topics</span>
+</div>
+<figure aria-label="Salesforce Platform Events &amp; Change Data Capture (CDC)" class="hub-diagram" id="mod-c-diagram">
+<svg class="responsive-svg" height="auto" viewbox="0 0 1200 420" width="100%" xmlns="http://www.w3.org/2000/svg">
+<title>Salesforce Platform Events &amp; CDC Architecture</title>
+<desc>Diagram showing Salesforce Event Bus, ReplayId buffering, and MuleSoft streaming subscriber.</desc>
+<rect fill="#0F172A" height="420" rx="14" stroke="#334155" stroke-width="1.5" width="1200"></rect>
+<g data-note="Salesforce publishes Platform Events or CDC change records to the enterprise CometD/gRPC event bus." data-step="1" data-title="Step 1: Salesforce Event Bus">
+<rect fill="#1E293B" height="110" rx="8" stroke="#00A1E0" stroke-width="2" width="220" x="60" y="80"></rect>
+<text fill="#00A1E0" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="170" y="115">Salesforce Event Bus</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="170" y="140">/event/Order_Event__e</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="170" y="160">72-Hour Retention Window</text>
+</g>
+<path d="M280 135 L370 135" stroke="#00A1E0" stroke-width="2"></path>
+<g data-note="Buffered stream of events stored with monotonically increasing Replay IDs." data-step="2" data-title="Step 2: 72-Hour Replay Buffer">
+<rect fill="#1E293B" height="150" rx="8" stroke="#845EC2" stroke-width="1.5" width="380" x="370" y="60"></rect>
+<text fill="#D65DB1" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="560" y="90">Event Stream (Replay Window)</text>
+<rect fill="#0F172A" height="70" rx="4" stroke="#334155" width="60" x="390" y="110"></rect><text fill="#94A3B8" font-size="9" text-anchor="middle" x="420" y="150">ID: 101</text>
+<rect fill="#0F172A" height="70" rx="4" stroke="#334155" width="60" x="460" y="110"></rect><text fill="#94A3B8" font-size="9" text-anchor="middle" x="490" y="150">ID: 102</text>
+<rect fill="#0F172A" height="70" rx="4" stroke="#00F2FE" width="60" x="530" y="110"></rect><text fill="#00F2FE" font-size="9" text-anchor="middle" x="560" y="150">ID: 103</text>
+<rect fill="#0F172A" height="70" rx="4" stroke="#10B981" width="60" x="600" y="110"></rect><text fill="#10B981" font-size="9" text-anchor="middle" x="630" y="150">ID: 104</text>
+<rect fill="#0F172A" height="70" rx="4" stroke="#F59E0B" width="60" x="670" y="110"></rect><text fill="#F59E0B" font-size="9" text-anchor="middle" x="700" y="150">NOW</text>
+</g>
+<path d="M750 135 L840 135" stroke="#00F2FE" stroke-width="2"></path>
+<g data-note="Mule Salesforce connector subscribes with specific replayId policy: -1 (New only), -2 (All 72h), or custom." data-step="3" data-title="Step 3: MuleSoft Subscriber Channel">
+<rect fill="#1E293B" height="110" rx="8" stroke="#00F2FE" stroke-width="2" width="280" x="840" y="80"></rect>
+<text fill="#00F2FE" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="980" y="115">MuleSoft Subscriber</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="980" y="140">replayId="-1" -&gt; Latest events only</text>
+<text fill="#10B981" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="980" y="160">replayId="-2" -&gt; Full 72h replay</text>
+</g>
+<g data-note="Mule flow saves received ReplayId in ObjectStore. If duplicate arrives, Idempotent Message Validator drops it." data-step="4" data-title="Step 4: Idempotent Deduplication">
+<rect fill="#1E293B" height="110" rx="8" stroke="#10B981" stroke-dasharray="6,4" stroke-width="1.5" width="1060" x="60" y="260"></rect>
+<text fill="#10B981" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" x="90" y="295">Guaranteed Exactly-Once via Idempotent Filter</text>
+<text fill="#E2E8F0" font-family="'JetBrains Mono',monospace" font-size="11" x="90" y="325">Salesforce event delivery is at-least-once. MuleSoft wraps the listener in an Idempotent Message Validator keyed on `replayId` or `event.header.eventId`.</text>
+</g>
+</svg>
+<figcaption class="hub-diagram-caption">Figure C.1: Salesforce Event Bus to MuleSoft Streaming Channel — ReplayId semantics (-1 vs -2) and CDC record sync.</figcaption>
+</figure>
+<h2 class="article-title">⚡ Platform Events &amp; Change Data Capture (CDC)</h2>
+<p class="article-excerpt">Event replay channels, 72-hour retention, duplicate event deduplication, and CDC vs Platform Events.</p>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-c-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module C</span>
+</div>
+<h3 class="q-title">What are Platform Events? How do you subscribe in MuleSoft?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Platform Events: Custom events you define in Salesforce and publish explicitly. Business events:</p>
+<p class="doc-p">Order Closed, Payment Processed.</p>
+<p class="doc-p">CDC (Change Data Capture): Automatic events fired by Salesforce on any record change — no</p>
+<p class="doc-p">Apex/code needed. Includes changeType (CREATE/UPDATE/DELETE), changedFields.</p>
+<p class="doc-p">Subscribe to Platform Event</p>
+<p class="doc-p">REPLAYID MEANING</p>
+<p class="doc-p">-1 New events only (default for initial deploy)</p>
+<p class="doc-p">-2 All retained events (last 72 hours) — use on app restart</p>
+<p class="doc-p">N Replay from specific event ID forward</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "We implement event-driven architectures between Salesforce and MuleSoft using Platform Events and Change Data Capture. In MuleSoft, we subscribe using the Replay Channel Listener backed by persistent ObjectStore storage to save the Replay ID, guaranteeing at-least-once delivery and zero event loss even during downstream system downtime or planned maintenance."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Commercial Banking — Real-Time Order Status Notification.</p><p class="example-line"><strong>Problem:</strong> Traditional scheduled polling every 2 minutes was too slow for customer notifications and wasted 70,000 API calls daily.</p><p class="example-line"><strong>What I Did:</strong> Subscribed to Salesforce `Order_Status_Event__e` Platform Events via MuleSoft Replay Channel Listener, routing events through Anypoint MQ for async processing.</p><p class="example-line"><strong>Result:</strong> Achieved end-to-end event notification latency of under 400ms while eliminating 100% of polling API calls.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-c-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module C</span>
+</div>
+<h3 class="q-title">What is event retention? What if Mule app is down &gt;72 hours?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Salesforce Platform Events and CDC are retained for 72 hours. If MuleSoft subscriber restarts with</p>
+<p class="doc-p">replayId="-2" , it receives all events from the last 72 hours — nothing is lost for normal downtime.</p>
+<p class="doc-p">If downtime exceeds 72 hours: those events ARE permanently lost. Mitigation: also publish to</p>
+<p class="doc-p">Anypoint MQ (default 4–7 day retention, configurable up to 14 days; 10 MB max message payload) as durable backup fan-out for critical events. Or implement a Scheduler that</p>
+<p class="doc-p">queries Salesforce directly for records modified during the downtime window using LastModifiedDate</p>
+<p class="doc-p">&gt; :lastRun  watermark.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-c-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module C</span>
+</div>
+<h3 class="q-title">How do you handle duplicate Platform Events (at-least-once delivery)?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Salesforce uses at-least-once delivery — duplicates are possible. Implement idempotency with</p>
+<p class="doc-p">ObjectStore:</p>
+<p class="doc-p">Idempotency Pattern</p>
+<p class="doc-p">// 1. Extract Replay ID or business key from event</p>
+<p class="doc-p">// 2. Check ObjectStore</p>
+<p class="doc-p">os:contains(key=replayId, objectStore=idempotency-store)</p>
+<p class="doc-p">// EXISTS → skip and ACK</p>
+<p class="doc-p">// NOT EXISTS → process → os:store(key, TTL=72h) → ACK</p>
+<p class="doc-p">Use acknowledgementMode="MANUAL"  so ACK only happens after successful ObjectStore write +</p>
+<p class="doc-p">processing.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "We implement event-driven architectures between Salesforce and MuleSoft using Platform Events and Change Data Capture. In MuleSoft, we subscribe using the Replay Channel Listener backed by persistent ObjectStore storage to save the Replay ID, guaranteeing at-least-once delivery and zero event loss even during downstream system downtime or planned maintenance."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Healthcare — Real-Time Order Status Notification.</p><p class="example-line"><strong>Problem:</strong> Traditional scheduled polling every 2 minutes was too slow for customer notifications and wasted 70,000 API calls daily.</p><p class="example-line"><strong>What I Did:</strong> Subscribed to Salesforce `Order_Status_Event__e` Platform Events via MuleSoft Replay Channel Listener, routing events through Anypoint MQ for async processing.</p><p class="example-line"><strong>Result:</strong> Achieved end-to-end event notification latency of under 400ms while eliminating 100% of polling API calls.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-c-q4">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q4</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module C</span>
+</div>
+<h3 class="q-title">Difference between Platform Events and CDC?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ASPECT</th><th>PLATFORM EVENTS</th><th>CDC</th></tr></thead>
+<tbody>
+<tr><td data-label="ASPECT">Who publishes</td><td data-label="PLATFORM EVENTS">You publish explicitly via Apex, Flow, or MuleSoft</td><td data-label="CDC">Salesforce fires automatically on any record change</td></tr>
+<tr><td data-label="ASPECT">Payload</td><td data-label="PLATFORM EVENTS">Custom fields you define</td><td data-label="CDC">Includes changeType, changedFields, old+new values</td></tr>
+<tr><td data-label="ASPECT">Use case</td><td data-label="PLATFORM EVENTS">Business process events (Order Closed, Payment Done)</td><td data-label="CDC">Data synchronization — DB replica, DW sync</td></tr>
+<tr><td data-label="ASPECT">Channel</td><td data-label="PLATFORM EVENTS">/event/EventName__e</td><td data-label="CDC">/data/ObjectChangeEvent</td></tr>
+</tbody>
+</table></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "We implement event-driven architectures between Salesforce and MuleSoft using Platform Events and Change Data Capture. In MuleSoft, we subscribe using the Replay Channel Listener backed by persistent ObjectStore storage to save the Replay ID, guaranteeing at-least-once delivery and zero event loss even during downstream system downtime or planned maintenance."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Logistics — Real-Time Order Status Notification.</p><p class="example-line"><strong>Problem:</strong> Traditional scheduled polling every 2 minutes was too slow for customer notifications and wasted 70,000 API calls daily.</p><p class="example-line"><strong>What I Did:</strong> Subscribed to Salesforce `Order_Status_Event__e` Platform Events via MuleSoft Replay Channel Listener, routing events through Anypoint MQ for async processing.</p><p class="example-line"><strong>Result:</strong> Achieved end-to-end event notification latency of under 400ms while eliminating 100% of polling API calls.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-salesforce-connector-bulk-api-2-0.html">← Salesforce Connector &amp; Bulk API 2.0</a><a class="btn btn-outline" href="mulesoft-oauth-2-0-jwt-bearer-token-flow.html">OAuth 2.0 &amp; JWT Bearer Token Flow →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li><li><a href="mulesoft-sap-salesforce-end-to-end-integration.html">SAP + Salesforce End-to-End Integration</a></li><li><a href="mulesoft-advanced-enterprise-connectors-snowflake-servicenow-workday-cos.html">Advanced Enterprise Connectors (Snowflake, ServiceNow, Workday, Cosmos DB &amp; gRPC)</a></li><li><a href="mulesoft-oauth-2-0-jwt-bearer-token-flow.html">OAuth 2.0 &amp; JWT Bearer Token Flow</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

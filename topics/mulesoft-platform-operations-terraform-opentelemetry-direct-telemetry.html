@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Platform Operations, Terraform &amp; OpenTelemetry Dir | MuleSoft Q&amp;A</title>
+  <meta name="description" content="Scenario-based MuleSoft interview questions and architecture deep dive for Platform Operations, Terraform &amp; OpenTelemetry Direct Telemetry.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-platform-operations-terraform-opentelemetry-direct-telemetry.html">
+  <meta property="og:title" content="Platform Operations, Terraform &amp; OpenTelemetry Direct Telemetry — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Scenario-based MuleSoft interview questions and architecture deep dive for Platform Operations, Terraform &amp; OpenTelemetry Direct Telemetry.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-platform-operations-terraform-opentelemetry-direct-telemetry.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Platform Operations, Terraform & OpenTelemetry Direct Telemetry", "item": "https://niranjanpotter.github.io/topics/mulesoft-platform-operations-terraform-opentelemetry-direct-telemetry.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Platform Operations, Terraform & OpenTelemetry Direct Telemetry — MuleSoft Interview Questions & Scenarios (2026)", "description": "Scenario-based MuleSoft interview questions and architecture deep dive for Platform Operations, Terraform & OpenTelemetry Direct Telemetry.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-platform-operations-terraform-opentelemetry-direct-telemetry.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Deployment &amp; CloudHub 2.0</span> &gt;
+      <span style="color: var(--text-main);">Platform Operations, Terraform &amp; OpenTelemetry Direct Telemetry</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Deployment &amp; CloudHub 2.0 · Lead / Architect</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Platform Operations, Terraform &amp; OpenTelemetry Direct Telemetry — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Scenario-based MuleSoft interview questions and architecture deep dive for Platform Operations, Terraform &amp; OpenTelemetry Direct Telemetry.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-ll-title" class="blog-article" data-category="Deployment &amp; CloudHub 2.0" data-role="Lead / Architect" id="mod-ll">
+<div class="article-header">
+<div class="article-meta">
+<span class="module-badge">MODULE LL</span>
+<span class="module-cat">PLATFORM OPS &amp; DEVOPS</span>
+<span class="reading-time">⏱️ 10 min read</span>
+<span class="star-rating">⭐⭐⭐⭐⭐ [CORE DEVOPS]</span>
+</div>
+<h2 class="article-title">⚙️ Platform Operations, Terraform &amp; OpenTelemetry Direct Telemetry</h2>
+<p class="article-subtitle">Infrastructure as Code (IaC) via the official MuleSoft Terraform Provider, OpenTelemetry direct telemetry exporting to Datadog/Dynatrace, HashiCorp Vault external secrets, and CloudHub 2.0 Autoscaling.</p>
+</div>
+<!-- LL-Q1 -->
+<div class="faq-card" data-role="architect / lead" id="mod-ll-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-lead">[DEVOPS / ARCHITECT]</span>
+<span class="q-read-time">⏱️ 3 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module LL</span>
+</div>
+<h3 class="q-title">How do you automate Anypoint Platform provisioning using the official MuleSoft Terraform Provider?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="answer-section">
+<div class="ans-badge ans-badge-script">🎯 HOW TO ANSWER (VERBAL SCRIPT)</div>
+<p><em>"To eliminate manual clicking in Anypoint Runtime Manager and API Manager across Dev, Test, Stage, and Prod environments, we implement GitOps infrastructure management using the official MuleSoft Terraform Provider (<code>mulesoft/anypoint</code>). Through Terraform HCL, we declaratively declare: First, <strong><code>CloudHub 2.0</code> Private Spaces</strong> with custom CIDR blocks and transit gateway peerings; Second, <strong>API Manager Instances &amp; Contracts</strong>; Third, <strong>Automated Policy Attachments</strong> (enforcing Client ID Enforcement, Rate Limiting, and Automated OIDC JWT Validation across every registered API); and Fourth, <strong>Environment and Role RBAC assignments</strong>. When a new microservice is promoted, Terraform executes in GitHub Actions, ensuring zero configuration drift between testing and production."</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- LL-Q2 -->
+<div class="faq-card" data-role="architect / lead" id="mod-ll-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-lead">[ARCHITECT / OBSERVABILITY LEAD]</span>
+<span class="q-read-time">⏱️ 3 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module LL</span>
+</div>
+<h3 class="q-title">What is OpenTelemetry (OTel) Direct Telemetry in MuleSoft and how does it replace legacy agent collectors?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="answer-section">
+<div class="ans-badge ans-badge-script">🎯 HOW TO ANSWER (VERBAL SCRIPT)</div>
+<p><em>"Historically, streaming traces and metrics from Mule applications to third-party APM tools like Dynatrace, Datadog, or New Relic required installing heavy Java agents (e.g., `-javaagent` in wrapper.conf) or deploying local collector sidecars in Runtime Fabric. In the 2026 runtime standards, MuleSoft supports native OpenTelemetry (OTel) Direct Exporting. The Mule runtime engine instruments Project Reactor execution directly, creating standardized W3C Trace Context spans for every HTTP listener, flow-ref, scatter-gather route, and connector call. It streams these traces via non-blocking OTLP (OpenTelemetry Protocol) over gRPC directly to enterprise collectors, providing distributed tracing across polyglot microservices without CPU overhead or proprietary vendor lock-in."</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-b2b-integration-edi-x12-edifact-partner-manager.html">← B2B Integration, EDI (X12/EDIFACT) &amp; Partn</a><a class="btn btn-outline" href="mulesoft-advanced-enterprise-connectors-snowflake-servicenow-workday-cos.html">Advanced Enterprise Connectors (Snowflake, →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="cloudhub-1-0-vs-2-0-technical-lead-topics.html">CloudHub 1.0 vs 2.0 &amp; Technical Lead Topics</a></li><li><a href="cloudhub-infrastructure-topology-deep-dive.html">CloudHub &amp; Infrastructure Topology Deep Dive</a></li><li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li><li><a href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC)</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

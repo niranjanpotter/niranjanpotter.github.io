@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>SAP + Salesforce End-to-End Integration | MuleSoft Q&amp;A</title>
+  <meta name="description" content="Bidirectional sync, infinite loop prevention, SAP downtime resiliency, and dead-letter queues.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-sap-salesforce-end-to-end-integration.html">
+  <meta property="og:title" content="SAP + Salesforce End-to-End Integration — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Bidirectional sync, infinite loop prevention, SAP downtime resiliency, and dead-letter queues.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-sap-salesforce-end-to-end-integration.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "SAP + Salesforce End-to-End Integration", "item": "https://niranjanpotter.github.io/topics/mulesoft-sap-salesforce-end-to-end-integration.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "SAP + Salesforce End-to-End Integration — MuleSoft Interview Questions & Scenarios (2026)", "description": "Bidirectional sync, infinite loop prevention, SAP downtime resiliency, and dead-letter queues.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-sap-salesforce-end-to-end-integration.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Salesforce &amp; Enterprise Connectors</span> &gt;
+      <span style="color: var(--text-main);">SAP + Salesforce End-to-End Integration</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Salesforce &amp; Enterprise Connectors · Senior / Architect</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">SAP + Salesforce End-to-End Integration — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Bidirectional sync, infinite loop prevention, SAP downtime resiliency, and dead-letter queues.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-f-title" class="blog-article" data-category="Salesforce &amp; Enterprise Connectors" data-role="Senior / Architect" id="mod-f">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-lead">Module F</span>
+<span class="badge badge-lead">[SENIOR / ARCHITECT]</span>
+<span class="badge badge-primary">Salesforce &amp; Enterprise Connectors</span>
+<span>⏱️ 3 min read</span>
+<span>📄 Guide Pages 12–13</span>
+<span>🎯 3 Interview Topics</span>
+</div>
+<h2 class="article-title">🔄 SAP + Salesforce End-to-End Integration</h2>
+<p class="article-excerpt">Bidirectional sync, infinite loop prevention, SAP downtime resiliency, and dead-letter queues.</p>
+</div>
+<div class="faq-card" data-role="senior / architect" id="mod-f-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-lead">[SENIOR / ARCHITECT]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module F</span>
+</div>
+<h3 class="q-title">Describe a full Salesforce + SAP integration end to end.</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Scenario: Salesforce Opportunity Closed-Won → SAP Sales Order created → SAP Order ID written</p>
+<p class="doc-p">back to Salesforce.</p>
+<p class="doc-p">📋  STEP-BY-STEP FLOW</p>
+<div class="doc-step-item"><span class="step-num">1.</span><span>Salesforce fires Opportunity_Closed_Won__e  Platform Event when Opportunity stage changes</span></div>
+<div class="doc-step-item"><span class="step-num">2.</span><span>MuleSoft XAPI subscribes to the event (replayId=-2 on restart)</span></div>
+<div class="doc-step-item"><span class="step-num">3.</span><span>SOQL query for full Opportunity details (Account, LineItems, Contact)</span></div>
+<div class="doc-step-item"><span class="step-num">4.</span><span>Check ObjectStore for Opportunity ID — if already processed, skip (idempotency)</span></div>
+<div class="doc-step-item"><span class="step-num">5.</span><span>DataWeave: Salesforce JSON → SAP BAPI XML (BAPI_SALESORDER_CREATEFROMDAT2)</span></div>
+<div class="doc-step-item"><span class="step-num">6.</span><span>SAP SAPI creates Sales Order via HTTP SOAP call to SAP</span></div>
+<div class="doc-step-item"><span class="step-num">7.</span><span>SAP returns Order ID → MuleSoft writes SAP_Order_ID__c back to Salesforce via Update</span></div>
+<div class="doc-step-item"><span class="step-num">8.</span><span>Publish SAP_Order_Created__e  confirmation event to Salesforce</span></div>
+<p class="doc-p">⚠  ERROR HANDLING</p>
+<p class="doc-p">SAP failure → On Error Continue → update Opportunity with SAP_Error_Status__c = 'FAILED'</p>
+<p class="doc-p">Salesforce write-back failure → log SAP Order ID to S3 reconciliation table for retry job</p>
+<p class="doc-p">Max retries exceeded → Anypoint Alert to ops team + DLQ message</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior / architect" id="mod-f-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-lead">[SENIOR / ARCHITECT]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module F</span>
+</div>
+<h3 class="q-title">How do you prevent infinite loops in bidirectional Salesforce↔SAP sync?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Challenge: updating SAP triggers a Salesforce CDC event which triggers SAP update again — infinite</p>
+<p class="doc-p">loop.</p>
+<p class="doc-p">Solution 1 — Source System Flag: Add SAP_Last_Updated__c  timestamp field to Salesforce. When</p>
+<p class="doc-p">MuleSoft updates SF from SAP, set this field = NOW. In CDC subscriber, check: if</p>
+<p class="doc-p">SAP_Last_Updated__c  was updated within last 5 seconds → skip (it was a SAP-originated update).</p>
+<p class="doc-p">Solution 2 — Dedicated Integration User: Use a dedicated Salesforce user</p>
+<p class="doc-p">(mulesoft_integration@enterprise.com) for all SAP-originated updates. In CDC subscriber, skip events where</p>
+<p class="doc-p">commitUser == 'mulesoft_integration@enterprise.com' . This breaks the loop at the event source.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior / architect" id="mod-f-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-lead">[SENIOR / ARCHITECT]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module F</span>
+</div>
+<h3 class="q-title">How do you handle SAP being down when a Platform Event arrives?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Synchronous flows: Until Successful with 3 retries + 30s delay. After exhaustion → On Error Continue</p>
+<p class="doc-p">→ update Salesforce with SAP_Error_Status__c = 'FAILED' → Anypoint Alert to ops team.</p>
+<p class="doc-p">Asynchronous flows (preferred): Publish the Platform Event payload to Anypoint MQ — messages</p>
+<p class="doc-p">persist cleanly (default 4–7 day retention, configurable up to 14 days) and drain reliably when SAP recovers. MQ consumer checks ObjectStore</p>
+<p class="doc-p">idempotency key before each attempt to prevent duplicate SAP orders on retry.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "We implement event-driven architectures between Salesforce and MuleSoft using Platform Events and Change Data Capture. In MuleSoft, we subscribe using the Replay Channel Listener backed by persistent ObjectStore storage to save the Replay ID, guaranteeing at-least-once delivery and zero event loss even during downstream system downtime or planned maintenance."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Insurance — Real-Time Order Status Notification.</p><p class="example-line"><strong>Problem:</strong> Traditional scheduled polling every 2 minutes was too slow for customer notifications and wasted 70,000 API calls daily.</p><p class="example-line"><strong>What I Did:</strong> Subscribed to Salesforce `Order_Status_Event__e` Platform Events via MuleSoft Replay Channel Listener, routing events through Anypoint MQ for async processing.</p><p class="example-line"><strong>Result:</strong> Achieved end-to-end event notification latency of under 400ms while eliminating 100% of polling API calls.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-aws-integration-patterns-s3-sqs-dynamodb.html">← AWS Integration Patterns (S3, SQS, DynamoD</a><a class="btn btn-outline" href="mulesoft-scatter-gather-router-deep-dive.html">Scatter-Gather Router Deep Dive →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li><li><a href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC)</a></li><li><a href="mulesoft-advanced-enterprise-connectors-snowflake-servicenow-workday-cos.html">Advanced Enterprise Connectors (Snowflake, ServiceNow, Workday, Cosmos DB &amp; gRPC)</a></li><li><a href="mulesoft-oauth-2-0-jwt-bearer-token-flow.html">OAuth 2.0 &amp; JWT Bearer Token Flow</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Salesforce Connector &amp; Bulk API 2.0 | MuleSoft Interview Q&amp;A (2026)</title>
+  <meta name="description" content="SOQL operations, Upsert with External IDs, Bulk API v2, and Salesforce governor limits handling.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-salesforce-connector-bulk-api-2-0.html">
+  <meta property="og:title" content="Salesforce Connector &amp; Bulk API 2.0 — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="SOQL operations, Upsert with External IDs, Bulk API v2, and Salesforce governor limits handling.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-salesforce-connector-bulk-api-2-0.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Salesforce Connector & Bulk API 2.0", "item": "https://niranjanpotter.github.io/topics/mulesoft-salesforce-connector-bulk-api-2-0.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Salesforce Connector & Bulk API 2.0 — MuleSoft Interview Questions & Scenarios (2026)", "description": "SOQL operations, Upsert with External IDs, Bulk API v2, and Salesforce governor limits handling.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-salesforce-connector-bulk-api-2-0.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Salesforce &amp; Enterprise Connectors</span> &gt;
+      <span style="color: var(--text-main);">Salesforce Connector &amp; Bulk API 2.0</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Salesforce &amp; Enterprise Connectors · Developer</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Salesforce Connector &amp; Bulk API 2.0 — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">SOQL operations, Upsert with External IDs, Bulk API v2, and Salesforce governor limits handling.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-b-title" class="blog-article" data-category="Salesforce &amp; Enterprise Connectors" data-role="Developer" id="mod-b">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-dev">Module B</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="badge badge-primary">Salesforce &amp; Enterprise Connectors</span>
+<span>⏱️ 3 min read</span>
+<span>📄 Guide Pages 4–6</span>
+<span>🎯 5 Interview Topics</span>
+</div>
+<figure aria-label="Salesforce Bulk API 2.0 Ingestion Lifecycle State Machine" class="hub-diagram" id="mod-b-diagram">
+<svg class="responsive-svg" height="auto" viewbox="0 0 1200 400" width="100%" xmlns="http://www.w3.org/2000/svg">
+<title>Salesforce Bulk API 2.0 Lifecycle</title>
+<desc>Diagram showing Bulk API 2.0 state machine from Open to JobComplete.</desc>
+<rect fill="#0F172A" height="400" rx="14" stroke="#334155" stroke-width="1.5" width="1200"></rect>
+<g data-note="POST /services/data/v60.0/jobs/ingest -&gt; Creates job in 'Open' state for object Contact/Account." data-step="1" data-title="State 1: Create Job (Open)">
+<rect fill="#1E293B" height="100" rx="8" stroke="#00F2FE" stroke-width="2" width="180" x="60" y="120"></rect>
+<text fill="#00F2FE" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="150" y="155">1. Job: Open</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="150" y="180">POST /jobs/ingest</text>
+<text fill="#38BDF8" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="150" y="200">Returns: JobId</text>
+</g>
+<path d="M240 170 L320 170" stroke="#00F2FE" stroke-width="2"></path>
+<g data-note="PUT /services/data/v60.0/jobs/ingest/{jobId}/batches -&gt; Streams CSV data up to 100MB per file." data-step="2" data-title="State 2: Upload CSV Batches">
+<rect fill="#1E293B" height="100" rx="8" stroke="#845EC2" stroke-width="2" width="200" x="320" y="120"></rect>
+<text fill="#D65DB1" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="420" y="155">2. Stream CSV Data</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="420" y="180">PUT /jobs/ingest/{id}/batches</text>
+<text fill="#E2E8F0" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="420" y="200">Payload: text/csv</text>
+</g>
+<path d="M520 170 L600 170" stroke="#845EC2" stroke-width="2"></path>
+<g data-note="PATCH /services/data/v60.0/jobs/ingest/{jobId} -&gt; Updates state to 'UploadComplete' to trigger Salesforce processing." data-step="3" data-title="State 3: Upload Complete">
+<rect fill="#1E293B" height="100" rx="8" stroke="#F59E0B" stroke-width="2" width="190" x="600" y="120"></rect>
+<text fill="#F59E0B" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="695" y="155">3. UploadComplete</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="695" y="180">state: UploadComplete</text>
+<text fill="#FCD34D" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="695" y="200">Queued in Salesforce</text>
+</g>
+<path d="M790 170 L870 170" stroke="#F59E0B" stroke-width="2"></path>
+<g data-note="GET /services/data/v60.0/jobs/ingest/{jobId}/successfulResults -&gt; Downloads successful and failed records CSV." data-step="4" data-title="State 4: JobComplete / Results">
+<rect fill="#1E293B" height="100" rx="8" stroke="#10B981" stroke-width="2" width="260" x="870" y="120"></rect>
+<text fill="#10B981" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="1000" y="155">4. JobComplete</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="1000" y="180">GET /successfulResults</text>
+<text fill="#6EE7B7" font-family="'JetBrains Mono',monospace" font-size="9" text-anchor="middle" x="1000" y="200">GET /failedResults</text>
+</g>
+<g data-note="Bulk API 2.0 uses a separate 15,000 batches / 150M records per 24h quota and does NOT consume standard REST/SOAP 24-hour API allocations." data-step="5" data-title="Governor Limits Protection">
+<rect fill="#1E293B" height="80" rx="8" stroke="#10B981" stroke-dasharray="6,4" stroke-width="1.5" width="1070" x="60" y="270"></rect>
+<text fill="#10B981" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" x="90" y="305">Governor Limits Advantage</text>
+<text fill="#E2E8F0" font-family="'JetBrains Mono',monospace" font-size="11" x="90" y="330">Standard REST/SOAP: 100k+ calls/24h rolling (license-based) · Bulk API 2.0: Separate asynchronous pool up to 150M records &amp; 15,000 batches/24h.</text>
+</g>
+</svg>
+<figcaption class="hub-diagram-caption">Figure B.1: Salesforce Bulk API 2.0 — Job creation, CSV block upload, asynchronous server processing, and results retrieval state machine.</figcaption>
+</figure>
+<h2 class="article-title">☁️ Salesforce Connector &amp; Bulk API 2.0</h2>
+<p class="article-excerpt">SOQL operations, Upsert with External IDs, Bulk API v2, and Salesforce governor limits handling.</p>
+</div>
+<div class="faq-card" data-role="developer" id="mod-b-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module B</span>
+</div>
+<h3 class="q-title">What Salesforce Connector operations have you used?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>OPERATION</th><th>WHEN TO USE</th><th>OUR USAGE IN PRODUCTION</th></tr></thead>
+<tbody>
+<tr><td data-label="OPERATION">Query</td><td data-label="WHEN TO USE">SOQL read</td><td data-label="OUR USAGE IN PRODUCTION">Account 360, Opportunity details after Platform Event</td></tr>
+<tr><td data-label="OPERATION">Upsert</td><td data-label="WHEN TO USE">Insert or update by External ID</td><td data-label="OUR USAGE IN PRODUCTION">SAP→SF sync using <code>SAP_Customer_ID__c</code> — idempotent</td></tr>
+<tr><td data-label="OPERATION">Upsert Bulk</td><td data-label="WHEN TO USE">Millions of records async</td><td data-label="OUR USAGE IN PRODUCTION">Nightly 50K account loads — no governor limit impact</td></tr>
+<tr><td data-label="OPERATION">Subscribe</td><td data-label="WHEN TO USE">Platform Events / CDC</td><td data-label="OUR USAGE IN PRODUCTION"><code>Opportunity_Closed_Won__e</code> → trigger SAP order</td></tr>
+<tr><td data-label="OPERATION">Publish</td><td data-label="WHEN TO USE">Fire Platform Events</td><td data-label="OUR USAGE IN PRODUCTION"><code>SAP_Order_Created__e</code> write-back confirmation</td></tr>
+<tr><td data-label="OPERATION">Delete</td><td data-label="WHEN TO USE">Remove records</td><td data-label="OUR USAGE IN PRODUCTION">Data cleanup + compliance jobs</td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-b-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module B</span>
+</div>
+<h3 class="q-title">What is Salesforce Bulk API? When do you use it?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p"><strong>Bulk API 2.0</strong> loads or extracts millions of records asynchronously and does NOT consume your org's standard REST/SOAP 24-hour rolling API request allocation (100,000 base + 1,000 per license in Enterprise Edition). <em>(Note: 150 is the Apex synchronous DML statements-per-transaction limit, not the REST API call quota.)</em></p>
+<p class="doc-p"><strong>Bulk API 1.0 vs 2.0:</strong> Bulk 1.0 (XML/CSV) requires explicit batch creation (10,000 records/batch). Bulk API 2.0 uses CSV with single uploads up to 150 MB base64-encoded (~100 MB raw), auto-chunks batches behind the scenes, and provides a dedicated 15,000 batches / 150M records per 24-hour quota — always choose 2.0 for new integrations.</p>
+<p class="doc-p">DataWeave — Map records for Bulk Upsert</p>
+<div class="code-block">
+<div class="code-header">
+<span class="code-lang">DWL</span>
+<div style="display:flex; align-items:center; gap:8px;">
+<button class="copy-btn" onclick="openDwWithCode(this)" style="color:var(--mule-blue);" title="Test in Live DataWeave Playground"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M10 2v7.5M14 2v7.5M8.5 2h7M14 9.5a5 5 0 1 1-4 0v-7.5"></path></svg><span>Test in Playground</span></button>
+<button class="copy-btn" onclick="copyCode(this)" title="Copy Code">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<pre><code>%dw 2.0
+output application/java
+---
+payload map (rec) -&gt; {
+SAP_Customer_ID__c: rec.sapId,
+Name: rec.companyName,
+BillingCity: rec.city
+}</code><button aria-label="Copy code snippet to clipboard" class="code-copy-btn" type="button">📋 Copy</button></pre>
+</div>
+<div class="answer-badge-tag"><span class="badge badge-success">✅  BULK API BEST PRACTICES</span></div>
+<p class="doc-p">Use Upsert Bulk with External ID (SAP_Customer_ID__c) for idempotency on retry</p>
+<p class="doc-p">Retrieve job results in On Complete phase — store failures in S3/DLQ for review</p>
+<p class="doc-p">Batch Aggregator batch size = 5,000 for optimal Salesforce batch throughput</p>
+<p class="doc-p">Results retained 7 days — always persist your own failure logs</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "I reach for the Salesforce Bulk API v2 whenever we need to ingest or export datasets exceeding 10,000 records. Unlike standard REST APIs that consume 1 call per record or batch, Bulk API v2 automatically chunks records, manages concurrency on the Salesforce side, and tracks job status asynchronously, ensuring maximum throughput with minimal API call consumption."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Insurance — Daily Legacy Master Data Migration.</p><p class="example-line"><strong>Problem:</strong> Synchronously migrating 250,000 customer accounts via standard REST endpoints was timing out and taking over 6 hours.</p><p class="example-line"><strong>What I Did:</strong> Created an asynchronous ingestion pipeline using MuleSoft's Salesforce Bulk API v2 'Create Job' operation with CSV payload streaming.</p><p class="example-line"><strong>Result:</strong> Cut total ingestion time from 6 hours to 18 minutes while consuming only 2 API calls on Salesforce.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-b-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module B</span>
+</div>
+<h3 class="q-title">How do you handle Salesforce governor limits?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p"><strong>Standard REST/SOAP API Limit (Enterprise Edition):</strong> Rolling 24-hour org quota of <strong>100,000 base calls + 1,000 calls per Salesforce user license</strong> (Sandboxes allow up to <strong>5,000,000 calls per 24 hours</strong> — not unlimited; note that 150 is the Apex synchronous DML limit per transaction, not REST API calls/hour). Key mitigations:</p>
+<p class="doc-p"><strong>Bulk API 2.0</strong> — uses a separate 150M records / 15,000 batches per 24h pool so it does NOT exhaust standard REST/SOAP API quotas</p>
+<p class="doc-p">ObjectStore caching — cache frequently-read SF data with TTL=5min</p>
+<p class="doc-p">Platform Events/CDC — event-driven instead of polling reduces calls</p>
+<p class="doc-p">queryMore — for large SOQL results, paginate instead of multiple queries</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "When integrating with Salesforce, governor limits are top of mind. Rather than performing individual synchronous REST calls, I architect integrations using the Bulk API v2 for large datasets, cache reusable reference data in ObjectStore v2, and leverage Platform Events for event-driven asynchronous processing to keep daily API consumption well below 40% of allocated limits."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Aviation — High-Volume Customer Account Synchronization.</p><p class="example-line"><strong>Problem:</strong> Synchronous individual REST calls were consuming 85% of Salesforce's 24-hour API limit by mid-day, threatening to block production transactions.</p><p class="example-line"><strong>What I Did:</strong> Implemented Batch Processing in MuleSoft with a Batch Aggregator of 200 records calling Salesforce Composite and Bulk API v2.</p><p class="example-line"><strong>Result:</strong> Reduced daily Salesforce API consumption from 95,000 calls to under 8,500 calls (a 91% reduction) with zero limit breaches.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-b-q4">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q4</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module B</span>
+</div>
+<h3 class="q-title">JWT Bearer vs Username-Password auth for Salesforce — which do you use?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Username-Password: requires actual user credentials. Password changes break integration, account</p>
+<p class="doc-p">can lock, appears as user in audit logs — never use in production.</p>
+<p class="doc-p">JWT Bearer: RSA asymmetric key pair — no password needed. Token signed by MuleSoft private key,</p>
+<p class="doc-p">validated by Salesforce with uploaded public key. Survives password changes, cleaner audit trail</p>
+<p class="doc-p">showing Connected App not a user.</p>
+<p class="doc-p">⚠  ALWAYS USE JWT BEARER IN PRODUCTION</p>
+<p class="doc-p">Generate RSA key pair → upload public cert to Connected App in Salesforce Setup</p>
+<p class="doc-p">Store keystore.jks as Secure Property (AES-CBC encrypted) in CloudHub</p>
+<p class="doc-p">Rotate keys: upload new cert BEFORE removing old one (zero-downtime rotation)</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "For secure system-to-system integrations with Salesforce or third-party gateways, I mandate OAuth 2.0 JWT Bearer flow. It completely eliminates storing username/passwords or interactive user approvals. We sign a JWT claim with an RSA private key stored securely in the keystore, and exchange it for a short-lived access token, managing key rotation seamlessly with dual certificates."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Energy &amp; Utility — Automated Headless Microservice Authentication.</p><p class="example-line"><strong>Problem:</strong> Legacy integrations used hardcoded service account passwords that broke every 90 days due to corporate password expiration policies.</p><p class="example-line"><strong>What I Did:</strong> Re-architected authentication to Salesforce Connected App using OAuth 2.0 JWT Bearer Token flow with a 2048-bit digital certificate stored in JKS keystore.</p><p class="example-line"><strong>Result:</strong> Achieved 100% automated headless authentication with zero password maintenance outages and passed corporate SOC2 security audits.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-b-q5">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q5</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module B</span>
+</div>
+<h3 class="q-title">What is an External ID in Salesforce? How is it used in Upsert?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">A custom field with "External ID" checkbox enabled in Salesforce Setup. Stores source system ID (SAP Customer Number). For Upsert: Salesforce finds records matching this field — found → update, not found → insert.</p>
+<p class="doc-p">In MuleSoft: set <code>externalIdFieldName="SAP_Customer_ID__c"</code> on the Upsert operation. Makes integrations safe to retry without creating duplicates.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "In enterprise integrations, I enforce using Salesforce External IDs paired with the Upsert operation as a best practice for idempotency. This allows MuleSoft to create or update records in a single transactional call based on the enterprise key (such as SAP Customer Number or Account ID), eliminating the need for expensive 'Query before Insert' lookups and preventing duplicate record creation."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Retail &amp; E-Commerce — Bidirectional Customer Master Data Sync.</p><p class="example-line"><strong>Problem:</strong> Network retries caused duplicate account records to be created in Salesforce when downstream ACKs were delayed.</p><p class="example-line"><strong>What I Did:</strong> Configured an External ID field `SAP_Customer_Number__c` in Salesforce and executed Upsert operations directly from the MuleSoft Salesforce connector.</p><p class="example-line"><strong>Result:</strong> Eliminated 100% of duplicate account records and improved API throughput by 35% by skipping preliminary SOQL lookups.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC)</a></li><li><a href="mulesoft-sap-salesforce-end-to-end-integration.html">SAP + Salesforce End-to-End Integration</a></li><li><a href="mulesoft-advanced-enterprise-connectors-snowflake-servicenow-workday-cos.html">Advanced Enterprise Connectors (Snowflake, ServiceNow, Workday, Cosmos DB &amp; gRPC)</a></li><li><a href="mulesoft-oauth-2-0-jwt-bearer-token-flow.html">OAuth 2.0 &amp; JWT Bearer Token Flow</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

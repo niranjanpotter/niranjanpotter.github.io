@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Advanced DataWeave Transformations &amp; Scripts | MuleSoft Q&amp;A</title>
+  <meta name="description" content="Complex XML with namespaces, dynamic DWL loaded from S3, base64 encoding/decoding, and heavy JSON aggregation.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/advanced-dataweave-transformations-scripts.html">
+  <meta property="og:title" content="Advanced DataWeave Transformations &amp; Scripts — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Complex XML with namespaces, dynamic DWL loaded from S3, base64 encoding/decoding, and heavy JSON aggregation.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/advanced-dataweave-transformations-scripts.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Advanced DataWeave Transformations & Scripts", "item": "https://niranjanpotter.github.io/topics/advanced-dataweave-transformations-scripts.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Advanced DataWeave Transformations & Scripts — MuleSoft Interview Questions & Scenarios (2026)", "description": "Complex XML with namespaces, dynamic DWL loaded from S3, base64 encoding/decoding, and heavy JSON aggregation.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/advanced-dataweave-transformations-scripts.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>DataWeave 2.0 Masterclass</span> &gt;
+      <span style="color: var(--text-main);">Advanced DataWeave Transformations &amp; Scripts</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">DataWeave 2.0 Masterclass · Senior</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Advanced DataWeave Transformations &amp; Scripts — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Complex XML with namespaces, dynamic DWL loaded from S3, base64 encoding/decoding, and heavy JSON aggregation.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-v-title" class="blog-article" data-category="DataWeave 2.0 Masterclass" data-role="Senior" id="mod-v">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-senior">Module V</span>
+<span class="badge badge-senior">[SENIOR]</span>
+<span class="badge badge-primary">DataWeave 2.0 Masterclass</span>
+<span>⏱️ 4 min read</span>
+<span>📄 Guide Pages 67–70</span>
+<span>🎯 5 Interview Topics</span>
+</div>
+<h2 class="article-title">⚙️ Advanced DataWeave Transformations &amp; Scripts</h2>
+<p class="article-excerpt">Complex XML with namespaces, dynamic DWL loaded from S3, base64 encoding/decoding, and heavy JSON aggregation.</p>
+</div>
+<div class="faq-card" data-role="senior" id="mod-v-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-dev">[SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module V</span>
+</div>
+<h3 class="q-title">What is the difference between CloudHub 1.0 and CloudHub 2.0?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>FEATURE</th><th>CLOUDHUB 1.0</th><th>CLOUDHUB 2.0</th></tr></thead>
+<tbody>
+<tr><td data-label="FEATURE">Infrastructure</td><td data-label="CLOUDHUB 1.0">Shared multi-tenant</td><td data-label="CLOUDHUB 2.0">Kubernetes-based dedicated containers</td></tr>
+<tr><td data-label="FEATURE">Workers</td><td data-label="CLOUDHUB 1.0">Static predefined sizes (0.1, 0.2, 0.5, 1, 2, 4 vCores)</td><td data-label="CLOUDHUB 2.0">Dynamic containerized — auto-scaled by Kubernetes</td></tr>
+<tr><td data-label="FEATURE">Scaling</td><td data-label="CLOUDHUB 1.0">Horizontal (add workers manually or auto)</td><td data-label="CLOUDHUB 2.0">Kubernetes auto-scaling based on metrics</td></tr>
+<tr><td data-label="FEATURE">Isolation</td><td data-label="CLOUDHUB 1.0">Limited — shared VPC infrastructure</td><td data-label="CLOUDHUB 2.0">Each app in its own Kubernetes namespace</td></tr>
+<tr><td data-label="FEATURE">URLs</td><td data-label="CLOUDHUB 1.0"><code>{app}.cloudhub.io</code></td><td data-label="CLOUDHUB 2.0"><code>{app}.services.cloudhub2.mulesoft.com</code></td></tr>
+<tr><td data-label="FEATURE">Port support</td><td data-label="CLOUDHUB 1.0">Only HTTP (80) and HTTPS (443)</td><td data-label="CLOUDHUB 2.0">Dynamic port allocation + private networking</td></tr>
+<tr><td data-label="FEATURE">Self-healing</td><td data-label="CLOUDHUB 1.0">Manual restart on some failures</td><td data-label="CLOUDHUB 2.0">Kubernetes self-heals crashed containers</td></tr>
+<tr><td data-label="FEATURE">Persistent storage</td><td data-label="CLOUDHUB 1.0">No persistent storage</td><td data-label="CLOUDHUB 2.0">Supports ephemeral and persistent volumes</td></tr>
+</tbody>
+</table></div>
+</div>
+<p class="doc-p">💡  WHEN TO CHOOSE</p>
+<p class="doc-p"><code>CloudHub 2.0</code> for better isolation, Kubernetes auto-scaling, custom domain support, and enterprise security.</p>
+<p class="doc-p"><code>CloudHub 1.0</code> if you need simpler setup with predefined workers and existing infrastructure.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "In our modern deployments, we prioritize CloudHub 2.0 Private Spaces and Runtime Fabric on Kubernetes. We size applications using fractional vCores (like 0.2 to 1 vCore) with at least two replicas across availability zones to guarantee high availability, zero-downtime rolling updates, and internal ingress routing with automated Mutual TLS termination."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Healthcare — <code>CloudHub 2.0</code> Multi-Region Migration.</p><p class="example-line"><strong>Problem:</strong> Legacy single-worker <code>CloudHub 1.0</code> applications suffered 4-minute downtimes during monthly patching and could not meet corporate DR recovery time objectives.</p><p class="example-line"><strong>What I Did:</strong> Migrated 28 APIs to <code>CloudHub 2.0</code> Private Spaces with dual replicas per app across multi-AZs, configuring automated ingress path routing and CI/CD canary deployments.</p><p class="example-line"><strong>Result:</strong> Achieved 99.99% service availability with true zero-downtime deployments and reduced infrastructure spend by 22%.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior" id="mod-v-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-dev">[SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module V</span>
+</div>
+<h3 class="q-title">Explain mTLS. How do you debug mTLS-related issues?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">mTLS (Mutual TLS): Both client and server authenticate each other using certificates. Unlike one-way</p>
+<p class="doc-p">SSL where only the server presents a cert, in mTLS the client ALSO presents a certificate to the server</p>
+<p class="doc-p">for verification.</p>
+<p class="doc-p">MuleSoft configuration:</p>
+<p class="doc-p">mTLS configuration in HTTP Request</p>
+<p class="doc-p">📋  MTLS DEBUGGING STEPS</p>
+<div class="doc-step-item"><span class="step-num">1.</span><span>Check certificates are valid and not expired: openssl x509 -in cert.pem -text -noout</span></div>
+<div class="doc-step-item"><span class="step-num">2.</span><span>Verify trustStore has the server's CA certificate</span></div>
+<div class="doc-step-item"><span class="step-num">3.</span><span>Verify keyStore has the client's private key + certificate chain</span></div>
+<div class="doc-step-item"><span class="step-num">4.</span><span>Check TLS version match — both ends must support the same TLS version (1.2+)</span></div>
+<div class="doc-step-item"><span class="step-num">5.</span><span>Review server logs for handshake failures: "Received fatal alert: certificate_unknown"</span></div>
+<div class="doc-step-item"><span class="step-num">6.</span><span>Test with openssl: openssl s_client -connect host:443 -cert client.pem -key key.pem</span>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "Our API security architecture follows defense-in-depth principles. At the perimeter, we apply TLS 1.3, IP Allowlisting, and SLA-based Rate Limiting in API Manager. For authentication, we validate OAuth 2.0 JWT tokens with automated JWKS key rotation, and store all database passwords, client secrets, and private keys encrypted using the Mule Secure Properties Tool with AES-CBC-256."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Logistics — Zero-Trust Banking API Gateway.</p><p class="example-line"><strong>Problem:</strong> Public-facing endpoints were vulnerable to credential stuffing attacks and exposed sensitive authorization headers without audit logging.</p><p class="example-line"><strong>What I Did:</strong> Implemented automated API Manager policies including JWT Validation with JWKS URL caching, Tiered Rate Limiting, and CORS, with credentials secured via Anypoint Secrets Manager.</p><p class="example-line"><strong>Result:</strong> Successfully blocked over 150,000 malicious brute-force attempts in Q4 with zero security breaches and 100% compliance audit score.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior" id="mod-v-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-dev">[SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module V</span>
+</div>
+<h3 class="q-title">What is the difference between Rate Limiting, Spike Control, and Throttling?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>POLICY</th><th>BEHAVIOR WHEN LIMIT EXCEEDED</th><th>USE CASE</th></tr></thead>
+<tbody>
+<tr><td data-label="POLICY">Rate Limiting</td><td data-label="BEHAVIOR WHEN LIMIT EXCEEDED">Request is REJECTED immediately (HTTP 429)</td><td data-label="USE CASE">Prevent abuse — hard limit per client per time window</td></tr>
+<tr><td data-label="POLICY">Spike Control</td><td data-label="BEHAVIOR WHEN LIMIT EXCEEDED">Request is QUEUED and processed when capacity available</td><td data-label="USE CASE">Handle burst traffic — temporarily buffer excess requests</td></tr>
+<tr><td data-label="POLICY">Throttling</td><td data-label="BEHAVIOR WHEN LIMIT EXCEEDED">Request is SLOWED DOWN (delayed response)</td><td data-label="USE CASE">Gradual degradation — same as rate limiting but with delay instead of rejection</td></tr>
+</tbody>
+</table></div>
+</div>
+<p class="doc-p">💡  EXAMPLE</p>
+<p class="doc-p">Rate Limiting: "You can only make 100 requests per minute. Request 101 = 429 Too Many Requests." Spike</p>
+<p class="doc-p">Control: "You can only make 100 requests per minute, but I'll queue the extras and process them as capacity</p>
+<p class="doc-p">frees up." Throttling: "You're making too many requests, so I'll slow down my responses to manage load."</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior" id="mod-v-q4">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q4</span>
+<span class="badge badge-dev">[SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module V</span>
+</div>
+<h3 class="q-title">What is Transaction Management in MuleSoft? XA vs Local transactions?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Transaction management ensures a group of operations execute as a single unit of work — either all</p>
+<p class="doc-p">succeed or all are rolled back.</p>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>TYPE</th><th>SCOPE</th><th>USE WHEN</th></tr></thead>
+<tbody>
+<tr><td data-label="TYPE">Local Transaction</td><td data-label="SCOPE">Single resource (one DB, one JMS)</td><td data-label="USE WHEN">Insert/update on a single database — rollback if flow fails</td></tr>
+<tr><td data-label="TYPE">XA Transaction</td><td data-label="SCOPE">Multiple resources (DB + JMS + DB2)</td><td data-label="USE WHEN">Insert to DB AND publish to JMS must both succeed or both rollback</td></tr>
+</tbody>
+</table></div>
+</div>
+<p class="doc-p">Mule XML — Local transaction</p>
+<p class="doc-p">.--</p>
+<p class="doc-p">.--</p>
+<p class="doc-p">XA Note: XA transactions span multiple connectors — requires XA-compatible drivers (e.g., ojdbc-</p>
+<p class="doc-p">xa.jar ). Higher overhead than local transactions. Only supported by certain connectors (DB, JMS).</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior" id="mod-v-q5">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q5</span>
+<span class="badge badge-dev">[SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module V</span>
+</div>
+<h3 class="q-title">What is guaranteed delivery? How do you ensure it in MuleSoft?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Guaranteed delivery ensures messages are reliably delivered even if the system crashes or restarts.</p>
+<p class="doc-p">MuleSoft achieves this through:</p>
+<p class="doc-p">📋  GUARANTEED DELIVERY PATTERN</p>
+<p class="doc-p">Persistent Queues: Anypoint MQ stores messages on disk — survives app restart (7-day retention)</p>
+<p class="doc-p">MANUAL Acknowledgement: Message NOT removed from queue until explicitly ACKed after successful processing</p>
+<p class="doc-p">NACK on failure: Failed messages returned to queue for retry — not permanently lost</p>
+<p class="doc-p">DLQ (Dead Letter Queue): Messages that exceed max retries go to DLQ for manual review/reprocessing</p>
+<p class="doc-p">Idempotency: ObjectStore prevents duplicate processing when message is redelivered after retry</p>
+<div class="answer-badge-tag"><span class="badge badge-success">✅  GUARANTEED DELIVERY = PERSISTENT MQ + MANUAL ACK + NACK + DLQ + IDEMPOTENCY</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-real-interview-q-a-collection-global-companies.html">← Real Interview Q&amp;A Collection (Global Comp</a><a class="btn btn-outline" href="cloudhub-1-0-vs-2-0-technical-lead-topics.html">CloudHub 1.0 vs 2.0 &amp; Technical Lead Topic →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="dataweave-2-0-reference-core-operators.html">DataWeave 2.0 Reference &amp; Core Operators</a></li><li><a href="advanced-dataweave-2-0-functions-real-world-transformations.html">Advanced DataWeave 2.0 Functions &amp; Real-World Transformations</a></li><li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li><li><a href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC)</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

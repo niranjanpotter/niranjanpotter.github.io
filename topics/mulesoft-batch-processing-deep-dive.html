@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Batch Processing Deep Dive | MuleSoft Interview Q&amp;A (2026)</title>
+  <meta name="description" content="Input, Process, and On Complete phases, Batch Aggregator sizing, maxFailedRecords, and commit rollbacks.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-batch-processing-deep-dive.html">
+  <meta property="og:title" content="Batch Processing Deep Dive — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Input, Process, and On Complete phases, Batch Aggregator sizing, maxFailedRecords, and commit rollbacks.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-batch-processing-deep-dive.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Batch Processing Deep Dive", "item": "https://niranjanpotter.github.io/topics/mulesoft-batch-processing-deep-dive.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Batch Processing Deep Dive — MuleSoft Interview Questions & Scenarios (2026)", "description": "Input, Process, and On Complete phases, Batch Aggregator sizing, maxFailedRecords, and commit rollbacks.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-batch-processing-deep-dive.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Flow Scopes &amp; Concurrency</span> &gt;
+      <span style="color: var(--text-main);">Batch Processing Deep Dive</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Flow Scopes &amp; Concurrency · Developer / Senior</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Batch Processing Deep Dive — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Input, Process, and On Complete phases, Batch Aggregator sizing, maxFailedRecords, and commit rollbacks.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-i-title" class="blog-article" data-category="Flow Scopes &amp; Concurrency" data-role="Developer / Senior" id="mod-i">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-senior">Module I</span>
+<span class="badge badge-senior">[DEVELOPER / SENIOR]</span>
+<span class="badge badge-primary">Flow Scopes &amp; Concurrency</span>
+<span>⏱️ 5 min read</span>
+<span>📄 Guide Pages 19–23</span>
+<span>🎯 5 Interview Topics</span>
+</div>
+<h2 class="article-title">📊 Batch Processing Deep Dive</h2>
+<p class="article-excerpt">Input, Process, and On Complete phases, Batch Aggregator sizing, maxFailedRecords, and commit rollbacks.</p>
+</div>
+<div class="diagram-container" id="diagram-batch-processing" style="margin-top:20px; margin-bottom:28px;">
+<div class="diagram-header">
+<div class="diagram-badge" style="background:rgba(168,85,247,0.15); color:#C084FC; border-color:rgba(168,85,247,0.3);">⚙️ High-Throughput Processing</div>
+<div class="diagram-title">MuleSoft Batch Job Architecture &amp; Lifecycle Phases</div>
+<div class="diagram-subtitle">Input Stage ➔ Multi-Threaded Process Steps (vars vs recordVars) ➔ Aggregator ➔ On Complete Summary</div>
+</div>
+<div class="diagram-svg-wrapper">
+<svg aria-labelledby="batch-title batch-desc" class="responsive-svg" height="620" role="img" viewbox="0 0 1200 620" width="1200" xmlns="http://www.w3.org/2000/svg">
+<title id="batch-title">Mule 4 Batch Job Internal Processing &amp; Scoping Engine</title>
+<desc id="batch-desc">Visual architecture diagram of Mule 4 Batch Processing showing the 3 phases: Input Stage, Process Records with Persistent Disk Queue and Record-Level Variable isolation, Batch Aggregator, and On-Complete Phase.</desc>
+<defs>
+<!-- Background Gradients -->
+<lineargradient id="b-bg" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#071321"></stop>
+<stop offset="55%" stop-color="#0B2033"></stop>
+<stop offset="100%" stop-color="#124052"></stop>
+</lineargradient>
+<radialgradient cx="20%" cy="30%" id="b-glow-left" r="50%">
+<stop offset="0%" stop-color="#00A1E0" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#071321" stop-opacity="0"></stop>
+</radialgradient>
+<radialgradient cx="80%" cy="60%" id="b-glow-right" r="50%">
+<stop offset="0%" stop-color="#10B981" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#071321" stop-opacity="0"></stop>
+</radialgradient>
+<pattern height="36" id="b-grid" patternunits="userSpaceOnUse" width="36">
+<path d="M36 0H0V36" fill="none" stroke="#53CADD" stroke-opacity="0.06"></path>
+</pattern>
+<!-- Card Backgrounds -->
+<lineargradient id="b-card" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#112233" stop-opacity="0.95"></stop>
+<stop offset="100%" stop-color="#081420" stop-opacity="0.95"></stop>
+</lineargradient>
+<lineargradient id="phase-grad" x1="0" x2="1" y1="0" y2="1">
+<stop offset="0%" stop-color="#00F2FE" stop-opacity="0.1"></stop>
+<stop offset="100%" stop-color="#845EC2" stop-opacity="0.05"></stop>
+</lineargradient>
+<filter height="140%" id="b-glow" width="140%" x="-20%" y="-20%">
+<fegaussianblur result="blur" stddeviation="3"></fegaussianblur>
+<femerge>
+<femergenode in="blur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<!-- Frame Background -->
+<rect fill="url(#b-bg)" height="620" rx="24" width="1200"></rect>
+<rect fill="url(#b-grid)" height="620" rx="24" width="1200"></rect>
+<ellipse class="b-pulse" cx="200" cy="200" fill="url(#b-glow-left)" rx="260" ry="200"></ellipse>
+<ellipse class="b-pulse" cx="1000" cy="400" fill="url(#b-glow-right)" rx="260" ry="200"></ellipse>
+<rect fill="none" height="618" rx="23" stroke="#53CADD" stroke-opacity="0.25" width="1198" x="1" y="1"></rect>
+<!-- ==================== HEADER BAR ==================== -->
+<g class="b-sans" transform="translate(48, 34)">
+<rect fill="#124052" height="26" rx="13" stroke="#53CADD" stroke-opacity="0.35" width="250"></rect>
+<circle cx="14" cy="13" fill="#00F2FE" r="4.5"></circle>
+<text fill="#A6EAF4" font-size="10.5" font-weight="700" letter-spacing="1.5" x="26" y="17">BATCH PROCESSING ENGINE</text>
+<text class="b-title" fill="#F0F9FF" font-size="24" x="0" y="52">Mule 4 Batch Job Architecture &amp; Variable Scoping</text>
+<text fill="#94A3B8" font-size="12" x="0" y="70">Persistent Disk Queue · Record-Level Variable Isolation · Split-Phase Workers · Chunked Aggregators · On-Complete SLA</text>
+</g>
+<!-- ==================== PHASE 1: INPUT / INITIALIZE ==================== -->
+<g transform="translate(48, 125)">
+<rect fill="url(#phase-grad)" height="435" rx="14" stroke="#00A1E0" stroke-dasharray="6,4" stroke-width="1.2" width="240"></rect>
+<text class="b-sans" fill="#00F2FE" font-size="11" font-weight="800" letter-spacing="1" x="20" y="24">PHASE 1: INPUT STAGE</text>
+<text class="b-mono" fill="#94A3B8" font-size="9.5" x="20" y="42">Payload Hydration &amp; Snapshot</text>
+<!-- Source Extractor Card -->
+<g transform="translate(18, 60)">
+<rect fill="url(#b-card)" height="74" rx="8" stroke="#00A1E0" stroke-width="1" width="204"></rect>
+<text class="b-sans" fill="#FFFFFF" font-size="11" font-weight="700" x="14" y="22">Source Extraction</text>
+<text class="b-mono" fill="#94A3B8" font-size="9" x="14" y="38">SELECT 100k Records</text>
+<text class="b-mono" fill="#94A3B8" font-size="9" x="14" y="52">Streams into Batch Queue</text>
+<circle cx="186" cy="20" fill="#00F2FE" r="5"></circle>
+</g>
+<!-- Variable Snapshot Card -->
+<g transform="translate(18, 150)">
+<rect fill="url(#b-card)" height="110" rx="8" stroke="#845EC2" stroke-width="1" width="204"></rect>
+<text class="b-sans" fill="#D65DB1" font-size="11" font-weight="700" x="14" y="22">Flow Variables Snapshot</text>
+<text class="b-mono" fill="#94A3B8" font-size="9" x="14" y="40">vars.batchId = "RUN_992"</text>
+<text class="b-mono" fill="#94A3B8" font-size="9" x="14" y="56">vars.startTime = now()</text>
+<path d="M14 68H190" stroke="rgba(255,255,255,0.1)"></path>
+<text class="b-sans" fill="#E0A4E8" font-size="9" font-weight="600" x="14" y="84">RULE: Cloned to all records</text>
+<text class="b-sans" fill="#EF4444" font-size="9" x="14" y="98">NOT accessible in On-Complete!</text>
+</g>
+<!-- Queue Dispatcher -->
+<g transform="translate(18, 280)">
+<rect fill="#0A1624" height="135" rx="8" stroke="#53CADD" stroke-width="1" width="204"></rect>
+<text class="b-sans" fill="#A6EAF4" font-size="11" font-weight="700" x="14" y="24">Persistent Disk Queue</text>
+<text class="b-mono" fill="#94A3B8" font-size="9" x="14" y="42">• Serializes to local disk</text>
+<text class="b-mono" fill="#94A3B8" font-size="9" x="14" y="58">• Prevents OutOfMemoryError</text>
+<text class="b-mono" fill="#94A3B8" font-size="9" x="14" y="74">• 100 records / block chunk</text>
+<rect fill="#124052" height="32" rx="4" stroke="#53CADD" stroke-opacity="0.4" width="176" x="14" y="88"></rect>
+<text class="b-mono" fill="#00F2FE" font-size="9.5" text-anchor="middle" x="102" y="108">BLOCK SIZE = 100</text>
+</g>
+</g>
+<!-- Connector: Phase 1 to Phase 2 -->
+<path d="M288 340 H315" stroke="#00F2FE" stroke-width="1.8"></path>
+<path class="b-trace" d="M288 340 H315" fill="none" filter="url(#b-glow)" pathlength="100" stroke="#00F2FE" stroke-width="3"></path>
+<!-- ==================== PHASE 2: PROCESS RECORDS ==================== -->
+<g data-note="Isolated worker threads process records in blocks; record-level variables isolated." data-step="2" data-title="Batch Phase 2: Process Records" transform="translate(315, 125)">
+<rect fill="url(#phase-grad)" height="435" rx="14" stroke="#845EC2" stroke-dasharray="6,4" stroke-width="1.2" width="570"></rect>
+<text class="b-sans" fill="#D65DB1" font-size="11" font-weight="800" letter-spacing="1" x="20" y="24">PHASE 2: PROCESS RECORDS (ISOLATED WORKER THREADS)</text>
+<text class="b-mono" fill="#94A3B8" font-size="9.5" text-anchor="end" x="550" y="38">maxFailedRecords="-1" (Unlimited Tolerance)</text>
+<!-- Thread Pool Header -->
+<g transform="translate(20, 38)">
+<rect fill="#111827" height="34" rx="6" stroke="rgba(255,255,255,0.08)" width="530"></rect>
+<text class="b-mono" fill="#A6EAF4" font-size="9.5" x="14" y="21">Concurrent Threads: Sized by CPU cores · Chunk 1..N processed in parallel</text>
+<circle cx="510" cy="17" fill="#10B981" r="4"></circle>
+</g>
+<!-- Step 1: Rating & Record Variable -->
+<g transform="translate(20, 84)">
+<rect fill="url(#b-card)" height="85" rx="8" stroke="#00A1E0" stroke-width="1" width="530"></rect>
+<circle cx="16" cy="20" fill="#00A1E0" r="5"></circle>
+<text class="b-sans" fill="#FFFFFF" font-size="12" font-weight="700" x="28" y="24">Batch Step 1: Calculate Tax &amp; Enrich</text>
+<text class="b-mono" fill="#94A3B8" font-size="9.5" x="28" y="42">vars.recordTax = payload.amount * 0.0825 (RECORD-LEVEL VARIABLE)</text>
+<text class="b-sans" fill="#00F2FE" font-size="9.5" x="28" y="58">🔒 Scoped strictly to this record · Accessible in Step 2 · Invisible to other records</text>
+<rect fill="#00A1E0" fill-opacity="0.15" height="20" rx="4" width="85" x="430" y="12"></rect>
+<text class="b-mono" fill="#00F2FE" font-size="9" text-anchor="middle" x="472" y="26">NO_FAILURES</text>
+</g>
+<!-- Step 2: Aggregator Chunking -->
+<g transform="translate(20, 180)">
+<rect fill="url(#b-card)" height="135" rx="8" stroke="#10B981" stroke-width="1" width="530"></rect>
+<circle cx="16" cy="20" fill="#10B981" r="5"></circle>
+<text class="b-sans" fill="#FFFFFF" font-size="12" font-weight="700" x="28" y="24">Batch Step 2: Batch Aggregator Bulk Commit</text>
+<rect fill="#10B981" fill-opacity="0.15" height="20" rx="4" width="85" x="430" y="12"></rect>
+<text class="b-mono" fill="#34D399" font-size="9" text-anchor="middle" x="472" y="26">SIZE = 500</text>
+<!-- Sub-Box: Aggregator Body -->
+<g transform="translate(20, 36)">
+<rect fill="#091420" height="85" rx="6" stroke="#10B981" stroke-opacity="0.5" width="490"></rect>
+<text class="b-sans" fill="#10B981" font-size="11" font-weight="700" x="14" y="22">batch:aggregator (Accumulates 500 records into memory array)</text>
+<text class="b-mono" fill="#FFFFFF" font-size="9.5" x="14" y="40">db:bulk-insert: INSERT INTO orders VALUES (:id, :tax, :total)</text>
+<text class="b-mono" fill="#94A3B8" font-size="9" x="14" y="56">Streams 500 records in 1 single network roundtrip</text>
+<text class="b-sans" fill="#34D399" font-size="9.5" x="14" y="72">⚡ Reduces database IOPS by 92% compared to single-record inserts</text>
+</g>
+</g>
+<!-- Step 3: Error Handler (ONLY_FAILURES) -->
+<g transform="translate(20, 326)">
+<rect fill="url(#b-card)" height="92" rx="8" stroke="#EF4444" stroke-width="1" width="530"></rect>
+<circle cx="16" cy="20" fill="#EF4444" r="5"></circle>
+<text class="b-sans" fill="#FFFFFF" font-size="12" font-weight="700" x="28" y="24">Batch Step 3: Dead-Letter Queue (acceptPolicy="ONLY_FAILURES")</text>
+<rect fill="#EF4444" fill-opacity="0.15" height="20" rx="4" width="95" x="420" y="12"></rect>
+<text class="b-mono" fill="#F87171" font-size="9" text-anchor="middle" x="467" y="26">ONLY_FAILURES</text>
+<text class="b-sans" fill="#FCA5A5" font-size="10" x="28" y="44">• Catches ONLY poisoned/failed records from Step 1 and Step 2</text>
+<text class="b-mono" fill="#94A3B8" font-size="9.5" x="28" y="60">Retains vars.recordTax + payload + error.description</text>
+<text class="b-mono" fill="#FFFFFF" font-size="9.5" x="28" y="76">Dispatches to Anypoint MQ 'order-dlq' for automated reprocessing</text>
+</g>
+</g>
+<!-- Connector: Phase 2 to Phase 3 -->
+<path d="M885 340 H915" stroke="#10B981" stroke-width="1.8"></path>
+<path class="b-trace-2" d="M885 340 H915" fill="none" filter="url(#b-glow)" pathlength="100" stroke="#10B981" stroke-width="3"></path>
+<!-- ==================== PHASE 3: ON-COMPLETE ==================== -->
+<g transform="translate(915, 125)">
+<rect fill="url(#phase-grad)" height="435" rx="14" stroke="#10B981" stroke-dasharray="6,4" stroke-width="1.2" width="237"></rect>
+<text class="b-sans" fill="#10B981" font-size="11" font-weight="800" letter-spacing="1" x="18" y="24">PHASE 3: ON-COMPLETE</text>
+<text class="b-mono" fill="#94A3B8" font-size="9.5" x="18" y="42">Summary Report &amp; Alerts</text>
+<!-- BatchJobResult Card -->
+<g transform="translate(16, 60)">
+<rect fill="#0A1624" height="150" rx="8" stroke="#10B981" stroke-width="1" width="205"></rect>
+<text class="b-sans" fill="#10B981" font-size="11" font-weight="700" x="14" y="22">BatchJobResult Object</text>
+<text class="b-mono" fill="#FFFFFF" font-size="9.5" x="14" y="42">totalRecords: 100,000</text>
+<text class="b-mono" fill="#34D399" font-size="9.5" x="14" y="58">successful: 99,850</text>
+<text class="b-mono" fill="#EF4444" font-size="9.5" x="14" y="74">failedRecords: 150</text>
+<text class="b-mono" fill="#94A3B8" font-size="9.5" x="14" y="90">elapsedTime: 4.2 min</text>
+<path d="M14 102H191" stroke="rgba(255,255,255,0.1)"></path>
+<text class="b-mono" fill="#FBBF24" font-size="9" x="14" y="118">failureRate: 0.15%</text>
+<text class="b-sans" fill="#10B981" font-size="9" font-weight="700" x="14" y="134">STATUS: HEALTHY (&lt;2%)</text>
+</g>
+<!-- Notification Trigger -->
+<g transform="translate(16, 222)">
+<rect fill="url(#b-card)" height="193" rx="8" stroke="#53CADD" stroke-width="1" width="205"></rect>
+<text class="b-sans" fill="#A6EAF4" font-size="11" font-weight="700" x="14" y="24">SLA Audit &amp; Alerts</text>
+<text class="b-sans" fill="#94A3B8" font-size="9.5" x="14" y="44">• Evaluates batch run time</text>
+<text class="b-sans" fill="#94A3B8" font-size="9.5" x="14" y="60">• If failureRate &gt; 2%: Alert</text>
+<text class="b-sans" fill="#94A3B8" font-size="9.5" x="14" y="76">• If duration &gt; 30 min: Alert</text>
+<rect fill="#124052" height="38" rx="4" stroke="#53CADD" stroke-opacity="0.3" width="177" x="14" y="94"></rect>
+<text class="b-mono" fill="#00F2FE" font-size="9" x="24" y="112">Alert: PagerDuty / Slack</text>
+<text class="b-mono" fill="#94A3B8" font-size="8" x="24" y="124">Triggers incident API</text>
+<rect fill="#124052" height="38" rx="4" stroke="#53CADD" stroke-opacity="0.3" width="177" x="14" y="142"></rect>
+<text class="b-mono" fill="#10B981" font-size="9" x="24" y="160">Email: SMTP Summary</text>
+<text class="b-mono" fill="#94A3B8" font-size="8" x="24" y="172">Sends PDF report to ops</text>
+</g>
+</g>
+<!-- ==================== FOOTER INVARIANT ==================== -->
+<g class="b-sans" transform="translate(48, 595)">
+<text fill="#64748B" font-size="11" x="0" y="0">⚡ <tspan fill="#ADC6D6" font-weight="600">Golden Scoping Rule:</tspan> Flow variables entering batch are cloned per record. Record variables stay with their record across steps. In On-Complete, records are gone—only BatchJobResult remains.</text>
+<text class="b-mono" fill="#53CADD" font-size="10" text-anchor="end" x="1104" y="0">MAX RECORDS: 10M+</text>
+</g>
+</svg>
+<button aria-label="Expand diagram to fullscreen" class="diagram-expand-btn" type="button"><span>⤢</span> <span>Expand</span></button></div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-i-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module I</span>
+</div>
+<h3 class="q-title">What is a Batch Job? What are its phases?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Batch Job processes large datasets by splitting them into records and processing them individually</p>
+<p class="doc-p">with fault tolerance — individual record failures don't stop the whole job.</p>
+<p class="doc-p">📋  BATCH JOB PHASES</p>
+<p class="doc-p"><strong>Mule 4 3 Phases (no separate XML Input phase as in Mule 3):</strong><br/>1. <strong>Load &amp; Dispatch:</strong> Implicit phase that splits the payload into individual records and queues them persistently before stepping.</p>
+<p class="doc-p">Process (Batch Steps): Each record passes through sequential Batch Steps. Each step can have accept</p>
+<p class="doc-p">expressions to filter which records enter that step.</p>
+<p class="doc-p">On Complete: Runs after all records are processed. Has access to batchJobResult — summary of</p>
+<p class="doc-p">processed/failed/successful counts. Used for notifications, cleanup, watermark updates.</p>
+<p class="doc-p">Batch Job Structure</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "For processing large datasets exceeding 10,000 records without risking out-of-memory errors, I design Batch Jobs in Mule 4. By executing Load &amp; Dispatch, Process (Batch Steps), and On Complete phases, Mule 4 leverages persistent disk queues in the runtime to process records in configurable blocks with parallel worker threads, enabling granular fault tolerance through maxFailedRecords and Batch Aggregators."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Commercial Banking — Nightly Account &amp; Ledger Reconciliation.</p><p class="example-line"><strong>Problem:</strong> Synchronous iteration over 85,000 nightly delta records frequently ran out of heap memory and failed completely if record #40,000 threw an exception.</p><p class="example-line"><strong>What I Did:</strong> Implemented a Mule 4 Batch Job with maxFailedRecords=-1, routing records into batch steps with a Batch Aggregator of 250 records for bulk upserting to Finacle Core Banking, SWIFT Network, Kafka Event Broker.</p><p class="example-line"><strong>Result:</strong> Cut nightly execution time from 2.5 hours to 34 minutes with zero OOM errors and automated error reporting in On Complete.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-i-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module I</span>
+</div>
+<h3 class="q-title">What is Batch Aggregator and when do you use it?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Batch Aggregator groups individual records back into a collection of a specified size before</p>
+<p class="doc-p">processing. Used in the last Batch Step to do bulk database inserts or Salesforce Upsert Bulk</p>
+<p class="doc-p">operations.</p>
+<p class="doc-p">Example: 50,000 records → Batch Job processes each individually → Batch Aggregator(size=500) →</p>
+<p class="doc-p">groups into 100 batches of 500 → each batch does one bulk Salesforce Upsert call → 100 calls instead</p>
+<p class="doc-p">of 50,000. 500x efficiency.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "For processing large datasets exceeding 10,000 records without risking out-of-memory errors, I design Batch Jobs in Mule 4. By executing Load &amp; Dispatch, Process (Batch Steps), and On Complete phases, Mule 4 leverages persistent disk queues in the runtime to process records in configurable blocks with parallel worker threads, enabling granular fault tolerance through maxFailedRecords and Batch Aggregators."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Telecommunications — Nightly Account &amp; Ledger Reconciliation.</p><p class="example-line"><strong>Problem:</strong> Synchronous iteration over 85,000 nightly delta records frequently ran out of heap memory and failed completely if record #40,000 threw an exception.</p><p class="example-line"><strong>What I Did:</strong> Implemented a Mule 4 Batch Job with maxFailedRecords=-1, routing records into batch steps with a Batch Aggregator of 250 records for bulk upserting to Amdocs CRM, Ericsson HLR, Matrixx Engine.</p><p class="example-line"><strong>Result:</strong> Cut nightly execution time from 2.5 hours to 34 minutes with zero OOM errors and automated error reporting in On Complete.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-i-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module I</span>
+</div>
+<h3 class="q-title">What is maxFailedRecords in Batch Job? What is the default?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">maxFailedRecords  controls when Batch Job stops processing due to too many failures. Default is 0</p>
+<p class="doc-p">— any single record failure stops the entire job.</p>
+<p class="doc-p">VALUE BEHAVIOR</p>
+<p class="doc-p">0  (default) Job stops on first failure</p>
+<p class="doc-p">N Job continues until N records fail, then stops</p>
+<p class="doc-p">-1 Job never stops — processes all records regardless of failures</p>
+<p class="doc-p">In our Enterprise Architecture: we use maxFailedRecords=1000  for the nightly SAP account sync — allows 1000 individual</p>
+<p class="doc-p">record failures before the job stops, ensuring bulk data loads complete even with occasional bad</p>
+<p class="doc-p">records.</p>
+<p class="doc-p">💬  CROSS-QUESTIONS INTERVIEWERS ASK ABOUT THIS TOPIC</p>
+<p class="doc-p">"What is the DEFAULT value of maxFailedRecords — 0 or -1?" → 0 — the batch job stops on the very</p>
+<p class="doc-p">first record failure. Many candidates assume -1 (unlimited); 0 is the actual default and a common interview</p>
+<p class="doc-p">trap.</p>
+<p class="doc-p">"If maxFailedRecords=0 and record #500 fails out of 10,000 records, what happens to records 501–</p>
+<p class="doc-p">10,000?" → They are NOT processed. The batch job immediately stops and moves to the On Complete</p>
+<p class="doc-p">phase, leaving the remaining records unprocessed.</p>
+<p class="doc-p">"What does maxFailedRecords=-1 mean?" → Never stop — the job processes all records regardless of</p>
+<p class="doc-p">how many fail. Useful for bulk loads where partial completion is acceptable.</p>
+<p class="doc-p">"If the Mule app crashes at record 30,000 of 100,000, does the batch job resume from 30,001?" →</p>
+<p class="doc-p">YES — if a persistent watermark is configured, the batch job can resume from where it stopped. Without a</p>
+<p class="doc-p">watermark, it restarts from the beginning.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "For processing large datasets exceeding 10,000 records without risking out-of-memory errors, I design Batch Jobs in Mule 4. By executing Load &amp; Dispatch, Process (Batch Steps), and On Complete phases, Mule 4 leverages persistent disk queues in the runtime to process records in configurable blocks with parallel worker threads, enabling granular fault tolerance through maxFailedRecords and Batch Aggregators."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Healthcare — Nightly Account &amp; Ledger Reconciliation.</p><p class="example-line"><strong>Problem:</strong> Synchronous iteration over 85,000 nightly delta records frequently ran out of heap memory and failed completely if record #40,000 threw an exception.</p><p class="example-line"><strong>What I Did:</strong> Implemented a Mule 4 Batch Job with maxFailedRecords=-1, routing records into batch steps with a Batch Aggregator of 250 records for bulk upserting to Epic Systems, Cerner HL7/FHIR, AWS S3 HIPAA Vault.</p><p class="example-line"><strong>Result:</strong> Cut nightly execution time from 2.5 hours to 34 minutes with zero OOM errors and automated error reporting in On Complete.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-i-q4">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q4</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module I</span>
+</div>
+<h3 class="q-title">What happens in the On Complete phase? What data is available?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">On Complete runs after all records have been processed (success or failure). The payload  in On</p>
+<p class="doc-p">Complete is a BatchJobResult  object with:</p>
+<p class="doc-p">payload.batchJobId  — unique ID of this batch run</p>
+<p class="doc-p">payload.successfulRecords  — count of successfully processed records</p>
+<p class="doc-p">payload.failedRecords  — count of failed records</p>
+<p class="doc-p">payload.totalRecords  — total input records</p>
+<p class="doc-p">payload.loadedRecords  — records loaded in Load &amp; Dispatch phase</p>
+<p class="doc-p">In our Enterprise Architecture: On Complete sends a summary email via Email Connector, updates ObjectStore watermark</p>
+<p class="doc-p">with the latest timestamp, and publishes failed record IDs to a DLQ for manual review.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer / senior" id="mod-i-q5">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q5</span>
+<span class="badge badge-dev">[DEVELOPER / SENIOR]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module I</span>
+</div>
+<h3 class="q-title">How do you roll back records in batch processing?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Batch processing does NOT have automatic XA-style rollback. For rollback patterns:</p>
+<p class="doc-p">Database transactions: Use a Try scope within a Batch Step with XA transaction if all records must</p>
+<p class="doc-p">succeed together — but this is expensive and slow at scale.</p>
+<p class="doc-p">Compensation pattern: In On Complete, check failedRecords &gt; 0  → trigger a compensation</p>
+<p class="doc-p">flow that deletes/reverses the successfully inserted records based on a tracking field.</p>
+<p class="doc-p">Two-phase approach: First batch step writes to a staging table. Second batch step (accept only</p>
+<p class="doc-p">successful records) moves to production table. On Complete: delete staging table if any failures.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "For processing large datasets exceeding 10,000 records without risking out-of-memory errors, I design Batch Jobs in Mule 4. By executing Load &amp; Dispatch, Process (Batch Steps), and On Complete phases, Mule 4 leverages persistent disk queues in the runtime to process records in configurable blocks with parallel worker threads, enabling granular fault tolerance through maxFailedRecords and Batch Aggregators."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Insurance — Nightly Account &amp; Ledger Reconciliation.</p><p class="example-line"><strong>Problem:</strong> Synchronous iteration over 85,000 nightly delta records frequently ran out of heap memory and failed completely if record #40,000 threw an exception.</p><p class="example-line"><strong>What I Did:</strong> Implemented a Mule 4 Batch Job with maxFailedRecords=-1, routing records into batch steps with a Batch Aggregator of 250 records for bulk upserting to Guidewire ClaimCenter, Salesforce Financial Services Cloud.</p><p class="example-line"><strong>Result:</strong> Cut nightly execution time from 2.5 hours to 34 minutes with zero OOM errors and automated error reporting in On Complete.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-foreach-parallel-foreach-scopes.html">← ForEach &amp; Parallel ForEach Scopes</a><a class="btn btn-outline" href="mulesoft-until-successful-scope-resiliency.html">Until Successful Scope &amp; Resiliency →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-scatter-gather-router-deep-dive.html">Scatter-Gather Router Deep Dive</a></li><li><a href="mulesoft-foreach-parallel-foreach-scopes.html">ForEach &amp; Parallel ForEach Scopes</a></li><li><a href="mulesoft-until-successful-scope-resiliency.html">Until Successful Scope &amp; Resiliency</a></li><li><a href="mulesoft-choice-router-first-successful-async-scopes.html">Choice Router, First Successful &amp; Async Scopes</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

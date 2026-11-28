@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>AWS Integration Patterns (S3, SQS, DynamoDB) | MuleSoft Q&amp;A</title>
+  <meta name="description" content="AWS SigV4, S3 createObject, DynamoDB queries, SQS vs Anypoint MQ, and visibility timeout tuning.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-aws-integration-patterns-s3-sqs-dynamodb.html">
+  <meta property="og:title" content="AWS Integration Patterns (S3, SQS, DynamoDB) — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="AWS SigV4, S3 createObject, DynamoDB queries, SQS vs Anypoint MQ, and visibility timeout tuning.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-aws-integration-patterns-s3-sqs-dynamodb.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "AWS Integration Patterns (S3, SQS, DynamoDB)", "item": "https://niranjanpotter.github.io/topics/mulesoft-aws-integration-patterns-s3-sqs-dynamodb.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "AWS Integration Patterns (S3, SQS, DynamoDB) — MuleSoft Interview Questions & Scenarios (2026)", "description": "AWS SigV4, S3 createObject, DynamoDB queries, SQS vs Anypoint MQ, and visibility timeout tuning.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-aws-integration-patterns-s3-sqs-dynamodb.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>AWS &amp; Messaging</span> &gt;
+      <span style="color: var(--text-main);">AWS Integration Patterns (S3, SQS, DynamoDB)</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">AWS &amp; Messaging · Developer</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">AWS Integration Patterns (S3, SQS, DynamoDB) — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">AWS SigV4, S3 createObject, DynamoDB queries, SQS vs Anypoint MQ, and visibility timeout tuning.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-e-title" class="blog-article" data-category="AWS &amp; Messaging" data-role="Developer" id="mod-e">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-dev">Module E</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="badge badge-primary">AWS &amp; Messaging</span>
+<span>⏱️ 3 min read</span>
+<span>📄 Guide Pages 10–12</span>
+<span>🎯 4 Interview Topics</span>
+</div>
+<figure aria-label="AWS Integration Patterns: S3, SQS &amp; DynamoDB" class="hub-diagram" id="mod-e-diagram">
+<svg class="responsive-svg" height="auto" viewbox="0 0 1200 420" width="100%" xmlns="http://www.w3.org/2000/svg">
+<title>AWS Cloud Architecture Patterns</title>
+<desc>Diagram showing Amazon S3, SQS queueing, MuleSoft connector processing, and DynamoDB storage.</desc>
+<rect fill="#0F172A" height="420" rx="14" stroke="#334155" stroke-width="1.5" width="1200"></rect>
+<g data-note="External partner uploads 500MB telemetry CSV to S3 bucket. S3 triggers ObjectCreated notification." data-step="1" data-title="Step 1: Amazon S3 File Ingestion">
+<rect fill="#1E293B" height="90" rx="8" stroke="#FF9900" stroke-width="1.5" width="200" x="60" y="80"></rect>
+<text fill="#FF9900" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="160" y="115">Amazon S3 Bucket</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="160" y="135">s3:ObjectCreated:Put</text>
+</g>
+<path d="M260 125 L340 125" stroke="#FF9900" stroke-width="2"></path>
+<g data-note="SQS absorbs file event notifications. Configured with 300s visibility timeout and redelivery DLQ." data-step="2" data-title="Step 2: Amazon SQS Buffer &amp; DLQ">
+<rect fill="#1E293B" height="90" rx="8" stroke="#00F2FE" stroke-width="1.5" width="220" x="340" y="80"></rect>
+<text fill="#00F2FE" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="450" y="115">Amazon SQS Queue</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="450" y="135">VisibilityTimeout: 300s</text>
+</g>
+<path d="M560 125 L640 125" stroke="#00F2FE" stroke-width="2"></path>
+<g data-note="Mule app authenticates via IAM AssumeRole, streams S3 payload in chunks, and transforms records." data-step="3" data-title="Step 3: MuleSoft SQS Listener">
+<rect fill="#1E293B" height="110" rx="8" stroke="#845EC2" stroke-width="2" width="240" x="640" y="70"></rect>
+<text fill="#D65DB1" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="760" y="105">Mule AWS SQS Listener</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="760" y="125">Streaming Chunking (10k rows)</text>
+<text fill="#10B981" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="760" y="145">IAM Role: app-mulesoft-role</text>
+</g>
+<path d="M880 125 L960 125" stroke="#10B981" stroke-width="2"></path>
+<g data-note="High-throughput batch write stores processed records in DynamoDB with partition key meterId." data-step="4" data-title="Step 4: Amazon DynamoDB">
+<rect fill="#1E293B" height="90" rx="8" stroke="#38BDF8" stroke-width="1.5" width="180" x="960" y="80"></rect>
+<text fill="#38BDF8" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="1050" y="115">Amazon DynamoDB</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="1050" y="135">BatchWriteItem (25 items)</text>
+</g>
+<g data-note="Zero hardcoded credentials: authentication uses AWS STS AssumeRole with Web Identity or AWS IRSA." data-step="5" data-title="Step 5: Security &amp; IAM Least Privilege">
+<rect fill="#1E293B" height="120" rx="8" stroke="#10B981" stroke-dasharray="6,4" stroke-width="1.5" width="1080" x="60" y="240"></rect>
+<text fill="#10B981" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" x="90" y="275">IAM Role Delegation &amp; Security</text>
+<text fill="#E2E8F0" font-family="'JetBrains Mono',monospace" font-size="11" x="90" y="305">CloudHub 2.0 replica pods assume AWS IAM roles directly via OIDC or Transit Gateway interconnectivity.</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" x="90" y="330">Permissions strictly scoped to: `s3:GetObject`, `sqs:ReceiveMessage/DeleteMessage`, and `dynamodb:BatchWriteItem`.</text>
+</g>
+</svg>
+<figcaption class="hub-diagram-caption">Figure E.1: AWS Architecture with MuleSoft — S3 bucket notifications, SQS queuing with IAM roles, and high-throughput DynamoDB persistence.</figcaption>
+</figure>
+<h2 class="article-title">📦 AWS Integration Patterns (S3, SQS, DynamoDB)</h2>
+<p class="article-excerpt">AWS SigV4, S3 createObject, DynamoDB queries, SQS vs Anypoint MQ, and visibility timeout tuning.</p>
+</div>
+<div class="faq-card" data-role="developer" id="mod-e-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module E</span>
+</div>
+<h3 class="q-title">How do you integrate MuleSoft with AWS (S3, SQS, DynamoDB, Secrets Manager)?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>AWS SERVICE</th><th>MULESOFT APPROACH</th><th>ENTERPRISE USE CASE</th></tr></thead>
+<tbody>
+<tr><td data-label="AWS SERVICE"><strong>Amazon S3</strong></td><td data-label="MULESOFT APPROACH">Amazon S3 Connector (<code>createObject</code>, <code>getObject</code>, <code>listObjects</code>)</td><td data-label="ENTERPRISE USE CASE">Dynamic external DataWeave loading at runtime, large binary/CSV staging, archival storage</td></tr>
+<tr><td data-label="AWS SERVICE"><strong>Amazon DynamoDB</strong></td><td data-label="MULESOFT APPROACH">Amazon DynamoDB Connector or HTTP Request with AWS SigV4 signing</td><td data-label="ENTERPRISE USE CASE">Sub-10ms state lookups, UCDP customer interaction / preference storage</td></tr>
+<tr><td data-label="AWS SERVICE"><strong>Amazon SQS</strong></td><td data-label="MULESOFT APPROACH">Amazon SQS Connector (Standard &amp; FIFO queues)</td><td data-label="ENTERPRISE USE CASE">Cross-region event buffering, decoupled async ingestion with visibility timeout</td></tr>
+<tr><td data-label="AWS SERVICE"><strong>AWS Lambda</strong></td><td data-label="MULESOFT APPROACH">AWS Lambda Connector or API Gateway HTTP invocation</td><td data-label="ENTERPRISE USE CASE">Offloading custom cryptography, image/document processing, serverless compute</td></tr>
+<tr><td data-label="AWS SERVICE"><strong>AWS Secrets Manager</strong></td><td data-label="MULESOFT APPROACH">MuleSoft AWS Secrets Manager Properties Provider (<code>${aws-secrets::bundle:key}</code>)</td><td data-label="ENTERPRISE USE CASE">Zero-downtime secret rotation &amp; centralized multi-environment credential injection</td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior developer" id="mod-e-s3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">S3</span>
+<span class="badge badge-senior">[SENIOR DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module E</span>
+</div>
+<h3 class="q-title">How do authentication, IAM roles, SigV4 signing, and dynamic AWS S3 DWL loading work in Mule 4?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p"><strong>Authentication &amp; SigV4:</strong> Official AWS connectors handle <strong>AWS Signature Version 4 (SigV4)</strong> request signing automatically. In <code>CloudHub 2.0</code> / RTF deployments, store IAM credentials using encrypted Secure Properties (AES-CBC) or retrieve short-lived temporary credentials via <strong>STS AssumeRole</strong> / IAM Roles for Service Accounts (IRSA) on self-hosted Kubernetes/EKS. Follow least-privilege IAM policies scoped strictly to target S3 buckets, SQS ARNs, and Secrets Manager paths.</p>
+<p class="doc-p"><strong>Runtime Dynamic DataWeave Pattern:</strong> Read externalized <code>.dwl</code> scripts from S3 via <code>getObject</code> (cached in ObjectStore with TTL), then pass the script string cleanly to DataWeave <code>dw::Runtime::read</code> or Dynamic Evaluate so mapping updates deploy without full CloudHub application restarts.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-e-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module E</span>
+</div>
+<h3 class="q-title">What is the difference between Amazon SQS and Anypoint MQ?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Amazon SQS</p>
+<p class="doc-p">AWS-native messaging</p>
+<p class="doc-p">Best when entire stack is AWS</p>
+<p class="doc-p">Tight IAM role integration</p>
+<p class="doc-p">Can trigger AWS Lambda directly</p>
+<p class="doc-p">Standard: at-least-once; FIFO: exactly-once</p>
+<p class="doc-p">Anypoint MQ</p>
+<p class="doc-p">MuleSoft-native messaging</p>
+<p class="doc-p">Built for Mule-to-Mule async</p>
+<p class="doc-p">Deep Anypoint Monitoring integration</p>
+<p class="doc-p">Native MANUAL ack in Mule flows</p>
+<p class="doc-p">Exchanges (pub-sub) + Queues (P2P)</p>
+<p class="doc-p">💡  WHEN TO CHOOSE</p>
+<p class="doc-p">Use SQS when integrating AWS ecosystem or triggering Lambda. Use Anypoint MQ when staying within</p>
+<p class="doc-p">MuleSoft platform for Mule-to-Mule async — better monitoring, native ack handling, and Anypoint Alerts.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "When architecting resilient enterprise messaging in MuleSoft, Anypoint MQ is our standard cloud-native backbone. We leverage Standard Queues with MANUAL acknowledgement for high-volume decoupled processing, and FIFO Queues with Message Group IDs when strict sequential ordering is required, combined with Dead Letter Queues configured with 5 retry attempts to prevent poison pill message blockages."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Energy &amp; Utility — Async Transaction Ingestion Service.</p><p class="example-line"><strong>Problem:</strong> Sudden surges of 15,000 meter pings/minute overwhelmed downstream legacy databases, causing connection timeouts and lost transaction payloads.</p><p class="example-line"><strong>What I Did:</strong> Placed an Anypoint MQ FIFO queue between the Experience and Process layers with MANUAL ack mode, a DLQ with 5 max delivery attempts, and a 14-day message retention window.</p><p class="example-line"><strong>Result:</strong> Successfully buffered 100% of traffic spikes, guaranteed exactly-once processing, and maintained our sub-1.5s SLA.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-e-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module E</span>
+</div>
+<h3 class="q-title">How do you handle SQS visibility timeout in MuleSoft processing?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Visibility timeout is the period a message is hidden from other consumers after being received. If</p>
+<p class="doc-p">MuleSoft processing time exceeds this timeout, the message becomes visible again → redelivered →</p>
+<p class="doc-p">duplicate processing.</p>
+<p class="doc-p">Best practice: Set SQS visibility timeout = at least 3× your Mule processing time. Use MANUAL ack</p>
+<p class="doc-p">mode — delete message from SQS only after successful processing. For long-running operations,</p>
+<p class="doc-p">extend visibility timeout programmatically via ChangeMessageVisibility API.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-oauth-2-0-jwt-bearer-token-flow.html">← OAuth 2.0 &amp; JWT Bearer Token Flow</a><a class="btn btn-outline" href="mulesoft-sap-salesforce-end-to-end-integration.html">SAP + Salesforce End-to-End Integration →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="anypoint-mq-deep-dive-queues-exchanges-dlq.html">Anypoint MQ Deep Dive (Queues, Exchanges, DLQ)</a></li><li><a href="mulesoft-core-connectors-protocols-http-db-jms-kafka-vm.html">Core Connectors &amp; Protocols (HTTP, DB, JMS, Kafka, VM)</a></li><li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li><li><a href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC)</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

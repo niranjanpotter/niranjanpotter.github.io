@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Until Successful Scope &amp; Resiliency | MuleSoft Interview Q&amp;A (2026)</title>
+  <meta name="description" content="Retry frequency, exponential backoff, exhausted retry handling, and reconnection strategies.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-until-successful-scope-resiliency.html">
+  <meta property="og:title" content="Until Successful Scope &amp; Resiliency — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Retry frequency, exponential backoff, exhausted retry handling, and reconnection strategies.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-until-successful-scope-resiliency.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Until Successful Scope & Resiliency", "item": "https://niranjanpotter.github.io/topics/mulesoft-until-successful-scope-resiliency.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Until Successful Scope & Resiliency — MuleSoft Interview Questions & Scenarios (2026)", "description": "Retry frequency, exponential backoff, exhausted retry handling, and reconnection strategies.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-until-successful-scope-resiliency.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Flow Scopes &amp; Concurrency</span> &gt;
+      <span style="color: var(--text-main);">Until Successful Scope &amp; Resiliency</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Flow Scopes &amp; Concurrency · Developer</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Until Successful Scope &amp; Resiliency — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Retry frequency, exponential backoff, exhausted retry handling, and reconnection strategies.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-j-title" class="blog-article" data-category="Flow Scopes &amp; Concurrency" data-role="Developer" id="mod-j">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-dev">Module J</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="badge badge-primary">Flow Scopes &amp; Concurrency</span>
+<span>⏱️ 3 min read</span>
+<span>📄 Guide Pages 23–24</span>
+<span>🎯 3 Interview Topics</span>
+</div>
+<figure aria-label="Until Successful Scope Retry Loop &amp; Exponential Backoff" class="hub-diagram" id="mod-j-diagram">
+<svg class="responsive-svg" height="auto" viewbox="0 0 1200 420" width="100%" xmlns="http://www.w3.org/2000/svg">
+<title>Until Successful Retry Loop</title>
+<desc>Diagram showing Until Successful scope retries, interval delay, and failure exhaustion.</desc>
+<rect fill="#0F172A" height="420" rx="14" stroke="#334155" stroke-width="1.5" width="1200"></rect>
+<g data-note="Flow enters Until Successful scope with configured maxRetries='3' and millisBetweenRetries='2000'." data-step="1" data-title="Step 1: Scope Entry">
+<rect fill="#1E293B" height="70" rx="8" stroke="#00F2FE" stroke-width="1.5" width="200" x="60" y="80"></rect>
+<text fill="#00F2FE" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="160" y="115">Until Successful Scope</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="160" y="135">maxRetries="3" delay="2000ms"</text>
+</g>
+<path d="M260 115 L330 115" stroke="#00F2FE" stroke-width="2"></path>
+<g data-note="Initial request dispatched to external HTTP partner. Connection times out (504 Gateway Timeout)." data-step="2" data-title="Step 2: Attempt 1 (Failure)">
+<rect fill="#1E293B" height="90" rx="8" stroke="#F87171" stroke-width="1.5" width="180" x="330" y="70"></rect>
+<text fill="#F87171" font-family="'Plus Jakarta Sans',sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="420" y="105">Attempt 1 (T = 0s)</text>
+<text fill="#EF4444" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="420" y="125">HTTP:TIMEOUT ❌</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="420" y="145">Sleep 2000 ms</text>
+</g>
+<path d="M510 115 L580 115" stroke="#F59E0B" stroke-width="2"></path>
+<g data-note="Second attempt executed after 2000ms pause. Target server returns HTTP 503 Service Unavailable." data-step="3" data-title="Step 3: Attempt 2 (Failure)">
+<rect fill="#1E293B" height="90" rx="8" stroke="#F87171" stroke-width="1.5" width="180" x="580" y="70"></rect>
+<text fill="#F87171" font-family="'Plus Jakarta Sans',sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="670" y="105">Attempt 2 (T = 2s)</text>
+<text fill="#EF4444" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="670" y="125">HTTP:SERVICE_UNAVAILABLE ❌</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="670" y="145">Sleep 2000 ms</text>
+</g>
+<path d="M760 115 L830 115" stroke="#F59E0B" stroke-width="2"></path>
+<g data-note="Final attempt exhausted. Max retry limit reached without a successful 2xx response." data-step="4" data-title="Step 4: Attempt 3 (Failure)">
+<rect fill="#1E293B" height="90" rx="8" stroke="#EF4444" stroke-width="1.5" width="180" x="830" y="70"></rect>
+<text fill="#EF4444" font-family="'Plus Jakarta Sans',sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="920" y="105">Attempt 3 (T = 4s)</text>
+<text fill="#EF4444" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="920" y="125">HTTP:CONNECTIVITY ❌</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="920" y="145">Retries Exhausted!</text>
+</g>
+<path d="M920 160 L920 230 L600 230" stroke="#EF4444" stroke-dasharray="4,4" stroke-width="2"></path>
+<g data-note="Scope aborts and throws MULE:RETRY_EXHAUSTED. Handled by flow error-handler for fallback or notification." data-step="5" data-title="Step 5: MULE:RETRY_EXHAUSTED">
+<rect fill="#1E293B" height="90" rx="8" stroke="#EF4444" stroke-width="2" width="700" x="250" y="270"></rect>
+<text fill="#EF4444" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="800" text-anchor="middle" x="600" y="305">Throws MULE:RETRY_EXHAUSTED</text>
+<text fill="#E2E8F0" font-family="'JetBrains Mono',monospace" font-size="11" text-anchor="middle" x="600" y="330">Total elapsed: 4000ms · Error bubbles to Error Handler -&gt; Logs incident &amp; alerts DevOps</text>
+</g>
+</svg>
+<figcaption class="hub-diagram-caption">Figure J.1: Until Successful Scope — Retry counter timeline, millisBetweenRetries intervals, and MULE:RETRY_EXHAUSTED exit.</figcaption>
+</figure>
+<h2 class="article-title">⏳ Until Successful Scope &amp; Resiliency</h2>
+<p class="article-excerpt">Retry frequency, exponential backoff, exhausted retry handling, and reconnection strategies.</p>
+</div>
+<div class="faq-card" data-role="developer" id="mod-j-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 2 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module J</span>
+</div>
+<h3 class="q-title">What is Until Successful? When do you use it?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Until Successful retries the processors inside it until they succeed or until the max retries count is</p>
+<p class="doc-p">reached. Use for transient failures — network blips, temporary backend unavailability.</p>
+<p class="doc-p">Until Successful — Retry SAP call 3 times</p>
+<div class="answer-badge-tag"><span class="badge badge-success">✅  KEY CONFIGURATION</span></div>
+<p class="doc-p">maxRetries : Number of retry attempts (default: 5). Does NOT include the initial attempt.</p>
+<p class="doc-p">millisBetweenRetries : Wait time between retries (default: 60000ms = 1 minute)</p>
+<p class="doc-p">On exhaustion: throws MULE:RETRY_EXHAUSTED  — catch in error handler</p>
+<p class="doc-p">💬  CROSS-QUESTIONS INTERVIEWERS ASK ABOUT THIS TOPIC</p>
+<p class="doc-p">"You set maxRetries=3 — how many total attempts happen?" → 4 total. maxRetries  counts retries</p>
+<p class="doc-p">AFTER the initial attempt. 1 initial + 3 retries = 4 total. Common interview trap — many say "3 attempts."</p>
+<p class="doc-p">"Does Until Successful support exponential backoff?" → No built-in exponential backoff.</p>
+<p class="doc-p">millisBetweenRetries  is a fixed delay between every retry. To implement exponential backoff you'd need a</p>
+<p class="doc-p">custom pattern (set a variable that doubles the delay). The reconnection strategy on connectors has</p>
+<p class="doc-p">exponential backoff — Until Successful does not.</p>
+<p class="doc-p">"Should you use Until Successful to retry a 400 Bad Request from SAP?" → No. 400 is a client error —</p>
+<p class="doc-p">the request itself is wrong. Retrying the same request will always get the same 400. Only retry transient</p>
+<p class="doc-p">errors: 5xx, timeouts, connectivity failures. Add a condition to skip non-retryable errors: wrap in Try scope</p>
+<p class="doc-p">and only re-throw 5xx errors.</p>
+<p class="doc-p">"What is the default millisBetweenRetries?" → 60,000ms (1 minute). The default means 5 retries × 1</p>
+<p class="doc-p">minute = 5 minutes before exhaustion. In production we always override this to a shorter value (5000ms)</p>
+<p class="doc-p">for fast-fail behavior.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "In enterprise integrations, I clearly distinguish between Until Successful and Reconnection Strategy. Reconnection strategies handle initial or broken TCP socket connections at the connector level. In contrast, Until Successful is an active flow-level router that retries business processor execution for transient HTTP 5xx errors or timeouts with exponential backoff and a hard max retry count."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Energy &amp; Utility — External Payment Gateway Connector.</p><p class="example-line"><strong>Problem:</strong> Intermittent 200ms network glitches on third-party payment partner endpoints caused 4% of customer checkout requests to fail immediately.</p><p class="example-line"><strong>What I Did:</strong> Wrapped the HTTP Request in an Until Successful scope configured with 3 retries, a 2000ms delay, and exponential backoff, failing over to a DLQ on exhaustion.</p><p class="example-line"><strong>Result:</strong> Automatically self-healed 99.4% of transient failure attempts without customer impact, saving approximately 1,200 orders per week.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-j-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module J</span>
+</div>
+<h3 class="q-title">What happens when Until Successful exhausts all retries?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">When all retries are exhausted, Until Successful throws MULE:RETRY_EXHAUSTED . This error bubbles up</p>
+<p class="doc-p">to the flow's error handler (or the enclosing scope's error handler).</p>
+<p class="doc-p">In our Enterprise Architecture: we catch MULE:RETRY_EXHAUSTED  in the flow error handler → update Salesforce with</p>
+<p class="doc-p">SAP_Error_Status__c = 'FAILED' → send Anypoint Alert to operations team → publish failed message</p>
+<p class="doc-p">to DLQ for manual reprocessing.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "In enterprise integrations, I clearly distinguish between Until Successful and Reconnection Strategy. Reconnection strategies handle initial or broken TCP socket connections at the connector level. In contrast, Until Successful is an active flow-level router that retries business processor execution for transient HTTP 5xx errors or timeouts with exponential backoff and a hard max retry count."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Retail &amp; E-Commerce — External Payment Gateway Connector.</p><p class="example-line"><strong>Problem:</strong> Intermittent 200ms network glitches on third-party payment partner endpoints caused 4% of customer checkout requests to fail immediately.</p><p class="example-line"><strong>What I Did:</strong> Wrapped the HTTP Request in an Until Successful scope configured with 3 retries, a 2000ms delay, and exponential backoff, failing over to a DLQ on exhaustion.</p><p class="example-line"><strong>Result:</strong> Automatically self-healed 99.4% of transient failure attempts without customer impact, saving approximately 1,200 orders per week.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-j-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module J</span>
+</div>
+<h3 class="q-title">Until Successful vs reconnection strategy — what is the difference?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ASPECT</th><th>UNTIL SUCCESSFUL</th><th>RECONNECTION STRATEGY</th></tr></thead>
+<tbody>
+<tr><td data-label="ASPECT">What it retries</td><td data-label="UNTIL SUCCESSFUL">Any processor inside it (HTTP requests, DB calls, transforms)</td><td data-label="RECONNECTION STRATEGY">Only connector connection establishment</td></tr>
+<tr><td data-label="ASPECT">Configured in</td><td data-label="UNTIL SUCCESSFUL">Flow — wraps processors</td><td data-label="RECONNECTION STRATEGY">Connector config (global.xml)</td></tr>
+<tr><td data-label="ASPECT">Use for</td><td data-label="UNTIL SUCCESSFUL">Transient business logic failures, API errors</td><td data-label="RECONNECTION STRATEGY">Network reconnect on startup or after disconnect</td></tr>
+<tr><td data-label="ASPECT">Error type</td><td data-label="UNTIL SUCCESSFUL">Any error — HTTP 5xx, timeouts, etc.</td><td data-label="RECONNECTION STRATEGY">CONNECTIVITY errors only</td></tr>
+</tbody>
+</table></div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "In enterprise integrations, I clearly distinguish between Until Successful and Reconnection Strategy. Reconnection strategies handle initial or broken TCP socket connections at the connector level. In contrast, Until Successful is an active flow-level router that retries business processor execution for transient HTTP 5xx errors or timeouts with exponential backoff and a hard max retry count."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Commercial Banking — External Payment Gateway Connector.</p><p class="example-line"><strong>Problem:</strong> Intermittent 200ms network glitches on third-party payment partner endpoints caused 4% of customer checkout requests to fail immediately.</p><p class="example-line"><strong>What I Did:</strong> Wrapped the HTTP Request in an Until Successful scope configured with 3 retries, a 2000ms delay, and exponential backoff, failing over to a DLQ on exhaustion.</p><p class="example-line"><strong>Result:</strong> Automatically self-healed 99.4% of transient failure attempts without customer impact, saving approximately 1,200 orders per week.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-batch-processing-deep-dive.html">← Batch Processing Deep Dive</a><a class="btn btn-outline" href="mulesoft-choice-router-first-successful-async-scopes.html">Choice Router, First Successful &amp; Async Sc →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-scatter-gather-router-deep-dive.html">Scatter-Gather Router Deep Dive</a></li><li><a href="mulesoft-foreach-parallel-foreach-scopes.html">ForEach &amp; Parallel ForEach Scopes</a></li><li><a href="mulesoft-batch-processing-deep-dive.html">Batch Processing Deep Dive</a></li><li><a href="mulesoft-choice-router-first-successful-async-scopes.html">Choice Router, First Successful &amp; Async Scopes</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

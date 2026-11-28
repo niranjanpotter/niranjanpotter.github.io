@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Advanced MuleSoft Topics (Java 17, Agentforce AI) | MuleSoft Q&amp;A</title>
+  <meta name="description" content="Java 17 upgrade traps, Anypoint Code Builder vs Studio, Parent POM governance, and MuleSoft AI + Agentforce integration.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/advanced-mulesoft-topics-java-17-agentforce-ai.html">
+  <meta property="og:title" content="Advanced MuleSoft Topics (Java 17, Agentforce AI) — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Java 17 upgrade traps, Anypoint Code Builder vs Studio, Parent POM governance, and MuleSoft AI + Agentforce integration.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/advanced-mulesoft-topics-java-17-agentforce-ai.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Advanced MuleSoft Topics (Java 17, Agentforce AI)", "item": "https://niranjanpotter.github.io/topics/advanced-mulesoft-topics-java-17-agentforce-ai.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Advanced MuleSoft Topics (Java 17, Agentforce AI) — MuleSoft Interview Questions & Scenarios (2026)", "description": "Java 17 upgrade traps, Anypoint Code Builder vs Studio, Parent POM governance, and MuleSoft AI + Agentforce integration.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/advanced-mulesoft-topics-java-17-agentforce-ai.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Modern Architecture &amp; AI</span> &gt;
+      <span style="color: var(--text-main);">Advanced MuleSoft Topics (Java 17, Agentforce AI)</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Modern Architecture &amp; AI · Senior / Lead</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Advanced MuleSoft Topics (Java 17, Agentforce AI) — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Java 17 upgrade traps, Anypoint Code Builder vs Studio, Parent POM governance, and MuleSoft AI + Agentforce integration.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-y-title" class="blog-article" data-category="Modern Architecture &amp; AI" data-role="Senior / Lead" id="mod-y">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-lead">Module Y</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="badge badge-primary">Modern Architecture &amp; AI</span>
+<span>⏱️ 5 min read</span>
+<span>📄 Guide Pages 86–89</span>
+<span>🎯 6 Interview Topics</span>
+</div>
+<figure aria-label="Salesforce Agentforce &amp; MuleSoft MCP Server Architecture" class="hub-diagram" id="mod-y-diagram">
+<svg class="responsive-svg" height="auto" viewbox="0 0 1200 440" width="100%" xmlns="http://www.w3.org/2000/svg">
+<title>Agentforce and MuleSoft MCP Integration</title>
+<desc>Diagram showing Agentforce autonomous agent calling MuleSoft APIs via MCP tools and semantic caching.</desc>
+<rect fill="#0F172A" height="440" rx="14" stroke="#334155" stroke-width="1.5" width="1200"></rect>
+<g data-note="Autonomous AI agent receives customer intent, plans action steps, and consults Topic Center." data-step="1" data-title="Step 1: Salesforce Agentforce">
+<rect fill="#1E293B" height="120" rx="10" stroke="#00F2FE" stroke-width="2" width="220" x="50" y="90"></rect>
+<text fill="#00F2FE" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="160" y="130">Salesforce Agentforce</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="160" y="155">Atlas Reasoning Engine</text>
+<text fill="#38BDF8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="160" y="175">Intent: "Pay utility invoice"</text>
+</g>
+<path d="M270 150 L350 150" stroke="#00F2FE" stroke-width="2"></path>
+<g data-note="Maps agent intent to OpenAPI 3.0 tool definition registered in Anypoint Exchange." data-step="2" data-title="Step 2: Topic Center OAS 3.0 Actions">
+<rect fill="#1E293B" height="120" rx="10" stroke="#845EC2" stroke-width="2" width="220" x="350" y="90"></rect>
+<text fill="#D65DB1" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="460" y="130">Topic Center Action</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="460" y="155">OAS 3.0 Specification</text>
+<text fill="#E2E8F0" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="460" y="175">Tool: process_payment()</text>
+</g>
+<path d="M570 150 L650 150" stroke="#845EC2" stroke-width="2"></path>
+<g data-note="MuleSoft Model Context Protocol (MCP) server securely translates AI tool invocations into Enterprise System API calls." data-step="3" data-title="Step 3: MuleSoft MCP Server Gateway">
+<rect fill="#1E293B" height="140" rx="10" stroke="#10B981" stroke-width="2" width="240" x="650" y="80"></rect>
+<text fill="#10B981" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="800" text-anchor="middle" x="770" y="115">MuleSoft MCP Server</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="770" y="140">Semantic Token Validator</text>
+<text fill="#38BDF8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="770" y="160">OAuth 2.0 DPoP Enforcement</text>
+<text fill="#F59E0B" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="770" y="180">Vector Semantic Cache (Redis)</text>
+</g>
+<path d="M890 150 L970 150" stroke="#10B981" stroke-width="2"></path>
+<g data-note="Process API invokes SAP S/4HANA OData service or billing core to execute financial ledger update." data-step="4" data-title="Step 4: Enterprise System of Record">
+<rect fill="#1E293B" height="120" rx="10" stroke="#00F2FE" stroke-width="2" width="180" x="970" y="90"></rect>
+<text fill="#00F2FE" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="1060" y="130">SAP S/4HANA</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="1060" y="155">OData Payment V4</text>
+<text fill="#10B981" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="1060" y="175">Ledger Confirmed ✓</text>
+</g>
+<g data-note="Repeated similar user questions served from Redis vector cache; prevents LLM token exhaustion and SAP overload." data-step="5" data-title="Step 5: Semantic Caching &amp; Rate Limiting">
+<rect fill="#1E293B" height="120" rx="10" stroke="#00F2FE" stroke-dasharray="6,4" stroke-width="1.5" width="1100" x="50" y="270"></rect>
+<text fill="#00F2FE" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" x="80" y="305">Enterprise AI Security &amp; Token Optimization</text>
+<text fill="#E2E8F0" font-family="'JetBrains Mono',monospace" font-size="11" x="80" y="335">1. Prompt Injection Filter blocks unauthorized system prompts · 2. Semantic Cache reduces SAP backend calls by 68% · 3. Full OpenTelemetry trace emitted to Datadog.</text>
+</g>
+</svg>
+<figcaption class="hub-diagram-caption">Figure Y.1: Agentforce LLM Reasoning Loop — Topic Center actions, OAS 3.0 tool schemas, Model Context Protocol (MCP) server, and System API semantic cache.</figcaption>
+</figure>
+<h2 class="article-title">☕ Advanced MuleSoft Topics (Java 17, Agentforce AI)</h2>
+<p class="article-excerpt">Java 17 upgrade traps, Anypoint Code Builder vs Studio, Parent POM governance, and MuleSoft AI + Agentforce integration.</p>
+</div>
+<div class="article-body-intro" style="margin-bottom:28px;"><div class="answer-badge-tag"><span class="badge badge-info">🔹 Runtime Fabric &amp; Deployment Options</span></div></div>
+<div class="faq-card" data-role="senior / lead" id="mod-y-q10">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q10</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module Y</span>
+</div>
+<h3 class="q-title">What is Runtime Fabric (RTF)? How is it different from CloudHub?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ASPECT</th><th>CLOUDHUB 2.0</th><th>RUNTIME FABRIC (RTF)</th></tr></thead>
+<tbody>
+<tr><td data-label="ASPECT">Infrastructure</td><td data-label="CLOUDHUB 2.0">MuleSoft-managed Kubernetes (Private Space)</td><td data-label="RUNTIME FABRIC (RTF)">YOUR Kubernetes (EKS, AKS, GKE, OpenShift)</td></tr>
+<tr><td data-label="ASPECT">Data residency</td><td data-label="CLOUDHUB 2.0">MuleSoft data centers</td><td data-label="RUNTIME FABRIC (RTF)">Your own data center / cloud region</td></tr>
+<tr><td data-label="ASPECT">Control plane</td><td data-label="CLOUDHUB 2.0">Anypoint Runtime Manager</td><td data-label="RUNTIME FABRIC (RTF)">Anypoint Runtime Manager (same UI/API)</td></tr>
+<tr><td data-label="ASPECT">Management</td><td data-label="CLOUDHUB 2.0">MuleSoft manages infrastructure</td><td data-label="RUNTIME FABRIC (RTF)">You manage the K8s cluster, RTF manages app lifecycle</td></tr>
+<tr><td data-label="ASPECT">Use when</td><td data-label="CLOUDHUB 2.0">Standard cloud deployments, no strict data sovereignty</td><td data-label="RUNTIME FABRIC (RTF)">Data residency requirements, on-prem backends, strict compliance</td></tr>
+</tbody>
+</table></div>
+</div>
+<p class="doc-p">RTF deployment: The RTF Agent (installed by Helm) connects your cluster to Anypoint. 1 pod =</p>
+<p class="doc-p">1 Mule runtime. Scale with replicas — rolling deploy by default. Set resource quotas per app so</p>
+<p class="doc-p">one rogue app can't starve others. The same Anypoint Monitoring dashboards as CloudHub.</p>
+<p class="doc-p">🔹  Logging Best Practices</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "In our modern deployments, we prioritize CloudHub 2.0 Private Spaces and Runtime Fabric on Kubernetes. We size applications using fractional vCores (like 0.2 to 1 vCore) with at least two replicas across availability zones to guarantee high availability, zero-downtime rolling updates, and internal ingress routing with automated Mutual TLS termination."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Energy &amp; Utility — <code>CloudHub 2.0</code> Multi-Region Migration.</p><p class="example-line"><strong>Problem:</strong> Legacy single-worker <code>CloudHub 1.0</code> applications suffered 4-minute downtimes during monthly patching and could not meet corporate DR recovery time objectives.</p><p class="example-line"><strong>What I Did:</strong> Migrated 28 APIs to <code>CloudHub 2.0</code> Private Spaces with dual replicas per app across multi-AZs, configuring automated ingress path routing and CI/CD canary deployments.</p><p class="example-line"><strong>Result:</strong> Achieved 99.99% service availability with true zero-downtime deployments and reduced infrastructure spend by 22%.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior / lead" id="mod-y-q11">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q11</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module Y</span>
+</div>
+<h3 class="q-title">What are the best practices for logging in MuleSoft?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Log at flow start and end with key business identifiers (accountId, correlationId)</p>
+<p class="doc-p">Log before and after external calls — makes it easy to see which system is slow</p>
+<p class="doc-p">Every error handler: log error.errorType  + error.description  at ERROR level with</p>
+<p class="doc-p">correlationId</p>
+<p class="doc-p">Always include correlationId in every log line — pass as X-Correlation-Id  downstream</p>
+<p class="doc-p">Use async logging (Log4j2 default) — sync only for audit trails where loss is unacceptable</p>
+<p class="doc-p">⚠  NEVER LOG THESE</p>
+<p class="doc-p">Passwords, tokens, API keys, client secrets — never in logs</p>
+<p class="doc-p">PII — SSN, card numbers, bank account numbers, auth headers</p>
+<p class="doc-p">Full large payloads at INFO in production — serialization cost + log volume</p>
+<p class="doc-p">Log once where the error is handled — not at every layer for the same error</p>
+<p class="doc-p"><code>CloudHub 2.0</code> note: Use asynchronous Log4j appenders only — synchronous appenders are not</p>
+<p class="doc-p">supported.</p>
+<p class="doc-p">🔹  Mule Runtime Upgrades — Java 17</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior / lead" id="mod-y-q12">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q12</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module Y</span>
+</div>
+<h3 class="q-title">How do you upgrade Mule apps to Java 17? What breaks?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Mule 4.9 LTS and later Edge releases run on Java 17 ONLY. If your apps are on Java 8 or 11,</p>
+<p class="doc-p">the upgrade is coming.</p>
+<p class="doc-p">⚠  WHAT BREAKS ON JAVA 17</p>
+<p class="doc-p">Reflection into JDK internals ( setAccessible(true)  fails) — common in old custom code</p>
+<p class="doc-p">DataWeave Java POJOs without a default constructor + getters/setters</p>
+<p class="doc-p">error.muleMessage  — use error.errorMessage  instead</p>
+<p class="doc-p">Old connector versions not compatible with Java 17 — must upgrade</p>
+<div class="answer-badge-tag"><span class="badge badge-success">✅  UPGRADE PATH</span></div>
+<div class="doc-step-item"><span class="step-num">1.</span><span>Bump runtime version + mule-maven-plugin in pom.xml</span></div>
+<div class="doc-step-item"><span class="step-num">2.</span><span>Upgrade all connectors to Java 17 compatible versions from Exchange</span></div>
+<div class="doc-step-item"><span class="step-num">3.</span><span>Upgrade MUnit + custom modules, rebuild</span></div>
+<div class="doc-step-item"><span class="step-num">4.</span><span>Run MUnit + regression tests in lower environment</span></div>
+<div class="doc-step-item"><span class="step-num">5.</span><span>Deploy, monitor, then promote to next environment</span></div>
+<p class="doc-p">Edge vs LTS: Edge = newest features, shorter support. LTS = scheduled February release, 18+</p>
+<p class="doc-p">months Standard + 6 months Extended support. For production: prefer LTS.</p>
+<p class="doc-p">🔹  MuleSoft AI + Agentforce (New Topic)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior / lead" id="mod-y-q13">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q13</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module Y</span>
+</div>
+<h3 class="q-title">What is MuleSoft AI and how does it integrate with Agentforce?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">MuleSoft connects AI agents to enterprise data through 4 patterns:</p>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>PATTERN</th><th>DESCRIPTION</th><th>USE WHEN</th></tr></thead>
+<tbody>
+<tr><td data-label="PATTERN">AI Chain Connector</td><td data-label="DESCRIPTION">Call an LLM (OpenAI, Azure OpenAI, Anthropic, Vertex AI) directly from a Mule flow</td><td data-label="USE WHEN">LLM-enhanced data processing, summarization, classification</td></tr>
+<tr><td data-label="PATTERN">Agentforce Actions</td><td data-label="DESCRIPTION">Expose a Mule API (defined by OAS 3.0 spec) as an action an Agentforce agent can call</td><td data-label="USE WHEN">Give Salesforce AI agent access to enterprise systems</td></tr>
+<tr><td data-label="PATTERN">MCP Server</td><td data-label="DESCRIPTION">AI agents call Mule APIs through the Model Context Protocol</td><td data-label="USE WHEN">Standard agent-to-API communication</td></tr>
+<tr><td data-label="PATTERN">RAG</td><td data-label="DESCRIPTION">Retrieve enterprise data, inject into LLM prompt, answer from YOUR data</td><td data-label="USE WHEN">AI that answers questions from internal knowledge bases</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="callout callout-warning">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>⚠️ Production Warning · ⚠  AI GOVERNANCE RULES</strong></div>
+<div class="callout-body">Always mask PII with DataWeave BEFORE any LLM call<br/>Never hardcode LLM API keys — use AWS Secrets Manager<br/>Rate-limit AI calls and monitor token usage to control costs<br/>Log prompts + responses for audit compliance<br/>Never send unfiltered user input straight to an LLM (prompt injection risk)
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior / lead" id="mod-y-q14">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q14</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module Y</span>
+</div>
+<h3 class="q-title">What is Anypoint Code Builder? How is it different from Anypoint Studio?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ASPECT</th><th>ANYPOINT STUDIO</th><th>ANYPOINT CODE BUILDER (ACB)</th></tr></thead>
+<tbody>
+<tr><td data-label="ASPECT">Platform</td><td data-label="ANYPOINT STUDIO">Eclipse-based desktop IDE</td><td data-label="ANYPOINT CODE BUILDER (ACB)">VS Code-based — desktop app or browser</td></tr>
+<tr><td data-label="ASPECT">AI features</td><td data-label="ANYPOINT STUDIO">None</td><td data-label="ANYPOINT CODE BUILDER (ACB)">AI Dev Agent — describe flow in English → get Mule XML draft</td></tr>
+<tr><td data-label="ASPECT">API design</td><td data-label="ANYPOINT STUDIO">Separate Design Center</td><td data-label="ANYPOINT CODE BUILDER (ACB)">Integrated API designer + Design Center sync</td></tr>
+<tr><td data-label="ASPECT">Governance</td><td data-label="ANYPOINT STUDIO">Post-development</td><td data-label="ANYPOINT CODE BUILDER (ACB)">Governance feedback while you design</td></tr>
+<tr><td data-label="ASPECT">Projects</td><td data-label="ANYPOINT STUDIO">Studio-specific project format</td><td data-label="ANYPOINT CODE BUILDER (ACB)">Same Mule 4 XML + pom.xml — opens Studio projects directly</td></tr>
+</tbody>
+</table></div>
+</div>
+<p class="doc-p">💡  KEY RULE FOR AI IN ACB</p>
+<p class="doc-p">AI drafts. You review. Never commit AI-generated code without human review. The AI Dev Agent</p>
+<p class="doc-p">produces a starting point — always validate the logic, check error handling, and ensure it follows your</p>
+<p class="doc-p">team's standards.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="senior / lead" id="mod-y-q15">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q15</span>
+<span class="badge badge-lead">[SENIOR / LEAD]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module Y</span>
+</div>
+<h3 class="q-title">What is the Parent POM / BOM pattern in MuleSoft? Why do you use it?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">A Parent POM is a Maven POM with <code>&lt;packaging&gt;pom&lt;/packaging&gt;</code> inherited via <code>&lt;parent&gt;</code> across all child Mule projects. It centralizes connector versions, MUnit version, <code>mule-maven-plugin</code> configuration, and Nexus/Exchange repositories.</p>
+<div class="callout callout-verbal"><div class="callout-header"><span class="callout-icon">💡</span><strong>Why It Matters</strong></div><div class="callout-body">"Which connector version is production running?" is answered in one file. Upgrading a connector means updating one property in the Parent POM → publishing a new parent release → bumping <code>&lt;parent&gt;&lt;version&gt;</code> in child APIs.</div></div>
+<div class="answer-badge-tag"><span class="badge badge-success">✅  RULES</span></div>
+<p class="doc-p">Child projects declare dependencies WITHOUT versions — inherited cleanly from parent <code>&lt;dependencyManagement&gt;</code></p>
+<p class="doc-p">Never hardcode connector versions inside child <code>pom.xml</code> files</p>
+<p class="doc-p">Validate parent upgrades on a canary/representative API before rolling out across enterprise child APIs</p>
+<p class="doc-p">Use a Maven BOM (imported inside <code>&lt;dependencyManagement&gt;</code> with <code>&lt;scope&gt;import&lt;/scope&gt;</code>) when parent inheritance is already occupied</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-interview-day-strategy-star-method.html">← Interview Day Strategy &amp; STAR Method</a><a class="btn btn-outline" href="mulesoft-20-production-scenario-questions-cross-questions-s1-s20.html">20 Production Scenario Questions &amp; Cross-Q →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-2026-modern-tech-agentforce-ai-mcp-snowflake.html">2026 Modern Tech: Agentforce AI, MCP &amp; Snowflake</a></li><li><a href="mulesoft-2026-ai-agentforce-mcp-autonomous-agent-networks.html">2026 AI Agentforce, MCP &amp; Autonomous Agent Networks</a></li><li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li><li><a href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC)</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

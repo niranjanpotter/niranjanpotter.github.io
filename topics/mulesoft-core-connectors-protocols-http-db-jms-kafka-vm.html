@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Core Connectors &amp; Protocols (HTTP, DB, JMS, Kafka, | MuleSoft Q&amp;A</title>
+  <meta name="description" content="Mule Event structure, repeatable streaming, Database connection pooling, JMS vs Anypoint MQ vs Kafka, and VM Queues.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-core-connectors-protocols-http-db-jms-kafka-vm.html">
+  <meta property="og:title" content="Core Connectors &amp; Protocols (HTTP, DB, JMS, Kafka, VM) — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Mule Event structure, repeatable streaming, Database connection pooling, JMS vs Anypoint MQ vs Kafka, and VM Queues.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-core-connectors-protocols-http-db-jms-kafka-vm.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Core Connectors & Protocols (HTTP, DB, JMS, Kafka, VM)", "item": "https://niranjanpotter.github.io/topics/mulesoft-core-connectors-protocols-http-db-jms-kafka-vm.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Core Connectors & Protocols (HTTP, DB, JMS, Kafka, VM) — MuleSoft Interview Questions & Scenarios (2026)", "description": "Mule Event structure, repeatable streaming, Database connection pooling, JMS vs Anypoint MQ vs Kafka, and VM Queues.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-core-connectors-protocols-http-db-jms-kafka-vm.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>AWS &amp; Messaging</span> &gt;
+      <span style="color: var(--text-main);">Core Connectors &amp; Protocols (HTTP, DB, JMS, Kafka, VM)</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">AWS &amp; Messaging · Developer</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Core Connectors &amp; Protocols (HTTP, DB, JMS, Kafka, VM) — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Mule Event structure, repeatable streaming, Database connection pooling, JMS vs Anypoint MQ vs Kafka, and VM Queues.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-x-title" class="blog-article" data-category="AWS &amp; Messaging" data-role="Developer" id="mod-x">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-dev">Module X</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="badge badge-primary">AWS &amp; Messaging</span>
+<span>⏱️ 7 min read</span>
+<span>📄 Guide Pages 80–85</span>
+<span>🎯 9 Interview Topics</span>
+</div>
+<figure aria-label="Core Connectors: Apache Kafka &amp; JMS Partitioning" class="hub-diagram" id="mod-x-diagram">
+<svg class="responsive-svg" height="auto" viewbox="0 0 1200 420" width="100%" xmlns="http://www.w3.org/2000/svg">
+<title>Kafka Topic Partitioning Architecture</title>
+<desc>Diagram showing Kafka cluster, 4 partitions, consumer groups, and offset commits.</desc>
+<rect fill="#0F172A" height="420" rx="14" stroke="#334155" stroke-width="1.5" width="1200"></rect>
+<g data-note="Mule Kafka Connector publishes events with partition key (e.g. customerId) guaranteeing hash-based order." data-step="1" data-title="Step 1: Mule Kafka Producer">
+<rect fill="#1E293B" height="90" rx="8" stroke="#00F2FE" stroke-width="1.5" width="200" x="50" y="120"></rect>
+<text fill="#00F2FE" font-family="'Plus Jakarta Sans',sans-serif" font-size="13" font-weight="700" text-anchor="middle" x="150" y="155">Mule Kafka Producer</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono',monospace" font-size="10" text-anchor="middle" x="150" y="175">Key: customer_id (SHA256)</text>
+</g>
+<path d="M250 165 L330 165" stroke="#00F2FE" stroke-width="2"></path>
+<g data-note="Topic divided across 4 partitions for horizontal parallelism. Each partition strictly ordered by offset." data-step="2" data-title="Step 2: Kafka Topic Partitions">
+<rect fill="#1E293B" height="280" rx="10" stroke="#845EC2" stroke-width="2" width="460" x="330" y="60"></rect>
+<text fill="#D65DB1" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="560" y="95">Kafka Topic: telemetry.events (4 Partitions)</text>
+<rect fill="#0F172A" height="45" rx="4" stroke="#00F2FE" width="420" x="350" y="115"></rect>
+<text fill="#00F2FE" font-size="11" x="370" y="142">Partition 0 | Offsets: [1001, 1002, 1003, 1004]</text>
+<rect fill="#0F172A" height="45" rx="4" stroke="#10B981" width="420" x="350" y="170"></rect>
+<text fill="#10B981" font-size="11" x="370" y="197">Partition 1 | Offsets: [5401, 5402, 5403, 5404]</text>
+<rect fill="#0F172A" height="45" rx="4" stroke="#F59E0B" width="420" x="350" y="225"></rect>
+<text fill="#F59E0B" font-size="11" x="370" y="252">Partition 2 | Offsets: [8901, 8902, 8903, 8904]</text>
+<rect fill="#0F172A" height="45" rx="4" stroke="#38BDF8" width="420" x="350" y="280"></rect>
+<text fill="#38BDF8" font-size="11" x="370" y="307">Partition 3 | Offsets: [3201, 3202, 3203, 3204]</text>
+</g>
+<path d="M790 165 L870 165" stroke="#10B981" stroke-width="2"></path>
+<g data-note="Consumer group members automatically rebalance partitions. Commits offsets via autoCommit='false' for at-least-once safety." data-step="3" data-title="Step 3: Consumer Group Scalability">
+<rect fill="#1E293B" height="240" rx="10" stroke="#10B981" stroke-width="2" width="280" x="870" y="80"></rect>
+<text fill="#10B981" font-family="'Plus Jakarta Sans',sans-serif" font-size="14" font-weight="700" text-anchor="middle" x="1010" y="115">Mule Consumer Group</text>
+<rect fill="#0F172A" height="70" rx="6" stroke="#00F2FE" width="240" x="890" y="135"></rect>
+<text fill="#00F2FE" font-size="11" text-anchor="middle" x="1010" y="165">Worker Pod 1: P0 &amp; P1</text>
+<rect fill="#0F172A" height="70" rx="6" stroke="#F59E0B" width="240" x="890" y="225"></rect>
+<text fill="#F59E0B" font-size="11" text-anchor="middle" x="1010" y="255">Worker Pod 2: P2 &amp; P3</text>
+</g>
+</svg>
+<figcaption class="hub-diagram-caption">Figure X.1: Kafka vs JMS Architecture — Partition key hashing, Consumer Group offset management, and topic rebalancing.</figcaption>
+</figure>
+<h2 class="article-title">🔌 Core Connectors &amp; Protocols (HTTP, DB, JMS, Kafka, VM)</h2>
+<p class="article-excerpt">Mule Event structure, repeatable streaming, Database connection pooling, JMS vs Anypoint MQ vs Kafka, and VM Queues.</p>
+</div>
+<div class="article-body-intro" style="margin-bottom:28px;"><div class="answer-badge-tag"><span class="badge badge-info">🔹 Mule 4 Internals — Core Architecture</span></div>
+<p class="doc-p">Deep-dive fundamentals covering the Mule 4 Event model, transports, messaging connectors, API governance, and Java 17 runtime compatibility.</p></div>
+<div class="faq-card" data-role="developer" id="mod-x-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module X</span>
+</div>
+<h3 class="q-title">What is inside a Mule Event? What is the difference between payload, attributes, and vars?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">A <strong>Mule Event</strong> is an immutable data object passed between event processors in a Mule flow. It wraps two primary components — the <strong>Message</strong> (<code>payload</code> + immutable <code>attributes</code>) and <strong>Variables</strong> (<code>vars</code>) — alongside runtime context such as <code>correlationId</code>.</p>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>PART</th><th>WHAT IT CONTAINS</th><th>EXAMPLE</th></tr></thead>
+<tbody>
+<tr><td data-label="PART"><code>payload</code></td><td data-label="WHAT IT CONTAINS">Core message body (JSON, XML, CSV, Java Object, Binary stream)</td><td data-label="EXAMPLE">HTTP request body, SAP OData response, S3 file stream</td></tr>
+<tr><td data-label="PART"><code>attributes</code></td><td data-label="WHAT IT CONTAINS">Immutable connector metadata (headers, query/URI params, HTTP status, file path)</td><td data-label="EXAMPLE"><code>attributes.headers.'content-type'</code>, <code>attributes.queryParams.accountId</code></td></tr>
+<tr><td data-label="PART"><code>vars</code></td><td data-label="WHAT IT CONTAINS">Flow-scoped variables created via Set Variable or Transform Target Variable</td><td data-label="EXAMPLE"><code>vars.correlationId</code>, <code>vars.sapResponse</code></td></tr>
+<tr><td data-label="PART"><code>correlationId</code></td><td data-label="WHAT IT CONTAINS">Unique request trace ID on the Event Context (outside payload &amp; attributes)</td><td data-label="EXAMPLE">Auto-generated UUID or propagated via <code>x-correlation-id</code> header</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="callout callout-warning">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>⚠️ Production Warning · Common Event Scope Pitfalls</strong></div>
+<div class="callout-body">
+• Query parameters live in <code>attributes.queryParams</code> — NOT in <code>payload</code>.<br/>
+• HTTP headers live in <code>attributes.headers</code> — NOT in <code>payload</code>.<br/>
+• Variables set inside an <strong>Async scope</strong> are isolated and NEVER visible in the main flow afterward.<br/>
+• Variables set inside <strong>Scatter-Gather</strong> routes are isolated from sibling parallel routes, then merged back into the main flow after completion (conflicting values merge into an Array).
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-x-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module X</span>
+</div>
+<h3 class="q-title">What is the difference between repeatable and non-repeatable streaming?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>STRATEGY</th><th>READ MULTIPLE TIMES?</th><th>MEMORY</th><th>USE WHEN</th></tr></thead>
+<tbody>
+<tr><td data-label="STRATEGY">Non-Repeatable</td><td data-label="READ MULTIPLE TIMES?">❌ Once only</td><td data-label="MEMORY">Most efficient</td><td data-label="USE WHEN">Large files processed once — CSV/XML ETL</td></tr>
+<tr><td data-label="STRATEGY">Repeatable In-Memory</td><td data-label="READ MULTIPLE TIMES?">✅ Yes</td><td data-label="MEMORY">Buffer in RAM up to threshold then disk</td><td data-label="USE WHEN">Small-medium payloads needing multiple reads</td></tr>
+<tr><td data-label="STRATEGY">Repeatable File Store (EE default)</td><td data-label="READ MULTIPLE TIMES?">✅ Yes</td><td data-label="MEMORY">Buffered to temp file (512KB default)</td><td data-label="USE WHEN">Large payloads needing multiple reads without OOM</td></tr>
+</tbody>
+</table></div>
+</div>
+<p class="doc-p">Rule: Filter and transform early. Don't store entire large streams in variables. Don't log full payloads of streaming content in production.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-x-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module X</span>
+</div>
+<h3 class="q-title">What are the key best practices for the HTTP Connector?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Never hardcode the port — use ${http.port}  property</p>
+<p class="doc-p">Always set responseTimeout and connectionIdleTimeout — no timeout = one slow API</p>
+<p class="doc-p">hangs your flow forever</p>
+<p class="doc-p">Auth options: Basic, OAuth 2.0 Client Credentials, API key header, mTLS. Choose based on</p>
+<p class="doc-p">target system requirements.</p>
+<p class="doc-p">Catch HTTP:TIMEOUT and HTTP:CONNECTIVITY in error handler for retry logic</p>
+<p class="doc-p">Headers, query params, URI params live in attributes  on the inbound side</p>
+<p class="doc-p">Add correlationId to outbound request headers: X-Correlation-Id: #[vars.correlationId]</p>
+<p class="doc-p">No dedicated connector? HTTP Request is your fallback for any REST API</p>
+<div class="callout callout-warning">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>⚠️ Production Warning · ⚠  INSECURE="TRUE" IS FORBIDDEN IN PRODUCTION</strong></div>
+<div class="callout-body">Never use insecure="true"  on TLS trust stores in production — disables certificate validation<br/>Always configure a proper trustStore with the server's CA certificate<br/>🔹  Database Connector
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-x-q4">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q4</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module X</span>
+</div>
+<h3 class="q-title">What are the key best practices for the Database Connector?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Always use :namedParam for input parameters — never concatenate strings into SQL (SQL</p>
+<p class="doc-p">injection risk)</p>
+<p class="doc-p">Connection pooling — configure pool size appropriate to concurrency, not connect-per-</p>
+<p class="doc-p">request</p>
+<p class="doc-p">Set queryTimeout — no timeout = hung threads on slow queries</p>
+<p class="doc-p">Tune fetchSize for bulk reads — default may be too small for large result sets</p>
+<p class="doc-p">Mule 4 streams DB results — don't store the entire result set in a variable if it's large</p>
+<p class="doc-p">affectedRows = 0 means nothing matched — always handle this case</p>
+<p class="doc-p">No SELECT * in production — name your columns explicitly for predictable results</p>
+<p class="doc-p">Database — Safe parameterized query</p>
+<div class="code-block">
+<div class="code-header">
+<span class="code-lang">SH</span>
+<div style="display:flex; align-items:center; gap:8px;">
+<button class="copy-btn" onclick="copyCode(this)" title="Copy Code">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<pre><code>SELECT id, name, status FROM accounts WHERE id = :accountId AND status = :status
+#-{ accountId: vars.accountId, status: "ACTIVE" }]
+🔹  JMS Connector vs Anypoint MQ</code><button aria-label="Copy code snippet to clipboard" class="code-copy-btn" type="button">📋 Copy</button></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-x-q5">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q5</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module X</span>
+</div>
+<h3 class="q-title">What is the JMS Connector? When do you use JMS vs Anypoint MQ?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ASPECT</th><th>JMS CONNECTOR</th><th>ANYPOINT MQ</th></tr></thead>
+<tbody>
+<tr><td data-label="ASPECT">When to use</td><td data-label="JMS CONNECTOR">Existing IBM MQ, ActiveMQ, Solace, TIBCO EMS broker already in your enterprise</td><td data-label="ANYPOINT MQ">New integration, MuleSoft-native, no existing broker</td></tr>
+<tr><td data-label="ASPECT">Pattern</td><td data-label="JMS CONNECTOR">Queue (P2P) + Topic (pub-sub)</td><td data-label="ANYPOINT MQ">Queue (P2P) + Exchange (pub-sub fan-out)</td></tr>
+</tbody>
+</table></div>
+</div>
+<p class="doc-p">XA</p>
+<p class="doc-p">Transactions</p>
+<div class="answer-badge-tag"><span class="badge badge-success">✅  Supported — atomic JMS + DB writes ❌  Uses MANUAL ack instead</span></div>
+<p class="doc-p">Durability persistentDelivery="true" survives broker restart Cloud-persistent by default (7-</p>
+<p class="doc-p">day retention)</p>
+<p class="doc-p">Monitoring Via broker's own tools Anypoint Monitoring</p>
+<p class="doc-p">dashboards built-in</p>
+<p class="doc-p">Best practice: Monitor queue depth — growing depth = consumer lag = scaling needed. Always</p>
+<p class="doc-p">configure a DLQ on both JMS and Anypoint MQ queues.</p>
+<p class="doc-p">🔹  Kafka Connector</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "When architecting resilient enterprise messaging in MuleSoft, Anypoint MQ is our standard cloud-native backbone. We leverage Standard Queues with MANUAL acknowledgement for high-volume decoupled processing, and FIFO Queues with Message Group IDs when strict sequential ordering is required, combined with Dead Letter Queues configured with 5 retry attempts to prevent poison pill message blockages."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Commercial Banking — Async Transaction Ingestion Service.</p><p class="example-line"><strong>Problem:</strong> Sudden surges of 120,000 transactions/day overwhelmed downstream legacy databases, causing connection timeouts and lost transaction payloads.</p><p class="example-line"><strong>What I Did:</strong> Placed an Anypoint MQ FIFO queue between the Experience and Process layers with MANUAL ack mode, a DLQ with 5 max delivery attempts, and a 14-day message retention window.</p><p class="example-line"><strong>Result:</strong> Successfully buffered 100% of traffic spikes, guaranteed exactly-once processing, and maintained our 99.999% uptime and 400ms SLA.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-x-q6">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q6</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module X</span>
+</div>
+<h3 class="q-title">What is the Kafka Connector? Kafka vs Anypoint MQ — when to use which?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">The Kafka Connector connects MuleSoft to Apache Kafka for high-throughput, real-time event</p>
+<p class="doc-p">streaming with replay capability.</p>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ASPECT</th><th>APACHE KAFKA</th><th>ANYPOINT MQ</th></tr></thead>
+<tbody>
+<tr><td data-label="ASPECT">Throughput</td><td data-label="APACHE KAFKA">Very high — millions of events/sec</td><td data-label="ANYPOINT MQ">Moderate — enterprise messaging</td></tr>
+<tr><td data-label="ASPECT">Replay</td><td data-label="APACHE KAFKA">✅ Yes — replay from any offset</td><td data-label="ANYPOINT MQ">Limited — TTL-based</td></tr>
+<tr><td data-label="ASPECT">Management</td><td data-label="APACHE KAFKA">Self-managed or Confluent Cloud (complex)</td><td data-label="ANYPOINT MQ">Fully managed by MuleSoft (simple)</td></tr>
+<tr><td data-label="ASPECT">Use for</td><td data-label="APACHE KAFKA">High-throughput streaming, IoT, log aggregation, event sourcing</td><td data-label="ANYPOINT MQ">Mule-to-Mule async, simple decoupling</td></tr>
+<tr><td data-label="ASPECT">Consumer groups</td><td data-label="APACHE KAFKA">One group per app — instances share partitions; different groups each get all messages</td><td data-label="ANYPOINT MQ">Multiple subscribers via Exchange</td></tr>
+</tbody>
+</table></div>
+</div>
+<p class="doc-p">Key Kafka setting: acks=all  for strongest durability. Publish with a key — same key = same</p>
+<p class="doc-p">partition = ordered delivery.</p>
+<p class="doc-p">🔹  VM Connector</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "When architecting resilient enterprise messaging in MuleSoft, Anypoint MQ is our standard cloud-native backbone. We leverage Standard Queues with MANUAL acknowledgement for high-volume decoupled processing, and FIFO Queues with Message Group IDs when strict sequential ordering is required, combined with Dead Letter Queues configured with 5 retry attempts to prevent poison pill message blockages."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Telecommunications — Async Transaction Ingestion Service.</p><p class="example-line"><strong>Problem:</strong> Sudden surges of 30,000 activations/day overwhelmed downstream legacy databases, causing connection timeouts and lost transaction payloads.</p><p class="example-line"><strong>What I Did:</strong> Placed an Anypoint MQ FIFO queue between the Experience and Process layers with MANUAL ack mode, a DLQ with 5 max delivery attempts, and a 14-day message retention window.</p><p class="example-line"><strong>Result:</strong> Successfully buffered 100% of traffic spikes, guaranteed exactly-once processing, and maintained our zero order loss.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-x-q7">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q7</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module X</span>
+</div>
+<h3 class="q-title">What is the VM Connector? How does it differ from flow-ref and Anypoint MQ?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>OPTION</th><th>SCOPE</th><th>ASYNC?</th><th>DURABLE?</th><th>USE FOR</th></tr></thead>
+<tbody>
+<tr><td data-label="OPTION"><code>flow-ref</code></td><td data-label="SCOPE">Same app</td><td data-label="ASYNC?">❌ Synchronous</td><td data-label="DURABLE?">N/A</td><td data-label="USE FOR">Code reuse — simple flow-to-flow call</td></tr>
+<tr><td data-label="OPTION">VM Connector</td><td data-label="SCOPE">Same app (same Mule runtime)</td><td data-label="ASYNC?">✅ Async option</td><td data-label="DURABLE?">PERSISTENT mode only</td><td data-label="USE FOR">Decouple flows within one app without a broker</td></tr>
+<tr><td data-label="OPTION">Anypoint MQ</td><td data-label="SCOPE">Cross-app, cross-region</td><td data-label="ASYNC?">✅ Async</td><td data-label="DURABLE?">✅ Always (7-day)</td><td data-label="USE FOR">Production async between different applications</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="callout callout-info"><div class="callout-header"><span class="callout-icon">ℹ️</span><strong>Important</strong></div><div class="callout-body">TRANSIENT VM queues (default) lose messages on app crash. On CloudHub 2.0 and Runtime Fabric, there are NO shared persistent VM queues across replicas — use Anypoint MQ instead. Always design VM consumers to be idempotent.</div></div>
+<div class="callout callout-warning" style="margin-top:14px;">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>2025-2026 Architecture Warning · VM Connector in CloudHub 2.0</strong></div>
+<div class="callout-body">
+    • <strong>CloudHub 2.0 VM Limitation:</strong> In CloudHub 2.0, persistent VM queues are stored only on the replica container's local ephemeral storage. They are <strong>NOT distributed</strong> across replicas and do NOT survive pod rescheduling. For multi-replica clustering or cross-application messaging, <strong>Anypoint MQ</strong> is strictly required.
+  </div>
+</div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "In Mule 4 architectures, I strictly reserve the VM Connector for intra-application asynchronous decoupling within a single deployment. In CloudHub 2.0, because replicas run as independent Kubernetes pods with ephemeral container disks, persistent VM queues do not replicate across pods. For reliable cross-replica or cross-application messaging, I always architect with Anypoint MQ instead."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Healthcare — High-Throughput Notification Dispatcher.</p><p class="example-line"><strong>Problem:</strong> During peak traffic of 80,000 patient records/day, synchronous execution of audit logging was adding 700ms to the main transaction flow.</p><p class="example-line"><strong>What I Did:</strong> Decoupled the logging flow using an in-memory VM queue with a dedicated listener thread pool, allowing the primary API to return HTTP 202 immediately.</p><p class="example-line"><strong>Result:</strong> Reduced client response time from 1.2s to 180ms while handling logging asynchronously without message drops.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-x-q8">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q8</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module X</span>
+</div>
+<h3 class="q-title">How do you version APIs in MuleSoft? What is a breaking vs non-breaking change?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>CHANGE TYPE</th><th>BREAKING?</th><th>VERSION BUMP</th></tr></thead>
+<tbody>
+<tr><td data-label="CHANGE TYPE">Removed/renamed field, type change, new required input</td><td data-label="BREAKING?">✅ YES — breaking</td><td data-label="VERSION BUMP"><code>MAJOR</code> (v1 → v2)</td></tr>
+<tr><td data-label="CHANGE TYPE">New optional field, new endpoint, new query param</td><td data-label="BREAKING?">❌ Non-breaking</td><td data-label="VERSION BUMP"><code>MINOR</code></td></tr>
+<tr><td data-label="CHANGE TYPE">Documentation fixes, description changes</td><td data-label="BREAKING?">❌ Non-breaking</td><td data-label="VERSION BUMP"><code>PATCH</code></td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="answer-badge-tag"><span class="badge badge-success">✅  VERSIONING RULES</span></div>
+<p class="doc-p">Consumers bind to major version: /api/v1/accounts  — never /api/v1.2.3</p>
+<p class="doc-p">Exchange asset version (2.4.6) ≠ consumer-facing API version (v2) — keep them separate</p>
+<p class="doc-p">New major version = new API Manager instance with its own policies and SLA tiers</p>
+<p class="doc-p">Running v1 + v2 side by side: separate apps, shared PAPI/SAPI, fix v1 bugs until retired</p>
+<p class="doc-p">Retiring v1: deprecate in Exchange, announce sunset dates, publish migration guide</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-x-q9">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q9</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module X</span>
+</div>
+<h3 class="q-title">How do you tune MuleSoft application performance?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Rule #1: Measure first. Change one thing at a time. Baseline → change → retest.</p>
+<p class="doc-p">maxConcurrency on flows: caps parallel events. At limit → back-pressure → HTTP 503. Set to</p>
+<p class="doc-p">match downstream capacity.</p>
+<p class="doc-p">DB pool maxPoolSize: default 5. If flow concurrency &gt; pool size → queue builds up → latency</p>
+<p class="doc-p">spikes. Tune to match expected concurrency.</p>
+<p class="doc-p">Scatter-Gather: parallel calls to different APIs — 55% response time reduction vs sequential at Enterprise Utility.</p>
+<p class="doc-p">Repeatable file store buffer: default 512KB before disk. Increase for large payloads staying in memory.</p>
+<p class="doc-p">DataWeave optimization: select specific fields early (<code>$select</code>), use <code>groupBy</code> for lookups instead of nested filter loops.</p>
+<p class="doc-p">Scale horizontally (add workers/replicas) for I/O-bound flows. Scale vertically (add vCores) for CPU-bound transforms.</p>
+<div class="callout callout-warning">
+<div class="callout-header"><span class="callout-icon">⚠️</span><strong>⚠️ COMMON PERFORMANCE ANTI-PATTERNS</strong></div>
+<div class="callout-body">
+<ul class="doc-list">
+<li>DB pool size smaller than flow <code>maxConcurrency</code> → queue builds → timeouts</li>
+<li>Logging large payloads at <code>INFO</code> in production — serialization cost + log volume</li>
+<li>One HTTP call per item in ForEach — use bulk APIs or Parallel ForEach instead</li>
+<li>Storing large streaming payloads in vars — use non-repeatable streaming instead</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="cloudhub-1-0-vs-2-0-technical-lead-topics.html">← CloudHub 1.0 vs 2.0 &amp; Technical Lead Topic</a><a class="btn btn-outline" href="mulesoft-interview-day-strategy-star-method.html">Interview Day Strategy &amp; STAR Method →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-aws-integration-patterns-s3-sqs-dynamodb.html">AWS Integration Patterns (S3, SQS, DynamoDB)</a></li><li><a href="anypoint-mq-deep-dive-queues-exchanges-dlq.html">Anypoint MQ Deep Dive (Queues, Exchanges, DLQ)</a></li><li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li><li><a href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC)</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

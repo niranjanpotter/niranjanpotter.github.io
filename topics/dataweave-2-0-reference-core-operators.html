@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>DataWeave 2.0 Reference &amp; Core Operators | MuleSoft Q&amp;A</title>
+  <meta name="description" content="Core functions, map, filter, reduce, groupBy, pluck, flatten, null safe navigation, default values, and PII masking.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/dataweave-2-0-reference-core-operators.html">
+  <meta property="og:title" content="DataWeave 2.0 Reference &amp; Core Operators — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Core functions, map, filter, reduce, groupBy, pluck, flatten, null safe navigation, default values, and PII masking.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/dataweave-2-0-reference-core-operators.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "DataWeave 2.0 Reference & Core Operators", "item": "https://niranjanpotter.github.io/topics/dataweave-2-0-reference-core-operators.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "DataWeave 2.0 Reference & Core Operators — MuleSoft Interview Questions & Scenarios (2026)", "description": "Core functions, map, filter, reduce, groupBy, pluck, flatten, null safe navigation, default values, and PII masking.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/dataweave-2-0-reference-core-operators.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>DataWeave 2.0 Masterclass</span> &gt;
+      <span style="color: var(--text-main);">DataWeave 2.0 Reference &amp; Core Operators</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">DataWeave 2.0 Masterclass · Developer</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">DataWeave 2.0 Reference &amp; Core Operators — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Core functions, map, filter, reduce, groupBy, pluck, flatten, null safe navigation, default values, and PII masking.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-r-title" class="blog-article" data-category="DataWeave 2.0 Masterclass" data-role="Developer" id="mod-r">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-dev">Module R</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="badge badge-primary">DataWeave 2.0 Masterclass</span>
+<span>⏱️ 6 min read</span>
+<span>📄 Guide Pages 47–53</span>
+<span>🎯 10 Interview Topics</span>
+</div>
+<h2 class="article-title">💻 DataWeave 2.0 Reference &amp; Core Operators</h2>
+<p class="article-excerpt">Core functions, map, filter, reduce, groupBy, pluck, flatten, null safe navigation, default values, and PII masking.</p>
+</div>
+<div class="dw-inline-card" id="inline-dw-playground">
+<!-- Header Bar -->
+<div class="dw-toolbar" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:16px;">
+<div class="dw-toolbar-left" style="display:flex; align-items:center; gap:12px;">
+<span style="font-size:1.8rem; background:rgba(99,91,255,0.15); padding:6px 10px; border-radius:8px;">🧪</span>
+<div>
+<div style="font-weight:800; font-size:1.25rem; color:#fff; display:flex; align-items:center; gap:10px;">
+<span>DataWeave 2.0 Studio Lab</span>
+<span class="badge" style="background:rgba(99,91,255,0.25); color:#a78bfa; border:1px solid rgba(99,91,255,0.4); font-size:0.7rem; padding:2px 8px; border-radius:4px;">Engine v2.4</span>
+</div>
+<div style="font-size:0.8rem; color:var(--text-dim);">Live In-Browser Transformation Engine · 26 Real Enterprise Scenarios</div>
+</div>
+</div>
+<!-- Controls Right -->
+<div class="dw-toolbar-right" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+<button class="btn btn-sm btn-primary" id="dw-run-btn" onclick="runDwTransformation('inline')" title="Run transformation in browser" type="button">▶ Run / Transform</button>
+<button class="btn btn-sm" onclick="resetDwPreset()" title="Reset to original code" type="button">↺ Reset</button>
+<button aria-pressed="false" class="btn btn-sm btn-outline feature-fs-btn" id="inline-dw-fullscreen-btn" onclick="toggleFeatureFullscreen('inline-dw-playground', this)" title="Toggle Full Screen (keeps your current input &amp; mode)" type="button">⛶ Full Screen</button>
+</div>
+</div>
+<!-- Studio Mode Switcher: Manual Mode vs Auto-Generate Mode -->
+<div class="dw-mode-switcher" data-scope="inline">
+<button class="dw-mode-btn active" data-mode="manual" onclick="switchDwMode('manual', this, 'inline')" type="button">✍️ Manual Mode</button>
+<button class="dw-mode-btn" data-mode="autogen" onclick="switchDwMode('autogen', this, 'inline')" type="button">✨ Auto-Generate Mode (JSON / XML → DW 2.0)</button>
+</div>
+<!-- AUTO-GENERATE WORKSPACE (3 Boxes: Input | Desired Output | Generated Script) -->
+<div class="dw-autogen-workspace" id="dw-autogen-workspace" style="display:none;">
+<div class="dw-autogen-toolbar">
+<div class="dw-autogen-hint">Paste any <strong>JSON or XML Input</strong> and your <strong>Desired JSON Output</strong> — 100% offline engine infers field maps, concatenations, math, arrays &amp; constants.</div>
+<button class="btn btn-sm btn-primary dw-autogen-run-btn" id="dw-autogen-btn" onclick="autoGenerateDwScript('inline')" type="button">✨ Auto-Generate DataWeave</button>
+</div>
+<div class="dw-autogen-error" id="dw-autogen-error" role="alert" style="display:none;"></div>
+<div class="dw-autogen-grid">
+<div class="dw-editor-panel">
+<div class="dw-panel-header">
+<span>📥 1. INPUT (JSON / XML)</span>
+<button class="btn-copy-pane" onclick="copyAutogenBox('input', 'inline')" type="button">📋 Copy</button>
+</div>
+<label class="sr-only" for="dw-autogen-input">Input JSON or XML payload for Auto-Generate DataWeave</label>
+<textarea aria-label="Input JSON or XML payload for Auto-Generate DataWeave" class="dw-code-editor dw-autogen-input" id="dw-autogen-input" placeholder="Paste JSON or XML input payload..." spellcheck="false">{
+  "firstName": "Niranjan",
+  "lastName": "Potter",
+  "price": 50,
+  "qty": 3,
+  "items": [
+    { "sku": "A1", "cost": 100 },
+    { "sku": "B2", "cost": 200 }
+  ]
+}</textarea>
+</div>
+<div class="dw-editor-panel">
+<div class="dw-panel-header">
+<span>🎯 2. DESIRED OUTPUT (JSON)</span>
+<button class="btn-copy-pane" onclick="copyAutogenBox('desired', 'inline')" type="button">📋 Copy</button>
+</div>
+<label class="sr-only" for="dw-autogen-desired">Desired JSON output payload for Auto-Generate DataWeave</label>
+<textarea aria-label="Desired JSON output payload for Auto-Generate DataWeave" class="dw-code-editor dw-autogen-desired" id="dw-autogen-desired" placeholder="Paste desired JSON output..." spellcheck="false">{
+  "fullName": "Niranjan Potter",
+  "total": 150,
+  "city": "Abu",
+  "products": [
+    { "code": "A1", "amount": 100 },
+    { "code": "B2", "amount": 200 }
+  ]
+}</textarea>
+</div>
+<div class="dw-editor-panel">
+<div class="dw-panel-header">
+<span>⚡ 3. GENERATED SCRIPT (%dw 2.0)</span>
+<div style="display:flex; gap:6px;">
+<button class="btn-copy-pane" onclick="copyAutogenBox('script', 'inline')" type="button">📋 Copy</button>
+<button class="btn-copy-pane dw-use-script-btn" id="dw-use-script-btn" onclick="useGeneratedDwScript('inline')" type="button">⚡ Use This Script</button>
+</div>
+</div>
+<label class="sr-only" for="dw-autogen-script">Auto-Generated DataWeave 2.0 script</label>
+<textarea aria-label="Auto-Generated DataWeave 2.0 script" class="dw-code-editor dw-autogen-script" id="dw-autogen-script" placeholder="Click 'Auto-Generate DataWeave' to generate your %dw 2.0 script..." readonly="" spellcheck="false"></textarea>
+</div>
+</div>
+<div class="dw-autogen-notes" id="dw-autogen-notes" style="display:none;"></div>
+</div>
+<div class="dw-manual-workspace" id="dw-manual-workspace">
+<!-- Search & Category Filters -->
+<div class="dw-filter-bar" style="display:flex; flex-direction:column; gap:12px; margin: 16px 0 20px 0;">
+<div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+<!-- Search Input -->
+<div style="flex:1; min-width:260px; position:relative;">
+<label class="sr-only" for="dw-search-input">Search DataWeave 2.0 examples</label>
+<input aria-label="Search DataWeave 2.0 examples" id="dw-search-input" oninput="searchDwPresets(this.value)" placeholder="🔍 Search 26 DataWeave examples (e.g. filter, groupBy, XML, CSV)..." style="width:100%; padding:9px 14px; background:rgba(11,15,25,0.9); border:1px solid rgba(255,255,255,0.15); border-radius:6px; color:#fff; font-size:0.85rem;" type="text"/>
+</div>
+<!-- Preset Dropdown -->
+<div style="flex:1.5; min-width:300px;">
+<label class="sr-only" for="dw-preset-select">DataWeave 2.0 Preset Scenario</label>
+<select aria-label="DataWeave 2.0 Preset Scenario" class="dw-select" id="dw-preset-select" onchange="loadDwPreset(this.value)" style="width:100%; padding:9px 14px; background:rgba(11,15,25,0.95); border:1px solid rgba(99,91,255,0.5); border-radius:6px; color:#00f0ff; font-weight:700; font-size:0.88rem;">
+<!-- 26 Options dynamically injected by app.js -->
+</select>
+</div>
+</div>
+<!-- Category Pills -->
+<div class="dw-category-pills" style="display:flex; gap:6px; flex-wrap:wrap;">
+<button class="dw-cat-pill active" onclick="filterDwByCategory('all', this)">All (26)</button>
+<button class="dw-cat-pill" onclick="filterDwByCategory('json', this)">JSON (5)</button>
+<button class="dw-cat-pill" onclick="filterDwByCategory('xml', this)">XML (2)</button>
+<button class="dw-cat-pill" onclick="filterDwByCategory('csv', this)">CSV (2)</button>
+<button class="dw-cat-pill" onclick="filterDwByCategory('array', this)">Array Functions (7)</button>
+<button class="dw-cat-pill" onclick="filterDwByCategory('string', this)">String (2)</button>
+<button class="dw-cat-pill" onclick="filterDwByCategory('date', this)">Date (1)</button>
+<button class="dw-cat-pill" onclick="filterDwByCategory('advanced', this)">Enterprise Scenarios (7)</button>
+</div>
+</div>
+<!-- Mobile Tab Bar for DataWeave Studio (< 768px) -->
+<div class="dw-mobile-tab-bar" data-scope="inline" id="dwMobileTabs">
+<button class="dw-tab-btn active" data-scope="inline" data-tab="input" type="button">📥 Input</button>
+<button class="dw-tab-btn" data-scope="inline" data-tab="script" type="button">⚡ Script</button>
+<button class="dw-tab-btn" data-scope="inline" data-tab="output" type="button">📤 Output</button>
+<button class="dw-tab-btn" data-scope="inline" data-tab="notes" type="button">💡 Notes</button>
+</div>
+<!-- 4-PANEL WORKSPACE (2x2 on Desktop, Tabbed on Mobile) -->
+<div class="dw-4panel-grid">
+<!-- PANEL 1: INPUT PAYLOAD -->
+<div class="dw-editor-panel dw-tab-active" id="dw-panel-input">
+<div class="dw-panel-header">
+<div style="display:flex; align-items:center; gap:8px;">
+<span>📥 INPUT PAYLOAD</span>
+<span class="dw-panel-format" id="dw-input-format-badge">JSON</span>
+</div>
+<button class="btn-copy-pane" onclick="copyDwPanel('input')" title="Copy Input Payload">📋 Copy Input</button>
+</div>
+<label class="sr-only" for="dw-input-editor">DataWeave input payload editor</label>
+<textarea aria-label="DataWeave input payload editor" class="dw-code-editor dw-input-editor" id="dw-input-editor" placeholder="Enter input payload here..." spellcheck="false"></textarea>
+</div>
+<!-- PANEL 2: DATAWEAVE SCRIPT -->
+<div class="dw-editor-panel" id="dw-panel-script">
+<div class="dw-panel-header">
+<div style="display:flex; align-items:center; gap:8px;">
+<span>⚡ DATAWEAVE SCRIPT (%dw 2.0)</span>
+<span style="font-size:0.7rem; color:rgba(0,240,255,0.7);">output application/...</span>
+</div>
+<div style="display:flex; gap:6px; align-items:center;">
+<span class="anypoint-note" style="font-size:0.7rem; color:#a78bfa; margin-right:4px;">💡 Try in Anypoint</span>
+<button class="btn-copy-pane" onclick="copyDwPanel('script')" title="Copy DW Script">📋 Copy Script</button>
+</div>
+</div>
+<label class="sr-only" for="dw-script-editor">DataWeave 2.0 transformation script editor</label>
+<textarea aria-label="DataWeave 2.0 transformation script editor" class="dw-code-editor dw-script-editor" id="dw-script-editor" placeholder="%dw 2.0
+output application/json
+---
+..." spellcheck="false"></textarea>
+</div>
+<!-- PANEL 3: OUTPUT PAYLOAD -->
+<div class="dw-editor-panel" id="dw-panel-output">
+<div class="dw-panel-header">
+<div style="display:flex; align-items:center; gap:8px;">
+<span>📤 TRANSFORMED OUTPUT</span>
+<span class="dw-status-indicator" id="dw-live-status" style="font-size:0.72rem; color:#34d399; font-weight:700;">✅ Evaluated</span>
+</div>
+<button class="btn-copy-pane" onclick="copyDwPanel('output')" title="Copy Output Payload">📋 Copy Output</button>
+</div>
+<label class="sr-only" for="dw-output-viewer">Evaluated DataWeave transformation output</label>
+<textarea aria-label="Evaluated DataWeave transformation output" class="dw-code-editor dw-output-viewer" id="dw-output-viewer" placeholder="Output will appear here..." readonly="" spellcheck="false"></textarea>
+</div>
+<!-- PANEL 4: EXPLANATION PANEL (Professional English Only) -->
+<div class="dw-editor-panel dw-explanation-panel" id="dw-panel-notes">
+<div class="dw-panel-header" style="background:rgba(99,91,255,0.15); border-bottom:1px solid rgba(99,91,255,0.3);">
+<div style="display:flex; align-items:center; gap:8px;">
+<span>💡 EXPLANATION &amp; ARCHITECT INTERVIEW NOTES</span>
+</div>
+<span style="font-size:0.7rem; color:#a78bfa;">What Happened? &amp; Real Project Use Case</span>
+</div>
+<div class="dw-explanation-content" id="dw-explanation-box">
+<!-- Injected dynamically by loadDwPreset() -->
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="article-body-intro" style="margin-bottom:28px;">
+<div class="answer-badge-tag"><span class="badge badge-info">📝 DataWeave 2.0 Reference &amp; Core Operators</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>OPERATOR</th><th>EXAMPLE</th><th>RESULT / USE</th></tr></thead>
+<tbody>
+<tr><td data-label="OPERATOR"><code>map</code></td><td data-label="EXAMPLE"><code>payload map (item) -&gt; {id: item.accountId}</code></td><td data-label="RESULT / USE">Transform each element. Returns same-size array.</td></tr>
+<tr><td data-label="OPERATOR"><code>filter</code></td><td data-label="EXAMPLE"><code>payload filter (item) -&gt; item.status == "ACTIVE"</code></td><td data-label="RESULT / USE">Keep matching items. Returns smaller array.</td></tr>
+<tr><td data-label="OPERATOR"><code>groupBy</code></td><td data-label="EXAMPLE"><code>payload groupBy ((item) -&gt; item.region)</code></td><td data-label="RESULT / USE">Group into keyed object: <code>{"EAST": [...], "WEST": [...]}</code></td></tr>
+<tr><td data-label="OPERATOR"><code>reduce</code></td><td data-label="EXAMPLE"><code>payload reduce ((item, acc=0) -&gt; acc + item.amount)</code></td><td data-label="RESULT / USE">Aggregate to single value — sum, build object.</td></tr>
+<tr><td data-label="OPERATOR"><code>orderBy</code></td><td data-label="EXAMPLE"><code>payload orderBy ((item) -&gt; item.name)</code></td><td data-label="RESULT / USE">Sort ascending. Negate for descending: <code>-item.amount</code></td></tr>
+<tr><td data-label="OPERATOR"><code>distinctBy</code></td><td data-label="EXAMPLE"><code>payload distinctBy ((item) -&gt; item.accountId)</code></td><td data-label="RESULT / USE">Remove duplicates. Keeps first occurrence.</td></tr>
+<tr><td data-label="OPERATOR"><code>flatten</code></td><td data-label="EXAMPLE"><code>[[1,2],[3,4]] flatten</code></td><td data-label="RESULT / USE">Flatten one level: <code>[1,2,3,4]</code></td></tr>
+<tr><td data-label="OPERATOR"><code>mapObject</code></td><td data-label="EXAMPLE"><code>payload mapObject ((v,k) -&gt; {(upper(k)):v})</code></td><td data-label="RESULT / USE">Transform object key-value pairs. Returns object.</td></tr>
+<tr><td data-label="OPERATOR"><code>pluck</code></td><td data-label="EXAMPLE"><code>payload pluck ((v,k) -&gt; {name:k, value:v})</code></td><td data-label="RESULT / USE">Convert object entries to array.</td></tr>
+<tr><td data-label="OPERATOR"><code>default</code></td><td data-label="EXAMPLE"><code>null default "N/A"</code></td><td data-label="RESULT / USE">Return fallback if null/missing.</td></tr>
+<tr><td data-label="OPERATOR"><code>?.</code> (safe nav)</td><td data-label="EXAMPLE"><code>payload.address?.city default ""</code></td><td data-label="RESULT / USE">Safe navigation — no NPE if parent is null.</td></tr>
+<tr><td data-label="OPERATOR"><code>$</code> and <code>$$</code></td><td data-label="EXAMPLE"><code>payload map $</code></td><td data-label="RESULT / USE"><code>$</code> = current value, <code>$$</code> = current index/key.</td></tr>
+<tr><td data-label="OPERATOR"><code>replace</code></td><td data-label="EXAMPLE"><code>"1234567890" replace /\d(?=\d{4})/ with "*"</code></td><td data-label="RESULT / USE">Regex replace — mask all but last 4 digits.</td></tr>
+<tr><td data-label="OPERATOR"><code>uuid()</code></td><td data-label="EXAMPLE"><code>uuid()</code></td><td data-label="RESULT / USE">Generate random UUID string.</td></tr>
+<tr><td data-label="OPERATOR"><code>now()</code></td><td data-label="EXAMPLE"><code>(now() &gt;&gt; "America/New_York") as String {format:"yyyy-MM-dd"}</code></td><td data-label="RESULT / USE">Current timestamp in timezone.</td></tr>
+</tbody>
+</table></div>
+</div>
+<p class="doc-p" style="margin-top:16px;"><strong>DataWeave — Merge SAP XML + DynamoDB with null-safe defaults</strong></p>
+<div class="code-block">
+<div class="code-header">
+<span class="code-lang">DWL</span>
+<div style="display:flex; align-items:center; gap:8px;">
+<button class="copy-btn" onclick="openDwWithCode(this)" style="color:var(--mule-blue);" title="Test in Live DataWeave Playground"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M10 2v7.5M14 2v7.5M8.5 2h7M14 9.5a5 5 0 1 1-4 0v-7.5"></path></svg><span>Test in Playground</span></button>
+<button class="copy-btn" onclick="copyCode(this)" title="Copy Code">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<pre><code>%dw 2.0
+output application/json
+---
+do {
+var sap    = payload[0].payload
+var dynamo = payload[1].payload
+---
+{
+accountId:  sap.AccountID,
+billingAmt: sap.TotalDue default 0,
+language:   dynamo.language default "EN",
+name: (sap.firstName default "") ++ " " ++ (sap.lastName default ""),
+address: { street: sap.address.street default "N/A" }
+}
+}
+// DataWeave — Find highest salary from array
+%dw 2.0
+output application/json
+---
+(payload orderBy ((item) -&gt; -item.salary))[0].salary
+// Third highest: [2].salary
+// DataWeave — Count occurrences of a character
+%dw 2.0
+output application/json
+---
+sizeOf(("MULESOFT-CLOUD" splitBy "") filter (c) -&gt; c == "O")
+// Result: 2</code><button aria-label="Copy code snippet to clipboard" class="code-copy-btn" type="button">📋 Copy</button></pre>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-r-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module R</span>
+</div>
+<h3 class="q-title">What is the difference between sub-flow and private flow?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ASPECT</th><th>SUB-FLOW</th><th>PRIVATE FLOW</th></tr></thead>
+<tbody>
+<tr><td data-label="ASPECT">Error handler</td><td data-label="SUB-FLOW">No own error handler — inherits from caller flow</td><td data-label="PRIVATE FLOW">Has its own error handler — independent error handling</td></tr>
+<tr><td data-label="ASPECT">Transaction</td><td data-label="SUB-FLOW">Runs in caller's transaction context</td><td data-label="PRIVATE FLOW">Runs in its own transaction context</td></tr>
+<tr><td data-label="ASPECT">Invocation</td><td data-label="SUB-FLOW">invoked via flow-ref only (synchronous)</td><td data-label="PRIVATE FLOW">flow-ref only — but with independent error scope</td></tr>
+<tr><td data-label="ASPECT">Use when</td><td data-label="SUB-FLOW">Simple code reuse within same flow's error scope</td><td data-label="PRIVATE FLOW">Need independent error handling or transaction boundary</td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-r-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module R</span>
+</div>
+<h3 class="q-title">What is the difference between VM connector and flow reference?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Flow Reference: Synchronous direct call to another flow in the SAME application. Same thread, same</p>
+<p class="doc-p">transaction context. No messaging overhead.</p>
+<p class="doc-p">VM Connector: Message-based communication using an in-memory/persistent queue within the</p>
+<p class="doc-p">SAME application (VM queues are app-scoped). Can be synchronous (request-reply) or asynchronous</p>
+<p class="doc-p">(one-way). Decouples sender from receiver — useful for async processing within one app.</p>
+<p class="doc-p">Key difference: Flow-ref is a direct function call; VM is message-based within the app (like Anypoint</p>
+<p class="doc-p">MQ but scoped to one application and not durable across cluster).</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "In Mule 4 architectures, I strictly reserve the VM Connector for intra-application asynchronous decoupling within a single deployment. In CloudHub 2.0, because replicas run as independent Kubernetes pods with ephemeral container disks, persistent VM queues do not replicate across pods. For reliable cross-replica or cross-application messaging, I always architect with Anypoint MQ instead."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Retail &amp; E-Commerce — High-Throughput Notification Dispatcher.</p><p class="example-line"><strong>Problem:</strong> During peak traffic of 45,000 peak orders/hour, synchronous execution of audit logging was adding 700ms to the main transaction flow.</p><p class="example-line"><strong>What I Did:</strong> Decoupled the logging flow using an in-memory VM queue with a dedicated listener thread pool, allowing the primary API to return HTTP 202 immediately.</p><p class="example-line"><strong>Result:</strong> Reduced client response time from 1.2s to 180ms while handling logging asynchronously without message drops.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-r-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module R</span>
+</div>
+<h3 class="q-title">What is fan-in and fan-out? How do you implement them?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Fan-Out: Send same message to multiple destinations. Implementation: Scatter-Gather (parallel</p>
+<p class="doc-p">routes), Anypoint MQ Exchange (one publish → all bound queues get copy), or multiple MQ publish</p>
+<p class="doc-p">steps.</p>
+<p class="doc-p">Fan-In: Collect results from multiple parallel paths into one. Scatter-Gather automatically fan-in: waits</p>
+<p class="doc-p">for all routes, aggregates into an array. For MQ fan-in: use a separate aggregation flow that collects</p>
+<p class="doc-p">messages keyed by correlationId with a TTL-based ObjectStore to accumulate all parts before</p>
+<p class="doc-p">continuing.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-r-q4">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q4</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module R</span>
+</div>
+<h3 class="q-title">What are streaming strategies in MuleSoft? Which is the default?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>STRATEGY</th><th>BEHAVIOR</th><th>USE WHEN</th></tr></thead>
+<tbody>
+<tr><td data-label="STRATEGY">Non-Repeatable Streaming</td><td data-label="BEHAVIOR">Stream read once, not buffered — most memory-efficient</td><td data-label="USE WHEN">Large files you process only once, don't need to re-read</td></tr>
+<tr><td data-label="STRATEGY">Repeatable In-Memory</td><td data-label="BEHAVIOR">Buffered in memory up to threshold, then disk</td><td data-label="USE WHEN">Need to re-read stream multiple times, moderate size</td></tr>
+<tr><td data-label="STRATEGY">Repeatable File Store (default)</td><td data-label="BEHAVIOR">Buffered to temporary file on disk — repeatable</td><td data-label="USE WHEN">Large payloads, need multiple reads without OOM risk</td></tr>
+</tbody>
+</table></div>
+</div>
+<p class="doc-p">Default in Mule 4: Repeatable File Store Streaming for SFTP connector. For HTTP responses: non-repeatable by default unless <code>responseStreamingMode</code> is set. Use streaming for CSV files &gt;50MB.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-r-q5">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q5</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module R</span>
+</div>
+<h3 class="q-title">How do you set up HTTPS connection in MuleSoft? One-way vs two-way SSL?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">One-way SSL (server authentication only): Client verifies server's certificate. Server does NOT verify</p>
+<p class="doc-p">client. Standard HTTPS. In MuleSoft: HTTP Listener needs tlsContext  with keyStore (server cert).</p>
+<p class="doc-p">HTTP Request needs tlsContext  with trustStore (CA cert to trust server).</p>
+<p class="doc-p">Two-way SSL (mutual TLS / mTLS): Both client and server present certificates and verify each other.</p>
+<p class="doc-p">In MuleSoft HTTP Request: configure BOTH a trustStore (to verify server) AND a keyStore (client</p>
+<p class="doc-p">certificate to present to server). Used for machine-to-machine authentication without</p>
+<p class="doc-p">username/password.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-r-q6">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q6</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module R</span>
+</div>
+<h3 class="q-title">What is VPC and VPN in CloudHub? What is SLB vs DLB?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">VPC (Virtual Private Cloud): Private isolated network segment in CloudHub where your Mule apps</p>
+<p class="doc-p">run. Isolates your apps from other CloudHub customers. Required for DLB.</p>
+<p class="doc-p">VPN: Encrypted tunnel connecting your CloudHub VPC to your on-premise data center. Mule apps in</p>
+<p class="doc-p">VPC can access internal systems (SAP, databases) via private IP through VPN.</p>
+<p class="doc-p">SLB (Shared Load Balancer): Multi-tenant, shared CloudHub infrastructure. Public IPs. Suitable for</p>
+<p class="doc-p">lower-security workloads. Free.</p>
+<p class="doc-p">DLB (Dedicated Load Balancer): Your own private load balancer in a VPC. Custom domain names,</p>
+<p class="doc-p">custom SSL certificates, private IPs. Required for VPN-connected on-premise access. Additional cost</p>
+<p class="doc-p">but necessary for enterprise production deployments.</p>
+<p class="doc-p">🔹  DataWeave Coding Questions</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "In our modern deployments, we prioritize CloudHub 2.0 Private Spaces and Runtime Fabric on Kubernetes. We size applications using fractional vCores (like 0.2 to 1 vCore) with at least two replicas across availability zones to guarantee high availability, zero-downtime rolling updates, and internal ingress routing with automated Mutual TLS termination."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Logistics — <code>CloudHub 2.0</code> Multi-Region Migration.</p><p class="example-line"><strong>Problem:</strong> Legacy single-worker <code>CloudHub 1.0</code> applications suffered 4-minute downtimes during monthly patching and could not meet corporate DR recovery time objectives.</p><p class="example-line"><strong>What I Did:</strong> Migrated 28 APIs to <code>CloudHub 2.0</code> Private Spaces with dual replicas per app across multi-AZs, configuring automated ingress path routing and CI/CD canary deployments.</p><p class="example-line"><strong>Result:</strong> Achieved 99.99% service availability with true zero-downtime deployments and reduced infrastructure spend by 22%.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-r-q7">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q7</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module R</span>
+</div>
+<h3 class="q-title">How do you call a Java file in DataWeave? How do you invoke a flow in DataWeave?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Call Java in DataWeave:</p>
+<p class="doc-p">DataWeave — Call Java static method</p>
+<div class="code-block">
+<div class="code-header">
+<span class="code-lang">DWL</span>
+<div style="display:flex; align-items:center; gap:8px;">
+<button class="copy-btn" onclick="openDwWithCode(this)" style="color:var(--mule-blue);" title="Test in Live DataWeave Playground"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M10 2v7.5M14 2v7.5M8.5 2h7M14 9.5a5 5 0 1 1-4 0v-7.5"></path></svg><span>Test in Playground</span></button>
+<button class="copy-btn" onclick="copyCode(this)" title="Copy Code">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<pre><code>%dw 2.0
+import java!com:-enterprise:-utils:-StringUtils
+output application/json
+---
+StringUtils:-formatAccountNumber(payload.accountId)
+Invoke flow from DataWeave: Not directly possible in Mule 4 DataWeave. Flows are invoked via in
+XML. If you need to call a flow from within a transform, use a to store DataWeave result, then
+separately after the transform block.</code><button aria-label="Copy code snippet to clipboard" class="code-copy-btn" type="button">📋 Copy</button></pre>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "DataWeave 2.0 is the core engine of our transformation layer. Rather than writing bulky Java components or iterative loops, I leverage DataWeave's functional paradigms—using map, filter, groupBy, and tail-recursive functions—and employ streaming annotations like @StreamCapable for multi-gigabyte payloads to maximize CPU cache locality and keep memory consumption minimal."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Insurance — High-Volume Payload Transformation Service.</p><p class="example-line"><strong>Problem:</strong> Transforming a 60MB nested XML payload containing 30,000 line items was consuming 1.2GB of heap memory and causing garbage collection pauses of up to 4 seconds.</p><p class="example-line"><strong>What I Did:</strong> Rewrote the script using DataWeave 2.0 streaming with pluck, groupBy, and indexed lookups, avoiding eager array loading into JVM heap.</p><p class="example-line"><strong>Result:</strong> Reduced memory footprint by 82% and dropped transformation execution time from 4.1s to 240ms.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-r-q8">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q8</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module R</span>
+</div>
+<h3 class="q-title">Write DataWeave to mask a credit card number — show only last 4 digits.</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">DataWeave — Credit card masking</p>
+<div class="code-block">
+<div class="code-header">
+<span class="code-lang">DWL</span>
+<div style="display:flex; align-items:center; gap:8px;">
+<button class="copy-btn" onclick="openDwWithCode(this)" style="color:var(--mule-blue);" title="Test in Live DataWeave Playground"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M10 2v7.5M14 2v7.5M8.5 2h7M14 9.5a5 5 0 1 1-4 0v-7.5"></path></svg><span>Test in Playground</span></button>
+<button class="copy-btn" onclick="copyCode(this)" title="Copy Code">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<pre><code>%dw 2.0
+output application/json
+---
+// Input: "1234567890123456"
+// Output: "************3456"
+payload.cardNumber replace /\d(?=\d{4})/ with "*"
+// Alternative — mask first 12:
+(payload.cardNumber[0 to 11] replace /\d/ with "*") ++ payload.cardNumber[12 to -1]</code><button aria-label="Copy code snippet to clipboard" class="code-copy-btn" type="button">📋 Copy</button></pre>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "DataWeave 2.0 is the core engine of our transformation layer. Rather than writing bulky Java components or iterative loops, I leverage DataWeave's functional paradigms—using map, filter, groupBy, and tail-recursive functions—and employ streaming annotations like @StreamCapable for multi-gigabyte payloads to maximize CPU cache locality and keep memory consumption minimal."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Aviation — High-Volume Payload Transformation Service.</p><p class="example-line"><strong>Problem:</strong> Transforming a 60MB nested XML payload containing 30,000 line items was consuming 1.2GB of heap memory and causing garbage collection pauses of up to 4 seconds.</p><p class="example-line"><strong>What I Did:</strong> Rewrote the script using DataWeave 2.0 streaming with pluck, groupBy, and indexed lookups, avoiding eager array loading into JVM heap.</p><p class="example-line"><strong>Result:</strong> Reduced memory footprint by 82% and dropped transformation execution time from 4.1s to 240ms.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-r-q9">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q9</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module R</span>
+</div>
+<h3 class="q-title">Write DataWeave to find even numbers from [1,2,3,4,5,6] and swap two values.</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">DataWeave — Even numbers + swap</p>
+<div class="code-block">
+<div class="code-header">
+<span class="code-lang">DWL</span>
+<div style="display:flex; align-items:center; gap:8px;">
+<button class="copy-btn" onclick="openDwWithCode(this)" style="color:var(--mule-blue);" title="Test in Live DataWeave Playground"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M10 2v7.5M14 2v7.5M8.5 2h7M14 9.5a5 5 0 1 1-4 0v-7.5"></path></svg><span>Test in Playground</span></button>
+<button class="copy-btn" onclick="copyCode(this)" title="Copy Code">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<pre><code>%dw 2.0
+output application/json
+---
+// Even numbers:
+[1,2,3,4,5,6] filter (n) -&gt; (n mod 2) == 0
+// Result: [2, 4, 6]
+// Swap a=1, b=2:
+do {
+var a = 1
+var b = 2
+---
+{ a: b, b: a }
+}
+// Result: { a: 2, b: 1 }</code><button aria-label="Copy code snippet to clipboard" class="code-copy-btn" type="button">📋 Copy</button></pre>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "DataWeave 2.0 is the core engine of our transformation layer. Rather than writing bulky Java components or iterative loops, I leverage DataWeave's functional paradigms—using map, filter, groupBy, and tail-recursive functions—and employ streaming annotations like @StreamCapable for multi-gigabyte payloads to maximize CPU cache locality and keep memory consumption minimal."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Energy &amp; Utility — High-Volume Payload Transformation Service.</p><p class="example-line"><strong>Problem:</strong> Transforming a 60MB nested XML payload containing 30,000 line items was consuming 1.2GB of heap memory and causing garbage collection pauses of up to 4 seconds.</p><p class="example-line"><strong>What I Did:</strong> Rewrote the script using DataWeave 2.0 streaming with pluck, groupBy, and indexed lookups, avoiding eager array loading into JVM heap.</p><p class="example-line"><strong>Result:</strong> Reduced memory footprint by 82% and dropped transformation execution time from 4.1s to 240ms.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-r-q10">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q10</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module R</span>
+</div>
+<h3 class="q-title">Write a cron expression to trigger a flow daily at 10AM. Write RAML for books and songs</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<p class="doc-p">resources.</p>
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Cron — Daily at 10AM EST</p>
+<p class="doc-p">0 0 10 * * ?</p>
+<p class="doc-p">// Second Minute Hour DayOfMonth Month DayOfWeek</p>
+<p class="doc-p">// 0=second, 0=minute, 10=10AM, *=any day, *=any month, ?=any day of week</p>
+<p class="doc-p">RAML — Books and Songs resources</p>
+<div class="code-block">
+<div class="code-header">
+<span class="code-lang">RAML</span>
+<div style="display:flex; align-items:center; gap:8px;">
+<button class="copy-btn" onclick="copyCode(this)" title="Copy Code">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<pre><code>#%RAML 1.0
+title: Library API
+version: v1
+baseUri: /api
+/books:
+get:
+description: Get all books
+responses:
+200:
+body:
+application/json:
+post:
+description: Create a book
+/{bookId}:
+get:
+put:</code><button aria-label="Copy code snippet to clipboard" class="code-copy-btn" type="button">📋 Copy</button></pre>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "We enforce an uncompromising API-first design methodology. Before a single line of Mule XML is scaffolded, we specify the API contract in RAML 1.0 or OAS 3.0 using Design Center, leveraging reusable Exchange fragments for canonical data types and security traits. Once reviewed with consumer teams, APIKit auto-generates routing logic with strict input validation, linked to API Manager via Autodiscovery."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Retail &amp; E-Commerce — API-led Microservices Modernization.</p><p class="example-line"><strong>Problem:</strong> Frontend and backend teams worked in silos, leading to contract discrepancies, breaking changes, and 3-week delays during integration testing.</p><p class="example-line"><strong>What I Did:</strong> Standardized RAML 1.0 API specifications with modular DataTypes and mock services in Exchange, enforcing API Autodiscovery and Client ID enforcement policies.</p><p class="example-line"><strong>Result:</strong> Enabled consumer teams to develop against live mocks 4 weeks earlier, eliminating contract defects and accelerating time-to-market by 35%.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-production-best-practices-naming-standards.html">← Production Best Practices &amp; Naming Standar</a><a class="btn btn-outline" href="mulesoft-enterprise-utility-energy-platform-deep-dive.html">Enterprise Utility &amp; Energy Platform Deep  →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="advanced-dataweave-transformations-scripts.html">Advanced DataWeave Transformations &amp; Scripts</a></li><li><a href="advanced-dataweave-2-0-functions-real-world-transformations.html">Advanced DataWeave 2.0 Functions &amp; Real-World Transformations</a></li><li><a href="mulesoft-salesforce-connector-bulk-api-2-0.html">Salesforce Connector &amp; Bulk API 2.0</a></li><li><a href="mulesoft-platform-events-change-data-capture-cdc.html">Platform Events &amp; Change Data Capture (CDC)</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

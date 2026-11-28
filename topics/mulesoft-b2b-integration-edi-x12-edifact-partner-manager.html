@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>B2B Integration, EDI (X12/EDIFACT) &amp; Partner Manag | MuleSoft Q&amp;A</title>
+  <meta name="description" content="Scenario-based MuleSoft interview questions and architecture deep dive for B2B Integration, EDI (X12/EDIFACT) &amp; Partner Manager.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-b2b-integration-edi-x12-edifact-partner-manager.html">
+  <meta property="og:title" content="B2B Integration, EDI (X12/EDIFACT) &amp; Partner Manager — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Scenario-based MuleSoft interview questions and architecture deep dive for B2B Integration, EDI (X12/EDIFACT) &amp; Partner Manager.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-b2b-integration-edi-x12-edifact-partner-manager.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "B2B Integration, EDI (X12/EDIFACT) & Partner Manager", "item": "https://niranjanpotter.github.io/topics/mulesoft-b2b-integration-edi-x12-edifact-partner-manager.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "B2B Integration, EDI (X12/EDIFACT) & Partner Manager — MuleSoft Interview Questions & Scenarios (2026)", "description": "Scenario-based MuleSoft interview questions and architecture deep dive for B2B Integration, EDI (X12/EDIFACT) & Partner Manager.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-b2b-integration-edi-x12-edifact-partner-manager.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Enterprise Architect Masterclass</span> &gt;
+      <span style="color: var(--text-main);">B2B Integration, EDI (X12/EDIFACT) &amp; Partner Manager</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Enterprise Architect Masterclass · Enterprise Architect</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">B2B Integration, EDI (X12/EDIFACT) &amp; Partner Manager — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Scenario-based MuleSoft interview questions and architecture deep dive for B2B Integration, EDI (X12/EDIFACT) &amp; Partner Manager.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-kk-title" class="blog-article" data-category="Enterprise Architect Masterclass" data-role="Enterprise Architect" id="mod-kk">
+<div class="article-header">
+<div class="article-meta">
+<span class="module-badge">MODULE KK</span>
+<span class="module-cat">B2B &amp; EDI ARCHITECTURE</span>
+<span class="reading-time">⏱️ 10 min read</span>
+<span class="star-rating">⭐⭐⭐⭐⭐ [CORE ENTERPRISE]</span>
+</div>
+<h2 class="article-title">🌐 B2B Integration, EDI (X12/EDIFACT) &amp; Partner Manager</h2>
+<p class="article-subtitle">Trading partner onboarding, AS2 communication protocols, ANSI X12 (850, 855, 856, 810) parsing with Electronic Service Level (ESL) schemas, 997 functional acknowledgments, and Anypoint Partner Manager (APM).</p>
+</div>
+<!-- KK-Q1 -->
+<div class="faq-card" data-role="architect / lead" id="mod-kk-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-lead">[ARCHITECT / SENIOR]</span>
+<span class="q-read-time">⏱️ 3 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module KK</span>
+</div>
+<h3 class="q-title">What is Anypoint Partner Manager (APM) and how does it modernize B2B EDI supply chain integrations?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="answer-section">
+<div class="ans-badge ans-badge-script">🎯 HOW TO ANSWER (VERBAL SCRIPT)</div>
+<p><em>"Anypoint Partner Manager (APM) is MuleSoft's cloud-native B2B integration platform that separates partner management configuration from integration runtime execution. Traditionally, adding a new retail or logistics partner required writing custom Mule flows, configuring point-to-point SFTP folders, and coding unique transformations. With APM, we define trading partners, communication protocols (AS2, SFTP, FTPS), digital certificates, and document agreements (such as X12 850 Purchase Orders or EDIFACT ORDERS) via a centralized control plane. When a partner sends an AS2 transmission, the lightweight B2B runtime worker receives the message, validates interchange headers (ISA/GS), translates the EDI into canonical JSON/XML using DataWeave, and automatically generates the 997 Functional Acknowledgment without custom code."</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- KK-Q2 -->
+<div class="faq-card" data-role="senior developer / lead" id="mod-kk-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-senior">[SENIOR DEVELOPER]</span>
+<span class="q-read-time">⏱️ 3 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module KK</span>
+</div>
+<h3 class="q-title">How do you parse ANSI X12 850 (Purchase Order) into JSON using the X12 EDI Connector and ESL schemas?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="answer-section">
+<div class="ans-badge ans-badge-script">🎯 HOW TO ANSWER (VERBAL SCRIPT)</div>
+<p><em>"Parsing EDI in Mule 4 is governed by the official X12 EDI Connector, which leverages Electronic Service Level (ESL) YAML schemas defining the exact segment hierarchy, mandatory fields, and qualifiers. In our flow, the EDI read operation takes the raw string stream, references the standard <code>x12/004010/850.esl</code> schema (or a custom company ESL), and produces a structured DataWeave map representation containing the Heading, Detail, and Summary loops. From there, a DataWeave transformation maps <code>payload.TransactionSets.v004010.'850'.Heading.'0200_BEG'.BEG03</code> to our canonical Purchase Order Number, and iterates over the <code>0100_PO1</code> segment loop to extract line items, prices, and quantities."</em></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-2026-ai-agentforce-mcp-autonomous-agent-networks.html">← 2026 AI Agentforce, MCP &amp; Autonomous Agent</a><a class="btn btn-outline" href="mulesoft-platform-operations-terraform-opentelemetry-direct-telemetry.html">Platform Operations, Terraform &amp; OpenTelem →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-architect-requirement-gathering-discovery-framework.html">Architect: Requirement Gathering &amp; Discovery Framework</a></li><li><a href="architect-mulesoft-vs-competitors-objection-handling.html">Architect: MuleSoft vs Competitors &amp; Objection Handling</a></li><li><a href="mulesoft-architect-client-communication-stakeholder-alignment.html">Architect: Client Communication &amp; Stakeholder Alignment</a></li><li><a href="mulesoft-architect-masterclass-interview-q-a-a1-to-a19.html">Architect: Masterclass Interview Q&amp;A (A1 to A19)</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090D16" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="dark light">
+  <title>Scatter-Gather Router Deep Dive | MuleSoft Interview Q&amp;A (2026)</title>
+  <meta name="description" content="Multithreaded parallel calls, composite routing, output payload structure, and partial route failure handling.">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <link rel="canonical" href="https://niranjanpotter.github.io/topics/mulesoft-scatter-gather-router-deep-dive.html">
+  <meta property="og:title" content="Scatter-Gather Router Deep Dive — MuleSoft Interview Q&amp;A (2026)">
+  <meta property="og:description" content="Multithreaded parallel calls, composite routing, output payload structure, and partial route failure handling.">
+  <meta property="og:url" content="https://niranjanpotter.github.io/topics/mulesoft-scatter-gather-router-deep-dive.html">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://niranjanpotter.github.io/assets/img/og-article.png">
+  <link rel="stylesheet" href="../assets/css/article.css">
+  <link rel="stylesheet" href="../assets/css/diagrams.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": []}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://niranjanpotter.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Scatter-Gather Router Deep Dive", "item": "https://niranjanpotter.github.io/topics/mulesoft-scatter-gather-router-deep-dive.html"}]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Scatter-Gather Router Deep Dive — MuleSoft Interview Questions & Scenarios (2026)", "description": "Multithreaded parallel calls, composite routing, output payload structure, and partial route failure handling.", "author": {"@type": "Person", "name": "Niranjan Potter", "url": "https://niranjanpotter.github.io/"}, "publisher": {"@type": "Organization", "name": "MuleSoft Hub", "url": "https://niranjanpotter.github.io/"}, "datePublished": "2026-11-28T00:00:00+00:00", "dateModified": "2026-11-28T00:00:00+00:00", "mainEntityOfPage": "https://niranjanpotter.github.io/topics/mulesoft-scatter-gather-router-deep-dive.html", "image": "https://niranjanpotter.github.io/assets/img/og-article.png"}</script>
+</head>
+<body class="dark-theme">
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="brand">
+        <span class="brand-logo">⚡</span>
+        <span class="brand-text">MuleSoft Hub</span>
+        <span class="badge-edition">2026 EDITION</span>
+      </a>
+      <div class="nav-controls" style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../index.html" class="btn btn-outline">← All 46 Modules</a>
+        <a href="https://mulesoft.niranjanpotter.dpdns.org/" class="btn btn-outline" target="_blank" rel="noopener">📝 38 Setup Guides ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="container main-content-layout" style="max-width: 1050px; margin: 30px auto; padding: 0 20px;">
+    <nav class="breadcrumb-trail" style="margin-bottom: 20px; color: var(--text-dim); font-size: 0.85rem;">
+      <a href="../index.html" style="color: var(--accent-cyan); text-decoration: none;">Home</a> &gt;
+      <span>Flow Scopes &amp; Concurrency</span> &gt;
+      <span style="color: var(--text-main);">Scatter-Gather Router Deep Dive</span>
+    </nav>
+
+    <header class="page-hero-header" style="margin-bottom: 32px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">
+      <span class="module-badge" style="background: rgba(6, 182, 212, 0.15); color: #06b6d4; padding: 4px 12px; border-radius: 6px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Flow Scopes &amp; Concurrency · Developer</span>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin: 14px 0 10px 0; line-height: 1.25;">Scatter-Gather Router Deep Dive — Interview Questions &amp; Scenarios (2026)</h1>
+      <p style="color: var(--text-dim); font-size: 1.05rem; max-width: 850px; line-height: 1.6;">Multithreaded parallel calls, composite routing, output payload structure, and partial route failure handling.</p>
+    </header>
+
+    <main>
+      <section aria-labelledby="mod-g-title" class="blog-article" data-category="Flow Scopes &amp; Concurrency" data-role="Developer" id="mod-g">
+<div class="article-header">
+<div class="article-meta">
+<span class="badge badge-dev">Module G</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="badge badge-primary">Flow Scopes &amp; Concurrency</span>
+<span>⏱️ 3 min read</span>
+<span>📄 Guide Pages 13–16</span>
+<span>🎯 4 Interview Topics</span>
+</div>
+<h2 class="article-title">🔀 Scatter-Gather Router Deep Dive</h2>
+<p class="article-excerpt">Multithreaded parallel calls, composite routing, output payload structure, and partial route failure handling.</p>
+</div>
+<div class="diagram-container" id="diagram-scatter-gather">
+<div class="diagram-header">
+<div class="diagram-badge" style="background:rgba(132,94,194,0.15); color:#D65DB1; border-color:rgba(132,94,194,0.3);">⚡ Concurrency Pattern</div>
+<div class="diagram-title">Parallel SAP + DynamoDB Scatter-Gather Flow</div>
+<div class="diagram-subtitle">Non-Blocking Reactive Threading · maxConcurrency="3" · Timeout = 3000ms · P99 = 240ms</div>
+</div>
+<div class="diagram-svg-wrapper">
+<svg class="responsive-svg" viewbox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<marker id="arrowScatter" markerheight="8" markerwidth="8" orient="auto" refx="5" refy="3">
+<path d="M0,0 L0,6 L8,3 z" fill="#00F0FF"></path>
+</marker>
+<marker id="arrowAgg" markerheight="8" markerwidth="8" orient="auto" refx="5" refy="3">
+<path d="M0,0 L0,6 L8,3 z" fill="#10B981"></path>
+</marker>
+<lineargradient id="sgGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#3E63DD" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#845EC2" stop-opacity="0.1"></stop>
+</lineargradient>
+</defs>
+<!-- Background -->
+<rect fill="#0B0F19" height="520" rx="14" width="1000"></rect>
+<rect fill="none" height="518" rx="14" stroke="rgba(255,255,255,0.08)" stroke-width="1.5" width="998" x="1" y="1"></rect>
+<!-- Inbound Trigger -->
+<g transform="translate(30, 210)">
+<rect fill="#111827" height="90" rx="8" stroke="#00A1E0" stroke-width="1.5" width="160"></rect>
+<text fill="#00F0FF" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" text-anchor="middle" x="80" y="32">HTTP Listener</text>
+<text fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="700" text-anchor="middle" x="80" y="52">POST /orders/dispatch</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" x="80" y="70">payload: JSON Order</text>
+</g>
+<!-- Arrow Trigger -> SG -->
+<path d="M 190 255 L 260 255" marker-end="url(#arrowScatter)" stroke="#00F0FF" stroke-width="2"></path>
+<!-- Scatter-Gather Box -->
+<rect fill="url(#sgGrad)" height="430" rx="12" stroke="#845EC2" stroke-dasharray="6,4" stroke-width="1.5" width="460" x="270" y="40"></rect>
+<text fill="#D65DB1" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="800" x="290" y="72">SCATTER-GATHER ROUTER</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="10" x="540" y="72">maxConcurrency="3" | timeout="3000ms"</text>
+<!-- Branch 1: SAP ERP -->
+<g transform="translate(310, 100)">
+<rect fill="#111827" height="85" rx="8" stroke="rgba(0,161,224,0.5)" stroke-width="1" width="380"></rect>
+<circle cx="24" cy="24" fill="#00A1E0" r="8"></circle>
+<text fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" x="42" y="28">Route [0]: SAP S/4HANA ERP BAPI</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="11" x="42" y="48">BAPI_SALESORDER_CREATEFROMDAT2</text>
+<rect fill="rgba(0,161,224,0.15)" height="20" rx="4" width="75" x="290" y="16"></rect>
+<text fill="#00A1E0" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" x="327" y="30">⏱️ 240ms</text>
+</g>
+<!-- Branch 2: AWS DynamoDB -->
+<g transform="translate(310, 215)">
+<rect fill="#111827" height="85" rx="8" stroke="rgba(245,158,11,0.5)" stroke-width="1" width="380"></rect>
+<circle cx="24" cy="24" fill="#F59E0B" r="8"></circle>
+<text fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" x="42" y="28">Route [1]: AWS DynamoDB Audit Log</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="11" x="42" y="48">PutItem (PartitionKey: orderId, TTL: 90d)</text>
+<rect fill="rgba(245,158,11,0.15)" height="20" rx="4" width="75" x="290" y="16"></rect>
+<text fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" x="327" y="30">⏱️ 42ms</text>
+</g>
+<!-- Branch 3: Anypoint MQ Event -->
+<g transform="translate(310, 330)">
+<rect fill="#111827" height="85" rx="8" stroke="rgba(16,185,129,0.5)" stroke-width="1" width="380"></rect>
+<circle cx="24" cy="24" fill="#10B981" r="8"></circle>
+<text fill="#FFFFFF" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" x="42" y="28">Route [2]: Anypoint MQ Topic Producer</text>
+<text fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="11" x="42" y="48">Publish to Exchange 'orders.dispatched'</text>
+<rect fill="rgba(16,185,129,0.15)" height="20" rx="4" width="75" x="290" y="16"></rect>
+<text fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle" x="327" y="30">⏱️ 58ms</text>
+</g>
+<!-- Forking Lines from entry to routes -->
+<path d="M 285 255 L 310 142" stroke="#00F0FF" stroke-width="1.8"></path>
+<path d="M 285 255 L 310 255" stroke="#00F0FF" stroke-width="1.8"></path>
+<path d="M 285 255 L 310 372" stroke="#00F0FF" stroke-width="1.8"></path>
+<!-- Arrows SG -> Aggregator -->
+<path d="M 690 142 L 760 255" stroke="#10B981" stroke-width="1.8"></path>
+<path d="M 690 255 L 760 255" stroke="#10B981" stroke-width="1.8"></path>
+<path d="M 690 372 L 760 255" stroke="#10B981" stroke-width="1.8"></path>
+<!-- Arrow Aggregator -> Out -->
+<path d="M 760 255 L 785 255" marker-end="url(#arrowAgg)" stroke="#10B981" stroke-width="2"></path>
+<!-- Aggregator Result Box -->
+<g transform="translate(795, 195)">
+<rect fill="#111827" height="120" rx="10" stroke="#10B981" stroke-width="1.8" width="180"></rect>
+<text fill="#10B981" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" text-anchor="middle" x="90" y="28">Composite Result</text>
+<text fill="#FFFFFF" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" x="90" y="50">payload["0"].payload</text>
+<text fill="#FFFFFF" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" x="90" y="68">payload["1"].payload</text>
+<text fill="#FFFFFF" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="middle" x="90" y="86">payload["2"].payload</text>
+<rect fill="rgba(16,185,129,0.15)" height="18" rx="4" width="110" x="35" y="94"></rect>
+<text fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle" x="90" y="106">HTTP 200 Complete</text>
+</g>
+</svg>
+<button aria-label="Expand diagram to fullscreen" class="diagram-expand-btn" type="button"><span>⤢</span> <span>Expand</span></button></div>
+<div class="diagram-footer">
+<span>⚠️ <strong>Senior Developer Gotcha:</strong> Scatter-Gather executes routes concurrently on separate threads. If ANY route throws an error, the router stops and throws <code>MULE:COMPOSITE_ROUTING</code> containing both successful results and errors.</span>
+</div>
+</div>
+<div class="table-responsive" style="margin:24px 0;">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead>
+<tr>
+<th>FEATURE / BEHAVIOR</th>
+<th>SCATTER-GATHER ROUTER</th>
+<th>PARALLEL FOREACH SCOPE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td data-label="FEATURE / BEHAVIOR"><strong>Input Type</strong></td>
+<td data-label="SCATTER-GATHER ROUTER">Single message dispatched to heterogeneous routes</td>
+<td data-label="PARALLEL FOREACH SCOPE">Collection / Array split across parallel worker threads</td>
+</tr>
+<tr>
+<td data-label="FEATURE / BEHAVIOR"><strong>Route Definition</strong></td>
+<td data-label="SCATTER-GATHER ROUTER">Distinct parallel routes with totally different connectors</td>
+<td data-label="PARALLEL FOREACH SCOPE">Same processing logic applied to each item in collection</td>
+</tr>
+<tr>
+<td data-label="FEATURE / BEHAVIOR"><strong>Concurrency Control</strong></td>
+<td data-label="SCATTER-GATHER ROUTER"><code>maxConcurrency</code> attribute (defaults to route count)</td>
+<td data-label="PARALLEL FOREACH SCOPE"><code>maxConcurrency</code> attribute (defaults to 16 threads)</td>
+</tr>
+<tr>
+<td data-label="FEATURE / BEHAVIOR"><strong>Output Structure</strong></td>
+<td data-label="SCATTER-GATHER ROUTER">Object indexed by route: <code>{"0": ..., "1": ...}</code></td>
+<td data-label="PARALLEL FOREACH SCOPE">Ordered collection matching original input array order</td>
+</tr>
+<tr>
+<td data-label="FEATURE / BEHAVIOR"><strong>Failure Handling</strong></td>
+<td data-label="SCATTER-GATHER ROUTER">Fails fast; throws <code>MULE:COMPOSITE_ROUTING</code> immediately</td>
+<td data-label="PARALLEL FOREACH SCOPE">Processes all items; throws <code>MULE:COMPOSITE_ROUTING</code> at end</td>
+</tr>
+<tr>
+<td data-label="FEATURE / BEHAVIOR"><strong>Timeout Support</strong></td>
+<td data-label="SCATTER-GATHER ROUTER">Native <code>timeout="ms"</code> attribute on router</td>
+<td data-label="PARALLEL FOREACH SCOPE">Requires flow-level or transaction-level timeout</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-g-q1">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q1</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module G</span>
+</div>
+<h3 class="q-title">What is Scatter-Gather? How does it work?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">Scatter-Gather clones the incoming Mule Event across all defined routes, executes them concurrently on parallel threads, and waits for all branches to finish. After all routes complete, results are aggregated into an <strong>Object (indexed Map)</strong> keyed by route index (<code>"0"</code>, <code>"1"</code>, <code>"2"</code>), where each value is that route's resulting Mule Message (<code>{ payload, attributes }</code>).</p>
+<p class="doc-p">💡 <strong>KEY RUNTIME BEHAVIOR:</strong> Output is an <strong>Object (Map)</strong>, not an Array. Access individual route payloads by key (<code>payload."0".payload</code> or positional <code>payload[0].payload</code>) or flatten all route payloads with <code>flatten(payload..payload)</code> / <code>valuesOf(payload).payload</code>. Total execution latency equals the <strong>slowest route</strong>, and variables (<code>vars</code>) modified in non-conflicting routes merge back into the main flow afterward (conflicting variable names merge into an Array).</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "When an API orchestration requires parallel data fetching from multiple disparate backends, I implement the Scatter-Gather router. It invokes all routes concurrently on separate threads and aggregates responses into an indexed Map. I always wrap individual routes in Try scopes or inspect MULE:COMPOSITE_ROUTING to ensure that a failure in one non-critical route does not fail the entire customer response."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Retail &amp; E-Commerce — Customer 360 Aggregation API.</p><p class="example-line"><strong>Problem:</strong> Sequentially calling 3 backend systems (Shopify Plus, SAP S/4HANA, Salesforce OMS, Stripe) took over 3.2 seconds, breaching client SLA thresholds during high-load periods.</p><p class="example-line"><strong>What I Did:</strong> Orchestrated the backend calls using a Scatter-Gather router with a 1500ms timeout, wrapping each branch in a local Try scope with On Error Continue fallback payloads.</p><p class="example-line"><strong>Result:</strong> Slashed end-to-end response latency from 3.2s to 680ms (a 78% speedup) while guaranteeing graceful degradation if one backend was slow.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-g-q2">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q2</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module G</span>
+</div>
+<h3 class="q-title">What is the output type of Scatter-Gather? How do you merge results?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">The output of Scatter-Gather in Mule 4 is an <strong>Object (indexed Map)</strong> whose keys are string route indices (<code>"0"</code>, <code>"1"</code>, <code>"2"</code>...). Each entry contains a full Mule Message with <code>payload</code> (that route's output payload) and <code>attributes</code> (protocol metadata such as HTTP status code and headers). To merge all routes dynamically into a single array, use <code>flatten(payload..payload)</code>.</p>
+<p class="doc-p">DataWeave — Merge Scatter-Gather results</p>
+<div class="code-block">
+<div class="code-header">
+<span class="code-lang">DWL</span>
+<div style="display:flex; align-items:center; gap:8px;">
+<button class="copy-btn" onclick="openDwWithCode(this)" style="color:var(--mule-blue);" title="Test in Live DataWeave Playground"><svg fill="none" height="13" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="13"><path d="M10 2v7.5M14 2v7.5M8.5 2h7M14 9.5a5 5 0 1 1-4 0v-7.5"></path></svg><span>Test in Playground</span></button>
+<button class="copy-btn" onclick="copyCode(this)" title="Copy Code">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><rect height="13" rx="2" ry="2" width="13" x="9" y="9"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+<span>Copy</span>
+</button>
+</div>
+</div>
+<pre><code>%dw 2.0
+output application/json
+---
+do {
+var sapData    = payload."0".payload  // Route 0: SAP
+var dynamoData = payload."1".payload  // Route 1: DynamoDB
+// Tip: merge all routes uniformly via flatten(payload..payload)
+---
+{
+accountId:     sapData.AccountID,
+billingAmount: sapData.TotalDue as Number,
+language:      dynamoData.language default "EN",
+paperless:     dynamoData.paperless default false
+}
+}</code><button aria-label="Copy code snippet to clipboard" class="code-copy-btn" type="button">📋 Copy</button></pre>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "When an API orchestration requires parallel data fetching from multiple disparate backends, I implement the Scatter-Gather router. It invokes all routes concurrently on separate threads and aggregates responses into an indexed Map. I always wrap individual routes in Try scopes or inspect MULE:COMPOSITE_ROUTING to ensure that a failure in one non-critical route does not fail the entire customer response."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Commercial Banking — Customer 360 Aggregation API.</p><p class="example-line"><strong>Problem:</strong> Sequentially calling 3 backend systems (Finacle Core Banking, SWIFT Network, Kafka Event Broker) took over 3.2 seconds, breaching client SLA thresholds during high-load periods.</p><p class="example-line"><strong>What I Did:</strong> Orchestrated the backend calls using a Scatter-Gather router with a 1500ms timeout, wrapping each branch in a local Try scope with On Error Continue fallback payloads.</p><p class="example-line"><strong>Result:</strong> Slashed end-to-end response latency from 3.2s to 680ms (a 78% speedup) while guaranteeing graceful degradation if one backend was slow.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-g-q3">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q3</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module G</span>
+</div>
+<h3 class="q-title">If one route in Scatter-Gather fails, what happens to the others?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<p class="doc-p">By default: if any route fails, Scatter-Gather throws a MULE:COMPOSITE_ROUTING  error and the results</p>
+<p class="doc-p">of all routes (including successful ones) are discarded.</p>
+<p class="doc-p">To handle partial failures: wrap each route in a scope with an on-error-continue . This captures</p>
+<p class="doc-p">the error within that route without propagating it to Scatter-Gather. The successful routes continue</p>
+<p class="doc-p">normally and return their results.</p>
+<p class="doc-p">Scatter-Gather with per-route error handling</p>
+<p class="doc-p">{error: error.description}</p>
+<p class="doc-p">💬  CROSS-QUESTIONS INTERVIEWERS ASK ABOUT THIS TOPIC</p>
+<p class="doc-p">"What if ALL 3 routes fail?" → With Try scope: all 3 attempt, all return error objects. Scatter-Gather</p>
+<p class="doc-p">aggregates all 3. Without Try scope: first failure cancels everything → MULE:COMPOSITE_ROUTING. Best</p>
+<p class="doc-p">practice: Try scope per route, check result[N].payload.error != null  after.</p>
+<p class="doc-p">"What if SAP takes 5 seconds — what is total Scatter-Gather time?" → 5 seconds. Total time =</p>
+<p class="doc-p">SLOWEST route. DynamoDB finishes in 200ms but must wait for SAP. Fix: set timeout  on Scatter-Gather</p>
+<p class="doc-p">element. After timeout: MULE:TIMEOUT — use partial results from routes that completed.</p>
+<p class="doc-p">"Is the result array ordered the same as the routes?" → YES. payload[0] = first route, payload[1] =</p>
+<p class="doc-p">second route, regardless of which finished first. Order is always design-time route order.</p>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "When an API orchestration requires parallel data fetching from multiple disparate backends, I implement the Scatter-Gather router. It invokes all routes concurrently on separate threads and aggregates responses into an indexed Map. I always wrap individual routes in Try scopes or inspect MULE:COMPOSITE_ROUTING to ensure that a failure in one non-critical route does not fail the entire customer response."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Telecommunications — Customer 360 Aggregation API.</p><p class="example-line"><strong>Problem:</strong> Sequentially calling 3 backend systems (Amdocs CRM, Ericsson HLR, Matrixx Engine) took over 3.2 seconds, breaching client SLA thresholds during high-load periods.</p><p class="example-line"><strong>What I Did:</strong> Orchestrated the backend calls using a Scatter-Gather router with a 1500ms timeout, wrapping each branch in a local Try scope with On Error Continue fallback payloads.</p><p class="example-line"><strong>Result:</strong> Slashed end-to-end response latency from 3.2s to 680ms (a 78% speedup) while guaranteeing graceful degradation if one backend was slow.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="faq-card" data-role="developer" id="mod-g-q4">
+<div class="faq-header">
+<div class="faq-meta-row">
+<span class="q-tag">Q4</span>
+<span class="badge badge-dev">[DEVELOPER]</span>
+<span class="q-read-time">⏱️ 1 min read</span>
+<span style="font-size:0.75rem; color:var(--text-dim); margin-left:auto;">Module G</span>
+</div>
+<h3 class="q-title">Scatter-Gather vs Parallel ForEach — when to use which?</h3>
+<div class="faq-action-bar">
+<button aria-expanded="false" class="reveal-answer-btn" onclick="toggleAnswerDrawer(this)">
+<span class="reveal-btn-icon">👁️</span>
+<span class="reveal-btn-text">Reveal Senior Model Answer &amp; Verbal Script</span>
+</button>
+<span style="font-size:0.75rem; color:var(--text-dim);">⚡ Self-Test Mode Ready</span>
+</div>
+</div>
+<div class="answer-drawer">
+<div class="answer-drawer-inner">
+<div class="answer-body-content">
+<div class="answer-badge-tag"><span class="badge badge-success">✓ ANSWER</span></div>
+<div class="table-responsive">
+<div class="table-scroll"><table class="responsive-table doc-table">
+<thead><tr><th>ASPECT</th><th>SCATTER-GATHER</th><th>PARALLEL FOREACH</th></tr></thead>
+<tbody>
+<tr><td data-label="ASPECT">Input</td><td data-label="SCATTER-GATHER">Fixed number of routes (defined at design time)</td><td data-label="PARALLEL FOREACH">Array of elements (dynamic, runtime-determined)</td></tr>
+<tr><td data-label="ASPECT">Parallel</td><td data-label="SCATTER-GATHER">Each route runs in parallel</td><td data-label="PARALLEL FOREACH">Each array item processed in parallel</td></tr>
+<tr><td data-label="ASPECT">Use when</td><td data-label="SCATTER-GATHER">Calling 2-5 different APIs simultaneously</td><td data-label="PARALLEL FOREACH">Processing all items in a collection in parallel</td></tr>
+<tr><td data-label="ASPECT">Output</td><td data-label="SCATTER-GATHER">Object (indexed Map <code>{"0": {payload, attributes}, ...}</code>)</td><td data-label="PARALLEL FOREACH">Array of Mule Messages (one per processed item)</td></tr>
+<tr><td data-label="ASPECT">Example</td><td data-label="SCATTER-GATHER">SAP + DynamoDB + Salesforce in parallel</td><td data-label="PARALLEL FOREACH">Process 50 account updates in parallel batches</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="callout callout-verbal interview-pitch-card">
+<div class="callout-header"><span class="callout-icon">🎯</span><strong>🎯 Interview Pitch - Say It Like This (30 Sec)</strong></div>
+<div class="callout-body">
+    "When an API orchestration requires parallel data fetching from multiple disparate backends, I implement the Scatter-Gather router. It invokes all routes concurrently on separate threads and aggregates responses into an indexed Map. I always wrap individual routes in Try scopes or inspect MULE:COMPOSITE_ROUTING to ensure that a failure in one non-critical route does not fail the entire customer response."
+  </div>
+</div>
+<div class="callout callout-info project-example-card">
+<div class="callout-header"><span class="callout-icon">💼</span><strong>💼 Real-Time Project Example</strong></div>
+<div class="callout-body">
+<p class="example-line"><strong>Project:</strong> Healthcare — Customer 360 Aggregation API.</p><p class="example-line"><strong>Problem:</strong> Sequentially calling 3 backend systems (Epic Systems, Cerner HL7/FHIR, AWS S3 HIPAA Vault) took over 3.2 seconds, breaching client SLA thresholds during high-load periods.</p><p class="example-line"><strong>What I Did:</strong> Orchestrated the backend calls using a Scatter-Gather router with a 1500ms timeout, wrapping each branch in a local Try scope with On Error Continue fallback payloads.</p><p class="example-line"><strong>Result:</strong> Slashed end-to-end response latency from 3.2s to 680ms (a 78% speedup) while guaranteeing graceful degradation if one backend was slow.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:32px;"><a class="btn btn-outline" href="mulesoft-sap-salesforce-end-to-end-integration.html">← SAP + Salesforce End-to-End Integration</a><a class="btn btn-outline" href="mulesoft-foreach-parallel-foreach-scopes.html">ForEach &amp; Parallel ForEach Scopes →</a></div>
+    </main>
+
+    <section class="related-topics-section" style="margin-top: 44px; padding: 28px; background: rgba(19, 27, 46, 0.7); border: 1px solid var(--border-color); border-radius: 12px;">
+      <h3 style="color: #fff; margin-bottom: 15px;">📚 Related MuleSoft Interview Topics</h3>
+      <ul style="list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+        <li><a href="mulesoft-foreach-parallel-foreach-scopes.html">ForEach &amp; Parallel ForEach Scopes</a></li><li><a href="mulesoft-batch-processing-deep-dive.html">Batch Processing Deep Dive</a></li><li><a href="mulesoft-until-successful-scope-resiliency.html">Until Successful Scope &amp; Resiliency</a></li><li><a href="mulesoft-choice-router-first-successful-async-scopes.html">Choice Router, First Successful &amp; Async Scopes</a></li>
+      </ul>
+    </section>
+
+    <footer style="margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border-color); text-align: center; color: var(--text-dim); font-size: 0.85rem;">
+      <p>© 2026 Niranjan Kumar Potter · <a href="../index.html">MuleSoft Interview Hub</a> · <a href="https://mulesoft.niranjanpotter.dpdns.org/" target="_blank" rel="noopener">MuleSoft Engineering Blog</a></p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -223,7 +223,7 @@ def main() -> None:
 </body>
 </html>
 """
-        (TOPICS_DIR / slug).write_text(out_html, encoding="utf-8")
+        (TOPICS_DIR / t["slug"]).write_text(out_html, encoding="utf-8")
 
     # Update sitemap.xml (preserve existing URLs, append/update topics)
     sm_text = SITEMAP_XML.read_text(encoding="utf-8")
